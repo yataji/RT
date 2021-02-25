@@ -6,12 +6,12 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/02/24 17:13:54 by yataji           ###   ########.fr        #
+#    Updated: 2021/02/25 16:29:02 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = rtv1
-OBJ  = srcs/*.o
+OBJ  = srcs/main.o
 FLG  = -Wall -Wextra -Werror
 INC  = includes/
 INCS = includes/rtv1.h
@@ -24,8 +24,8 @@ all: $(NAME)
 	
 $(NAME): $(OBJ) 
 	@make  -s -C libft
-	@gcc $(FLG) libft/libft.a main.o -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	#@gcc $(FLG) libft/libft.a $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	#@gcc $(FLG) libft/libft.a main.o -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@gcc $(FLG) libft/libft.a $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@printf "compilation completed\n"
 
 clean:
