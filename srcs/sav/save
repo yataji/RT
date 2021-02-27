@@ -1,0 +1,35 @@
+// void	sphere(t_mlx *mlx)
+// {
+// 	int		x;
+// 	int		y;
+// 	int		z;
+
+// 	t_vect	center = (t_vect){350, 350, 500};
+// 	double	rayon = 200;
+// 	t_vect	org;
+// 	t_vect	dir = (t_vect){0, 0, 1};
+// 	z = 0;
+// 	x = -1;
+// 	while (++x < MAXWIDTH)
+// 	{
+// 		y = -1;
+// 		while (++y < MAXHEIGHT)
+// 		{
+// 			double t = -1;
+// 			org = (t_vect){x, y, 0};
+// 			double a = dir.x * dir.x + dir.y * dir.y + dir.z * dir.z;
+// 			double b = 2 * (dir.x * (org.x - center.x) + dir.y * (org.y - center.y) + dir.z * (org.z - center.z));
+// 			double c = ((org.x - center.x) * (org.x - center.x) + (org.y - center.y) * (org.y - center.y) + (org.z - center.z) * (org.z - center.z)) - (rayon * rayon);
+// 			double delta = b * b - 4.0 * a * c;
+// 			if (delta > 0)
+// 				t = (- b + sqrtf(delta)) / 2 * a;
+// 			if (delta == 0)
+// 				t = -b / 2 * a;
+// 			if (t < 0)
+// 				mlx->dtadd[x + y * MAXWIDTH] = 0X00;
+// 			else
+// 				mlx->dtadd[x + y * MAXWIDTH] = 0Xff;
+// 		}
+// 	}
+// 	mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
+// }

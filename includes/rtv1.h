@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/02/25 16:29:00 by yataji           ###   ########.fr       */
+/*   Updated: 2021/02/27 18:45:17 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,53 @@
 # include <math.h>
 # define MAXWIDTH 700
 # define MAXHEIGHT 700
+# define SPHERE 0
 
-typedef struct	s_vect3{
-	double		x;
-	double		y;
-	double		z;
-}				t_vect3;
+typedef struct 		s_vect {
+	double 			x;
+	double 			y;
+	double 			z;
+}					t_vect;
 
-typedef struct	s_ray{
-	t_vect3		or;
-	t_vect3		dir;
+typedef t_vect t_point;
+
+typedef struct		s_obj {
+	int				type;
+	double			radius;
+	t_point			center;
+	struct s_obj	*next;
+}					t_obj;
+
+typedef struct	s_ray
+{
+	t_point			org;
+	t_vect			dir;
 }				t_ray;
 
-typedef struct	s_mlx{
-	void		*ptr;
-	void		*win_ptr;
-	void		*img_ptr;
-	int			*dtadd;
-	int			bpp;
-	int			szln; 
-	int			end;
-	t_ray		ray;
-}				t_mlx;
+typedef struct		s_math
+{
+	double			a;
+	double			b;
+	double			c;
+	double			delta;
+}					t_math;
+
+typedef struct		s_mlx{
+	void			*ptr;
+	void			*win_ptr;
+	void			*img_ptr;
+	int				*dtadd;
+	int				bpp;
+	int				szln; 
+	int				end;
+}					t_mlx;
+
+typedef struct s_rtv1
+{
+	t_mlx	mlx;
+	t_obj	*obj;
+	t_ray	ray;
+	t_math	calc;
+}				t_rtv1;
+
 #endif
