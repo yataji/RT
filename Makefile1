@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/03/01 19:40:16 by yataji           ###   ########.fr        #
+#    Updated: 2021/03/01 19:08:05 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ all: $(NAME)
 	
 $(NAME): $(OBJ) 
 	@make  -s -C libft
-	@gcc $(FLG) libft/libft.a minilibx_macos/libmlx.a $(OBJ) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	@gcc $(FLG) libft/libft.a $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"
 
 clean:
