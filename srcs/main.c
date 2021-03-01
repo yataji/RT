@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/02/27 19:01:23 by yataji           ###   ########.fr       */
+/*   Updated: 2021/02/28 13:00:56 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,63 @@ double	intersect(t_obj *object, t_ray ray)
 	return (-1);
 }
 
+
+t_vect	plus(t_vect v1, t_vect v2)
+{
+	t_vect	vctpls;
+	
+	vctpls.x = v1.x + v2.x;
+	vctpls.y = v1.y + v2.y;
+	vctpls.z = v1.z + v2.z;
+	return (vctpls);
+}
+
+t_vect	multi(t_vect v1, double v2)
+{
+	t_vect	vctpls;
+	
+	vctpls.x = v1.x * v2;
+	vctpls.y = v1.y * v2;
+	vctpls.z = v1.z * v2;
+	return (vctpls);
+}
+
+t_vect	normalize(t_vect v1)
+{
+	double v;
+	
+	v = sqrtf(dot(v1, v1));
+	return (multi(v1, 1.0 / v));
+}
+
+t_vect	moins(t_vect v1, t_vect v2)
+{
+	t_vect	vctmns;
+	
+	vctmns.x = v1.x - v2.x;
+	vctmns.y = v1.y - v2.y;
+	vctmns.z = v1.z - v2.z;
+	return (vctmns);
+}
+
+t_vect	normsphr(t_ray *ray, t_obj *obj, double t)
+{
+	t_vect	norm;
+
+	ray->hit = plus(ray->org, multi(ray->dir, t));
+	norm = moins(ray->hit, obj->center);
+	norm = normalize(norm);
+	return (norm);
+}
+
 void draw(t_rtv1 rt)
 {
 	int x;
 	int y;
 	double t;
+	t_vect norm;
 	t_obj *tmp;
+	t_vect lightdir;
 
 	x = -1;
 	while (++x < MAXWIDTH)
@@ -111,14 +162,26 @@ void draw(t_rtv1 rt)
 		while (++y < MAXHEIGHT)
 		{
 			rt.ray = initray(x, y);
-			while (rt.obj)
+			tmp = rt.obj;
+			while (tmp)
 			{
-				t = intersect(rt.obj, rt.ray);
-				if (t >= 0)
-					rt.mlx.dtadd[x + y * MAXWIDTH] = 0xff;
+				t = intersect(tmp, rt.ray);
+				norm = normsphr(&rt.ray, tmp, t);
+				if (t >= 0) 
+				{
+					lightdir = normalize(moins((t_vect){350, 350, 0}, rt.ray.hit));
+					double dot1 = dot(norm, lightdir);
+					dot1 < 0 || dot1 > 1 ? dot1 = 0 : 0;
+					int color = 0;
+					unsigned char *ptr = (unsigned char *)&color;
+					ptr[0] = 255 * dot1;
+					ptr[1] = 2 * dot1;
+					ptr[2] = 2 * dot1;
+					rt.mlx.dtadd[x + y * MAXWIDTH] = color;
+				}
 				else
 					rt.mlx.dtadd[x + y * MAXWIDTH] = 0;
-				rt.obj = rt.obj->next;
+				tmp = tmp->next;
 			}
 		}
 	}
@@ -130,8 +193,8 @@ int main()
 	t_rtv1 rt;
 
 	rt.obj = (t_obj *)malloc(sizeof(t_obj));
-	rt.obj->type = 0;
-	rt.obj->center = (t_point){350, 350, 5};
+	rt.obj->type = SPHERE;
+	rt.obj->center = (t_point){350, 350, 220};
 	rt.obj->radius = 200;
 	rt.obj->next = NULL;
 	rt.mlx = init();

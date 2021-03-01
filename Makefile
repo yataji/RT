@@ -24,7 +24,7 @@ all: $(NAME)
 	
 $(NAME): $(OBJ) 
 	@make  -s -C libft
-	@gcc $(FLG) libft/libft.a $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@gcc $(FLG) libft/libft.a minilibx_macos/libmlx.a $(OBJ) -framework OpenGL -framework AppKit -o $(NAME)
 	@printf "compilation completed\n"
 
 clean:

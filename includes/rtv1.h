@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/02/27 18:45:17 by yataji           ###   ########.fr       */
+/*   Updated: 2021/02/28 12:15:06 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -42,6 +42,7 @@ typedef struct	s_ray
 {
 	t_point			org;
 	t_vect			dir;
+	t_vect			hit;
 }				t_ray;
 
 typedef struct		s_math
