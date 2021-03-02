@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/01 19:24:30 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/01 17:14:36 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ double	intersect(t_obj *object, t_ray ray)
 		return (sphrintr(object, ray));
 	if (object->type == CYLINDER)
 		return (cyldintr(object, ray));
+	if (object->type == CONE)
+		return (coneintr(object, ray));
 	return (-1);
 }
 
@@ -52,12 +54,14 @@ int main()
 	t_rtv1 rt;
 
 	rt.obj = (t_obj *)malloc(sizeof(t_obj));
-	rt.obj->type = CYLINDER;
+	// rt.obj->type = SPHERE;
+	// rt.obj->type = CYLINDER;
+	rt.obj->type = CONE;
 	rt.obj->center = (t_point){350, 350, 220};
 	rt.obj->radius = 50;
 	rt.obj->next = NULL;
 	rt.mlx = init();
-	drawsphr(rt);
+	draw(rt);
 	mlx_hook(rt.mlx.win_ptr, 2, 0, &keypress, &rt.mlx);
 	mlx_loop(rt.mlx.ptr);
 	return (0);
