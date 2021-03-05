@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/01 15:31:02 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/04 14:07:22 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,25 @@ typedef struct 		s_vect {
 	double 			z;
 }					t_vect;
 
-typedef t_vect t_point;
+typedef t_vect	t_point;
+typedef t_vect	t_color;
 
 typedef struct		s_obj {
 	int				type;
+	double			angle;
 	double			radius;
+	t_vect			v;
+	t_color			color;
 	t_point			center;
 	struct s_obj	*next;
 }					t_obj;
 
-typedef struct	s_ray
+typedef struct		s_ray
 {
 	t_point			org;
 	t_vect			dir;
 	t_vect			hit;
-}				t_ray;
+}					t_ray;
 
 typedef struct		s_math
 {
@@ -65,12 +69,28 @@ typedef struct		s_mlx{
 	int				end;
 }					t_mlx;
 
-typedef struct s_rtv1
+typedef struct		s_cam
 {
-	t_mlx	mlx;
-	t_obj	*obj;
-	t_ray	ray;
-	t_math	calc;
+	t_point			lokat;
+	t_point			lokfrm;
+}					t_cam;
+
+typedef struct		s_lights
+{
+	double			intensity;
+	int				color;
+	t_point			pos;
+	struct s_lights	*next;
+}					t_lights;
+
+typedef struct		s_rtv1
+{
+	t_mlx			mlx;
+	t_obj			*obj;
+	t_ray			ray;
+	t_cam			cam;
+	t_lights		light;
+	t_math			calc;
 }				t_rtv1;
 
 t_vect	plus(t_vect v1, t_vect v2);

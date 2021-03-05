@@ -1,0 +1,26 @@
+camera:
+  lokat:
+  lokfrm:
+light:
+  intensity:
+  color:
+  pos:
+sphere:
+  center:
+  color:
+  radius:
+cylinder:
+  center:
+  color:
+  radius:
+  axis:
+cone:
+  center:
+  color:
+  angle:
+  axis:
+plan:
+  centre:
+  color:
+  radius:
+  axis:
