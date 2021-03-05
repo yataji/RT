@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:01:53 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/05 19:34:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/05 19:40:05 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		camera(t_cam *cam, char *str, int fd)
 	check = ft_strtrim(str);
 	if (ft_strncmp(check, "lokat:", 6) == 0)
 	{
-		printf("jkfdsa");
+			printf("jkfdsa");
 			value = ft_strsplit(check, ':');
 			if (ft_strlend(value) == 4)
 			{
@@ -87,7 +87,8 @@ void		camera(t_cam *cam, char *str, int fd)
 	check = ft_strtrim(str);
 	if (ft_strncmp(check, "lokfrm:", 7) == 0)
 	{
-			value = ft_strsplit(str, ':');
+			printf("jkfdsa");
+			value = ft_strsplit(check, ':');
 			if (ft_strlend(value) == 4)
 			{
 				cam->lokfrm.x = ft_atoi(value[1]);
