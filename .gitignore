@@ -1,5 +1,4 @@
 Makefile2
 srcs/*.o
 minilibx_macos
-libft/*.o
-libft/*.a
+libft

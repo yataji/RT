@@ -1,6 +1,6 @@
-camera:
-  lokat:
-  lokfrm:
+camera:  
+  lokat:10:10:1
+  lokfrm:10:10:1
 light:
   intensity:
   color:
