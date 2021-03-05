@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:01:53 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/05 19:22:20 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/05 19:34:31 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ int		checkc(char *s, char **value)
 {
 	int	i;
 	int j;
-	
 	if (ft_strcmp(value[0], s) != 0)
+	{
+		printf("jj\n");
 		return (-1);
+	}
 	i = 0;
 	while(value[++i])
 	{
@@ -68,7 +70,8 @@ void		camera(t_cam *cam, char *str, int fd)
 	check = ft_strtrim(str);
 	if (ft_strncmp(check, "lokat:", 6) == 0)
 	{
-			value = ft_strsplit(str, ':');
+		printf("jkfdsa");
+			value = ft_strsplit(check, ':');
 			if (ft_strlend(value) == 4)
 			{
 				if (checkc("lokat", value) < 0)
