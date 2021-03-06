@@ -1,7 +1,8 @@
-Makefile2
+Makefile
 srcs/*.o
 minilibx_macos
 libft/*.c
 libft/*.o
 libft/*.a
 srcs/a.out
+rtv1

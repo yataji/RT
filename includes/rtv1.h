@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/04 14:07:22 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/06 07:32:03 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
+# include <fcntl.h>
 # define MAXWIDTH 700
 # define MAXHEIGHT 700
 # define SPHERE 0
 # define CYLINDER 1
 # define CONE 2
+# define PLAN 3
 
 typedef struct 		s_vect {
 	double 			x;
@@ -78,7 +80,7 @@ typedef struct		s_cam
 typedef struct		s_lights
 {
 	double			intensity;
-	int				color;
+	t_color			color;
 	t_point			pos;
 	struct s_lights	*next;
 }					t_lights;
@@ -89,7 +91,7 @@ typedef struct		s_rtv1
 	t_obj			*obj;
 	t_ray			ray;
 	t_cam			cam;
-	t_lights		light;
+	t_lights		*lights;
 	t_math			calc;
 }				t_rtv1;
 
