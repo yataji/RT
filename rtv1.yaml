@@ -1,9 +1,9 @@
 lights:
-	intensity: 100
+	intensity: 10
 	color: 50:50:50
 	pos: 10:150:150
 lights:
-	intensity: 100
+	intensity: 20
 	color: 50:50:50
 	pos: 10:15:15
 sphere:
@@ -15,7 +15,7 @@ sphere:
 	color: 20:20:20
 	radius: 25
 lights:
-	intensity: 100
+	intensity: 30
 	color: 50:50:50
 	pos: 10:19:19
 cylinder:
@@ -45,6 +45,9 @@ plan:
 camera:
 	lokat: 100:10:1
 	lokfrm: 10:10:1
+camera:
+	lokat: 100:10:12
+	lokfrm: 10:10:12
 cone:
 	center: 10:4:2
 	color: 4:3:2

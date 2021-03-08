@@ -6,3 +6,4 @@ libft/*.o
 libft/*.a
 srcs/a.out
 rtv1
+.DS_Store

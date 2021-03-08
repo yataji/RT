@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:01:53 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/06 07:43:17 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/08 00:55:19 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,18 +365,15 @@ int parse(t_rtv1 *rt)
 	t_lights *tmpl;
 	t_obj *tmpo;
 	int i = 0;
-	// int j = 0;
+	int j = 0;
 	fd = open("../rtv1.yaml", O_RDONLY);
 	while (fd > 2 && get_next_line(fd, &str) > 0)
 	{
-		if (ft_strcmp(str, "camera:") == 0)
+		if (ft_strcmp(str, "camera:") == 0 && j == 0)
 		{
 			if (camera(&rt->cam, str, fd) == -1)
-			{
-				printf(";;\n");
 				return (-1);
-			}
-			// j++;
+			j++;
 		}
 		else if (ft_strcmp(str, "lights:") == 0)
 		{
@@ -406,7 +403,7 @@ int parse(t_rtv1 *rt)
 			tmpo->next = rt->obj;
 			rt->obj = tmpo;
 		}
-		if (ft_strcmp(str, "cylinder:") == 0)
+		else if (ft_strcmp(str, "cylinder:") == 0)
 		{
 			tmpo = (t_obj *)malloc(sizeof(t_obj));
 			if (i > i + 1)
@@ -420,7 +417,7 @@ int parse(t_rtv1 *rt)
 			tmpo->next = rt->obj;
 			rt->obj = tmpo;
 		}
-		if (ft_strcmp(str, "cone:") == 0)
+		else if (ft_strcmp(str, "cone:") == 0)
 		{
 			tmpo = (t_obj *)malloc(sizeof(t_obj));
 			if (i > i + 1)
@@ -434,7 +431,7 @@ int parse(t_rtv1 *rt)
 			tmpo->next = rt->obj;
 			rt->obj = tmpo;
 		}
-		if (ft_strcmp(str, "plan:") == 0)
+		else if (ft_strcmp(str, "plan:") == 0)
 		{
 			tmpo = (t_obj *)malloc(sizeof(t_obj));
 			if (i > i + 1)
@@ -448,8 +445,7 @@ int parse(t_rtv1 *rt)
 			tmpo->next = rt->obj;
 			rt->obj = tmpo;
 		}
-		else
-			return (-1);
+		free(str);
 	}
 	return (1);
 }
@@ -459,7 +455,7 @@ int main()
 	t_rtv1 rt, tmp;
 	rt.lights = NULL;
 	rt.obj = NULL;
-	if (parse(&rt) != -1)
+	if (parse(&rt) == -1)
 		return (0);
 	tmp = rt;
 	printf("x: %lf\ty: %lf\tz: %lf\n", rt.cam.lokat.x, rt.cam.lokat.y, rt.cam.lokat.z);
