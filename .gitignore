@@ -1,7 +1,6 @@
-Makefile
+./Makefile
 srcs/*.o
 minilibx_macos
-libft/*.c
 libft/*.o
 libft/*.a
 srcs/parse/*.o
