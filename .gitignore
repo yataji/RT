@@ -4,6 +4,7 @@ minilibx_macos
 libft/*.c
 libft/*.o
 libft/*.a
+srcs/parse/*.o
 srcs/a.out
 rtv1
 .DS_Store

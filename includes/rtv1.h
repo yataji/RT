@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/06 07:32:03 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/08 17:32:00 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "../minilibx_macos/mlx.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -103,6 +103,7 @@ t_vect	normsphr(t_ray *ray, t_obj *obj, double t);
 t_vect	normcyld(t_ray *ray, t_obj *obj, double t);
 t_vect  normcone(t_ray *ray, t_obj *obj, double t);
 t_ray	initray(int x, int y);
+// t_rtv1	*init();
 t_mlx	init();
 double	dot(t_vect a, t_vect b);
 double	multidbl(double v1, double v2, double v3);
@@ -114,5 +115,18 @@ double	coneintr(t_obj *cone, t_ray ray);
 int		keypress(int key, void *param);
 int		ft_exit(t_mlx *mlx);
 void	draw(t_rtv1 rt);
+
+////// parsing //////
+
+int		parse(t_rtv1*rt, int fd);
+int		sphere(t_obj *obj, char *str, int fd);
+int		plan(t_obj *obj, char *str, int fd);
+int		cylinder(t_obj *obj, char *str, int fd);
+int		cone(t_obj *obj, char *str, int fd);
+int		lights(t_lights *lights, char *str, int fd);
+int		camera(t_cam *cam, char *str, int fd);
+int		checkval(char *str, char *check, int len);
+size_t	ft_strlend(char **s);
+
 
 #endif

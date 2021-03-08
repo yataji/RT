@@ -1,0 +1,44 @@
+lights:
+	intensity: 20
+	color: 50:50:50
+	pos: 10:15:15
+sphere:
+	center: 100:10:200
+	color: 20:20:20
+	radius: 25
+lights:
+	intensity: 30
+	color: 50:50:50
+	pos: 10:19:19
+cylinder:
+	center: 4:5:7
+	color: 2:50:1
+	radius: 39
+	axis: 12:12:12
+cylinder:
+	center: 4:5:7
+	color: 2:50:1
+	radius: 25
+	axis: 12:12:12
+sphere:
+	center: 100:10:200
+	color: 20:20:20
+	radius: 25
+plan:
+	center: 4:5:7
+	color: 2:50:1
+	radius: 60
+	axis: 12:12:12
+plan:
+	center: 84:10:7
+	color: 2:50:1
+	radius: 25
+	axis: 12:12:12
+camera:
+	lokat: 100:10:12
+	lokfrm: 10:10:12
+cone:
+	center: 10:4:2
+	color: 4:3:2
+	angle: 50
+	axis: 50:10:20
