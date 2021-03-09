@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:25:19 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/09 02:41:01 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/09 11:25:38 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int checkval(char *str, char *check, int len)
 			return (-1);
 		else if (str[i] == ':' || str[i] == '-' || str[i] == ' ' || str[i] == '\t')
 		{
-			// if (str[i]str[i + 1] == ':')
-			// 	return (-1);
+			if (str[i] == ':' && str[i - 1] == ':')
+				return (-1);
 			i++;
 		}
 		else if (ft_isdigit(str[i]) == 0)

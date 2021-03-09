@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/09 01:47:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/09 14:35:59 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ int		lights(t_lights *lights, char *str, int fd);
 int		camera(t_cam *cam, char *str, int fd);
 int		checkval(char *str, char *check, int len);
 size_t	ft_strlend(char **s);
-
+void	stocklights(t_lights *lights, char **value, char *str);
+void	stockcamera(t_cam *cam, char **value, char *str);
+// void	stockcylinder(t_obj *obj, char **value, char *str);
 
 #endif
