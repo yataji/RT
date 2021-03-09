@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:16:40 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/08 19:34:38 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/09 01:03:17 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,4 @@ t_mlx		init()
 	mlx.img_ptr = mlx_new_image(mlx.ptr, MAXWIDTH, MAXHEIGHT);
 	mlx.dtadd = (int *)mlx_get_data_addr(mlx.img_ptr, &mlx.bpp, &mlx.szln, &mlx.end);
 	return (mlx);
-}
-
-t_ray initray(int x, int y)
-{
-	t_ray ray;
-
-	ray.org = (t_point){x, y, 0};
-	ray.dir = (t_vect){0, 0, 1};
-	return (ray);
 }

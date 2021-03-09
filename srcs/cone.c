@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 13:56:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/01 17:12:05 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/09 00:22:16 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_vect  normcone(t_ray *ray, t_obj *obj, double t)
     t_vect  oc;
     t_vect  norm;
 
-    k = 25.0 * M_PI / 180.0;
+    k = obj->angle * M_PI / 180.0;
     k = tan(k / 2.0);
     v = normalize((t_vect){0, 1, 0});
 	ray->hit = plus(ray->org, multi(ray->dir, t));

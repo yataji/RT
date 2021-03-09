@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:09 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/08 16:20:51 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/09 01:33:53 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int camera(t_cam *cam, char *str, int fd)
 		else
 			return (-1);
 	}
+	initcamera(cam);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/08 17:32:00 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/09 01:47:31 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
 # include <fcntl.h>
-# define MAXWIDTH 700
-# define MAXHEIGHT 700
+# define MAXWIDTH 900
+# define MAXHEIGHT 900
 # define SPHERE 0
 # define CYLINDER 1
 # define CONE 2
@@ -41,6 +41,7 @@ typedef struct		s_obj {
 	double			angle;
 	double			radius;
 	t_vect			v;
+	t_vect			normal;
 	t_color			color;
 	t_point			center;
 	struct s_obj	*next;
@@ -75,6 +76,12 @@ typedef struct		s_cam
 {
 	t_point			lokat;
 	t_point			lokfrm;
+	t_vect			v;
+	t_vect			u;
+	t_vect			w;
+	double			fov;
+	double			plnw;
+	double			plnh;
 }					t_cam;
 
 typedef struct		s_lights
@@ -102,8 +109,8 @@ t_vect	normalize(t_vect v1);
 t_vect	normsphr(t_ray *ray, t_obj *obj, double t);
 t_vect	normcyld(t_ray *ray, t_obj *obj, double t);
 t_vect  normcone(t_ray *ray, t_obj *obj, double t);
-t_ray	initray(int x, int y);
-// t_rtv1	*init();
+t_vect	crosspro(t_vect v1, t_vect v2);
+t_ray	initray(t_rtv1 rt, int x, int y);
 t_mlx	init();
 double	dot(t_vect a, t_vect b);
 double	multidbl(double v1, double v2, double v3);
@@ -114,9 +121,13 @@ double	cyldintr(t_obj *cyld, t_ray ray);
 double	coneintr(t_obj *cone, t_ray ray);
 int		keypress(int key, void *param);
 int		ft_exit(t_mlx *mlx);
+void    setnormal(t_obj *close, t_ray *ray, double t);
+void	initcamera(t_cam *cam);
 void	draw(t_rtv1 rt);
 
-////// parsing //////
+/*
+///// parsing /////
+*/
 
 int		parse(t_rtv1*rt, int fd);
 int		sphere(t_obj *obj, char *str, int fd);
