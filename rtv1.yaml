@@ -1,21 +1,25 @@
 camera:
-	lokfrm: 0:0:0
-	lokat: 0:0:100
+	lokfrm: 0:0:200
+	lokat: 0:0:0
 cone:
-	center: 0:0:60
+	center: 0:0:0
 	color: 255:255:0
-	angle: 10
-	axis: 1:0:0
-cylinder:
-	center: 20:0:50
-	color: 0:255:0
-	radius: 5
+	angle: 30
 	axis: 0:1:0
 lights:
 	intensity: 20
-	color: 50:50:50
-	pos: 0:0:100
+	color: 250:255:255
+	pos: 0:0:200
 sphere:
-	center: 50:0:80
-	color: 255:20:0
-	radius: 10
+	center: 0:0:150
+	color: 255:255:0
+	radius: 5
+sphere:
+	center: -50:0:0
+	color: 0:255:255
+	radius: 5
+cylinder:
+	center: 50:0:0
+	color: 255:255:0
+	radius: 5
+	axis: 0:1:0

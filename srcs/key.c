@@ -6,15 +6,15 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:10:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/01 18:15:05 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/10 18:23:07 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int keypress(int key, void *param)
+int			keypress(int key, void *param)
 {
-	t_mlx *mlx;
+	t_mlx	*mlx;
 
 	mlx = (t_mlx *)param;
 	key == 53 ? ft_exit(mlx) : 0;

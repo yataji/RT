@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   mathnorm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 18:16:40 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 18:22:55 by yataji           ###   ########.fr       */
+/*   Created: 2021/03/10 18:26:30 by yataji            #+#    #+#             */
+/*   Updated: 2021/03/10 18:29:32 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_mlx		init(void)
+double		multidbl(double v1, double v2, double v3)
 {
-	t_mlx	mlx;
+	return (v1 * v2 * v3);
+}
 
-	mlx.ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.ptr, MAXWIDTH, MAXHEIGHT, "rtv1");
-	mlx.img_ptr = mlx_new_image(mlx.ptr, MAXWIDTH, MAXHEIGHT);
-	mlx.dtadd = (int *)mlx_get_data_addr(mlx.img_ptr, &mlx.bpp, &mlx.szln,
-				&mlx.end);
-	return (mlx);
+t_vect		multi(t_vect v1, double v2)
+{
+	t_vect	vctmlt;
+
+	vctmlt.x = v1.x * v2;
+	vctmlt.y = v1.y * v2;
+	vctmlt.z = v1.z * v2;
+	return (vctmlt);
 }
