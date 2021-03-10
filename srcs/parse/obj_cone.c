@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 16:06:07 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/10 19:28:23 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,26 @@ int		cone(t_obj *obj, char *str, int fd)
 {
 	int l;
 
-	l = 0;
-	while (l < 4)
+	l = -1;
+	while (++l < 4)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		l++;
-		if (checkval(str, "\tcenter: ", 9) > 0 || checkval(str, "\tcenter:\t", 9) > 0)
+		if (checkval(str, "\tcenter: ", 9) > 0 ||
+			checkval(str, "\tcenter:\t", 9) > 0)
 			stockcone(obj, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 || checkval(str, "\tcolor:\t", 8) > 0)
+		else if (checkval(str, "\tcolor: ", 8) > 0 ||
+			checkval(str, "\tcolor:\t", 8) > 0)
 			stockcone(obj, str);
-		else if (checkval(str, "\tangle: ", 8) > 0 || checkval(str, "\tangle:\t", 8) > 0)
+		else if (checkval(str, "\tangle: ", 8) > 0 ||
+			checkval(str, "\tangle:\t", 8) > 0)
 			stockcone(obj, str);
-		else if (checkval(str, "\taxis: ", 7) > 0 || checkval(str, "\taxis:\t", 7) > 0)
+		else if (checkval(str, "\taxis: ", 7) > 0 ||
+			checkval(str, "\taxis:\t", 7) > 0)
 			stockcone(obj, str);
 		else
 			return (-1);
 		obj->type = CONE;
-		obj->radius = 0;
 		ft_strdel(&str);
 	}
 	return (1);

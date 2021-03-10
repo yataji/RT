@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 11:25:20 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 16:50:25 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/10 19:32:07 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_vect		stk(char **value)
 {
 	t_vect	new;
+
 	new.x = ft_atoi(value[1]);
 	new.y = ft_atoi(value[2]);
 	new.z = ft_atoi(value[3]);

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:00 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 16:16:05 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/10 19:29:10 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,26 @@ int			cylinder(t_obj *obj, char *str, int fd)
 {
 	int		l;
 
-	l = 0;
-	while (l < 4)
+	l = -1;
+	while (++l < 4)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		l++;
-		if (checkval(str, "\tcenter: ", 9) > 0 || checkval(str, "\tcenter:\t", 9) > 0)
+		if (checkval(str, "\tcenter: ", 9) > 0 ||
+			checkval(str, "\tcenter:\t", 9) > 0)
 			stockcylinder(obj, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 || checkval(str, "\tcolor:\t", 8) > 0)
+		else if (checkval(str, "\tcolor: ", 8) > 0 ||
+			checkval(str, "\tcolor:\t", 8) > 0)
 			stockcylinder(obj, str);
-		else if (checkval(str, "\tradius: ", 9) > 0 || checkval(str, "\tradius:\t", 9) > 0)
+		else if (checkval(str, "\tradius: ", 9) > 0 ||
+			checkval(str, "\tradius:\t", 9) > 0)
 			stockcylinder(obj, str);
-		else if (checkval(str, "\taxis: ", 7) > 0 || checkval(str, "\taxis:\t", 7) > 0)
+		else if (checkval(str, "\taxis: ", 7) > 0 ||
+			checkval(str, "\taxis:\t", 7) > 0)
 			stockcylinder(obj, str);
 		else
 			return (-1);
 		obj->type = CYLINDER;
-		obj->angle = 0;
 		ft_strdel(&str);
 	}
 	return (1);

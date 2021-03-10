@@ -6,12 +6,11 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 15:59:41 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/10 19:26:43 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
 
 int			stocklights(t_lights *lights, char *str)
 {
@@ -40,11 +39,14 @@ int			lights(t_lights *lights, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (checkval(str, "\tintensity: ", 12) > 0 || checkval(str, "\tintensity:\t", 12) > 0)
+		if (checkval(str, "\tintensity: ", 12) > 0 ||
+			checkval(str, "\tintensity:\t", 12) > 0)
 			stocklights(lights, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 || checkval(str, "\tcolor:\t", 8) > 0)
+		else if (checkval(str, "\tcolor: ", 8) > 0 ||
+			checkval(str, "\tcolor:\t", 8) > 0)
 			stocklights(lights, str);
-		else if (checkval(str, "\tpos: ", 6) > 0 || checkval(str, "\tpos:\t", 6) > 0)
+		else if (checkval(str, "\tpos: ", 6) > 0 ||
+			checkval(str, "\tpos:\t", 6) > 0)
 			stocklights(lights, str);
 		else
 			return (-1);
