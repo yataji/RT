@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 18:58:38 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 17:03:47 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 # define CYLINDER 1
 # define CONE 2
 # define PLAN 3
+
+typedef struct		s_var {
+	int				x;
+	int				y;
+	double			t;
+	double			near;
+}					t_var;
 
 typedef struct 		s_vect {
 	double 			x;

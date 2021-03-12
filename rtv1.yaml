@@ -1,6 +1,11 @@
 camera:
 	lokfrm: 0:0:200
 	lokat: 0:0:0
+cylinder:
+	center: 50:0:0
+	color: 255:255:0
+	radius: 5
+	axis: 0:1:0
 cone:
 	center: 0:0:0
 	color: 255:255:0
@@ -18,8 +23,3 @@ sphere:
 	center: -50:0:0
 	color: 0:255:255
 	radius: 5
-cylinder:
-	center: 50:0:0
-	color: 255:255:0
-	radius: 5
-	axis: 0:1:0

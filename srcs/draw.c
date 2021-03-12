@@ -6,61 +6,70 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/09 02:38:36 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 18:27:32 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
-void draw(t_rtv1 rt)
+int					color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 {
-	int x;
-	int y;
-	double t;
-	t_obj *tmp;
-	t_obj *close;
-	t_vect lightdir;
-	double near;
+	double			dot1;
+	int				color;
+	unsigned char	*ptr;
+	t_vect			lightdir;
 
-	x = -1;
-	near = -1.0;
-	while (++x < MAXWIDTH)
+	color = 0;
+	ptr = (unsigned char *)&color;
+	lightdir = normalize(moins(lights->pos, rt->ray.hit));
+	dot1 = dot(close->normal, lightdir);
+	dot1 < 0 ? dot1 *= -1 : 0;
+	ptr[2] = close->color.x * dot1;
+	ptr[1] = close->color.y * dot1;
+	ptr[0] = close->color.z * dot1;
+	ptr[3] = 0;
+	return (color);
+}
+
+void				draw2(t_var v, t_obj *close, t_rtv1 rt)
+{
+	if (v.t > 0 && close)
 	{
-		y = -1;
-		while (++y < MAXHEIGHT)
+		setnormal(close, &rt.ray, v.t);
+		rt.mlx.dtadd[v.x + v.y * MAXWIDTH] = color(&rt, close, rt.lights);
+	}
+	else
+		rt.mlx.dtadd[v.x + v.y * MAXWIDTH] = 0;
+}
+
+void				draw(t_rtv1 rt)
+{
+	t_obj			*close;
+	t_obj			*tmp;
+	t_var			v;
+
+	v.x = -1;
+	v.near = -1.0;
+	while (++v.x < MAXWIDTH)
+	{
+		v.y = -1;
+		while (++v.y < MAXHEIGHT)
 		{
-			rt.ray = initray(rt, x, y);
+			rt.ray = initray(rt, v.x, v.y);
 			tmp = rt.obj;
 			close = NULL;
-			t = -1;
+			v.t = -1;
 			while (tmp)
 			{
-				if ((near = intersect(tmp, rt.ray)) > 0 && ((near < t && t > 0)  || (near > t && t < 0)))
+				if ((v.near = intersect(tmp, rt.ray)) > 0 && ((v.near < v.t &&
+				v.t > 0) || (v.near > v.t && v.t < 0)))
 				{
 					close = tmp;
-					t = near;
+					v.t = v.near;
 				}
 				tmp = tmp->next;
 			}
-				if (t > 0 && close)
-				{
-					setnormal(close, &rt.ray, t);
-					lightdir = normalize(moins(rt.lights->pos, rt.ray.hit));
-					// lightdir = normalize(moins(rt.ray.hit, (t_vect){350, 350, 50}));
-					double dot1 = dot(close->normal, lightdir);
-					dot1 < 0 ? dot1 *= -1 : 0;
-					int color = 0;
-					unsigned char *ptr = (unsigned char *)&color;
-					ptr[2] = close->color.x * dot1;
-					ptr[1] = close->color.y * dot1;
-					ptr[0] = close->color.z * dot1;
-					ptr[3] = 0;
-					rt.mlx.dtadd[x + y * MAXWIDTH] = color;
-				}
-				else
-					rt.mlx.dtadd[x + y * MAXWIDTH] = 0;
+			draw2(v, close, rt);
 		}
 	}
-	// exit(0);
-	mlx_put_image_to_window(rt.mlx.ptr, rt.mlx.win_ptr, rt.mlx.img_ptr, 0, 0);
 }

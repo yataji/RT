@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:04 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 19:30:42 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 15:15:55 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int			sphere(t_obj *obj, char *str, int fd)
 {
 	int		l;
 
-	l = -1;
-	while (++l < 3)
+	l = 0;
+	while (l < 3)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
@@ -51,6 +51,7 @@ int			sphere(t_obj *obj, char *str, int fd)
 			return (-1);
 		obj->type = SPHERE;
 		ft_strdel(&str);
+		l++;
 	}
 	return (1);
 }
