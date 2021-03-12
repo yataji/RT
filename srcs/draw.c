@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 18:27:32 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 19:17:32 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,18 @@ int					color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	return (color);
 }
 
-void				draw2(t_var v, t_obj *close, t_rtv1 rt)
+void				draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
 {
+	while (tmp)
+	{
+		if ((v.near = intersect(tmp, rt.ray)) > 0 && ((v.near < v.t && v.t > 0)
+			|| (v.near > v.t && v.t < 0)))
+		{
+			close = tmp;
+			v.t = v.near;
+		}
+		tmp = tmp->next;
+	}
 	if (v.t > 0 && close)
 	{
 		setnormal(close, &rt.ray, v.t);
@@ -59,17 +69,7 @@ void				draw(t_rtv1 rt)
 			tmp = rt.obj;
 			close = NULL;
 			v.t = -1;
-			while (tmp)
-			{
-				if ((v.near = intersect(tmp, rt.ray)) > 0 && ((v.near < v.t &&
-				v.t > 0) || (v.near > v.t && v.t < 0)))
-				{
-					close = tmp;
-					v.t = v.near;
-				}
-				tmp = tmp->next;
-			}
-			draw2(v, close, rt);
+			draw2(v, close, rt, tmp);
 		}
 	}
 }

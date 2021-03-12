@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 17:03:47 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 19:23:38 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct		s_rtv1
 	t_cam			cam;
 	t_lights		*lights;
 	t_math			calc;
+	int				fd;
 }				t_rtv1;
 
 /*
@@ -148,7 +149,7 @@ t_vect	crosspro(t_vect v1, t_vect v2);
 */
 
 t_vect	stk(char **value);
-int		parse(t_rtv1*rt, int fd);
+int		parse(t_rtv1*rt);
 int		sphere(t_obj *obj, char *str, int fd);
 int		plan(t_obj *obj, char *str, int fd);
 int		cylinder(t_obj *obj, char *str, int fd);

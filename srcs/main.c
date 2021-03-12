@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 17:49:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 19:23:22 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int			main(int ac, char **av)
 {
 	t_rtv1	rt;
-	int		fd;
 
-	rt.lights = NULL;
-	if ((fd = open(av[1], O_RDONLY)) && ac != 2)
-		return (0);
-	if (parse(&rt, fd) == -1)
+	if ((rt.fd = open(av[1], O_RDONLY)) && ac != 2)
+		return (0); 
+	if (parse(&rt) == -1)
 	{
 		ft_putendl("error parsing");
 		return (0);
