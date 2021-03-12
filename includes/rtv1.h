@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 19:23:38 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 20:44:00 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-// # include "../minilibx_macos/mlx.h"
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
+// # include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>

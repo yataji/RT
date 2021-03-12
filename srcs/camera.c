@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 01:02:43 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 18:09:34 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 00:07:06 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ t_ray	initray(t_rtv1 rt, int x, int y)
 
 void	initcamera(t_cam *cam)
 {
-	cam->v = (t_vect){0, 1, 0};
+	double	dot1;
+	
+	cam->w = normalize(moins(cam->lokat, cam->lokfrm));
+	dot1 = dot((t_vect){0, 1, 0}, cam->w);
+	if (fabs(dot1) == 1)
+		cam->v = (t_vect){0, 0, -1 * dot1};
+	else
+		cam->v = (t_vect){0, 1, 0};
 	cam->fov = 60 * M_PI / 180;
 	cam->plnh = tan(cam->fov / 2);
 	cam->plnw = cam->plnh * MAXWIDTH / MAXHEIGHT;
-	cam->w = normalize(moins(cam->lokat, cam->lokfrm));
 	cam->u = crosspro(cam->v, cam->w);
 	cam->v = crosspro(cam->w, cam->u);
 }

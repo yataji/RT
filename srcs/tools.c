@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 18:21:11 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 22:55:24 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,16 @@ double		intersect(t_obj *object, t_ray ray)
 	return (-1);
 }
 
-t_vect		normalize(t_vect v1)
+t_vect		normalize(t_vect v2)
 {
 	double	v;
+	t_vect	v1;
 
-	v = sqrtf(dot(v1, v1));
-	return (multi(v1, 1.0 / v));
+	v = sqrtf((v2.x * v2.x) + (v2.y * v2.y) + (v2.z * v2.z));
+	v1.x = v2.x / v;
+	v1.y = v2.y / v;
+	v1.z = v2.z / v;
+	return (v1);
 }
 
 void		setnormal(t_obj *close, t_ray *ray, double t)

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 13:56:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 18:20:50 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 23:00:46 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ double		coneintr(t_obj *cone, t_ray ray)
 	k = tan(k / 2);
 	calc.a = dot(ray.dir, ray.dir) - (1 + k * k)
 			* multidbl(dot(ray.dir, v), dot(ray.dir, v), 1);
-	calc.b = 2 * dot(ray.dir, oc) - (1 + k * k)
-			* multidbl(dot(ray.dir, v), dot(oc, v), 1);
+	calc.b = 2 * (dot(ray.dir, oc) - (1 + k * k)
+			* multidbl(dot(ray.dir, v), dot(oc, v), 1));
 	calc.c = dot(oc, oc) - (1 + k + k) * multidbl(dot(oc, v), dot(oc, v), 1);
 	calc.delta = multidbl(calc.b, calc.b, 1) - multidbl(4, calc.a, calc.c);
 	return (checkt(calc));

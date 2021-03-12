@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 19:17:32 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/12 23:11:54 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ int					color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	ptr = (unsigned char *)&color;
 	lightdir = normalize(moins(lights->pos, rt->ray.hit));
 	dot1 = dot(close->normal, lightdir);
-	dot1 < 0 ? dot1 *= -1 : 0;
-	ptr[2] = close->color.x * dot1;
-	ptr[1] = close->color.y * dot1;
-	ptr[0] = close->color.z * dot1;
-	ptr[3] = 0;
+	if (dot1 > 0)
+	{
+		ptr[2] = close->color.x * dot1 * lights->intensity / 100.0;
+		ptr[1] = close->color.y * dot1 * lights->intensity / 100.0;
+		ptr[0] = close->color.z * dot1 * lights->intensity / 100.0;
+		ptr[3] = 0;
+	}
 	return (color);
 }
 
