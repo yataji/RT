@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 01:02:43 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:49:16 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 17:03:42 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		initcamera(t_cam *cam)
 		cam->v = (t_vect){0, 0, -1 * dot1};
 	else
 		cam->v = (t_vect){0, 1, 0};
-	cam->fov = 60 * M_PI / 180;
+	cam->fov = cam->fov * M_PI / 180;
 	cam->plnh = tan(cam->fov / 2);
 	cam->plnw = cam->plnh * MAXWIDTH / MAXHEIGHT;
 	cam->u = crosspro(cam->v, cam->w);
