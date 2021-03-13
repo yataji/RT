@@ -6,11 +6,27 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:04 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 15:15:55 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 16:44:04 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+int			ft_sphere(t_rtv1 *rt, char *str)
+{
+	rt->tmpo = initobj();
+	if (rt->check[0] > rt->check[0] + 1)
+	{
+		if (sphere(rt->tmpo, str, rt->fd) == -1)
+			return (-1);
+	}
+	if (sphere(rt->tmpo, str, rt->fd) == -1)
+		return (-1);
+	rt->check[0]++;
+	rt->tmpo->next = rt->obj;
+	rt->obj = rt->tmpo;
+	return (0);
+}
 
 int			stocksphere(t_obj *obj, char *str)
 {

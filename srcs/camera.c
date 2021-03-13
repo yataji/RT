@@ -6,13 +6,13 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 01:02:43 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 00:07:06 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 16:49:16 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_ray	initray(t_rtv1 rt, int x, int y)
+t_ray		initray(t_rtv1 rt, int x, int y)
 {
 	t_ray	ray;
 	double	py;
@@ -26,10 +26,10 @@ t_ray	initray(t_rtv1 rt, int x, int y)
 	return (ray);
 }
 
-void	initcamera(t_cam *cam)
+void		initcamera(t_cam *cam)
 {
 	double	dot1;
-	
+
 	cam->w = normalize(moins(cam->lokat, cam->lokfrm));
 	dot1 = dot((t_vect){0, 1, 0}, cam->w);
 	if (fabs(dot1) == 1)

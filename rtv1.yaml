@@ -13,3 +13,18 @@ sphere:
 	center: 10:100:0
 	color: 0:0:255
 	radius: 5
+cylinder:
+	center: -20:100:0
+	color: 255:0:0
+	radius: 5
+	axis: 0:0:1
+cylinder:
+	center: 20:100:7
+	color: 255:255:0
+	radius: 5
+	axis: 0:0:1
+cone:
+	center: 0:100:0
+	color: 255:0:255
+	angle: 20
+	axis: 0:0:1

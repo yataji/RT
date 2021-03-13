@@ -12,21 +12,21 @@ lights:
 	pos: 10:19:19
 cylinder:
 	center: 4:5:7
-	color: 2:50:1
+	color: 255:0:0
 	radius: 39
 	axis: 12:12:12
 cylinder:
 	center: 4:5:7
-	color: 2:50:1
+	color: 255:0:0
 	radius: 25
 	axis: 12:12:12
 sphere:
 	center: 100:10:200
-	color: 20:20:20
+	color: 255:0:0
 	radius: 25
 plan:
 	center: 4:5:7
-	color: 2:50:1
+	color: 255:0:0
 	radius: 60
 	axis: 12:12:12
 plan:

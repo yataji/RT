@@ -6,11 +6,27 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 19:28:23 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 16:46:34 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+int		ft_cone(t_rtv1 *rt, char *str)
+{
+	rt->tmpo = initobj();
+	if (rt->check[0] > rt->check[0] + 1)
+	{
+		if (cone(rt->tmpo, str, rt->fd) == -1)
+			return (-1);
+	}
+	if (cone(rt->tmpo, str, rt->fd) == -1)
+		return (-1);
+	rt->check[0]++;
+	rt->tmpo->next = rt->obj;
+	rt->obj = rt->tmpo;
+	return (0);
+}
 
 int		stockcone(t_obj *obj, char *str)
 {

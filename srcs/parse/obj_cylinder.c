@@ -6,11 +6,27 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:00 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 21:22:19 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 16:43:42 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+int			ft_cylinder(t_rtv1 *rt, char *str)
+{
+	rt->tmpo = initobj();
+	if (rt->check[0] > rt->check[0] + 1)
+	{
+		if (cylinder(rt->tmpo, str, rt->fd) == -1)
+			return (-1);
+	}
+	if (cylinder(rt->tmpo, str, rt->fd) == -1)
+		return (-1);
+	rt->check[0]++;
+	rt->tmpo->next = rt->obj;
+	rt->obj = rt->tmpo;
+	return (0);
+}
 
 int			stockcylinder(t_obj *obj, char *str)
 {
