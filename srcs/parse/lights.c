@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:43:27 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 18:07:22 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ int			lights(t_lights *lights, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (checkval(str, "\tintensity: ", 12) > 0 ||
-			checkval(str, "\tintensity:\t", 12) > 0)
+		if (ck(str, "\tintensity: ", 12) > 0 ||
+			ck(str, "\tintensity:\t", 12) > 0)
 			stocklights(lights, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 ||
-			checkval(str, "\tcolor:\t", 8) > 0)
+		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
 			stocklights(lights, str);
-		else if (checkval(str, "\tpos: ", 6) > 0 ||
-			checkval(str, "\tpos:\t", 6) > 0)
+		else if (ck(str, "\tpos: ", 6) > 0 || ck(str, "\tpos:\t", 6) > 0)
 			stocklights(lights, str);
 		else
 			return (-1);

@@ -65,6 +65,27 @@ while (rt.obj)
 
 
 
+// t_color specular(t_rtv1 *rt, t_obj *close, t_lights *lights, t_color c, int shad)
+// {
+// 	t_vect reflect;
+// 	t_vect lightdir;
+// 	double dot1;
+
+// 	lightdir = normalize(moins(lights->pos, rt->ray.hit));
+// 	dot1 = dot(close->normal, lightdir);
+// 	reflect = normalize(moins(lightdir, multi(close->normal, 2 * dot1)));
+// 	if (shad && (dot1 = dot(reflect, normalize(moins(rt->ray.hit, rt->ray.org)))) > 0)
+// 		c = add_color(c, multi_color(lights->color, powf(dot1, 80)));
+// 	return (c);
+// }
+
+
+
+
+
+
+
+
 #include "rtv1.h"
 
 int				parse1(t_rtv1 *rt, char *str, int fd)

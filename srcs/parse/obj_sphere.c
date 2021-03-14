@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:04 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:44:04 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 19:15:27 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,11 @@ int			sphere(t_obj *obj, char *str, int fd)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (checkval(str, "\tcenter: ", 9) > 0 ||
-			checkval(str, "\tcenter:\t", 9) > 0)
+		if (ck(str, "\tcenter: ", 9) > 0 || ck(str, "\tcenter:\t", 9) > 0)
 			stocksphere(obj, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 ||
-			checkval(str, "\tcolor:\t", 8) > 0)
+		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
 			stocksphere(obj, str);
-		else if (checkval(str, "\tradius: ", 9) > 0 ||
-			checkval(str, "\tradius:\t", 9) > 0)
+		else if (ck(str, "\tradius: ", 9) > 0 || ck(str, "\tradius:\t", 9) > 0)
 			stocksphere(obj, str);
 		else
 			return (-1);

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:09 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 17:09:06 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 18:06:41 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,11 @@ int			camera(t_cam *cam, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (checkval(str, "\tlokat: ", 8) > 0 ||
-			checkval(str, "\tlokat:\t", 8) > 0)
+		if (ck(str, "\tlokat: ", 8) > 0 || ck(str, "\tlokat:\t", 8) > 0)
 			stockcamera(cam, str);
-		else if (checkval(str, "\tlokfrm: ", 9) > 0 ||
-			checkval(str, "\tlokfrm:\t", 9) > 0)
+		else if (ck(str, "\tlokfrm: ", 9) > 0 || ck(str, "\tlokfrm:\t", 9) > 0)
 			stockcamera(cam, str);
-		else if (checkval(str, "\tfov: ", 6) > 0 ||
-			checkval(str, "\tfov:\t", 6) > 0)
+		else if (ck(str, "\tfov: ", 6) > 0 || ck(str, "\tfov:\t", 6) > 0)
 			stockcamera(cam, str);
 		else
 			return (-1);

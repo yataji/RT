@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 13:56:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 23:00:46 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 19:35:40 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ double		coneintr(t_obj *cone, t_ray ray)
 
 	oc = moins(ray.org, cone->center);
 	v = normalize(cone->v);
+	v = rotation_xyz(v, cone->rot);
 	k = cone->angle * M_PI / 180.0;
 	k = tan(k / 2);
 	calc.a = dot(ray.dir, ray.dir) - (1 + k * k)
@@ -43,6 +44,7 @@ t_vect		normcone(t_ray *ray, t_obj *obj, double t)
 	k = obj->angle * M_PI / 180.0;
 	k = tan(k / 2.0);
 	v = normalize(obj->v);
+	v = rotation_xyz(v, obj->rot);
 	ray->hit = plus(ray->org, multi(ray->dir, t));
 	oc = moins(ray->org, obj->center);
 	m = dot(ray->dir, v) * t + dot(oc, v);

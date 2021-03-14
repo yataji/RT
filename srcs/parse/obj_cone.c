@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:46:34 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 18:02:06 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		stockcone(t_obj *obj, char *str)
 		obj->angle = ft_atoi(value[1]);
 	else if (ft_strcmp(value[0], "\taxis") == 0)
 		obj->v = stk(value);
+	else if (ft_strcmp(value[0], "\trot") == 0)
+		obj->rot = stk(value);
 	ft_strdel(value);
 	return (1);
 }
@@ -52,21 +54,19 @@ int		cone(t_obj *obj, char *str, int fd)
 	int l;
 
 	l = -1;
-	while (++l < 4)
+	while (++l < 5)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (checkval(str, "\tcenter: ", 9) > 0 ||
-			checkval(str, "\tcenter:\t", 9) > 0)
+		if (ck(str, "\tcenter: ", 9) > 0 || ck(str, "\tcenter:\t", 9) > 0)
 			stockcone(obj, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 ||
-			checkval(str, "\tcolor:\t", 8) > 0)
+		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
 			stockcone(obj, str);
-		else if (checkval(str, "\tangle: ", 8) > 0 ||
-			checkval(str, "\tangle:\t", 8) > 0)
+		else if (ck(str, "\tangle: ", 8) > 0 || ck(str, "\tangle:\t", 8) > 0)
 			stockcone(obj, str);
-		else if (checkval(str, "\taxis: ", 7) > 0 ||
-			checkval(str, "\taxis:\t", 7) > 0)
+		else if (ck(str, "\taxis: ", 7) > 0 || ck(str, "\taxis:\t", 7) > 0)
+			stockcone(obj, str);
+		else if (ck(str, "\trot: ", 6) > 0 || ck(str, "\trot:\t", 6) > 0)
 			stockcone(obj, str);
 		else
 			return (-1);

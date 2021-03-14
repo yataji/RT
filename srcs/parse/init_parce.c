@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:35:11 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:36:44 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 19:19:39 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_obj			*initobj(void)
 	new->v = (t_vect){0, 0, 0};
 	new->normal = (t_vect){0, 0, 0};
 	new->color = (t_color){0, 0, 0};
-	new->center = (t_color){0, 0, 0};
+	new->center = (t_point){0, 0, 0};
+	new->rot = (t_rot){0, 0, 0};
 	new->angle = 0;
 	return (new);
 }

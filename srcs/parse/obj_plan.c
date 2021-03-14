@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 23:04:12 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 18:05:10 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int			stockplan(t_obj *obj, char *str)
 		obj->color = stk(value);
 	else if (ft_strcmp(value[0], "\taxis") == 0)
 		obj->v = stk(value);
+	else if (ft_strcmp(value[0], "\trot") == 0)
+		obj->rot = stk(value);
 	ft_strdel(value);
 	return (1);
 }
@@ -50,18 +52,17 @@ int			plan(t_obj *obj, char *str, int fd)
 	int		l;
 
 	l = -1;
-	while (++l < 3)
+	while (++l < 4)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (checkval(str, "\tcenter: ", 9) > 0 ||
-			checkval(str, "\tcenter:\t", 9) > 0)
+		if (ck(str, "\tcenter: ", 9) > 0 || ck(str, "\tcenter:\t", 9) > 0)
 			stockplan(obj, str);
-		else if (checkval(str, "\tcolor: ", 8) > 0 ||
-			checkval(str, "\tcolor:\t", 8) > 0)
+		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
 			stockplan(obj, str);
-		else if (checkval(str, "\taxis: ", 7) > 0 ||
-			checkval(str, "\taxis:\t", 7) > 0)
+		else if (ck(str, "\taxis: ", 7) > 0 || ck(str, "\taxis:\t", 7) > 0)
+			stockplan(obj, str);
+		else if (ck(str, "\trot: ", 6) > 0 || ck(str, "\trot:\t", 6) > 0)
 			stockplan(obj, str);
 		else
 			return (-1);

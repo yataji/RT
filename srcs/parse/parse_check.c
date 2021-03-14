@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:25:19 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 19:31:35 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 18:05:46 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t		ft_strlend(char **s)
 	return (i);
 }
 
-int			checkval(char *str, char *check, int len)
+int			ck(char *str, char *check, int len)
 {
 	int		i;
 

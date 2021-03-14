@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:43:03 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:45:48 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 19:32:25 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ double		cyldintr(t_obj *cyld, t_ray ray)
 
 	oc = moins(ray.org, cyld->center);
 	v = normalize(cyld->v);
+	v = rotation_xyz(v, cyld->rot);
 	calc.a = dot(ray.dir, ray.dir) - dot(ray.dir, v) * dot(ray.dir, v);
 	calc.b = 2 * (dot(ray.dir, oc) - dot(ray.dir, v) * dot(oc, v));
 	calc.c = dot(oc, oc) - dot(oc, v) * dot(oc, v) - multidbl(cyld->radius,
@@ -41,6 +42,7 @@ t_vect		normcyld(t_ray *ray, t_obj *obj, double t)
 	t_vect	norm;
 
 	v = normalize(obj->v);
+	v = rotation_xyz(v, obj->rot);
 	ray->hit = plus(ray->org, multi(ray->dir, t));
 	oc = moins(ray->org, obj->center);
 	m = dot(ray->dir, v) * t + dot(oc, v);

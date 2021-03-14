@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 22:14:19 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 18:15:58 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "../minilibx_macos/mlx.h"
-// # include "mlx.h"
+// # include "../minilibx_macos/mlx.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -43,6 +43,7 @@ typedef struct 		s_vect {
 
 typedef t_vect	t_point;
 typedef t_vect	t_color;
+typedef t_vect	t_rot;
 
 typedef struct		s_obj {
 	int				type;
@@ -51,6 +52,7 @@ typedef struct		s_obj {
 	t_vect			v;
 	t_vect			normal;
 	t_color			color;
+	t_rot			rot;
 	t_point			center;
 	struct s_obj	*next;
 }					t_obj;
@@ -110,14 +112,20 @@ typedef struct		s_rtv1
 	t_lights		*lights;
 	t_lights		*tmpl;
 	t_math			calc;
+	unsigned char	*ptr;
+	double			dot1;
 	int				fd;
 	int				check[2];
+	int				color;
 }				t_rtv1;
 
 /*
 ///// rtv1 /////
 */
 
+t_color		multi_color(t_color c1, double scal);
+t_color		add_color(t_color c1, t_color c2);
+t_vect		rotation_xyz(t_vect v, t_vect a);
 t_ray		initray(t_rtv1 rt, int x, int y);
 t_mlx		init();
 double		dot(t_vect a, t_vect b);
@@ -161,7 +169,7 @@ int			cylinder(t_obj *obj, char *str, int fd);
 int			cone(t_obj *obj, char *str, int fd);
 int			lights(t_lights *lights, char *str, int fd);
 int			camera(t_cam *cam, char *str, int fd);
-int			checkval(char *str, char *check, int len);
+int			ck(char *str, char *check, int len);
 int			ft_plan(t_rtv1 *rt, char *str);
 int			ft_cone(t_rtv1 *rt, char *str);
 int			ft_cylinder(t_rtv1 *rt, char *str);
