@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/12 22:55:24 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 00:18:31 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,6 @@ void		setnormal(t_obj *close, t_ray *ray, double t)
 		close->normal = normcyld(ray, close, t);
 	else if (close->type == CONE)
 		close->normal = normcone(ray, close, t);
+	else if (close->type == PLAN)
+		ray->hit = plus(ray->org, multi(ray->dir, t));
 }

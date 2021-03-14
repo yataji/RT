@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:43:54 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/13 23:04:12 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ int			stockplan(t_obj *obj, char *str)
 	char	**value;
 
 	value = ft_strsplit(str, ':');
-	if (ft_strlend(value) != 4 && ft_strlend(value) != 2)
+	if (ft_strlend(value) != 4)
 		return (-1);
 	else if (ft_strcmp(value[0], "\tcenter") == 0)
 		obj->center = stk(value);
 	else if (ft_strcmp(value[0], "\tcolor") == 0)
 		obj->color = stk(value);
-	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], "\tradius") == 0)
-		obj->radius = ft_atoi(value[1]);
 	else if (ft_strcmp(value[0], "\taxis") == 0)
 		obj->v = stk(value);
 	ft_strdel(value);
@@ -52,7 +50,7 @@ int			plan(t_obj *obj, char *str, int fd)
 	int		l;
 
 	l = -1;
-	while (++l < 4)
+	while (++l < 3)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
@@ -61,9 +59,6 @@ int			plan(t_obj *obj, char *str, int fd)
 			stockplan(obj, str);
 		else if (checkval(str, "\tcolor: ", 8) > 0 ||
 			checkval(str, "\tcolor:\t", 8) > 0)
-			stockplan(obj, str);
-		else if (checkval(str, "\tradius: ", 9) > 0 ||
-			checkval(str, "\tradius:\t", 9) > 0)
 			stockplan(obj, str);
 		else if (checkval(str, "\taxis: ", 7) > 0 ||
 			checkval(str, "\taxis:\t", 7) > 0)

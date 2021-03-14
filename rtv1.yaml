@@ -1,31 +1,76 @@
 camera:
-	lokfrm: 0:0:0
-	lokat: 0:0:100
-	fov: 100
+	lokfrm: 0:0:170
+	lokat: 0:0:0
+	fov: 60
 lights:
+	pos: 0:25:150
 	intensity: 100
-	color: 250:255:255
-	pos: 0:0:0
+	color: 255:255:255
 sphere:
-	center: -10:0:-80
-	color: 0:255:255
-	radius: 5
+	center: -30:-30:70
+	color: 99:100:165
+	radius: 10
 sphere:
-	center: 10:0:80
-	color: 0:0:255
-	radius: 5
-cylinder:
-	center: -20:0:60
+	center: 30:-30:70
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: -30:30:70
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: 30:30:70
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: -30:-30:0
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: 30:-30:0
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: -30:30:0
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: 30:30:0
+	radius: 10
+	color: 99:100:165
+sphere:
+	center: 0:-20:70
 	color: 255:0:0
-	radius: 5
-	axis: 0:1:0
+	radius: 6
 cylinder:
-	center: 20:0:-60
-	color: 255:255:0
-	radius: 5
+	center: -30:0:0
 	axis: 0:1:0
-cone:
-	center: 0:0:40
-	color: 255:0:255
-	angle: 20
+	color: 99:100:165
+	radius: 6
+cylinder:
+	center: 30:0:0
+	color: 99:100:165
 	axis: 0:1:0
+	radius: 6
+cylinder:
+	center: -30:0:70
+	axis: 0:1:0
+	color: 99:100:165
+	radius: 6
+cylinder:
+	center: 30:0:70
+	axis: 0:1:0
+	color: 99:100:165
+	radius: 6
+plan:
+	center: 0:0:-140
+	axis: 0:0:1
+	color: 0:0:110
+plan:
+	center: 0:-30:0
+	axis: 0:1:0
+	color: 77:77:77
+plan:
+	center: 0:30:0
+	axis: 0:1:0
+	color: 255:77:77

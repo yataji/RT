@@ -1,0 +1,32 @@
+camera:
+	lokfrm: 0:5:120
+	lokat: 0:0:0
+	fov: 60
+lights:
+	intensity: 100
+	color: 250:255:255
+	pos: 0:0:100
+plan:
+	center: 0:-20:0
+	color: 0:0:255
+	axis: 0:1:0
+plan:
+	center: 0:20:0
+	color: 0:255:0
+	axis: 0:-1:0
+plan:
+	center: 0:32:-50
+	color: 255:0:0
+	axis: 0:0:1
+plan:
+	center: 30:0:0
+	color: 255:0:200
+	axis: 1:0:0
+plan:
+	center: -30:0:0
+	color: 255:60:0
+	axis: -1:0:0
+sphere:
+	center: 0:3:50
+	color: 0:0:255
+	radius: 5
