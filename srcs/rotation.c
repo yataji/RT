@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:05:44 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/14 19:31:04 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/14 19:44:48 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_vect		rot_z(t_vect v, double angle)
 t_vect		rotation_xyz(t_vect v, t_vect a)
 {
 	t_vect	result;
-	
+
 	if (!a.x && !a.y && !a.z)
 		return (v);
 	result = rot_x(v, a.x);
