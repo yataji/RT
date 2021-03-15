@@ -46,6 +46,25 @@ cone:
 
 
 
+	// while ((*rt)->tmpo)
+	// {
+	// 	tmp->tmpo = (*rt)->tmpo->next;
+	// 	free((*rt)->tmpo);
+	// 	(*rt)->tmpo = NULL;
+	// 	(*rt)->tmpo = tmp->tmpo;
+	// }
+	// while ((*rt)->tmpl)
+	// {
+	// 	tmp->tmpl = (*rt)->tmpl->next;
+	// 	free((*rt)->tmpl);
+	// 	(*rt)->tmpl = NULL;
+	// 	(*rt)->tmpl = tmp->tmpl;
+	// }
+
+
+
+
+
 printf("x: %lf\ty: %lf\tz: %lf\n", rt.cam.lokat.x, rt.cam.lokat.y, rt.cam.lokat.z);
 printf("x: %lf\ty: %lf\tz: %lf\n", rt.cam.lokfrm.x, rt.cam.lokfrm.y, rt.cam.lokfrm.z);
 while (rt.lights)

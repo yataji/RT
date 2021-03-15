@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/13 16:45:59 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/15 11:13:24 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			main(int ac, char **av)
 	rt.mlx = init();
 	draw(rt);
 	mlx_put_image_to_window(rt.mlx.ptr, rt.mlx.win_ptr, rt.mlx.img_ptr, 0, 0);
-	mlx_hook(rt.mlx.win_ptr, 2, 0, &keypress, &rt.mlx);
+	mlx_hook(rt.mlx.win_ptr, 2, 0, &keypress, &rt);
 	mlx_loop(rt.mlx.ptr);
 	return (0);
 }

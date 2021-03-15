@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:10:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 18:23:07 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/15 11:21:07 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int			keypress(int key, void *param)
 {
-	t_mlx	*mlx;
+	t_rtv1	*rt;
 
-	mlx = (t_mlx *)param;
-	key == 53 ? ft_exit(mlx) : 0;
+	rt = (t_rtv1 *)param;
+	key == 53 ? ft_exit(rt) : 0;
 	return (0);
 }

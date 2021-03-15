@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/14 18:15:58 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/15 12:32:40 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-// # include "../minilibx_macos/mlx.h"
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
+// # include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -27,6 +27,14 @@
 # define CYLINDER 1
 # define CONE 2
 # define PLAN 3
+# define CAMERA 4
+# define LIGHTS 5
+# define ROT 6
+# define CENTER 7
+# define COLOR 8
+# define AXIS 9
+# define RADIUS 10
+# define INTENSITY 11
 
 typedef struct		s_var {
 	int				x;
@@ -137,7 +145,7 @@ double		cyldintr(t_obj *cyld, t_ray ray);
 double		coneintr(t_obj *cone, t_ray ray);
 double		planiter(t_obj *cone, t_ray ray);
 int			keypress(int key, void *param);
-int			ft_exit(t_mlx *mlx);
+int			ft_exit(t_rtv1 *rt);
 void    	setnormal(t_obj *close, t_ray *ray, double t);
 void		initcamera(t_cam *cam);
 void		draw(t_rtv1 rt);

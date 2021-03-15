@@ -43,31 +43,31 @@ sphere:
 	color: 255:0:0
 	radius: 6
 cylinder:
-	rot: 50:50:50
+	rot: 0:0:0
 	center: -30:0:0
 	axis: 0:1:0
 	color: 99:100:165
 	radius: 6
 cylinder:
-	rot: 50:50:50
+	rot: 0:0:0
 	center: 30:0:0
 	color: 99:100:165
 	axis: 0:1:0
 	radius: 6
 cylinder:
-	rot: 50:50:50
+	rot: 0:0:0
 	center: -30:0:70
 	axis: 0:1:0
 	color: 99:100:165
 	radius: 6
 cylinder:
-	rot: 50:50:50
+	rot: 0:0:0
 	center: 30:0:70
 	axis: 0:1:0
 	color: 99:100:165
 	radius: 6
 plan:
-	rot: 0:0:50
+	rot: 0:0:0
 	center: 0:0:-140
 	axis: 0:0:1
 	color: 0:0:110
