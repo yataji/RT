@@ -6,15 +6,17 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:04 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/14 19:15:27 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/15 18:35:52 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int			ft_sphere(t_rtv1 *rt, char *str)
+int			ft_sphere(t_rtv1 *rt, char *str, int c)
 {
 	rt->tmpo = initobj();
+	if (c != 0)
+		return (-1);
 	if (rt->check[0] > rt->check[0] + 1)
 	{
 		if (sphere(rt->tmpo, str, rt->fd) == -1)
@@ -39,7 +41,7 @@ int			stocksphere(t_obj *obj, char *str)
 		obj->center = stk(value);
 	else if (ft_strcmp(value[0], "\tcolor") == 0)
 		obj->color = stk(value);
-	if (ft_strlend(value) == 2 && ft_strcmp(value[0], "\tradius") == 0)
+	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], "\tradius") == 0)
 		obj->radius = ft_atoi(value[1]);
 	ft_strdel(value);
 	return (1);

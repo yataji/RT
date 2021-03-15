@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/15 12:32:40 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/15 18:39:31 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "../minilibx_macos/mlx.h"
-// # include "mlx.h"
+// # include "../minilibx_macos/mlx.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -27,14 +27,6 @@
 # define CYLINDER 1
 # define CONE 2
 # define PLAN 3
-# define CAMERA 4
-# define LIGHTS 5
-# define ROT 6
-# define CENTER 7
-# define COLOR 8
-# define AXIS 9
-# define RADIUS 10
-# define INTENSITY 11
 
 typedef struct		s_var {
 	int				x;
@@ -123,7 +115,7 @@ typedef struct		s_rtv1
 	unsigned char	*ptr;
 	double			dot1;
 	int				fd;
-	int				check[2];
+	int				check[3];
 	int				color;
 }				t_rtv1;
 
@@ -178,10 +170,10 @@ int			cone(t_obj *obj, char *str, int fd);
 int			lights(t_lights *lights, char *str, int fd);
 int			camera(t_cam *cam, char *str, int fd);
 int			ck(char *str, char *check, int len);
-int			ft_plan(t_rtv1 *rt, char *str);
-int			ft_cone(t_rtv1 *rt, char *str);
-int			ft_cylinder(t_rtv1 *rt, char *str);
-int			ft_sphere(t_rtv1 *rt, char *str);
+int			ft_plan(t_rtv1 *rt, char *str, int c);
+int			ft_cone(t_rtv1 *rt, char *str, int c);
+int			ft_cylinder(t_rtv1 *rt, char *str, int c);
+int			ft_sphere(t_rtv1 *rt, char *str, int c);
 int			ft_lights(t_rtv1 *rt, char *str);
 size_t		ft_strlend(char **s);
 

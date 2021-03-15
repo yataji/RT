@@ -1,0 +1,24 @@
+<scene>
+
+    <camera>
+        <origin> 0,0,-16</origin>
+        <lookat>0,1,0</lookat>
+        <fov>60</fov>
+    </camera>
+
+    <cone>
+        <position>0,0,0</position>
+        <orientation>0,-1,0</orientation>
+        <translation>0,0,0</translation>
+        <rotation>0,0,0</rotation>
+        <angle>5</angle>
+        <color>0x0000ff</color>
+    </cone>
+
+    <light>
+        <position>0,0,-10</position>
+        <color>0xffffff</color>
+        <intensity>100</intensity>
+    </light>
+
+</scene>

@@ -6,15 +6,17 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:00 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/14 18:05:26 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/15 18:34:03 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int			ft_cylinder(t_rtv1 *rt, char *str)
+int			ft_cylinder(t_rtv1 *rt, char *str, int c)
 {
 	rt->tmpo = initobj();
+	if (c != 1)
+		return (-1);
 	if (rt->check[0] > rt->check[0] + 1)
 	{
 		if (cylinder(rt->tmpo, str, rt->fd) == -1)
