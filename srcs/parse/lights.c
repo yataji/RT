@@ -6,27 +6,26 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/15 18:45:23 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/16 15:46:36 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-// int			ft_lights(t_rtv1 *rt, char *str)
-// {
-// 	rt->tmpl = initlights();
-// 	if (rt->check[0] > rt->check[0] + 1)
-// 	{
-// 		if (lights(rt->tmpl, str, rt->fd) == -1)
-// 			return (-1);
-// 	}
-// 	else if (lights(rt->tmpl, str, rt->fd) == -1)
-// 		return (-1);
-// 	// rt->check[0]++;
-// 	rt->tmpl->next = rt->lights;
-// 	rt->lights = rt->tmpl;
-// 	return (0);
-// }
+int			ft_lights(t_rtv1 *rt, char *str)
+{
+	rt->tmpl = initlights();
+	if (rt->check[0] > rt->check[0] + 1)
+	{
+		if (lights(rt->tmpl, str, rt->fd) == -1)
+			return (-1);
+	}
+	else if (lights(rt->tmpl, str, rt->fd) == -1)
+		return (-1);
+	rt->tmpl->next = rt->lights;
+	rt->lights = rt->tmpl;
+	return (0);
+}
 
 int			stocklights(t_lights *lights, char *str)
 {

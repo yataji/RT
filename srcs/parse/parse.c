@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:01:53 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/15 18:45:48 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/16 15:44:12 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				parse(t_rtv1 *rt)
 
 	rt->check[0] = 0;
 	rt->check[1] = 0;
-	rt->check[2] = 0;
+	rt->lights = initlights();
 	while (rt->fd > 2 && get_next_line(rt->fd, &str) > 0)
 	{
 		if (ft_strcmp(str, "camera:") == 0 && rt->check[1] == 0)
@@ -52,7 +52,7 @@ int				parse(t_rtv1 *rt)
 		}
 		else if (ft_strcmp(str, "lights:") == 0)
 		{
-			if (lights(rt->lights, str, rt->fd) == -1)
+			if (ft_lights(rt, str) == -1)
 				return (-1);
 		}
 		else

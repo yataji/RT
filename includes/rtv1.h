@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/15 18:39:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/16 15:53:46 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,27 @@
 # define CONE 2
 # define PLAN 3
 
-typedef struct		s_var {
+typedef struct		s_var
+{
 	int				x;
 	int				y;
 	double			t;
 	double			near;
 }					t_var;
 
-typedef struct 		s_vect {
-	double 			x;
-	double 			y;
-	double 			z;
+typedef struct		s_vect
+{
+	double			x;
+	double			y;
+	double			z;
 }					t_vect;
 
 typedef t_vect	t_point;
 typedef t_vect	t_color;
 typedef t_vect	t_rot;
 
-typedef struct		s_obj {
+typedef struct		s_obj
+{
 	int				type;
 	double			angle;
 	double			radius;
@@ -72,13 +75,14 @@ typedef struct		s_math
 	double			delta;
 }					t_math;
 
-typedef struct		s_mlx{
+typedef struct		s_mlx
+{
 	void			*ptr;
 	void			*win_ptr;
 	void			*img_ptr;
 	int				*dtadd;
 	int				bpp;
-	int				szln; 
+	int				szln;
 	int				end;
 }					t_mlx;
 
@@ -115,9 +119,9 @@ typedef struct		s_rtv1
 	unsigned char	*ptr;
 	double			dot1;
 	int				fd;
-	int				check[3];
+	int				check[2];
 	int				color;
-}				t_rtv1;
+}					t_rtv1;
 
 /*
 ///// rtv1 /////
@@ -138,7 +142,7 @@ double		coneintr(t_obj *cone, t_ray ray);
 double		planiter(t_obj *cone, t_ray ray);
 int			keypress(int key, void *param);
 int			ft_exit(t_rtv1 *rt);
-void    	setnormal(t_obj *close, t_ray *ray, double t);
+void		setnormal(t_obj *close, t_ray *ray, double t);
 void		initcamera(t_cam *cam);
 void		draw(t_rtv1 rt);
 
@@ -152,7 +156,7 @@ t_vect		multi(t_vect v1, double v2);
 t_vect		normalize(t_vect v1);
 t_vect		normsphr(t_ray *ray, t_obj *obj, double t);
 t_vect		normcyld(t_ray *ray, t_obj *obj, double t);
-t_vect  	normcone(t_ray *ray, t_obj *obj, double t);
+t_vect		normcone(t_ray *ray, t_obj *obj, double t);
 t_vect		crosspro(t_vect v1, t_vect v2);
 
 /*
@@ -162,6 +166,7 @@ t_vect		crosspro(t_vect v1, t_vect v2);
 t_lights	*initlights(void);
 t_obj		*initobj(void);
 t_vect		stk(char **value);
+size_t		ft_strlend(char **s);
 int			parse(t_rtv1*rt);
 int			sphere(t_obj *obj, char *str, int fd);
 int			plan(t_obj *obj, char *str, int fd);
@@ -175,6 +180,5 @@ int			ft_cone(t_rtv1 *rt, char *str, int c);
 int			ft_cylinder(t_rtv1 *rt, char *str, int c);
 int			ft_sphere(t_rtv1 *rt, char *str, int c);
 int			ft_lights(t_rtv1 *rt, char *str);
-size_t		ft_strlend(char **s);
 
 #endif
