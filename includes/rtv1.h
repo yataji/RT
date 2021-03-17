@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/16 15:53:46 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/17 15:57:55 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,10 +175,10 @@ int			cone(t_obj *obj, char *str, int fd);
 int			lights(t_lights *lights, char *str, int fd);
 int			camera(t_cam *cam, char *str, int fd);
 int			ck(char *str, char *check, int len);
-int			ft_plan(t_rtv1 *rt, char *str, int c);
-int			ft_cone(t_rtv1 *rt, char *str, int c);
-int			ft_cylinder(t_rtv1 *rt, char *str, int c);
-int			ft_sphere(t_rtv1 *rt, char *str, int c);
+int			ft_plan(t_rtv1 *rt, char *str);
+int			ft_cone(t_rtv1 *rt, char *str);
+int			ft_cylinder(t_rtv1 *rt, char *str);
+int			ft_sphere(t_rtv1 *rt, char *str);
 int			ft_lights(t_rtv1 *rt, char *str);
 
 #endif

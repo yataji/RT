@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:35:11 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/16 15:22:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/17 19:35:31 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_lights		*initlights(void)
 	new->intensity = 0;
 	new->color = (t_color){0, 0, 0};
 	new->pos = (t_point){0, 0, 0};
+	new->next = NULL;
 	return (new);
 }
