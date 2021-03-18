@@ -2,13 +2,17 @@ camera:
 	lokat: 0:0:1
 	lokfrm: 0:0:0
 	fov: 120
+lights: 
+	pos: 0:0:1
+	color: 255:255:255
+	intensity: 100
 sphere:
 	center: 2:0:10
 	radius: 1
 	color: 255:0:0
 sphere: 
-	center: 2:0:10
-	radius: 2
+	center: 0:0:10
+	radius: 1
 	color: 255:255:0
 sphere: 
 	center: -2:0:10
@@ -20,7 +24,3 @@ cylinder:
 	radius: 1
 	color: 0:255:240
 	rot: 30:0:0
-lights: 
-	pos: 0:0:1
-	color: 255:255:255
-	intensity: 100
