@@ -6,13 +6,13 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/17 19:35:42 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/18 17:25:29 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int shadow(t_rtv1 *rt, t_obj *close)
+int shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 {
 	t_obj *tmp;
 	t_var v;
@@ -20,10 +20,10 @@ int shadow(t_rtv1 *rt, t_obj *close)
 	double dist;
 
 	tmp = rt->obj;
-	shadow_r.org = rt->lights->pos;
-	dist = dot(moins(rt->ray.hit, rt->lights->pos),
-			   moins(rt->ray.hit, rt->lights->pos));
-	shadow_r.dir = normalize(moins(rt->ray.hit, rt->lights->pos));
+	shadow_r.org = lights->pos;
+	dist = dot(moins(rt->ray.hit, lights->pos),
+			   moins(rt->ray.hit, lights->pos));
+	shadow_r.dir = normalize(moins(rt->ray.hit, lights->pos));
 	while (tmp)
 	{
 		if (tmp != close && ((v.near = intersect(tmp, shadow_r)) > 0 &&
@@ -53,7 +53,7 @@ t_color diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights, int shad)
 		c = multi_color(close->color, dot1 * lights->intensity / 100.0);
 	if (shad && (dot1 = dot(reflect,
 							normalize(moins(rt->ray.hit, rt->ray.org)))) > 0)
-		c = add_color(c, multi_color(lights->color, powf(dot1, 80)));
+		c = add_color(c, multi_color(lights->color, powf(dot1, 500)));
 	return (c);
 }
 
@@ -66,16 +66,16 @@ int color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 
 	rt->color = 0;
 	rt->ptr = (unsigned char *)&rt->color;
-	ret = multi(close->color, 0.2);
+	ret = multi(close->color, 0.1);
 	c = (t_color){0, 0, 0};
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
 		lightdir = normalize(moins(rt->tmpl->pos, rt->ray.hit));
 		rt->dot1 = dot(close->normal, lightdir);
-		shad = shadow(rt, close);
+		shad = shadow(rt, rt->tmpl, close);
 		c = diffuspclr(rt, close, rt->tmpl, shad);
-		ret = add_color(ret, multi(c, shad));
+		ret  = add_color(ret, multi(c, shad));
 		rt->tmpl = rt->tmpl->next;
 	}
 	rt->ptr[2] = ret.x;

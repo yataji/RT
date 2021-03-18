@@ -1,7 +1,7 @@
 camera:
 	lokfrm: 0:0:40
 	lokat: 0:0:1
-	fov: 100
+	fov: 60
 lights:
 	pos: 0:0:50
 	color: 255:255:255
@@ -16,7 +16,7 @@ lights:
 	intensity: 30
 lights:
 	pos: 0:7:-10
-	color: 
+	color: 255:255:255
 	intensity: 30
 lights:
 	pos: 0:7:-30

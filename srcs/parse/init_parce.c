@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:35:11 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/17 19:35:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/18 14:23:00 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_obj			*initobj(void)
 	new->center = (t_point){0, 0, 0};
 	new->rot = (t_rot){0, 0, 0};
 	new->angle = 0;
+	new->next = NULL;
 	return (new);
 }
 
