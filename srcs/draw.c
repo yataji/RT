@@ -6,28 +6,28 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/18 17:25:29 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/18 18:52:14 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
+int				shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 {
-	t_obj *tmp;
-	t_var v;
-	t_ray shadow_r;
-	double dist;
+	t_obj		*tmp;
+	t_var		v;
+	t_ray		shadow_r;
+	double		dist;
 
 	tmp = rt->obj;
 	shadow_r.org = lights->pos;
 	dist = dot(moins(rt->ray.hit, lights->pos),
-			   moins(rt->ray.hit, lights->pos));
+				moins(rt->ray.hit, lights->pos));
 	shadow_r.dir = normalize(moins(rt->ray.hit, lights->pos));
 	while (tmp)
 	{
 		if (tmp != close && ((v.near = intersect(tmp, shadow_r)) > 0 &&
-							 v.near > 0))
+							v.near > 0))
 		{
 			v.t = v.near;
 			if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
@@ -38,12 +38,12 @@ int shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 	return (1);
 }
 
-t_color diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights, int shad)
+t_color			diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights, int shad)
 {
-	double dot1;
-	t_vect lightdir;
-	t_vect reflect;
-	t_color c;
+	double		dot1;
+	t_vect		lightdir;
+	t_vect		reflect;
+	t_color		c;
 
 	c = (t_color){0, 0, 0};
 	lightdir = normalize(moins(lights->pos, rt->ray.hit));
@@ -57,12 +57,12 @@ t_color diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights, int shad)
 	return (c);
 }
 
-int color(t_rtv1 *rt, t_obj *close, t_lights *lights)
+int				color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 {
-	t_vect lightdir;
-	t_color c;
-	t_color ret;
-	int shad;
+	t_vect		lightdir;
+	t_color		c;
+	t_color		ret;
+	int			shad;
 
 	rt->color = 0;
 	rt->ptr = (unsigned char *)&rt->color;
@@ -75,7 +75,7 @@ int color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 		rt->dot1 = dot(close->normal, lightdir);
 		shad = shadow(rt, rt->tmpl, close);
 		c = diffuspclr(rt, close, rt->tmpl, shad);
-		ret  = add_color(ret, multi(c, shad));
+		ret = add_color(ret, multi(c, shad));
 		rt->tmpl = rt->tmpl->next;
 	}
 	rt->ptr[2] = ret.x;
@@ -85,7 +85,7 @@ int color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	return (rt->color);
 }
 
-void draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
+void			draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
 {
 	while (tmp)
 	{
@@ -106,11 +106,11 @@ void draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
 		rt.mlx.dtadd[v.x + v.y * MAXWIDTH] = 0;
 }
 
-void draw(t_rtv1 rt)
+void			draw(t_rtv1 rt)
 {
-	t_obj *close;
-	t_obj *tmp;
-	t_var v;
+	t_obj		*close;
+	t_obj		*tmp;
+	t_var		v;
 
 	v.x = -1;
 	v.near = -1.0;
