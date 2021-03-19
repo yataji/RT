@@ -1,14 +1,14 @@
 camera:
-	lokfrm: 0:0:-10
+	lokfrm: 0:30:-10
 	lokat: 0:0:1
 	fov: 60
 cylinder:
-	center: 0:0:5
+	center: 0:0:0
 	axis: 0:1:0
 	radius: 2
 	color: 255:0:255
-	rot: 0:0:0
+	rot: 100:10:0
 lights:
-	pos: 0:0:-1
+	pos: 0:0:-10
 	color: 255:255:255
 	intensity: 100

@@ -6,44 +6,9 @@ lights:
 	intensity: 100
 	color: 255:255:255
 	pos: 0:0:100
-plane:
-	rot: 0:0:0
-	center: 0:-20:0
-	color: 0:0:255
-	axis: 0:1:0
-plane:
-	rot: 0:0:0
-	center: 0:20:0
-	color: 0:255:0
-	axis: 0:1:0
-plane:
-	rot: 0:0:0
-	center: 0:32:-50
-	color: 255:0:0
-	axis: 0:0:1
-plane:
-	rot: 0:0:0
-	center: 30:0:0
-	color: 255:0:200
-	axis: 1:0:0
-plane:
-	rot: 0:0:0
-	center: -30:0:0
-	color: 255:60:0
-	axis: -1:0:0
-cylinder:
-	center: 15:0:10
-	axis: 0:1:0
-	radius: 2
-	color: 255:0:255
-	rot: 0:0:0
 cone:
 	center: -15:0:10
 	axis: 0:1:0
 	rot: 0:0:0
-	angle: 10
+	angle: 15
 	color: 255:255:255
-sphere:
-	center: 0:0:10
-	color: 99:100:165
-	radius: 10

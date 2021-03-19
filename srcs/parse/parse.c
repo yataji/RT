@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:01:53 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/18 18:52:36 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/18 22:51:43 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int				parse(t_rtv1 *rt)
 
 	rt->check[0] = 0;
 	rt->check[1] = 0;
-	rt->lights = initlights();
+	rt->lights = NULL;
+	rt->obj = NULL;
 	while (rt->fd > 2 && get_next_line(rt->fd, &str) > 0)
 	{
 		if (ft_strcmp(str, "camera:") == 0 && rt->check[0] == 0)
