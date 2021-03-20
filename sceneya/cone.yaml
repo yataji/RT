@@ -1,14 +1,14 @@
 camera:
-	lokfrm: 0:20:100
-	lokat: 0:0:0
+	lokfrm: 0:0:0
+	lokat: 0:0:1
 	fov: 60
 cone:
-	center: 0:0:0
+	center: 0:0:10
 	axis: 0:1:0
 	rot: 0:0:0
 	angle: 60
-	color: 255:0:0
+	color: 255:0:255
 lights:
 	intensity: 100
 	color: 255:255:255
-	pos: 0:5:100
+	pos: 0:0:1
