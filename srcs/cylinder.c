@@ -6,16 +6,11 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:43:03 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/19 01:09:36 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/20 15:54:45 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-void		print_vect(t_vect v, char *name)
-{
-	printf("%s: {%lf, %lf, %lf}\n", name, v.x, v.y, v.z);
-}
 
 double		cyldintr(t_obj *cyld, t_ray ray)
 {

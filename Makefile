@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/03/18 20:44:13 by yataji           ###   ########.fr        #
+#    Updated: 2021/03/19 15:42:54 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,19 +26,19 @@ all: $(NAME)
 	
 $(NAME): $(OBJS) 
 	@make -s -C libft
-	@make -s -C minilibx_macos
-	@gcc $(FLG) libft/libft.a $(OBJS) $(MINI) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	# @make -s -C minilibx_macos
+	@gcc $(FLG) libft/libft.a $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"
 
 clean:
 	@make -C libft/ clean
-	@make -C minilibx_macos/ clean
+	# @make -C minilibx_macos/ clean
 	@rm -f $(OBJS)
 	@printf "clean terminated\n"
 
 fclean: clean
 	@make -C libft/ fclean
-	@make -C minilibx_macos/ fclean
+	# @make -C minilibx_macos/ fclean
 	@rm -f $(OBJS) $(NAME)
 	@printf "clean all\n"
 

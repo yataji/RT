@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/19 00:27:20 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/19 16:12:49 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ double		intersect(t_obj *object, t_ray ray)
 {
 	if (object->type == CYLINDER)
 		return (cyldintr(object, ray));
-	if (object->type == SPHERE)
+	else if (object->type == SPHERE)
 		return (sphrintr(object, ray));
-	if (object->type == CONE)
+	else if (object->type == CONE)
 		return (coneintr(object, ray));
-	if (object->type == PLAN)
+	else if (object->type == PLAN)
 		return (planiter(object, ray));
 	return (-1);
 }

@@ -3,10 +3,10 @@ lights:
 	color: 255:255:255
 	pos: 15:0:100
 camera:
-	lokfrm: 0:5:120
+	lokfrm: -80:0:0
 	lokat: 0:0:0
 	fov: 60
 sphere:
-	center: 15:0:80
+	center: 0:0:0
 	color: 99:100:165
 	radius: 10
