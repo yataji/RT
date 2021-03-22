@@ -6,7 +6,7 @@ cone:
 	center: 0:0:10
 	axis: 0:1:0
 	rot: 0:0:0
-	angle: 60
+	angle: 180
 	color: 255:0:255
 lights:
 	intensity: 100

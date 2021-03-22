@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 13:56:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/20 15:55:10 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/21 12:40:55 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double		coneintr(t_obj *cone, t_ray ray)
 	oc = moins(ray.org, cone->center);
 	v = normalize(cone->v);
 	v = rotation_xyz(v, cone->rot);
-	k = 60 * M_PI / 180.0;
+	k = cone->angle * M_PI / 180.0;
 	k = tan(k / 2.0);
 	calc.a = dot(ray.dir, ray.dir) - (1 + k * k) * multidbl(dot(ray.dir, v),
 									dot(ray.dir, v), 1);
