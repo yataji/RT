@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/19 16:01:54 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/22 15:59:09 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int				shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 	shadow_r.dir = normalize(moins(rt->ray.hit, lights->pos));
 	while (tmp)
 	{
-		if (tmp != close && ((v.near = intersect(tmp, shadow_r)) > 0 &&
-							v.near > 0))
+		if (tmp != close && ((v.near = intersect(tmp, shadow_r)) > 0))
 		{
 			v.t = v.near;
 			if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
@@ -53,13 +52,13 @@ t_color			diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights, int shad)
 		c = multi_color(close->color, dot1 * lights->intensity / 100.0);
 	if (shad && (dot1 = dot(reflect,
 							normalize(moins(rt->ray.hit, rt->ray.org)))) > 0)
-		c = add_color(c, multi_color(lights->color, powf(dot1, 500)));
+		c = add_color(c, multi_color(lights->color, powf(dot1, 100)
+						* lights->intensity / 100.0));
 	return (c);
 }
 
 int				color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 {
-	t_vect		lightdir;
 	t_color		c;
 	t_color		ret;
 	int			shad;
@@ -71,11 +70,9 @@ int				color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
-		lightdir = normalize(moins(rt->tmpl->pos, rt->ray.hit));
-		rt->dot1 = dot(close->normal, lightdir);
 		shad = shadow(rt, rt->tmpl, close);
 		c = diffuspclr(rt, close, rt->tmpl, shad);
-		ret = add_color(ret, multi(c, shad));
+		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
 	rt->ptr[2] = ret.x;

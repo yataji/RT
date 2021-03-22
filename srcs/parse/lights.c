@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/18 22:51:58 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/22 15:58:45 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int			stocklights(t_lights *lights, char *str)
 	if (ft_strlend(value) != 4 && ft_strlend(value) != 2)
 		return (-1);
 	if (ft_strlend(value) == 2 && ft_strcmp(value[0], "\tintensity") == 0)
+	{
 		lights->intensity = ft_atoi(value[1]);
+		lights->intensity = lights->intensity > 100 ? 100 : lights->intensity;
+	}
 	else if (ft_strcmp(value[0], "\tcolor") == 0)
 		lights->color = stk(value);
 	else if (ft_strcmp(value[0], "\tpos") == 0)

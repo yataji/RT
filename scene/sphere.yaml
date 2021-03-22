@@ -1,7 +1,7 @@
 lights:
 	intensity: 100
 	color: 255:255:255
-	pos: 15:0:100
+	pos: -80:0:0
 camera:
 	lokfrm: -80:0:0
 	lokat: 0:0:0
