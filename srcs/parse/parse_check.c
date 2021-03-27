@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:25:19 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/27 17:40:21 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 18:29:44 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,16 @@ size_t		ft_strlend(char **s)
 	return (i);
 }
 
-// int			ckaglrds(char *valuen)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (value[i])
-// 	{
-// 		if (value[i] < 48 && value[i] > 57)
-// 			return (-1);
-// 		i++;
-// 	}
-// 	return (1);
-// }
+int			chkone(char *str, int len)
+{
+	while (str[len])
+	{
+		if (str[len] < '0' || str[len] > '9')
+			return (-1);
+		len++;
+	}
+	return (1);
+}
 
 int			ck(char *str, char *check, int len)
 {
@@ -42,21 +39,19 @@ int			ck(char *str, char *check, int len)
 
 	if (str[0] != '\t')
 		return (-1);
-	// if (ft_strncmp(str, "\tangle: ", len) == 0 || ft_strncmp(str, "\tangle: ", len) == 0)
-	// 	ckaglrds(str, len)
 	if (ft_strncmp(str, check, len) != 0)
 		return (-1);
 	i = len - 1;
 	while (str[i])
 	{
-		if (str[i] == ':' && str[i + 1] == ':')
+		if ((str[i] == ':' && str[i + 1] == ':') ||
+			(str[i] == ':' && str[i + 1] == '\0'))
 			return (-1);
 		else if (str[i] == ':' || str[i] == '-' ||
 			str[i] == ' ' || str[i] == '\t')
 		{
 			if (str[i] == ':' && str[i - 1] == ':')
 				return (-1);
-			i++;
 		}
 		else if (ft_isdigit(str[i]) == 0)
 			return (-1);
