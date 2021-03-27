@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:43:03 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/20 15:54:45 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 11:45:58 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ double		cyldintr(t_obj *cyld, t_ray ray)
 	v = normalize(rotation_xyz(v, cyld->rot));
 	calc.a = dot(ray.dir, ray.dir) - dot(ray.dir, v) * dot(ray.dir, v);
 	calc.b = 2 * (dot(ray.dir, oc) - dot(ray.dir, v) * dot(oc, v));
-	calc.c = dot(oc, oc) - dot(oc, v) * dot(oc, v) - multidbl(cyld->radius,
-			cyld->radius, 1);
-	calc.delta = multidbl(calc.b, calc.b, 1) - multidbl(4, calc.a, calc.c);
+	calc.c = dot(oc, oc) - dot(oc, v) * dot(oc, v)
+				- (cyld->radius * cyld->radius);
+	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	return (checkt(calc));
 }
 

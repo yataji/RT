@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:25:19 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/14 18:05:46 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 17:40:21 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,28 @@ size_t		ft_strlend(char **s)
 	return (i);
 }
 
+// int			ckaglrds(char *valuen)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	while (value[i])
+// 	{
+// 		if (value[i] < 48 && value[i] > 57)
+// 			return (-1);
+// 		i++;
+// 	}
+// 	return (1);
+// }
+
 int			ck(char *str, char *check, int len)
 {
 	int		i;
 
 	if (str[0] != '\t')
 		return (-1);
+	// if (ft_strncmp(str, "\tangle: ", len) == 0 || ft_strncmp(str, "\tangle: ", len) == 0)
+	// 	ckaglrds(str, len)
 	if (ft_strncmp(str, check, len) != 0)
 		return (-1);
 	i = len - 1;

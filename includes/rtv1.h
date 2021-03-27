@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/22 14:30:27 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 16:09:25 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct		s_rtv1
 	unsigned char	*ptr;
 	double			dot1;
 	int				fd;
-	int				check[2];
+	int				ck[3];
 	int				color;
 }					t_rtv1;
 
@@ -140,6 +140,7 @@ int					ft_exit(t_rtv1 *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);
 void				initcamera(t_cam *cam);
 void				draw(t_rtv1 rt);
+void				ft_free(t_obj **obj, t_lights **lights);
 t_vect				plus(t_vect v1, t_vect v2);
 t_vect				moins(t_vect v1, t_vect v2);
 t_vect				multi(t_vect v1, double v2);

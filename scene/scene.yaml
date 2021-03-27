@@ -11,7 +11,7 @@ lights:
 	color: 255:255:255
 	intensity: 20
 lights:
-	pos: 0:7:10
+	pos: 0:-7:10
 	color: 255:255:255
 	intensity: 30
 lights:

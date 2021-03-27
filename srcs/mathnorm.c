@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 18:26:30 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/14 17:44:24 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/24 16:29:35 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ t_color		multi_color(t_color c1, double scal)
 	tmp = c1.z * scal;
 	ret.z = tmp > 255 ? 255 : tmp;
 	return (ret);
-}
-
-double		multidbl(double v1, double v2, double v3)
-{
-	return (v1 * v2 * v3);
 }
 
 t_vect		multi(t_vect v1, double v2)

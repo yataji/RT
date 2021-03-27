@@ -12,3 +12,7 @@ lights:
 	pos: 0:0:1
 	color: 255:255:255
 	intensity: 100
+lights:
+	pos: 0:0:1
+	color: 255:255:255
+	intensity: 100

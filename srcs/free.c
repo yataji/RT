@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:14:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/17 18:36:17 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 11:19:20 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_exit(t_rtv1 *rt)
 {
 	mlx_clear_window(rt->mlx.ptr, rt->mlx.win_ptr);
 	mlx_destroy_window(rt->mlx.ptr, rt->mlx.win_ptr);
+	mlx_destroy_image(rt->mlx.ptr, rt->mlx.img_ptr);
 	ft_free(&rt->obj, &rt->lights);
 	exit(0);
 	return (0);

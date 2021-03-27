@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:27:45 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/10 18:30:57 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/24 16:30:01 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ double		sphrintr(t_obj *sphere, t_ray ray)
 	t_vect	oc;
 	t_math	calc;
 
-	oc = (t_vect){ray.org.x - sphere->center.x, ray.org.y - sphere->center.y,
-				ray.org.z - sphere->center.z};
+	oc = moins(ray.org, sphere->center);
 	calc.a = dot(ray.dir, ray.dir);
 	calc.b = 2 * dot(ray.dir, oc);
-	calc.c = dot(oc, oc) - multidbl(sphere->radius, sphere->radius, 1);
-	calc.delta = multidbl(calc.b, calc.b, 1) - multidbl(4, calc.a, calc.c);
+	calc.c = dot(oc, oc) - (sphere->radius * sphere->radius);
+	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	return (checkt(calc));
 }
 

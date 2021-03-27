@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/17 16:08:36 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 14:22:26 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,26 @@ int		stockcone(t_obj *obj, char *str)
 
 int		cone(t_obj *obj, char *str, int fd)
 {
-	int l;
+	int	l;
+	int	check;
 
 	l = -1;
 	while (++l < 5)
 	{
+		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		if (ck(str, "\tcenter: ", 9) > 0 || ck(str, "\tcenter:\t", 9) > 0)
-			stockcone(obj, str);
+			check = stockcone(obj, str);
 		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
-			stockcone(obj, str);
+			check = stockcone(obj, str);
 		else if (ck(str, "\tangle: ", 8) > 0 || ck(str, "\tangle:\t", 8) > 0)
-			stockcone(obj, str);
+			check = stockcone(obj, str);
 		else if (ck(str, "\taxis: ", 7) > 0 || ck(str, "\taxis:\t", 7) > 0)
-			stockcone(obj, str);
+			check = stockcone(obj, str);
 		else if (ck(str, "\trot: ", 6) > 0 || ck(str, "\trot:\t", 6) > 0)
-			stockcone(obj, str);
-		else
+			check = stockcone(obj, str);
+		if (check == -1)
 			return (-1);
 		obj->type = CONE;
 		ft_strdel(&str);

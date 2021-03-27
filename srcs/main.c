@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/20 15:51:02 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 11:46:54 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int			main(int ac, char **av)
 
 	if ((rt.fd = open(av[1], O_RDONLY)) == -1 || ac != 2)
 		return (0);
+	rt.obj = NULL;
+	rt.lights = NULL;
 	if (parse(&rt) == -1)
 	{
 		ft_putendl("error parsing");
-		keypress(35, &rt);
+		ft_free(&rt.obj, &rt.lights);
 		return (0);
 	}
 	rt.mlx = init();

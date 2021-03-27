@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:00 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/17 16:08:55 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 13:36:21 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,25 @@ int			stockcylinder(t_obj *obj, char *str)
 int			cylinder(t_obj *obj, char *str, int fd)
 {
 	int		l;
+	int		check;
 
 	l = -1;
 	while (++l < 5)
 	{
+		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		if (ck(str, "\tcenter: ", 9) > 0 || ck(str, "\tcenter:\t", 9) > 0)
-			stockcylinder(obj, str);
+			check = stockcylinder(obj, str);
 		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
-			stockcylinder(obj, str);
+			check = stockcylinder(obj, str);
 		else if (ck(str, "\tradius: ", 9) > 0 || ck(str, "\tradius:\t", 9) > 0)
-			stockcylinder(obj, str);
+			check = stockcylinder(obj, str);
 		else if (ck(str, "\taxis: ", 7) > 0 || ck(str, "\taxis:\t", 7) > 0)
-			stockcylinder(obj, str);
+			check = stockcylinder(obj, str);
 		else if (ck(str, "\trot: ", 6) > 0 || ck(str, "\trot:\t", 6) > 0)
-			stockcylinder(obj, str);
-		else
+			check = stockcylinder(obj, str);
+		if (check == -1)
 			return (-1);
 		obj->type = CYLINDER;
 		ft_strdel(&str);
