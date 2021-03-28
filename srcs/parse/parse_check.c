@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:25:19 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/27 18:29:44 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/28 12:59:30 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,17 @@ size_t		ft_strlend(char **s)
 	return (i);
 }
 
-int			chkone(char *str, int len)
-{
-	while (str[len])
-	{
-		if (str[len] < '0' || str[len] > '9')
-			return (-1);
-		len++;
-	}
-	return (1);
-}
-
-int			ck(char *str, char *check, int len)
+int			ck(char *str, char *check, int l)
 {
 	int		i;
 
 	if (str[0] != '\t')
 		return (-1);
-	if (ft_strncmp(str, check, len) != 0)
+	if (ft_strncmp(str, check, l) != 0)
 		return (-1);
-	i = len - 1;
+	i = l - 1;
+	if ((str[l] < '0' || str[l] > '9') && str[l] != '-' && str[l] != '+')
+		return (-1);
 	while (str[i])
 	{
 		if ((str[i] == ':' && str[i + 1] == ':') ||

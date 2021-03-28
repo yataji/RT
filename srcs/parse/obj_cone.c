@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/27 18:14:34 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/27 19:25:55 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,7 @@ int		cone(t_obj *obj, char *str, int fd)
 		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
 			check = stockcone(obj, str);
 		else if (ck(str, "\tangle: ", 8) > 0 || ck(str, "\tangle:\t", 8) > 0)
-		{
-			if (chkone(str, 8) == -1)
-				return (-1);
 			check = stockcone(obj, str);
-		}
 		else if (ck(str, "\taxis: ", 7) > 0 || ck(str, "\taxis:\t", 7) > 0)
 			check = stockcone(obj, str);
 		else if (ck(str, "\trot: ", 6) > 0 || ck(str, "\trot:\t", 6) > 0)

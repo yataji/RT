@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 13:56:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/27 16:41:51 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/28 10:57:38 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ double		coneintr(t_obj *cone, t_ray ray)
 	v = rotation_xyz(v, cone->rot);
 	k = cone->angle * M_PI / 180.0;
 	k = tan(k / 2.0);
-	calc.a = dot(ray.dir, ray.dir) - (1 + k * k)* dot(ray.dir, v) * dot(ray.dir, v);
-	calc.b = 2 * (dot(ray.dir, oc) - (1 + k * k) * dot(ray.dir, v) * dot(oc, v));
+	calc.a = dot(ray.dir, ray.dir) - (1 + k * k)
+			* dot(ray.dir, v) * dot(ray.dir, v);
+	calc.b = 2 * (dot(ray.dir, oc) - (1 + k * k)
+			* dot(ray.dir, v) * dot(oc, v));
 	calc.c = dot(oc, oc) - (1 + k * k) * dot(oc, v) * dot(oc, v);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	return (checkt(calc));
