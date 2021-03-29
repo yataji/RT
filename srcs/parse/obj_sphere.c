@@ -29,11 +29,11 @@ int			stocksphere(t_obj *obj, char *str)
 	value = ft_strsplit(str, ':');
 	if (ft_strlend(value) != 4 && ft_strlend(value) != 2)
 		return (-1);
-	if (ft_strcmp(value[0], "\tcenter") == 0)
+	if (ft_strcmp(value[0], " center") == 0)
 		obj->center = stk(value);
-	else if (ft_strcmp(value[0], "\tcolor") == 0)
+	else if (ft_strcmp(value[0], " color") == 0)
 		obj->color = stk(value);
-	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], "\tradius") == 0)
+	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], " radius") == 0)
 		obj->radius = ft_atoi(value[1]);
 	ft_strdel(value);
 	return (1);
@@ -48,11 +48,11 @@ int			sphere(t_obj *obj, char *str, int fd)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (ck(str, "\tcenter: ", 9) > 0 || ck(str, "\tcenter:\t", 9) > 0)
+		if (ck(str, " center: ", 9) > 0 || ck(str, " center: ", 9) > 0)
 			stocksphere(obj, str);
-		else if (ck(str, "\tcolor: ", 8) > 0 || ck(str, "\tcolor:\t", 8) > 0)
+		else if (ck(str, " color: ", 8) > 0 || ck(str, " color: ", 8) > 0)
 			stocksphere(obj, str);
-		else if (ck(str, "\tradius: ", 9) > 0 || ck(str, "\tradius:\t", 9) > 0)
+		else if (ck(str, " radius: ", 9) > 0 || ck(str, " radius: ", 9) > 0)
 			stocksphere(obj, str);
 		else
 			return (-1);

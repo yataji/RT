@@ -26,7 +26,7 @@ int			ck(char *str, char *check, int l)
 {
 	int		i;
 
-	if (str[0] != '\t')
+	if (str[0] != ' ')
 		return (-1);
 	if (ft_strncmp(str, check, l) != 0)
 		return (-1);
@@ -39,7 +39,7 @@ int			ck(char *str, char *check, int l)
 			(str[i] == ':' && str[i + 1] == '\0'))
 			return (-1);
 		else if (str[i] == ':' || str[i] == '-' ||
-			str[i] == ' ' || str[i] == '\t')
+			str[i] == ' ')
 		{
 			if (str[i] == ':' && str[i - 1] == ':')
 				return (-1);
