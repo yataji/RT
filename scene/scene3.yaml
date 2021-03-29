@@ -71,14 +71,17 @@ sphere:
  radius: 7
  color: 200:200:200
 plane:
+ rot: 0:0:0
  center: 0:-20:0
  axis: 0:1:0
  color: 255:255:255
 plane:
+ rot: 0:0:0
  center: 0:20:0
  axis: 0:-1:0
  color: 255:255:255
 plane:
+ rot: 0:0:0
  center: 0:32:-200
  axis: 0:0:1
  color: 0:0:255
