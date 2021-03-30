@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_plan.c                                         :+:      :+:    :+:   */
+/*   obj_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/30 14:46:11 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/30 14:50:04 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			ft_plane(t_rtv1 *rt, char *str)
 {
 	rt->tmpo = initobj();
-	if (plan(rt->tmpo, str, rt->fd) == -1)
+	if (plane(rt->tmpo, str, rt->fd) == -1)
 		return (-1);
 	rt->tmpo->next = rt->obj;
 	rt->obj = rt->tmpo;
@@ -51,13 +51,13 @@ int			plane(t_obj *obj, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		if (ck(str, " center: ", 9) > 0 || ck(str, " center: ", 9) > 0)
-			stockplan(obj, str);
+			stockplane(obj, str);
 		else if (ck(str, " color: ", 8) > 0 || ck(str, " color: ", 8) > 0)
-			stockplan(obj, str);
+			stockplane(obj, str);
 		else if (ck(str, " axis: ", 7) > 0 || ck(str, " axis: ", 7) > 0)
-			stockplan(obj, str);
+			stockplane(obj, str);
 		else if (ck(str, " rot: ", 6) > 0 || ck(str, " rot: ", 6) > 0)
-			stockplan(obj, str);
+			stockplane(obj, str);
 		else
 			return (-1);
 		obj->type = PLAN;
