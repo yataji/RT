@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/30 21:44:58 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/30 22:06:34 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 	shadow_r.dir = normalize(moins(rt->ray.hit, lights->pos));
 	while (tmp)
 	{
-		if (tmp != close && ((v.near = intersect(tmp, shadow_r) + 0.1) > 0))
+		if (tmp != close && ((v.near = intersect(tmp, shadow_r) + 0.01) > 0))
 		{
 			v.t = v.near;
 			if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
