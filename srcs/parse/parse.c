@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/03/29 14:48:31 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/03/30 14:45:59 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				parse_objs(t_rtv1 *rt, char *str)
 	}
 	else if (ft_strcmp(str, "plane:") == 0)
 	{
-		if (ft_plan(rt, str) == -1)
+		if (ft_plane(rt, str) == -1)
 			return (-1);
 	}
 	else

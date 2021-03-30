@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 11:41:31 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/30 14:47:47 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -155,7 +155,7 @@ t_vect				stk(char **value);
 size_t				ft_strlend(char **s);
 int					parse(t_rtv1*rt);
 int					sphere(t_obj *obj, char *str, int fd);
-int					plan(t_obj *obj, char *str, int fd);
+int					plane(t_obj *obj, char *str, int fd);
 int					cylinder(t_obj *obj, char *str, int fd);
 int					cone(t_obj *obj, char *str, int fd);
 int					lights(t_lights *lights, char *str, int fd);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   obj_plan.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 15:16:09 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/03/30 14:46:11 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int			ft_plan(t_rtv1 *rt, char *str)
+int			ft_plane(t_rtv1 *rt, char *str)
 {
 	rt->tmpo = initobj();
 	if (plan(rt->tmpo, str, rt->fd) == -1)
@@ -22,7 +22,7 @@ int			ft_plan(t_rtv1 *rt, char *str)
 	return (0);
 }
 
-int			stockplan(t_obj *obj, char *str)
+int			stockplane(t_obj *obj, char *str)
 {
 	char	**value;
 
@@ -41,7 +41,7 @@ int			stockplan(t_obj *obj, char *str)
 	return (1);
 }
 
-int			plan(t_obj *obj, char *str, int fd)
+int			plane(t_obj *obj, char *str, int fd)
 {
 	int		l;
 
