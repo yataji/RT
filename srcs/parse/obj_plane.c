@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/30 14:50:04 by yataji           ###   ########.fr       */
+/*   Updated: 2021/03/30 15:09:15 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int			plane(t_obj *obj, char *str, int fd)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (ck(str, " center: ", 9) > 0 || ck(str, " center: ", 9) > 0)
+		if (ck(str, " center: ", 9) > 0)
 			stockplane(obj, str);
-		else if (ck(str, " color: ", 8) > 0 || ck(str, " color: ", 8) > 0)
+		else if (ck(str, " color: ", 8) > 0)
 			stockplane(obj, str);
-		else if (ck(str, " axis: ", 7) > 0 || ck(str, " axis: ", 7) > 0)
+		else if (ck(str, " axis: ", 7) > 0)
 			stockplane(obj, str);
-		else if (ck(str, " rot: ", 6) > 0 || ck(str, " rot: ", 6) > 0)
+		else if (ck(str, " rot: ", 6) > 0)
 			stockplane(obj, str);
 		else
 			return (-1);

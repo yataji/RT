@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:09 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 14:49:37 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:06:23 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int			camera(t_cam *cam, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (ck(str, " lokat: ", 8) > 0 || ck(str, " lokat: ", 8) > 0)
+		if (ck(str, " lokat: ", 8) > 0)
 			stockcamera(cam, str);
-		else if (ck(str, " lokfrm: ", 9) > 0 || ck(str, " lokfrm: ", 9) > 0)
+		else if (ck(str, " lokfrm: ", 9) > 0)
 			stockcamera(cam, str);
-		else if (ck(str, " fov: ", 6) > 0 || ck(str, " fov: ", 6) > 0)
+		else if (ck(str, " fov: ", 6) > 0)
 			stockcamera(cam, str);
 		else
 			return (-1);

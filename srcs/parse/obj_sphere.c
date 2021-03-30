@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:49:00 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/03/29 14:49:03 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:09:33 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int			sphere(t_obj *obj, char *str, int fd)
 	{
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (ck(str, " center: ", 9) > 0 || ck(str, " center: ", 9) > 0)
+		if (ck(str, " center: ", 9) > 0)
 			stocksphere(obj, str);
-		else if (ck(str, " color: ", 8) > 0 || ck(str, " color: ", 8) > 0)
+		else if (ck(str, " color: ", 8) > 0)
 			stocksphere(obj, str);
-		else if (ck(str, " radius: ", 9) > 0 || ck(str, " radius: ", 9) > 0)
+		else if (ck(str, " radius: ", 9) > 0)
 			stocksphere(obj, str);
 		else
 			return (-1);

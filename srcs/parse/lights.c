@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lights.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 14:49:29 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:05:43 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,11 @@ int			lights(t_lights *lights, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (ck(str, " intensity: ", 12) > 0 ||
-			ck(str, " intensity: ", 12) > 0)
+		if (ck(str, " intensity: ", 12) > 0)
 			stocklights(lights, str);
-		else if (ck(str, " color: ", 8) > 0 || ck(str, " color: ", 8) > 0)
+		else if (ck(str, " color: ", 8) > 0)
 			stocklights(lights, str);
-		else if (ck(str, " pos: ", 6) > 0 || ck(str, " pos: ", 6) > 0)
+		else if (ck(str, " pos: ", 6) > 0)
 			stocklights(lights, str);
 		else
 			return (-1);

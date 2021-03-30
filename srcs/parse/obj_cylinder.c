@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:00 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 14:49:18 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:08:47 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int			cylinder(t_obj *obj, char *str, int fd)
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (ck(str, " center: ", 9) > 0 || ck(str, " center: ", 9) > 0)
+		if (ck(str, " center: ", 9) > 0)
 			check = stockcylinder(obj, str);
-		else if (ck(str, " color: ", 8) > 0 || ck(str, " color: ", 8) > 0)
+		else if (ck(str, " color: ", 8) > 0)
 			check = stockcylinder(obj, str);
-		else if (ck(str, " radius: ", 9) > 0 || ck(str, " radius: ", 9) > 0)
+		else if (ck(str, " radius: ", 9) > 0)
 			check = stockcylinder(obj, str);
-		else if (ck(str, " axis: ", 7) > 0 || ck(str, " axis: ", 7) > 0)
+		else if (ck(str, " axis: ", 7) > 0)
 			check = stockcylinder(obj, str);
-		else if (ck(str, " rot: ", 6) > 0 || ck(str, " rot: ", 6) > 0)
+		else if (ck(str, " rot: ", 6) > 0)
 			check = stockcylinder(obj, str);
 		if (check == -1)
 			return (-1);
