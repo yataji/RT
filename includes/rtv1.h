@@ -14,7 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "../minilibx_macos/mlx.h"
+# include "mlx.h"
+// # include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
