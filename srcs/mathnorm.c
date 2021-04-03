@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 18:26:30 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/24 16:29:35 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/03 00:34:24 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ t_color		add_color(t_color c1, t_color c2)
 	tmp = c1.y + c2.y;
 	ret.y = tmp > 255 ? 255 : tmp;
 	tmp = c1.z + c2.z;
+	ret.z = tmp > 255 ? 255 : tmp;
+	return (ret);
+}
+
+t_color		multi_tcolor(t_color c1, t_color c2)
+{
+	t_color	ret;
+	double	tmp;
+
+	tmp = c1.x * c2.x;
+	ret.x = tmp > 255 ? 255 : tmp;
+	tmp = c1.y * c2.y;
+	ret.y = tmp > 255 ? 255 : tmp;
+	tmp = c1.z * c2.z;
 	ret.z = tmp > 255 ? 255 : tmp;
 	return (ret);
 }

@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/03/30 14:47:04 by yataji           ###   ########.fr        #
+#    Updated: 2021/03/31 18:51:21 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ all: $(NAME)
 	
 $(NAME): $(OBJS) 
 	@make -s -C libft
-	@gcc $(FLG) libft/libft.a $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	@gcc $(FLG) libft/libft.a $(OBJS) $(MINI) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"
 
 clean:

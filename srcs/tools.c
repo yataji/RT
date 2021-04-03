@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 14:48:10 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:19:19 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ double		checkt(t_math calc)
 		return (-calc.b / (2 * calc.a));
 	t1 = (-calc.b - sqrtf(calc.delta)) / (2 * calc.a);
 	t2 = (-calc.b + sqrtf(calc.delta)) / (2 * calc.a);
-	if (t1 < t2 && t1 >= 0)
+	if (t1 < t2 && t1 > 0)
 		return (t1);
-	else if (t2 >= 0)
+	else if (t2 > 0)
 		return (t2);
 	return (-1);
 }

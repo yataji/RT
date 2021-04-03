@@ -1,6 +1,6 @@
 camera:
- lokfrm: 0:0:0
- lokat: 0:0:100
+ lokfrm: 0:0:100
+ lokat: 0:0:0
  fov: 100
 lights:
  intensity: 60
@@ -8,6 +8,6 @@ lights:
  pos: 0:0:100
 plane:
  rot: 0:0:0
- center: 0:0:200
+ center: 0:0:0
  color: 255:0:0
  axis: 0:0:1

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/30 14:48:52 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/03 00:34:52 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-# include "mlx.h"
-// # include "../minilibx_macos/mlx.h"
+// # include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -124,6 +124,7 @@ typedef struct		s_rtv1
 }					t_rtv1;
 
 t_color				multi_color(t_color c1, double scal);
+t_color				multi_tcolor(t_color c1, t_color c2);
 t_color				add_color(t_color c1, t_color c2);
 t_vect				rotation_xyz(t_vect v, t_vect a);
 t_ray				initray(t_rtv1 rt, int x, int y);
