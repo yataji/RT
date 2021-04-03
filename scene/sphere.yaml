@@ -6,6 +6,10 @@ camera:
  lokfrm: 100:0:100
  lokat: 0:0:0
  fov: 60
+camera:
+ lokfrm: 0:0:100
+ lokat: 0:0:0
+ fov: 60
 sphere:
  center: 0:10:0
  color: 99:100:165
