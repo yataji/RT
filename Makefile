@@ -26,7 +26,7 @@ all: $(NAME)
 	
 $(NAME): $(OBJS) 
 	@make -s -C libft
-	@gcc $(FLG) libft/libft.a $(OBJS) $(MINI) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	@gcc $(FLG) libft/libft.a $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"
 
 clean:

@@ -14,8 +14,8 @@
 # define RTV1_H
 
 # include "../libft/libft.h"
-// # include "mlx.h"
-# include "../minilibx_macos/mlx.h"
+# include "mlx.h"
+// # include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -96,6 +96,7 @@ typedef struct		s_cam
 	double			fov;
 	double			plnw;
 	double			plnh;
+	struct s_cam	*next;
 }					t_cam;
 
 typedef struct		s_lights
@@ -112,14 +113,15 @@ typedef struct		s_rtv1
 	t_obj			*obj;
 	t_obj			*tmpo;
 	t_ray			ray;
-	t_cam			cam;
+	t_cam			*cam;
+	t_cam			*tmpc;
 	t_lights		*lights;
 	t_lights		*tmpl;
 	t_math			calc;
 	unsigned char	*ptr;
 	double			dot1;
 	int				fd;
-	int				ck[3];
+	int				ck;
 	int				color;
 }					t_rtv1;
 
@@ -127,7 +129,7 @@ t_color				multi_color(t_color c1, double scal);
 t_color				multi_tcolor(t_color c1, t_color c2);
 t_color				add_color(t_color c1, t_color c2);
 t_vect				rotation_xyz(t_vect v, t_vect a);
-t_ray				initray(t_rtv1 rt, int x, int y);
+t_ray				initray(t_cam *cam, int x, int y);
 t_mlx				init();
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
@@ -153,6 +155,7 @@ t_vect				normcone(t_ray *ray, t_obj *obj, double t);
 t_vect				crosspro(t_vect v1, t_vect v2);
 t_lights			*initlights(void);
 t_obj				*initobj(void);
+t_cam				*initcam(void);
 t_vect				stk(char **value);
 size_t				ft_strlend(char **s);
 int					parse(t_rtv1*rt);
@@ -169,5 +172,6 @@ int					ft_cone(t_rtv1 *rt, char *str);
 int					ft_cylinder(t_rtv1 *rt, char *str);
 int					ft_sphere(t_rtv1 *rt, char *str);
 int					ft_lights(t_rtv1 *rt, char *str);
+int					ft_cam(t_rtv1 *rt, char *str);
 
 #endif

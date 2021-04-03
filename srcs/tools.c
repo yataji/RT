@@ -23,9 +23,9 @@ double		checkt(t_math calc)
 		return (-calc.b / (2 * calc.a));
 	t1 = (-calc.b - sqrtf(calc.delta)) / (2 * calc.a);
 	t2 = (-calc.b + sqrtf(calc.delta)) / (2 * calc.a);
-	if (t1 < t2 && t1 > 0)
+	if (t1 < t2 && t1 > 0.0001)
 		return (t1);
-	else if (t2 > 0)
+	else if (t2 > 0.0001)
 		return (t2);
 	return (-1);
 }

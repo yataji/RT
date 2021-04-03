@@ -12,6 +12,17 @@
 
 #include "rtv1.h"
 
+int			ft_cam(t_rtv1 *rt, char *str)
+{
+	rt->ck = 1;
+	rt->tmpc = initcam();
+	if (camera(rt->tmpc, str, rt->fd) == -1)
+		return (-1);
+	rt->tmpc->next = rt->cam;
+	rt->cam = rt->tmpc;
+	return (0);
+}
+
 int			stockcamera(t_cam *cam, char *str)
 {
 	char	**value;

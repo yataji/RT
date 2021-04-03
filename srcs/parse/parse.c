@@ -43,15 +43,12 @@ int				parse(t_rtv1 *rt)
 {
 	char		*str;
 
-	rt->ck[0] = 0;
-	rt->ck[1] = 0;
 	while (rt->fd > 2 && get_next_line(rt->fd, &str) > 0)
 	{
-		if (rt->ck[0] == 0 && ft_strcmp(str, "camera:") == 0)
+		if (ft_strcmp(str, "camera:") == 0)
 		{
-			if (camera(&rt->cam, str, rt->fd) == -1)
+			if (ft_cam(rt, str) == -1)
 				return (-1);
-			rt->ck[0]++;
 		}
 		else if (ft_strcmp(str, "lights:") == 0)
 		{

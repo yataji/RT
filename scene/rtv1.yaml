@@ -1,11 +1,23 @@
 lights:
  intensity: 100
- color: 255:0:0
+ color: 255:255:255
  pos: 30:0:170
 camera:
  lokfrm: 0:0:170
  lokat: 0:0:0
- fov: 60
+ fov: 060
+camera:
+ lokfrm: 0:0:170
+ lokat: 0:0:0
+ fov: 080
+camera:
+ lokfrm: 100:0:170
+ lokat: 0:0:0
+ fov: 090
+camera:
+ lokfrm: 100:0:170
+ lokat: 0:0:0
+ fov: 120
 sphere:
  center: -30:-30:70
  color: 99:100:165

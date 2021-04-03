@@ -20,6 +20,7 @@ int			main(int ac, char **av)
 		return (0);
 	rt.obj = NULL;
 	rt.lights = NULL;
+	rt.cam = NULL;
 	if (parse(&rt) == -1)
 	{
 		ft_putendl("error parsing");

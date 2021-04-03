@@ -43,3 +43,21 @@ t_lights		*initlights(void)
 	new->next = NULL;
 	return (new);
 }
+
+t_cam			*initcam(void)
+{
+	t_cam	*new;
+
+	if (!(new = (t_cam *)malloc(sizeof(t_cam))))
+		return (NULL);
+	new->lokat = (t_point){0, 0, 0};
+	new->lokfrm = (t_point){0, 0, 0};
+	new->v = (t_point){0, 1, 0};
+	new->u = (t_point){0, 0, 0};
+	new->w = (t_point){0, 0, 0};
+	new->fov = 0;
+	new->plnw = 0;
+	new->plnh = 0;
+	new->next = NULL;
+	return (new);
+}

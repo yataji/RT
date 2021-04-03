@@ -22,14 +22,15 @@ static int		shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 
 	tmp = rt->obj;
 	shadow_r.org = lights->pos;
-	dirvect = moins(rt->ray.hit, lights->pos); 
+	dirvect = moins(rt->ray.hit, lights->pos);
 	dist = dot(dirvect, dirvect);
 	shadow_r.dir = normalize(dirvect);
 	while (tmp)
 	{
 		if (tmp != close && ((v.near = intersect(tmp, shadow_r) + 0.01) > 0))
 		{
-			if (dot(multi(shadow_r.dir, v.near), multi(shadow_r.dir, v.near)) < dist)
+			if (dot(multi(shadow_r.dir, v.near),
+					multi(shadow_r.dir, v.near)) < dist)
 				return (0);
 		}
 		tmp = tmp->next;
@@ -107,7 +108,6 @@ static void		draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
 void			draw(t_rtv1 rt)
 {
 	t_obj		*close;
-	t_obj		*tmp;
 	t_var		v;
 
 	v.x = -1;
@@ -117,11 +117,11 @@ void			draw(t_rtv1 rt)
 		v.y = -1;
 		while (++v.y < MAXHEIGHT)
 		{
-			rt.ray = initray(rt, v.x, v.y);
-			tmp = rt.obj;
+			rt.ray = initray(rt.tmpc, v.x, v.y);
+			rt.tmpo = rt.obj;
 			close = NULL;
 			v.near = -1;
-			draw2(v, close, rt, tmp);
+			draw2(v, close, rt, rt.tmpo);
 		}
 	}
 }
