@@ -12,9 +12,11 @@ camera:
  fov: 60
 sphere:
  center: 0:10:0
+ trs: 0:0:0
  color: 99:100:165
  radius: 10
 sphere:
  center: 0:25:-30
+ trs: 0:0:0
  color: 99:100:165
  radius: 10

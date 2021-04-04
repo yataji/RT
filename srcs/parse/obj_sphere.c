@@ -35,6 +35,8 @@ int			stocksphere(t_obj *obj, char *str)
 		obj->color = stk(value);
 	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], " radius") == 0)
 		obj->radius = ft_atoi(value[1]);
+	else if (ft_strcmp(value[0], " trs") == 0)
+		obj->trs = stk(value);
 	ft_strdel(value);
 	return (1);
 }
@@ -42,23 +44,28 @@ int			stocksphere(t_obj *obj, char *str)
 int			sphere(t_obj *obj, char *str, int fd)
 {
 	int		l;
+	int		check;
 
 	l = 0;
-	while (l < 3)
+	while (l < 4)
 	{
+		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		if (ck(str, " center: ", 9) > 0)
-			stocksphere(obj, str);
+			check = stocksphere(obj, str);
 		else if (ck(str, " color: ", 8) > 0)
-			stocksphere(obj, str);
+			check = stocksphere(obj, str);
 		else if (ck(str, " radius: ", 9) > 0)
-			stocksphere(obj, str);
+			check = stocksphere(obj, str);
+		else if (ck(str, " trs: ", 6) > 0)
+			check = stocksphere(obj, str);
 		else
 			return (-1);
 		obj->type = SPHERE;
 		ft_strdel(&str);
 		l++;
 	}
+	obj->center = plus(obj->center, obj->trs);
 	return (1);
 }

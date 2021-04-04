@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/03 00:34:52 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/04 15:42:53 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include "mlx.h"
-// # include "../minilibx_macos/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -56,6 +55,7 @@ typedef struct		s_obj
 	t_vect			normal;
 	t_color			color;
 	t_rot			rot;
+	t_point			trs;
 	t_point			center;
 	struct s_obj	*next;
 }					t_obj;
@@ -144,7 +144,7 @@ int					ft_exit(t_rtv1 *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);
 void				initcamera(t_cam *cam);
 void				draw(t_rtv1 rt);
-void				ft_free(t_obj **obj, t_lights **lights);
+void				ft_free(t_obj **obj, t_lights **lights, t_cam **cam);
 t_vect				plus(t_vect v1, t_vect v2);
 t_vect				moins(t_vect v1, t_vect v2);
 t_vect				multi(t_vect v1, double v2);

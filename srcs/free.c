@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:14:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/27 11:19:20 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/04 15:44:32 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_free(t_obj **obj, t_lights **lights)
+void	ft_free(t_obj **obj, t_lights **lights, t_cam **cam)
 {
 	t_obj		*tmpo;
 	t_lights	*tmpl;
+	t_cam		*tmpc;
 
 	while ((*obj))
 	{
@@ -31,6 +32,13 @@ void	ft_free(t_obj **obj, t_lights **lights)
 		(*lights) = NULL;
 		(*lights) = tmpl;
 	}
+	while ((*cam))
+	{
+		tmpc = (*cam)->next;
+		free((*cam));
+		(*cam) = NULL;
+		(*cam) = tmpc;
+	}
 }
 
 int		ft_exit(t_rtv1 *rt)
@@ -38,7 +46,7 @@ int		ft_exit(t_rtv1 *rt)
 	mlx_clear_window(rt->mlx.ptr, rt->mlx.win_ptr);
 	mlx_destroy_window(rt->mlx.ptr, rt->mlx.win_ptr);
 	mlx_destroy_image(rt->mlx.ptr, rt->mlx.img_ptr);
-	ft_free(&rt->obj, &rt->lights);
+	ft_free(&rt->obj, &rt->lights, &rt->cam);
 	exit(0);
 	return (0);
 }

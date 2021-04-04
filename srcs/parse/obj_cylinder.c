@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 16:23:00 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/30 15:08:47 by yataji           ###   ########.fr       */
+/*   Created: 2021/03/08 16:23:00 by jiqarbac          #+#    #+#             */
+/*   Updated: 2021/04/04 15:59:59 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int			stockcylinder(t_obj *obj, char *str)
 		obj->v = stk(value);
 	else if (ft_strcmp(value[0], " rot") == 0)
 		obj->rot = stk(value);
+	else if (ft_strcmp(value[0], " trs") == 0)
+		obj->trs = stk(value);
 	ft_strdel(value);
 	return (1);
 }
@@ -49,25 +51,24 @@ int			cylinder(t_obj *obj, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 5)
+	while (++l < 6)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (ck(str, " center: ", 9) > 0)
+		if (ck(str, " center: ", 9) > 0 || ck(str, " radius: ", 9) > 0)
 			check = stockcylinder(obj, str);
 		else if (ck(str, " color: ", 8) > 0)
 			check = stockcylinder(obj, str);
-		else if (ck(str, " radius: ", 9) > 0)
-			check = stockcylinder(obj, str);
 		else if (ck(str, " axis: ", 7) > 0)
 			check = stockcylinder(obj, str);
-		else if (ck(str, " rot: ", 6) > 0)
+		else if (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0)
 			check = stockcylinder(obj, str);
 		if (check == -1)
 			return (-1);
 		obj->type = CYLINDER;
 		ft_strdel(&str);
 	}
+	obj->center = plus(obj->center, obj->trs);
 	return (1);
 }

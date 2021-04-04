@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/03/31 18:51:21 by yataji           ###   ########.fr        #
+#    Updated: 2021/04/04 12:12:10 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ OBJS = $(OBJSRC) $(OBJPARSE)
 FLG  = -Wall -Wextra -Werror
 INC  = includes/
 INCS = includes/rtv1.h
-MINI = minilibx_macos/libmlx.a
 
 all: $(NAME)
 

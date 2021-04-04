@@ -8,9 +8,11 @@ lights:
  pos: 0:0:100
 sphere:
  center: 0:0:0
+ trs: 0:0:0
  radius: 15
  color: 0:0:255
 sphere:
- center: 0:0:0
+ center: 0:0:40
+ trs: 0:0:0
  radius: 15
  color: 255:0:0

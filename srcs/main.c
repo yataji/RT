@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/27 11:46:54 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/04 15:43:18 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			main(int ac, char **av)
 	if (parse(&rt) == -1)
 	{
 		ft_putendl("error parsing");
-		ft_free(&rt.obj, &rt.lights);
+		ft_free(&rt.obj, &rt.lights, &rt.cam);
 		return (0);
 	}
 	rt.mlx = init();

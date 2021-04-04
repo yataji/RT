@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/03/30 14:45:59 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/04 15:50:07 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int				parse_objs(t_rtv1 *rt, char *str)
 	}
 	else
 		return (-1);
+	rt->obj->center = plus(rt->obj->center, rt->obj->trs);
 	return (1);
 }
 

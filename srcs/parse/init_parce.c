@@ -25,6 +25,7 @@ t_obj			*initobj(void)
 	new->normal = (t_vect){0, 0, 0};
 	new->color = (t_color){0, 0, 0};
 	new->center = (t_point){0, 0, 0};
+	new->trs = (t_point){0, 0, 0};
 	new->rot = (t_rot){0, 0, 0};
 	new->angle = 0;
 	new->next = NULL;
