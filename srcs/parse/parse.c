@@ -36,6 +36,7 @@ int				parse_objs(t_rtv1 *rt, char *str)
 	}
 	else
 		return (-1);
+	rt->obj->center = plus(rt->obj->center, rt->obj->trs);
 	return (1);
 }
 

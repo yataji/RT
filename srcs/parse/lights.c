@@ -32,6 +32,7 @@ int			stocklights(t_lights *lights, char *str)
 	if (ft_strlend(value) == 2 && ft_strcmp(value[0], " intensity") == 0)
 	{
 		lights->intensity = ft_atoi(value[1]);
+		lights->intensity = lights->intensity < 0 ? 0 : lights->intensity;
 		lights->intensity = lights->intensity > 100 ? 100 : lights->intensity;
 	}
 	else if (ft_strcmp(value[0], " color") == 0)
