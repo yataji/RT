@@ -26,23 +26,30 @@ int	ft_cam(t_rtv1 *rt, char *str)
 int	stockcamera(t_cam *cam, char *str)
 {
 	char	**value;
+	int		ck;
 
 	value = ft_strsplit(str, ':');
-	if (ft_lendd(value) != 4 && ft_lendd(value) != 2)
+	ck = ft_lendd(value);
+	if (ck != 4 && ck != 2)
 		return (-1);
-	if (ft_strcmp(value[0], " lokat") == 0)
+	if (ck == 4 && ft_strcmp(value[0], " lokat") == 0)
 		cam->lokat = stk(value);
-	else if (ft_strcmp(value[0], " lokfrm") == 0)
+	else if (ck == 4 && ft_strcmp(value[0], " lokfrm") == 0)
 		cam->lokfrm = stk(value);
-	else if (ft_lendd(value) == 2 && ft_strcmp(value[0], " fov") == 0)
+	else if (ck == 2 && ft_strcmp(value[0], " fov") == 0)
 		cam->fov = ft_atoi(value[1]);
-	ft_strdel(value);
+	else
+	{
+		ft_strdel(value);
+		return (-1);
+	}
 	return (1);
 }
 
 int	camera(t_cam *cam, char *str, int fd)
 {
 	int		l;
+	int		check;
 
 	l = 0;
 	while (l < 3)
@@ -51,12 +58,12 @@ int	camera(t_cam *cam, char *str, int fd)
 			return (-1);
 		l++;
 		if (str && ck(str, " lokat: ", 8) > 0)
-			stockcamera(cam, str);
+			check = stockcamera(cam, str);
 		else if (str && ck(str, " lokfrm: ", 9) > 0)
-			stockcamera(cam, str);
+			check = stockcamera(cam, str);
 		else if (str && ck(str, " fov: ", 6) > 0)
-			stockcamera(cam, str);
-		else
+			check = stockcamera(cam, str);
+		if (check == -1)
 			return (-1);
 		ft_strdel(&str);
 	}

@@ -25,21 +25,27 @@ int	ft_plane(t_rtv1 *rt, char *str)
 int	stockplane(t_obj *obj, char *str)
 {
 	char	**value;
+	int		ck;
 
 	value = ft_strsplit(str, ':');
-	if (ft_lendd(value) != 4)
+	ck = ft_lendd(value);
+	if (ck != 4)
 		return (-1);
-	else if (ft_strcmp(value[0], " center") == 0)
+	else if (ck == 4 && ft_strcmp(value[0], " center") == 0)
 		obj->center = stk(value);
-	else if (ft_strcmp(value[0], " color") == 0)
-		obj->color = stk(value);
-	else if (ft_strcmp(value[0], " axis") == 0)
+	else if (ck == 4 && ft_strcmp(value[0], " color") == 0)
+		obj->color = checkcolorvalue(value);
+	else if (ck == 4 && ft_strcmp(value[0], " axis") == 0)
 		obj->v = stk(value);
-	else if (ft_strcmp(value[0], " rot") == 0)
+	else if (ck == 4 && ft_strcmp(value[0], " rot") == 0)
 		obj->rot = stk(value);
-	else if (ft_strcmp(value[0], " trs") == 0)
+	else if (ck == 4 && ft_strcmp(value[0], " trs") == 0)
 		obj->trs = stk(value);
-	ft_strdel(value);
+	else
+	{
+		ft_strdel(value);
+		return (-1);
+	}
 	return (1);
 }
 
@@ -62,7 +68,7 @@ int	plane(t_obj *obj, char *str, int fd)
 			check = stockplane(obj, str);
 		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
 			check = stockplane(obj, str);
-		else
+		if (check == -1)
 			return (-1);
 		obj->type = PLAN;
 		ft_strdel(&str);

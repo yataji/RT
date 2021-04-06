@@ -161,6 +161,7 @@ t_obj				*initobj(void);
 t_cam				*initcam(void);
 t_vect				stk(char **value);
 size_t				ft_strlend(char **s);
+t_color				checkcolorvalue(char **value);
 int					parse(t_rtv1*rt);
 int					sphere(t_obj *obj, char *str, int fd);
 int					plane(t_obj *obj, char *str, int fd);

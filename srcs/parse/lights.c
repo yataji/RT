@@ -25,28 +25,35 @@ int	ft_lights(t_rtv1 *rt, char *str)
 int	stocklights(t_lights *lights, char *str)
 {
 	char	**value;
+	int		ck;
 
 	value = ft_strsplit(str, ':');
-	if (ft_lendd(value) != 4 && ft_lendd(value) != 2)
+	ck = ft_lendd(value);
+	if (ck != 4 && ck != 2)
 		return (-1);
-	if (ft_lendd(value) == 2 && ft_strcmp(value[0], " intensity") == 0)
+	if (ck == 2 && ft_strcmp(value[0], " intensity") == 0)
 	{
 		lights->intensity = ft_atoi(value[1]);
 		if (lights->intensity < 0)
 			lights->intensity = 0;
 		lights->intensity = max(lights->intensity, 100);
 	}
-	else if (ft_strcmp(value[0], " color") == 0)
-		lights->color = stk(value);
-	else if (ft_strcmp(value[0], " pos") == 0)
+	else if (ck == 4 && ft_strcmp(value[0], " color") == 0)
+		lights->color = checkcolorvalue(value);
+	else if (ck == 4 && ft_strcmp(value[0], " pos") == 0)
 		lights->pos = stk(value);
-	ft_strdel(value);
+	else
+	{
+		ft_strdel(value);
+		return (-1);
+	}
 	return (1);
 }
 
 int	lights(t_lights *lights, char *str, int fd)
 {
 	int		l;
+	int		check;
 
 	l = 0;
 	while (l < 3)
@@ -55,12 +62,12 @@ int	lights(t_lights *lights, char *str, int fd)
 			return (-1);
 		l++;
 		if (str && ck(str, " intensity: ", 12) > 0)
-			stocklights(lights, str);
+			check = stocklights(lights, str);
 		else if (str && ck(str, " color: ", 8) > 0)
-			stocklights(lights, str);
+			check = stocklights(lights, str);
 		else if (str && ck(str, " pos: ", 6) > 0)
-			stocklights(lights, str);
-		else
+			check = stocklights(lights, str);
+		if (check == -1)
 			return (-1);
 		ft_strdel(&str);
 	}

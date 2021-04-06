@@ -12,14 +12,18 @@
 
 #include "rtv1.h"
 
-size_t	ft_strlend(char **s)
+t_color	checkcolorvalue(char **value)
 {
-	size_t	i;
+	t_color	abs;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	abs = stk(value);
+	if (abs.x < 0)
+		abs.x = 0;
+	if (abs.y < 0)
+		abs.y = 0;
+	if (abs.z < 0)
+		abs.z = 0;
+	return (abs);
 }
 
 int	ck(char *s, char *check, int l)
