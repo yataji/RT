@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int a;
-	int b;
-	int c;
+	int	a;
+	int	b;
+	int	c;
 
 	a = 0;
 	b = 0;
 	c = 0;
 	while (str[a] == '\n' || str[a] == ' ' || str[a] == '\t' || str[a] == '\r'
-			|| str[a] == '\f' || str[a] == '\v')
+		|| str[a] == '\f' || str[a] == '\v')
 		a++;
 	if (str[a] == '-')
 		b = 1;

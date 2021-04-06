@@ -41,7 +41,7 @@ void	ft_free(t_obj **obj, t_lights **lights, t_cam **cam)
 	}
 }
 
-int		ft_exit(t_rtv1 *rt)
+int	ft_exit(t_rtv1 *rt)
 {
 	mlx_clear_window(rt->mlx.ptr, rt->mlx.win_ptr);
 	mlx_destroy_window(rt->mlx.ptr, rt->mlx.win_ptr);

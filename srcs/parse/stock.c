@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_vect		stk(char **value)
+t_vect	stk(char **value)
 {
 	t_vect	new;
 

@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_ray		initray(t_cam *cam, int x, int y)
+t_ray	initray(t_cam *cam, int x, int y)
 {
 	t_ray	ray;
 	double	py;
@@ -26,7 +26,7 @@ t_ray		initray(t_cam *cam, int x, int y)
 	return (ray);
 }
 
-void		initcamera(t_cam *cam)
+void	initcamera(t_cam *cam)
 {
 	double	dot1;
 

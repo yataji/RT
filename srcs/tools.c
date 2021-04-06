@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		checkt(t_math calc)
+double	checkt(t_math calc)
 {
 	double	t1;
 	double	t2;
@@ -30,7 +30,7 @@ double		checkt(t_math calc)
 	return (-1);
 }
 
-double		intersect(t_obj *object, t_ray ray)
+double	intersect(t_obj *object, t_ray ray)
 {
 	if (object->type == CYLINDER)
 		return (cyldintr(object, ray));
@@ -43,7 +43,7 @@ double		intersect(t_obj *object, t_ray ray)
 	return (-1);
 }
 
-t_vect		normalize(t_vect v2)
+t_vect	normalize(t_vect v2)
 {
 	double	v;
 	t_vect	v1;
@@ -55,7 +55,7 @@ t_vect		normalize(t_vect v2)
 	return (v1);
 }
 
-void		setnormal(t_obj *close, t_ray *ray, double t)
+void	setnormal(t_obj *close, t_ray *ray, double t)
 {
 	if (close->type == SPHERE)
 		close->normal = normsphr(ray, close, t);

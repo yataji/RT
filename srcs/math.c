@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_vect		plus(t_vect v1, t_vect v2)
+t_vect	plus(t_vect v1, t_vect v2)
 {
 	t_vect	vctpls;
 
@@ -22,7 +22,7 @@ t_vect		plus(t_vect v1, t_vect v2)
 	return (vctpls);
 }
 
-t_vect		multivect(t_vect v1, t_vect v2)
+t_vect	multivect(t_vect v1, t_vect v2)
 {
 	t_vect	vctvect;
 
@@ -32,12 +32,12 @@ t_vect		multivect(t_vect v1, t_vect v2)
 	return (vctvect);
 }
 
-double		dot(t_vect a, t_vect b)
+double	dot(t_vect a, t_vect b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-t_vect		moins(t_vect v1, t_vect v2)
+t_vect	moins(t_vect v1, t_vect v2)
 {
 	t_vect	vctmns;
 
@@ -47,7 +47,7 @@ t_vect		moins(t_vect v1, t_vect v2)
 	return (vctmns);
 }
 
-t_vect		crosspro(t_vect v1, t_vect v2)
+t_vect	crosspro(t_vect v1, t_vect v2)
 {
 	t_vect	ret;
 

@@ -18,7 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	if (src < dst)
 	{
-		if ((d1 = (char *)malloc(sizeof(char) * (len))))
+		d1 = (char *)malloc(sizeof(char) * (len));
+		if (d1)
 		{
 			ft_memcpy((void *)d1, src, len);
 			ft_memcpy(dst, (void *)d1, len);

@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_mlx		init(void)
+t_mlx	init(void)
 {
 	t_mlx	mlx;
 
@@ -20,6 +20,6 @@ t_mlx		init(void)
 	mlx.win_ptr = mlx_new_window(mlx.ptr, MAXWIDTH, MAXHEIGHT, "rtv1");
 	mlx.img_ptr = mlx_new_image(mlx.ptr, MAXWIDTH, MAXHEIGHT);
 	mlx.dtadd = (int *)mlx_get_data_addr(mlx.img_ptr, &mlx.bpp, &mlx.szln,
-				&mlx.end);
+			&mlx.end);
 	return (mlx);
 }

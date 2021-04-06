@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_lendd(char **str)
+#include "libft.h"
+
+int	ft_lendd(char **str)
 {
 	int		i;
 

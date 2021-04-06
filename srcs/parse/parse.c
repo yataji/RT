@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int				parse_objs(t_rtv1 *rt, char *str)
+int	parse_objs(t_rtv1 *rt, char *str)
 {
 	if (ft_strcmp(str, "sphere:") == 0)
 	{
@@ -40,7 +40,7 @@ int				parse_objs(t_rtv1 *rt, char *str)
 	return (1);
 }
 
-int				parse(t_rtv1 *rt)
+int	parse(t_rtv1 *rt)
 {
 	char		*str;
 

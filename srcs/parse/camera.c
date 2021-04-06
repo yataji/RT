@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int			ft_cam(t_rtv1 *rt, char *str)
+int	ft_cam(t_rtv1 *rt, char *str)
 {
 	rt->ck = 1;
 	rt->tmpc = initcam();
@@ -23,24 +23,24 @@ int			ft_cam(t_rtv1 *rt, char *str)
 	return (0);
 }
 
-int			stockcamera(t_cam *cam, char *str)
+int	stockcamera(t_cam *cam, char *str)
 {
 	char	**value;
 
 	value = ft_strsplit(str, ':');
-	if (ft_strlend(value) != 4 && ft_strlend(value) != 2)
+	if (ft_lendd(value) != 4 && ft_lendd(value) != 2)
 		return (-1);
 	if (ft_strcmp(value[0], " lokat") == 0)
 		cam->lokat = stk(value);
 	else if (ft_strcmp(value[0], " lokfrm") == 0)
 		cam->lokfrm = stk(value);
-	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], " fov") == 0)
+	else if (ft_lendd(value) == 2 && ft_strcmp(value[0], " fov") == 0)
 		cam->fov = ft_atoi(value[1]);
 	ft_strdel(value);
 	return (1);
 }
 
-int			camera(t_cam *cam, char *str, int fd)
+int	camera(t_cam *cam, char *str, int fd)
 {
 	int		l;
 

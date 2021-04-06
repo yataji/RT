@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-static int		shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
+static int	shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 {
 	t_obj		*tmp;
 	t_var		v;
@@ -27,7 +27,8 @@ static int		shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 	shadow_r.dir = normalize(dirvect);
 	while (tmp)
 	{
-		if (tmp != close && ((v.near = intersect(tmp, shadow_r) + 0.01) > 0))
+		v.near = intersect(tmp, shadow_r) + 0.01;
+		if (tmp != close && v.near > 0)
 		{
 			if (dot(multi(shadow_r.dir, v.near),
 					multi(shadow_r.dir, v.near)) < dist)
@@ -54,13 +55,14 @@ static t_color	diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights)
 		c = multi_color(c, dot1 * lights->intensity / 100.0);
 	}
 	reflect = normalize(moins(lightdir, multi(close->normal, 2 * dot1)));
-	if ((dot1 = dot(reflect, normalize(moins(rt->ray.hit, rt->ray.org)))) > 0)
-		c = add_color(c, multi_color(lights->color, powf(dot1, 100)\
-						* lights->intensity / 100.0));
+	dot1 = dot(reflect, normalize(moins(rt->ray.hit, rt->ray.org)));
+	if (dot1 > 0)
+		c = add_color(c, multi_color(lights->color, powf(dot1, 100)
+					* lights->intensity / 100.0));
 	return (c);
 }
 
-static int		color(t_rtv1 *rt, t_obj *close, t_lights *lights)
+static int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 {
 	t_color		c;
 	t_color		ret;
@@ -73,7 +75,10 @@ static int		color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	while (rt->tmpl)
 	{
 		shad = shadow(rt, rt->tmpl, close);
-		c = shad ? diffuspclr(rt, close, rt->tmpl) : (t_color){0, 0, 0};
+		if (shad)
+			c = diffuspclr(rt, close, rt->tmpl);
+		else
+			c = (t_color){0, 0, 0};
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
@@ -84,12 +89,13 @@ static int		color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	return (rt->color);
 }
 
-static void		draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
+static void	draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
 {
 	while (tmp)
 	{
-		if ((v.t = intersect(tmp, rt.ray)) > 0 &&
-			((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0)))
+		v.t = intersect(tmp, rt.ray);
+		if (v.t > 0 && ((v.t < v.near && v.t > 0)
+				|| (v.t > v.near && v.near < 0)))
 		{
 			close = tmp;
 			v.near = v.t;
@@ -105,7 +111,7 @@ static void		draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmp)
 		rt.mlx.dtadd[v.x + v.y * MAXWIDTH] = 0;
 }
 
-void			draw(t_rtv1 rt)
+void	draw(t_rtv1 rt)
 {
 	t_obj		*close;
 	t_var		v;

@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int			keypress(int key, void *param)
+int	keypress(int key, void *param)
 {
 	t_rtv1	*rt;
 
@@ -30,8 +30,9 @@ int			keypress(int key, void *param)
 		mlx_clear_window(rt->mlx.img_ptr, rt->mlx.win_ptr);
 		draw(*rt);
 		mlx_put_image_to_window(rt->mlx.ptr, rt->mlx.win_ptr,
-						rt->mlx.img_ptr, 0, 0);
+			rt->mlx.img_ptr, 0, 0);
 	}
-	key == 53 ? ft_exit(rt) : 0;
+	if (key == 53)
+		ft_exit(rt);
 	return (0);
 }

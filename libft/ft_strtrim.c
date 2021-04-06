@@ -28,7 +28,8 @@ char	*ft_strtrim(char const *s)
 			i++;
 		while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && (j > i))
 			j--;
-		if ((str = (char *)malloc(sizeof(char) * (j - i + 2))))
+		str = (char *)malloc(sizeof(char) * (j - i + 2));
+		if (str)
 		{
 			while (i <= j && s[i])
 				str[l++] = s[i++];

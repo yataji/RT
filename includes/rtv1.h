@@ -13,9 +13,10 @@
 #ifndef RTV1_H
 # define RTV1_H
 
-# include "../libft/libft.h"
 # include "mlx.h"
+# include "../libft/libft.h"
 # include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
@@ -27,7 +28,7 @@
 # define CONE 2
 # define PLAN 3
 
-typedef struct		s_var
+typedef struct s_var
 {
 	int				x;
 	int				y;
@@ -35,7 +36,7 @@ typedef struct		s_var
 	double			near;
 }					t_var;
 
-typedef struct		s_vect
+typedef struct s_vect
 {
 	double			x;
 	double			y;
@@ -46,7 +47,7 @@ typedef t_vect		t_point;
 typedef t_vect		t_color;
 typedef t_vect		t_rot;
 
-typedef struct		s_obj
+typedef struct s_obj
 {
 	int				type;
 	double			angle;
@@ -60,14 +61,14 @@ typedef struct		s_obj
 	struct s_obj	*next;
 }					t_obj;
 
-typedef struct		s_ray
+typedef struct s_ray
 {
 	t_point			org;
 	t_vect			dir;
 	t_vect			hit;
 }					t_ray;
 
-typedef struct		s_math
+typedef struct s_math
 {
 	double			a;
 	double			b;
@@ -75,7 +76,7 @@ typedef struct		s_math
 	double			delta;
 }					t_math;
 
-typedef struct		s_mlx
+typedef struct s_mlx
 {
 	void			*ptr;
 	void			*win_ptr;
@@ -86,7 +87,7 @@ typedef struct		s_mlx
 	int				end;
 }					t_mlx;
 
-typedef struct		s_cam
+typedef struct s_cam
 {
 	t_point			lokat;
 	t_point			lokfrm;
@@ -99,7 +100,7 @@ typedef struct		s_cam
 	struct s_cam	*next;
 }					t_cam;
 
-typedef struct		s_lights
+typedef struct s_lights
 {
 	double			intensity;
 	t_color			color;
@@ -107,7 +108,7 @@ typedef struct		s_lights
 	struct s_lights	*next;
 }					t_lights;
 
-typedef struct		s_rtv1
+typedef struct s_rtv1
 {
 	t_mlx			mlx;
 	t_obj			*obj;
@@ -130,7 +131,8 @@ t_color				multi_tcolor(t_color c1, t_color c2);
 t_color				add_color(t_color c1, t_color c2);
 t_vect				rotation_xyz(t_vect v, t_vect a);
 t_ray				initray(t_cam *cam, int x, int y);
-t_mlx				init();
+t_mlx				init(void);
+double				max(double v1, double v2);
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
 double				checkt(t_math calc);

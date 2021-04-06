@@ -23,7 +23,7 @@ all: $(NAME)
 %.o : %.c $(INCS)
 	@gcc $(FLG) -o $@ -c $< -I $(INC)
 	
-$(NAME): $(OBJS) 
+$(NAME): $(OBJS)
 	@make -s -C libft
 	@gcc $(FLG) libft/libft.a $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"

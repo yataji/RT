@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		base_len(char *base)
+static int	base_len(char *base)
 {
 	int		len_base;
 	int		j;
@@ -36,7 +36,7 @@ static int		base_len(char *base)
 	return (len_base);
 }
 
-static int		check_base_str(char *str, char *base)
+static int	check_base_str(char *str, char *base)
 {
 	int		i;
 	int		j;
@@ -44,14 +44,14 @@ static int		check_base_str(char *str, char *base)
 
 	start = 0;
 	while (str && (str[start] != '\0' && (str[start] == ' '
-					|| str[start] == '\t' || str[start] == '\n')))
+				|| str[start] == '\t' || str[start] == '\n')))
 		start++;
 	i = start;
 	while (str && str[i])
 	{
 		j = 0;
-		while (base[j] && (str[i] != base[j] ||
-					(str[i] == '-' || str[i] == '+')))
+		while (base[j] && (str[i] != base[j]
+				|| (str[i] == '-' || str[i] == '+')))
 			++j;
 		if (str[i] != base[j] && str[i] != '-' && str[i] != '+')
 			return (0);
@@ -62,7 +62,7 @@ static int		check_base_str(char *str, char *base)
 	return (1);
 }
 
-static int		get_from_base(char c, char *base)
+static int	get_from_base(char c, char *base)
 {
 	int		i;
 
@@ -72,7 +72,7 @@ static int		get_from_base(char c, char *base)
 	return (i);
 }
 
-int				ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int		s;
 	int		i;
@@ -80,17 +80,18 @@ int				ft_atoi_base(char *str, char *base)
 	int		signe;
 	int		len_base;
 
-	if (!(len_base = base_len(base)) || !check_base_str(str, base))
+	len_base = base_len(base);
+	if (!(len_base) || !check_base_str(str, base))
 		return (0);
 	s = 0;
-	while (str[s] != '\0' && (str[s] == ' ' ||
-				str[s] == '\t' || str[s] == '\n'))
+	while (str[s] != '\0' && (str[s] == ' '
+			|| str[s] == '\t' || str[s] == '\n'))
 		s++;
 	i = s - 1;
 	res = 0;
 	signe = 1;
-	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s) ||
-				(str[i] != '-' && str[i] != '+')))
+	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s)
+			|| (str[i] != '-' && str[i] != '+')))
 	{
 		if (str[i] == '-')
 			signe = -1;

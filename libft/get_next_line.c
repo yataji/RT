@@ -34,9 +34,9 @@ char	*get_rest(char *str)
 	return (rest);
 }
 
-int		get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static char *str[MAX_FD];
+	static char	*str[MAX_FD];
 	char		buff[BUFF_SIZE + 1];
 	char		*tmp;
 	int			red;
@@ -45,7 +45,8 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	if (!str[fd])
 		str[fd] = ft_strnew(0);
-	while (!ft_strchr(str[fd], '\n') && (red = read(fd, buff, BUFF_SIZE)) > 0)
+	red = read(fd, buff, BUFF_SIZE);
+	while (!ft_strchr(str[fd], '\n') && red > 0)
 	{
 		buff[red] = '\0';
 		tmp = str[fd];

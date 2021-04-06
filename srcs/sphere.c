@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		sphrintr(t_obj *sphere, t_ray ray)
+double	sphrintr(t_obj *sphere, t_ray ray)
 {
 	t_vect	oc;
 	t_math	calc;
@@ -25,7 +25,7 @@ double		sphrintr(t_obj *sphere, t_ray ray)
 	return (checkt(calc));
 }
 
-t_vect		normsphr(t_ray *ray, t_obj *obj, double t)
+t_vect	normsphr(t_ray *ray, t_obj *obj, double t)
 {
 	t_vect	norm;
 

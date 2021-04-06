@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int			ft_lights(t_rtv1 *rt, char *str)
+int	ft_lights(t_rtv1 *rt, char *str)
 {
 	rt->tmpl = initlights();
 	if (lights(rt->tmpl, str, rt->fd) == -1)
@@ -22,18 +22,19 @@ int			ft_lights(t_rtv1 *rt, char *str)
 	return (0);
 }
 
-int			stocklights(t_lights *lights, char *str)
+int	stocklights(t_lights *lights, char *str)
 {
 	char	**value;
 
 	value = ft_strsplit(str, ':');
-	if (ft_strlend(value) != 4 && ft_strlend(value) != 2)
+	if (ft_lendd(value) != 4 && ft_lendd(value) != 2)
 		return (-1);
-	if (ft_strlend(value) == 2 && ft_strcmp(value[0], " intensity") == 0)
+	if (ft_lendd(value) == 2 && ft_strcmp(value[0], " intensity") == 0)
 	{
 		lights->intensity = ft_atoi(value[1]);
-		lights->intensity = lights->intensity < 0 ? 0 : lights->intensity;
-		lights->intensity = lights->intensity > 100 ? 100 : lights->intensity;
+		if (lights->intensity < 0)
+			lights->intensity = 0;
+		lights->intensity = max(lights->intensity, 100);
 	}
 	else if (ft_strcmp(value[0], " color") == 0)
 		lights->color = stk(value);
@@ -43,7 +44,7 @@ int			stocklights(t_lights *lights, char *str)
 	return (1);
 }
 
-int			lights(t_lights *lights, char *str, int fd)
+int	lights(t_lights *lights, char *str, int fd)
 {
 	int		l;
 

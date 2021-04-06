@@ -12,49 +12,56 @@
 
 #include "rtv1.h"
 
-t_color		add_color(t_color c1, t_color c2)
+double	max(double v1, double v2)
+{
+	if (v1 > v2)
+		return (v2);
+	return (v1);
+}
+
+t_color	add_color(t_color c1, t_color c2)
 {
 	t_color	ret;
 	double	tmp;
 
 	tmp = c1.x + c2.x;
-	ret.x = tmp > 255 ? 255 : tmp;
+	ret.x = max(tmp, 255);
 	tmp = c1.y + c2.y;
-	ret.y = tmp > 255 ? 255 : tmp;
+	ret.y = max(tmp, 255);
 	tmp = c1.z + c2.z;
-	ret.z = tmp > 255 ? 255 : tmp;
+	ret.z = max(tmp, 255);
 	return (ret);
 }
 
-t_color		multi_tcolor(t_color c1, t_color c2)
+t_color	multi_tcolor(t_color c1, t_color c2)
 {
 	t_color	ret;
 	double	tmp;
 
 	tmp = c1.x * c2.x;
-	ret.x = tmp > 255 ? 255 : tmp;
+	ret.x = max(tmp, 255);
 	tmp = c1.y * c2.y;
-	ret.y = tmp > 255 ? 255 : tmp;
+	ret.y = max(tmp, 255);
 	tmp = c1.z * c2.z;
-	ret.z = tmp > 255 ? 255 : tmp;
+	ret.z = max(tmp, 255);
 	return (ret);
 }
 
-t_color		multi_color(t_color c1, double scal)
+t_color	multi_color(t_color c1, double scal)
 {
 	t_color	ret;
 	double	tmp;
 
 	tmp = c1.x * scal;
-	ret.x = tmp > 255 ? 255 : tmp;
+	ret.x = max(tmp, 255);
 	tmp = c1.y * scal;
-	ret.y = tmp > 255 ? 255 : tmp;
+	ret.y = max(tmp, 255);
 	tmp = c1.z * scal;
-	ret.z = tmp > 255 ? 255 : tmp;
+	ret.z = max(tmp, 255);
 	return (ret);
 }
 
-t_vect		multi(t_vect v1, double v2)
+t_vect	multi(t_vect v1, double v2)
 {
 	t_vect	vctmlt;
 

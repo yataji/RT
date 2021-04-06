@@ -12,7 +12,9 @@
 
 #include "libft.h"
 
-int		ft_is_negative(int n)
+int	ft_is_negative(int n)
 {
-	return (n < 0 ? 1 : 0);
+	if (n < 0)
+		return (1);
+	return (0);
 }

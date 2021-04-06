@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int		ft_cone(t_rtv1 *rt, char *str)
+int	ft_cone(t_rtv1 *rt, char *str)
 {
 	rt->tmpo = initobj();
 	if (cone(rt->tmpo, str, rt->fd) == -1)
@@ -22,18 +22,18 @@ int		ft_cone(t_rtv1 *rt, char *str)
 	return (0);
 }
 
-int		stockcone(t_obj *obj, char *str)
+int	stockcone(t_obj *obj, char *str)
 {
 	char	**value;
 
 	value = ft_strsplit(str, ':');
-	if (ft_strlend(value) != 4 && ft_strlend(value) != 2)
+	if (ft_lendd(value) != 4 && ft_lendd(value) != 2)
 		return (-1);
 	if (ft_strcmp(value[0], " center") == 0)
 		obj->center = stk(value);
 	else if (ft_strcmp(value[0], " color") == 0)
 		obj->color = stk(value);
-	else if (ft_strlend(value) == 2 && ft_strcmp(value[0], " angle") == 0)
+	else if (ft_lendd(value) == 2 && ft_strcmp(value[0], " angle") == 0)
 		obj->angle = ft_atoi(value[1]);
 	else if (ft_strcmp(value[0], " axis") == 0)
 		obj->v = stk(value);
@@ -45,7 +45,7 @@ int		stockcone(t_obj *obj, char *str)
 	return (1);
 }
 
-int		cone(t_obj *obj, char *str, int fd)
+int	cone(t_obj *obj, char *str, int fd)
 {
 	int	l;
 	int	check;

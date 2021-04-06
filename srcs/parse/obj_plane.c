@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int			ft_plane(t_rtv1 *rt, char *str)
+int	ft_plane(t_rtv1 *rt, char *str)
 {
 	rt->tmpo = initobj();
 	if (plane(rt->tmpo, str, rt->fd) == -1)
@@ -22,12 +22,12 @@ int			ft_plane(t_rtv1 *rt, char *str)
 	return (0);
 }
 
-int			stockplane(t_obj *obj, char *str)
+int	stockplane(t_obj *obj, char *str)
 {
 	char	**value;
 
 	value = ft_strsplit(str, ':');
-	if (ft_strlend(value) != 4)
+	if (ft_lendd(value) != 4)
 		return (-1);
 	else if (ft_strcmp(value[0], " center") == 0)
 		obj->center = stk(value);
@@ -43,7 +43,7 @@ int			stockplane(t_obj *obj, char *str)
 	return (1);
 }
 
-int			plane(t_obj *obj, char *str, int fd)
+int	plane(t_obj *obj, char *str, int fd)
 {
 	int		l;
 	int		check;

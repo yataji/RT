@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		coneintr(t_obj *cone, t_ray ray)
+double	coneintr(t_obj *cone, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;
@@ -25,7 +25,7 @@ double		coneintr(t_obj *cone, t_ray ray)
 	k = cone->angle * M_PI / 180.0;
 	k = tan(k / 2.0);
 	calc.a = dot(ray.dir, ray.dir) - (1 + k * k)
-			* dot(ray.dir, v) * dot(ray.dir, v);
+		* dot(ray.dir, v) * dot(ray.dir, v);
 	calc.b = 2 * (dot(ray.dir, oc) - (1 + k * k)
 			* dot(ray.dir, v) * dot(oc, v));
 	calc.c = dot(oc, oc) - (1 + k * k) * dot(oc, v) * dot(oc, v);
@@ -33,7 +33,7 @@ double		coneintr(t_obj *cone, t_ray ray)
 	return (checkt(calc));
 }
 
-t_vect		normcone(t_ray *ray, t_obj *obj, double t)
+t_vect	normcone(t_ray *ray, t_obj *obj, double t)
 {
 	double	k;
 	double	m;

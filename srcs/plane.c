@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		planiter(t_obj *plan, t_ray ray)
+double	planiter(t_obj *plan, t_ray ray)
 {
 	t_vect	oc;
 	t_vect	v;
@@ -26,7 +26,10 @@ double		planiter(t_obj *plan, t_ray ray)
 	xv = dot(oc, v);
 	if (dv != 0 && ((dv > 0 && xv < 0) || (dv < 0 && xv > 0)))
 	{
-		plan->normal = dv > 0 ? multi(v, -1.0) : v;
+		if (dv > 0)
+			plan->normal = multi(v, -1.0);
+		else
+			plan->normal = v;
 		return (-xv / dv);
 	}
 	return (-1);

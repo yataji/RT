@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-t_vect		rot_x(t_vect v, double angle)
+t_vect	rot_x(t_vect v, double angle)
 {
 	double	delta;
 	t_vect	result;
@@ -24,7 +24,7 @@ t_vect		rot_x(t_vect v, double angle)
 	return (result);
 }
 
-t_vect		rot_y(t_vect v, double angle)
+t_vect	rot_y(t_vect v, double angle)
 {
 	double	delta;
 	t_vect	result;
@@ -36,7 +36,7 @@ t_vect		rot_y(t_vect v, double angle)
 	return (result);
 }
 
-t_vect		rot_z(t_vect v, double angle)
+t_vect	rot_z(t_vect v, double angle)
 {
 	double	delta;
 	t_vect	result;
@@ -48,7 +48,7 @@ t_vect		rot_z(t_vect v, double angle)
 	return (result);
 }
 
-t_vect		rotation_xyz(t_vect v, t_vect a)
+t_vect	rotation_xyz(t_vect v, t_vect a)
 {
 	t_vect	result;
 

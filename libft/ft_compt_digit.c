@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_compt_digit(int n)
+int	ft_compt_digit(int n)
 {
 	int		i;
 

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char		*ft_itoa2(int n, char *str, int i)
+static char	*ft_itoa2(int n, char *str, int i)
 {
 	char	j;
 
@@ -32,7 +32,7 @@ static char		*ft_itoa2(int n, char *str, int i)
 	return (str);
 }
 
-static char		*ft_itoa3(int n, char *str, int i, int k)
+static char	*ft_itoa3(int n, char *str, int i, int k)
 {
 	char	j;
 
@@ -50,7 +50,7 @@ static char		*ft_itoa3(int n, char *str, int i, int k)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		i;
 	int		k;
@@ -58,7 +58,8 @@ char			*ft_itoa(int n)
 
 	k = 0;
 	i = ft_compt_digit(n);
-	if ((str = (char *)malloc(i + 1)))
+	str = (char *)malloc(i + 1);
+	if (str)
 	{
 		str[i] = '\0';
 		if (n >= 0)

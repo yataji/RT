@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		cyldintr(t_obj *cyld, t_ray ray)
+double	cyldintr(t_obj *cyld, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;
@@ -24,12 +24,12 @@ double		cyldintr(t_obj *cyld, t_ray ray)
 	calc.a = dot(ray.dir, ray.dir) - dot(ray.dir, v) * dot(ray.dir, v);
 	calc.b = 2 * (dot(ray.dir, oc) - dot(ray.dir, v) * dot(oc, v));
 	calc.c = dot(oc, oc) - dot(oc, v) * dot(oc, v)
-				- (cyld->radius * cyld->radius);
+		- (cyld->radius * cyld->radius);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	return (checkt(calc));
 }
 
-t_vect		normcyld(t_ray *ray, t_obj *obj, double t)
+t_vect	normcyld(t_ray *ray, t_obj *obj, double t)
 {
 	double	m;
 	t_vect	v;

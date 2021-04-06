@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_cpt(char const *s, char c)
+int	ft_cpt(char const *s, char c)
 {
 	int		i;
 	int		l;

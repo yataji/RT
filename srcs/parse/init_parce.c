@@ -12,11 +12,12 @@
 
 #include "rtv1.h"
 
-t_obj			*initobj(void)
+t_obj	*initobj(void)
 {
 	t_obj		*new;
 
-	if (!(new = (t_obj *)malloc(sizeof(t_obj))))
+	new = (t_obj *)malloc(sizeof(t_obj));
+	if (!(new))
 		return (NULL);
 	new->type = 0;
 	new->angle = 0;
@@ -32,11 +33,12 @@ t_obj			*initobj(void)
 	return (new);
 }
 
-t_lights		*initlights(void)
+t_lights	*initlights(void)
 {
 	t_lights	*new;
 
-	if (!(new = (t_lights *)malloc(sizeof(t_lights))))
+	new = (t_lights *)malloc(sizeof(t_lights));
+	if (!(new))
 		return (NULL);
 	new->intensity = 0;
 	new->color = (t_color){0, 0, 0};
@@ -45,11 +47,12 @@ t_lights		*initlights(void)
 	return (new);
 }
 
-t_cam			*initcam(void)
+t_cam	*initcam(void)
 {
 	t_cam	*new;
 
-	if (!(new = (t_cam *)malloc(sizeof(t_cam))))
+	new = (t_cam *)malloc(sizeof(t_cam));
+	if (!(new))
 		return (NULL);
 	new->lokat = (t_point){0, 0, 0};
 	new->lokfrm = (t_point){0, 0, 0};

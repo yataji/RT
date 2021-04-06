@@ -23,7 +23,8 @@ char	*ft_revtab(char *tab)
 	if (tab)
 	{
 		i = ft_strlen(tab) - 1;
-		if ((rvtb = malloc(ft_strlen(tab) + 1)))
+		rvtb = malloc(ft_strlen(tab) + 1);
+		if (rvtb)
 		{
 			while (tab[j])
 				rvtb[j++] = tab[i--];
