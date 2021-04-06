@@ -45,7 +45,7 @@ int	stockcone(t_obj *obj, char *str)
 	return (1);
 }
 
-int	cone(t_obj *obj, char *str, int fd)
+int	cone(t_obj *obj, char *s, int fd)
 {
 	int	l;
 	int	check;
@@ -54,20 +54,20 @@ int	cone(t_obj *obj, char *str, int fd)
 	while (++l < 6)
 	{
 		check = -1;
-		if (get_next_line(fd, &str) < 0)
+		if (get_next_line(fd, &s) < 0)
 			return (-1);
-		if (ck(str, " center: ", 9) > 0)
-			check = stockcone(obj, str);
-		else if (ck(str, " color: ", 8) > 0 || ck(str, " angle: ", 8) > 0)
-			check = stockcone(obj, str);
-		else if (ck(str, " axis: ", 7) > 0)
-			check = stockcone(obj, str);
-		else if (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0)
-			check = stockcone(obj, str);
+		if (s && ck(s, " center: ", 9) > 0)
+			check = stockcone(obj, s);
+		else if (s && (ck(s, " color: ", 8) > 0 || ck(s, " angle: ", 8) > 0))
+			check = stockcone(obj, s);
+		else if (s && ck(s, " axis: ", 7) > 0)
+			check = stockcone(obj, s);
+		else if (s && (ck(s, " rot: ", 6) > 0 || ck(s, " trs: ", 6) > 0))
+			check = stockcone(obj, s);
 		if (check == -1)
 			return (-1);
 		obj->type = CONE;
-		ft_strdel(&str);
+		ft_strdel(&s);
 	}
 	obj->center = plus(obj->center, obj->trs);
 	return (1);

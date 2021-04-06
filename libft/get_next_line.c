@@ -12,52 +12,44 @@
 
 #include "libft.h"
 
-char	*get_line(char *str)
+char	*ft_store(char *rest, char **line)
 {
-	int		i;
-	char	*line;
+	int		len;
 
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	line = ft_strsub(str, 0, i);
-	return (line);
-}
-
-char	*get_rest(char *str)
-{
-	char	*rest;
-
-	if (!ft_strchr(str, '\n'))
+	len = 0;
+	while (rest[len] != '\n' && rest[len] != '\0')
+		len++;
+	*line = ft_strsub(rest, 0, len);
+	if (rest[len] == '\0')
 		return (NULL);
-	rest = ft_strdup(ft_strchr(str, '\n') + 1);
-	return (rest);
+	return (ft_strdup(&rest[len + 1]));
 }
 
 int	get_next_line(const int fd, char **line)
 {
-	static char	*str[MAX_FD];
-	char		buff[BUFF_SIZE + 1];
-	char		*tmp;
-	int			red;
+	char		buf[BUFF_SIZE + 1];
+	int			rd;
+	static char	*rest[4865];
+	char		*leak;
 
-	if (BUFF_SIZE < 1 || fd < 0 || fd > MAX_FD || !line)
+	if (fd < 0 || line == NULL || fd > 4864)
 		return (-1);
-	if (!str[fd])
-		str[fd] = ft_strnew(0);
-	red = read(fd, buff, BUFF_SIZE);
-	while (!ft_strchr(str[fd], '\n') && red > 0)
+	if (rest[fd] == NULL)
+		rest[fd] = ft_strnew(0);
+	rd = 1;
+	while (!(ft_strchr(rest[fd], '\n')) && rd > 0)
 	{
-		buff[red] = '\0';
-		tmp = str[fd];
-		str[fd] = ft_strjoin(str[fd], buff);
-		free(tmp);
+		rd = read(fd, buf, BUFF_SIZE);
+		buf[rd] = '\0';
+		leak = rest[fd];
+		rest[fd] = ft_strjoin(rest[fd], buf);
+		ft_strdel(&leak);
 	}
-	*line = get_line(str[fd]);
-	tmp = str[fd];
-	str[fd] = get_rest(tmp);
-	free(tmp);
-	if (red < 1 && !str[fd])
-		return (red);
-	return (1);
+	leak = rest[fd];
+	rest[fd] = ft_store(rest[fd], line);
+	ft_strdel(&leak);
+	if (!(rd == -1 || (rd == 0 && rest[fd] == NULL && **line == '\0')))
+		return (1);
+	ft_strdel(line);
+	return (rd);
 }

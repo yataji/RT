@@ -121,6 +121,7 @@ typedef struct s_rtv1
 	t_math			calc;
 	unsigned char	*ptr;
 	double			dot1;
+	char			*str;
 	int				fd;
 	int				ck;
 	int				color;

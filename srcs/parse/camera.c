@@ -50,11 +50,11 @@ int	camera(t_cam *cam, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (ck(str, " lokat: ", 8) > 0)
+		if (str && ck(str, " lokat: ", 8) > 0)
 			stockcamera(cam, str);
-		else if (ck(str, " lokfrm: ", 9) > 0)
+		else if (str && ck(str, " lokfrm: ", 9) > 0)
 			stockcamera(cam, str);
-		else if (ck(str, " fov: ", 6) > 0)
+		else if (str && ck(str, " fov: ", 6) > 0)
 			stockcamera(cam, str);
 		else
 			return (-1);

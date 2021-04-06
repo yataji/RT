@@ -54,13 +54,13 @@ int	plane(t_obj *obj, char *str, int fd)
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		if (ck(str, " center: ", 9) > 0)
+		if (str && ck(str, " center: ", 9) > 0)
 			check = stockplane(obj, str);
-		else if (ck(str, " color: ", 8) > 0)
+		else if (str && ck(str, " color: ", 8) > 0)
 			check = stockplane(obj, str);
-		else if (ck(str, " axis: ", 7) > 0)
+		else if (str && ck(str, " axis: ", 7) > 0)
 			check = stockplane(obj, str);
-		else if (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0)
+		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
 			check = stockplane(obj, str);
 		else
 			return (-1);

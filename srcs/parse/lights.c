@@ -54,11 +54,11 @@ int	lights(t_lights *lights, char *str, int fd)
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
 		l++;
-		if (ck(str, " intensity: ", 12) > 0)
+		if (str && ck(str, " intensity: ", 12) > 0)
 			stocklights(lights, str);
-		else if (ck(str, " color: ", 8) > 0)
+		else if (str && ck(str, " color: ", 8) > 0)
 			stocklights(lights, str);
-		else if (ck(str, " pos: ", 6) > 0)
+		else if (str && ck(str, " pos: ", 6) > 0)
 			stocklights(lights, str);
 		else
 			return (-1);

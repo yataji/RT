@@ -41,6 +41,35 @@ int	stocksphere(t_obj *obj, char *str)
 	return (1);
 }
 
+// int	sphere(t_obj *obj, char *str, int fd)
+// {
+// 	int		l;
+// 	int		check;
+
+// 	l = 0;
+// 	while (l < 4)
+// 	{
+// 		check = -1;
+// 		if (get_next_line(fd, &str) < 0)
+// 			return (-1);
+// 		if (str && ck(str, " center: ", 9) > 0)
+// 			check = stocksphere(obj, str);
+// 		else if (str && ck(str, " color: ", 8) > 0)
+// 			check = stocksphere(obj, str);
+// 		else if (str && ck(str, " radius: ", 9) > 0)
+// 			check = stocksphere(obj, str);
+// 		else if (str && ck(str, " trs: ", 6) > 0)
+// 			check = stocksphere(obj, str);
+// 		else
+// 			return (-1);
+// 		obj->type = SPHERE;
+// 		ft_strdel(&str);
+// 		l++;
+// 	}
+// 	obj->center = plus(obj->center, obj->trs);
+// 	return (1);
+// }
+
 int	sphere(t_obj *obj, char *str, int fd)
 {
 	int		l;

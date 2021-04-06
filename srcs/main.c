@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	if (ac == 2 && checknamefl(av[1]))
 	{
 		rt.fd = open(av[1], O_RDONLY);
-		if (rt.fd == -1 || ac != 2)
+		if (rt.fd < 3 || ac != 2)
 			return (0);
 		rt = init_list(rt);
 		if (parse(&rt) == -1)

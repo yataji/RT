@@ -42,26 +42,29 @@ int	parse_objs(t_rtv1 *rt, char *str)
 
 int	parse(t_rtv1 *rt)
 {
-	char		*str;
+	int			c;
 
-	while (rt->fd > 2 && get_next_line(rt->fd, &str) > 0)
+	c = 0;
+	while (++c && rt->fd > 2 && get_next_line(rt->fd, &rt->str) > 0)
 	{
-		if (ft_strcmp(str, "camera:") == 0)
+		if (ft_strcmp(rt->str, "camera:") == 0)
 		{
-			if (ft_cam(rt, str) == -1)
+			if (ft_cam(rt, rt->str) == -1)
 				return (-1);
 		}
-		else if (ft_strcmp(str, "lights:") == 0)
+		else if (ft_strcmp(rt->str, "lights:") == 0)
 		{
-			if (ft_lights(rt, str) == -1)
+			if (ft_lights(rt, rt->str) == -1)
 				return (-1);
 		}
-		else if (parse_objs(rt, str) == -1)
+		else if (parse_objs(rt, rt->str) == -1)
 		{
-			free(str);
+			free(rt->str);
 			return (-1);
 		}
-		free(str);
+		free(rt->str);
 	}
+	if (c == 1)
+		return (-1);
 	return (1);
 }
