@@ -52,8 +52,8 @@ int	sphere(t_obj *obj, char *str, int fd)
 	int		l;
 	int		check;
 
-	l = 0;
-	while (l < 4)
+	l = -1;
+	while (++l < 4)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -70,7 +70,6 @@ int	sphere(t_obj *obj, char *str, int fd)
 			return (-1);
 		obj->type = SPHERE;
 		ft_strdel(&str);
-		l++;
 	}
 	obj->center = plus(obj->center, obj->trs);
 	return (1);

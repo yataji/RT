@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/04 15:48:46 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:19:26 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int	lights(t_lights *lights, char *str, int fd)
 	int		l;
 	int		check;
 
-	l = 0;
-	while (l < 3)
+	l = -1;
+	while (++l < 3)
 	{
+		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		l++;
 		if (str && ck(str, " intensity: ", 12) > 0)
 			check = stocklights(lights, str);
 		else if (str && ck(str, " color: ", 8) > 0)

@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/04 15:43:18 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:20:24 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,11 @@ void	usage(void)
 
 int	checknamefl(char *name)
 {
-	size_t	len;
+	char	*ex;
 
-	len = ft_strlen(name);
-	while (len > 0)
-	{
-		if (name[len] == '.')
-			if (strncmp(name, ".yaml", 5) > 0)
-				return (1);
-		len--;
-	}
+	ex = ft_strrchr(name, '.');
+	if (ex && !ft_strcmp(".yaml", ex))
+		return (1);
 	return (0);
 }
 
@@ -47,7 +42,7 @@ int	main(int ac, char **av)
 	if (ac == 2 && checknamefl(av[1]))
 	{
 		rt.fd = open(av[1], O_RDONLY);
-		if (rt.fd < 3 || ac != 2)
+		if (rt.fd < 3)
 			return (0);
 		rt = init_list(rt);
 		if (parse(&rt) == -1)

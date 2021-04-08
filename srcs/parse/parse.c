@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/04 15:50:07 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:19:42 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	parse_objs(t_rtv1 *rt, char *str)
 	}
 	else
 		return (-1);
-	rt->obj->center = plus(rt->obj->center, rt->obj->trs);
 	return (1);
 }
 
@@ -45,7 +44,7 @@ int	parse(t_rtv1 *rt)
 	int			c;
 
 	c = 0;
-	while (++c && rt->fd > 2 && get_next_line(rt->fd, &rt->str) > 0)
+	while (++c && get_next_line(rt->fd, &rt->str) > 0)
 	{
 		if (ft_strcmp(rt->str, "camera:") == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/04 15:42:53 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:50:59 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 # include "mlx.h"
 # include "../libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
 # include <math.h>
 # include <fcntl.h>
 # define MAXWIDTH 900

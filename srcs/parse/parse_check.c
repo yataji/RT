@@ -12,20 +12,6 @@
 
 #include "rtv1.h"
 
-t_color	checkcolorvalue(char **value)
-{
-	t_color	abs;
-
-	abs = stk(value);
-	if (abs.x < 0)
-		abs.x = 0;
-	if (abs.y < 0)
-		abs.y = 0;
-	if (abs.z < 0)
-		abs.z = 0;
-	return (abs);
-}
-
 int	ck(char *s, char *check, int l)
 {
 	int		i;

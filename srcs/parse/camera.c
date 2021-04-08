@@ -51,12 +51,12 @@ int	camera(t_cam *cam, char *str, int fd)
 	int		l;
 	int		check;
 
-	l = 0;
-	while (l < 3)
+	l = -1;
+	while (++l < 3)
 	{
+		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
-		l++;
 		if (str && ck(str, " lokat: ", 8) > 0)
 			check = stockcamera(cam, str);
 		else if (str && ck(str, " lokfrm: ", 9) > 0)
