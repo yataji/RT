@@ -7,8 +7,26 @@ lights:
  color: 255:255:255
  pos: 0:0:100
 plane:
- rot: 0:0:0
+ rot: 0:0:-100
  center: 0:0:0
  trs: 0:0:0
- color: 255:0:0
+ color: 255:255:0
  axis: 0:0:1
+sphere:
+ center: 40:0:0
+ trs: 0:0:0
+ color: 255:0:0
+ radius: 10
+ ref: 0
+sphere:
+ center: -40:0:0
+ trs: 0:0:0
+ color: 0:0:255
+ radius: 10
+ ref: 1
+sphere:
+ center: -50:0:50
+ trs: 0:0:0
+ color: 255:0:0
+ radius: 10
+ ref: 1

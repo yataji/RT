@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/04 16:00:30 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/09 14:53:11 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	plane(t_obj *obj, char *str, int fd)
 			check = stockplane(obj, str);
 		if (check == -1)
 			return (-1);
-		obj->type = PLAN;
+		obj->type = PLANE;
 		ft_strdel(&str);
 	}
 	obj->center = plus(obj->center, obj->trs);

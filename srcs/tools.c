@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/02 21:19:19 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/09 13:22:19 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ double	intersect(t_obj *object, t_ray ray)
 		return (sphrintr(object, ray));
 	else if (object->type == CONE)
 		return (coneintr(object, ray));
-	else if (object->type == PLAN)
+	else if (object->type == PLANE)
 		return (planiter(object, ray));
 	return (-1);
 }
@@ -63,6 +63,6 @@ void	setnormal(t_obj *close, t_ray *ray, double t)
 		close->normal = normcyld(ray, close, t);
 	else if (close->type == CONE)
 		close->normal = normcone(ray, close, t);
-	else if (close->type == PLAN)
+	else if (close->type == PLANE)
 		ray->hit = plus(ray->org, multi(ray->dir, t));
 }

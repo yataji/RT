@@ -1,10 +1,10 @@
 camera:
- lokfrm: 0:0:-100
- lokat: 0:0:0
- fov: 60
-camera:
  lokfrm: 0:0:40
  lokat: 0:0:1
+ fov: 60
+camera:
+ lokfrm: 0:0:-100
+ lokat: 0:0:0
  fov: 60
 lights:
  pos: 0:0:50

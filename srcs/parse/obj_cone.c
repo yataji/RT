@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:23:37 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/04 16:01:25 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:56:46 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	stockcone(t_obj *obj, char *str)
 		obj->color = checkcolorvalue(value);
 	else if (ck == 2 && ft_strcmp(value[0], " angle") == 0)
 		obj->angle = ft_atoi(value[1]);
+	else if (ck == 2 && ft_strcmp(value[0], " ref") == 0)
+		obj->angle = ft_atoi(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " axis") == 0)
 		obj->v = stk(value);
 	else if (ck == 4 && ft_strcmp(value[0], " rot") == 0)
@@ -57,7 +59,7 @@ int	cone(t_obj *obj, char *s, int fd)
 	int	check;
 
 	l = -1;
-	while (++l < 6)
+	while (++l < 7)
 	{
 		check = -1;
 		if (get_next_line(fd, &s) < 0)
@@ -67,6 +69,8 @@ int	cone(t_obj *obj, char *s, int fd)
 		else if (s && (ck(s, " color: ", 8) > 0 || ck(s, " angle: ", 8) > 0))
 			check = stockcone(obj, s);
 		else if (s && ck(s, " axis: ", 7) > 0)
+			check = stockcone(obj, s);
+		else if (s && ck(s, " ref: ", 6) > 0)
 			check = stockcone(obj, s);
 		else if (s && (ck(s, " rot: ", 6) > 0 || ck(s, " trs: ", 6) > 0))
 			check = stockcone(obj, s);

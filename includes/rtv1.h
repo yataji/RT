@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/07 17:50:59 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/17 16:04:52 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
+# include <stdio.h>
 # define MAXWIDTH 900
 # define MAXHEIGHT 900
 # define SPHERE 0
 # define CYLINDER 1
 # define CONE 2
-# define PLAN 3
+# define PLANE 3
 
 typedef struct s_var
 {
@@ -55,6 +56,7 @@ typedef struct s_obj
 	t_rot			rot;
 	t_point			trs;
 	t_point			center;
+	int				ref;
 	struct s_obj	*next;
 }					t_obj;
 

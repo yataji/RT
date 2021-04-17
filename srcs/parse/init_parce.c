@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:35:11 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/29 14:49:33 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/17 16:09:24 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_obj	*initobj(void)
 	new->trs = (t_point){0, 0, 0};
 	new->rot = (t_rot){0, 0, 0};
 	new->angle = 0;
+	new->ref = 0;
 	new->next = NULL;
 	return (new);
 }

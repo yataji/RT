@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:09 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/04 15:38:39 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/09 18:41:42 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	stockcamera(t_cam *cam, char *str)
 	else if (ck == 4 && ft_strcmp(value[0], " lokfrm") == 0)
 		cam->lokfrm = stk(value);
 	else if (ck == 2 && ft_strcmp(value[0], " fov") == 0)
-		cam->fov = ft_atoi(value[1]);
+		cam->fov = abs(ft_atoi(value[1]));
 	else
 	{
 		ft_strdel(value);

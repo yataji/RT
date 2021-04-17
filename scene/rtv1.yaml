@@ -17,7 +17,7 @@ camera:
 camera:
  lokfrm: -100:0:170
  lokat: 0:0:0
- fov: 60
+ fov: -60
 sphere:
  center: -30:-30:70
  trs: 0:0:0
