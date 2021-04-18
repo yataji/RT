@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/17 16:04:52 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 02:52:00 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
@@ -25,6 +25,7 @@
 # define CYLINDER 1
 # define CONE 2
 # define PLANE 3
+# define MAXRF 3
 
 typedef struct s_var
 {
@@ -65,6 +66,7 @@ typedef struct s_ray
 	t_point			org;
 	t_vect			dir;
 	t_vect			hit;
+	int				maxrf;
 }					t_ray;
 
 typedef struct s_math

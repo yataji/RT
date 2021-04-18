@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 01:02:43 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/07 18:19:48 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 02:19:40 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_ray	initray(t_cam *cam, int x, int y)
 	ray.org = cam->lokfrm;
 	ray.dir = plus(multi(cam->u, px), multi(cam->v, py));
 	ray.dir = normalize(plus(ray.dir, cam->w));
+	ray.maxrf = 0;
 	return (ray);
 }
 

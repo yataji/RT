@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/09 14:53:11 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 02:13:17 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	stockplane(t_obj *obj, char *str)
 
 	value = ft_strsplit(str, ':');
 	ck = ft_lendd(value);
-	if (ck != 4)
+	if (ck != 4 && ck != 2)
 		return (-1);
 	else if (ck == 4 && ft_strcmp(value[0], " center") == 0)
 		obj->center = stk(value);
@@ -39,6 +39,8 @@ int	stockplane(t_obj *obj, char *str)
 		obj->v = stk(value);
 	else if (ck == 4 && ft_strcmp(value[0], " rot") == 0)
 		obj->rot = stk(value);
+	else if (ck == 2 && ft_strcmp(value[0], " ref") == 0)
+		obj->ref = ft_atoi(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " trs") == 0)
 		obj->trs = stk(value);
 	else
@@ -55,7 +57,7 @@ int	plane(t_obj *obj, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 5)
+	while (++l < 6)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -65,6 +67,8 @@ int	plane(t_obj *obj, char *str, int fd)
 		else if (str && ck(str, " color: ", 8) > 0)
 			check = stockplane(obj, str);
 		else if (str && ck(str, " axis: ", 7) > 0)
+			check = stockplane(obj, str);
+		else if (str && ck(str, " ref: ", 6) > 0)
 			check = stockplane(obj, str);
 		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
 			check = stockplane(obj, str);

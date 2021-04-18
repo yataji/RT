@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/04 12:12:10 by yataji           ###   ########.fr        #
+#    Updated: 2021/04/17 23:37:02 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ OBJS = $(OBJSRC) $(OBJPARSE)
 FLG  = -Wall -Wextra -Werror
 INC  = includes/
 INCS = includes/rtv1.h
+MINI = minilibx_macos/libmlx.a
 
 all: $(NAME)
 
@@ -25,7 +26,7 @@ all: $(NAME)
 	
 $(NAME): $(OBJS)
 	@make -s -C libft
-	@gcc $(FLG) libft/libft.a $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	@gcc $(FLG) libft/libft.a $(OBJS) $(MINI) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"
 
 clean:

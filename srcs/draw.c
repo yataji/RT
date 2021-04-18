@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/17 16:54:14 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 02:51:42 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
 	return (1);
 }
 
-static t_color	diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights)
+static t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights)
 {
 	double		dot1;
 	t_vect		lightdir;
@@ -47,7 +47,7 @@ static t_color	diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	t_color		c;
 
 	c = (t_color){0, 0, 0};
-	lightdir = normalize(moins(lights->pos, rt->ray.hit));
+	lightdir = normalize(moins(lights->pos, ray.hit));
 	dot1 = dot(close->normal, lightdir);
 	if (dot1 > 0)
 	{
@@ -55,52 +55,62 @@ static t_color	diffuspclr(t_rtv1 *rt, t_obj *close, t_lights *lights)
 		c = multi_color(c, dot1 * lights->intensity / 100.0);
 	}
 	reflect = normalize(moins(lightdir, multi(close->normal, 2 * dot1)));
-	dot1 = dot(reflect, normalize(moins(rt->ray.hit, rt->ray.org)));
+	dot1 = dot(reflect, normalize(moins(ray.hit, ray.org)));
 	if (dot1 > 0)
 		c = add_color(c, multi_color(lights->color, powf(dot1, 100)
 					* lights->intensity / 100.0));
 	return (c);
 }
 
-t_ray	initmpray(t_ray ray, t_obj *closeobj, t_cam *cam)
+t_ray	initmpray(t_ray ray, t_obj *closeobj)
 {
 	t_ray ret;
 	t_vect reflect;
 	double dot1;
 
 	ret.org = ray.hit;
-	dot1 = dot(closeobj->normal, cam->lokat);
-	reflect = normalize(moins(cam->lokat, multi(closeobj->normal, 2 * dot1)));
+	dot1 = dot(closeobj->normal, ray.dir);
+	reflect = normalize(moins(ray.dir, multi(closeobj->normal, 2 * dot1)));
 	ret.dir = reflect;
+	ret.maxrf = ray.maxrf + 1;
 	return (ret);
 }
 
-t_color		reflection(t_rtv1 *rt, t_obj *close)
+t_color		reflection(t_rtv1 *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
-	t_color ret;
+	// t_color ret;
 	t_obj *closenew;
 	t_ray ray;
 	t_var v;
 
 	rt->tmpo = rt->obj;
-	ray = initmpray(rt->ray, close, rt->cam);
+	// printf("%d\n", rayor.maxrf);
+	if (!close || !close->ref || rayor.maxrf >= 2)
+		return ((t_color){0, 0, 0});
+	ray = initmpray(rayor, close);
 	v.near = -1.0;
+	closenew = NULL;
 	while (rt->tmpo)
 	{
-		if (rt->tmpo == close)
-			rt->tmpo = rt->tmpo->next;
-		if (rt->tmpo->ref)
-			reflection(rt, rt->tmpo);
+		if (rt->tmpo != close)
+		{
 		v.t = intersect(rt->tmpo, ray);
 		if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
 		{
 			closenew = rt->tmpo;
 			v.near = v.t;
 		}
+			// rt->tmpo = rt->tmpo->next;
+		}
 		rt->tmpo = rt->tmpo->next;
 	}
-	ret = add_color(closenew->color, close->color);
-	return (ret);
+	if (!closenew)
+		return ((t_color){0, 0, 0});
+	if (closenew->ref)
+		reflection(rt, closenew, l, ray);
+	setnormal(closenew, &ray, v.near);
+	// ret = add_color(closenew->color, close->color);
+	return (diffuspclr(ray, closenew, l));
 }
 
 int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
@@ -113,18 +123,16 @@ int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 	rt->ptr = (unsigned char *)&rt->color;
 	ret = multi(close->color, 0.1);
 	rt->tmpl = lights;
+	// rt->tmpo = rt->obj;
 	while (rt->tmpl)
 	{
 		shad = shadow(rt, rt->tmpl, close);
-		if (close->ref == 1)
-		{
-			// printf("jiji\n");
-			c = reflection(rt, close);
-		}
 		if (shad)
-			c = diffuspclr(rt, close, rt->tmpl);
+			c = diffuspclr(rt->ray, close, rt->tmpl);
 		else
 			c = (t_color){0, 0, 0};
+		if (close->ref)
+			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 			//reflection
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
@@ -163,7 +171,7 @@ int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 // 	return (rt->color);
 // }
 
-int k = 0;
+// int k = 0;
 
 static void	draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmpo)
 {
@@ -177,11 +185,11 @@ static void	draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmpo)
 		}
 		tmpo = tmpo->next;
 	}
-	if (k < 3)
-	{
-		printf ("%d\n", close->ref);
-		k++;
-	}
+	// if (k < 3)
+	// {
+	// 	printf ("%d\n", close->ref);
+	// 	k++;
+	// }
 	if (v.near > 0 && close)
 	{
 		setnormal(close, &rt.ray, v.near);
