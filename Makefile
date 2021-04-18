@@ -6,7 +6,7 @@
 #    By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/18 14:17:55 by jiqarbac         ###   ########.fr        #
+#    Updated: 2021/04/18 15:19:14 by jiqarbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC  =	main.c\
 		cone.c\
 		draw.c\
 		plane.c\
+		paraploid.c\
 		rotation.c\
 		sdl.c\
 		parse.c\

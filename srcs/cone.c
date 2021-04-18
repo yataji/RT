@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cone.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 13:56:21 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/28 10:57:38 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/18 14:53:11 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-double	coneintr(t_obj *cone, t_ray ray)
+t_sol	coneintr(t_obj *cone, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;

@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 14:20:12 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:01:49 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define CYLINDER 1
 # define CONE 2
 # define PLANE 3
+# define PARAPLOID 4
 # define MAXRF 3
 
 typedef struct s_var
@@ -78,6 +79,13 @@ typedef struct s_math
 	double			delta;
 }					t_math;
 
+typedef struct 			s_sol
+{
+	double				tmin;
+	double				tmax;
+}						t_sol;
+
+
 // typedef struct s_mlx
 // {
 // 	void			*ptr;
@@ -120,13 +128,14 @@ typedef struct s_rt
 	t_cam			*tmpc;
 	t_lights		*lights;
 	t_lights		*tmpl;
+	t_sol			t;
 	t_math			calc;
-	unsigned char	*ptr;
+	// unsigned char	*ptr;
 	double			dot1;
 	char			*str;
 	int				fd;
 	int				ck;
-	int				color;
+	// int				color;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
 }					t_rt;
@@ -140,12 +149,13 @@ t_ray				initray(t_cam *cam, int x, int y);
 double				max(double v1, double v2);
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
-double				checkt(t_math calc);
-double				intersect(t_obj *object, t_ray ray);
-double				sphrintr(t_obj *sphere, t_ray ray);
-double				cyldintr(t_obj *cyld, t_ray ray);
-double				coneintr(t_obj *cone, t_ray ray);
-double				planiter(t_obj *cone, t_ray ray);
+t_sol				checkt(t_math calc);
+t_sol				intersect(t_obj *object, t_ray ray);
+t_sol				sphrintr(t_obj *sphere, t_ray ray);
+t_sol				cyldintr(t_obj *cyld, t_ray ray);
+t_sol				coneintr(t_obj *cone, t_ray ray);
+t_sol				paraploid(t_obj *para, t_ray r);
+t_sol				planiter(t_obj *cone, t_ray ray);
 int					keypress(int key, void *param);
 int					ft_exit(t_rt *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);
@@ -167,10 +177,10 @@ t_vect				stk(char **value);
 size_t				ft_strlend(char **s);
 t_color				checkcolorvalue(char **value);
 int					parse(t_rt*rt);
-int					sphere(t_obj *obj, char *str, int fd);
-int					plane(t_obj *obj, char *str, int fd);
-int					cylinder(t_obj *obj, char *str, int fd);
-int					cone(t_obj *obj, char *str, int fd);
+int				sphere(t_obj *obj, char *str, int fd);
+int				plane(t_obj *obj, char *str, int fd);
+int				cylinder(t_obj *obj, char *str, int fd);
+int				cone(t_obj *obj, char *str, int fd);
 int					lights(t_lights *lights, char *str, int fd);
 int					camera(t_cam *cam, char *str, int fd);
 int					ck(char *str, char *check, int len);

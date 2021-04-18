@@ -6,13 +6,13 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:43:03 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/07 18:19:55 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 14:53:01 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-double	cyldintr(t_obj *cyld, t_ray ray)
+t_sol	cyldintr(t_obj *cyld, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;

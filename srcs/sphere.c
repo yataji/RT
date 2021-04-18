@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:27:45 by yataji            #+#    #+#             */
-/*   Updated: 2021/03/28 17:29:24 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/18 14:48:55 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-double	sphrintr(t_obj *sphere, t_ray ray)
+t_sol	sphrintr(t_obj *sphere, t_ray ray)
 {
 	t_vect	oc;
 	t_math	calc;
