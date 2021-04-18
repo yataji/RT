@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
 void	usage(void)
 {
@@ -27,7 +27,7 @@ int	checknamefl(char *name)
 	return (0);
 }
 
-t_rtv1	init_list(t_rtv1 rt)
+t_rt	init_list(t_rt rt)
 {
 	rt.obj = NULL;
 	rt.lights = NULL;
@@ -37,7 +37,7 @@ t_rtv1	init_list(t_rtv1 rt)
 
 int	main(int ac, char **av)
 {
-	t_rtv1	rt;
+	t_rt	rt;
 
 	if (ac == 2 && checknamefl(av[1]))
 	{
@@ -51,13 +51,15 @@ int	main(int ac, char **av)
 			ft_free(&rt.obj, &rt.lights, &rt.cam);
 			return (0);
 		}
-		rt.mlx = init();
+		// rt.mlx = init();
+		init_sdl(&rt);
 		draw(rt);
-		mlx_put_image_to_window(rt.mlx.ptr, rt.mlx.win_ptr,
-			rt.mlx.img_ptr, 0, 0);
-		mlx_hook(rt.mlx.win_ptr, 2, 0, &keypress, &rt);
-		mlx_hook(rt.mlx.win_ptr, 17, 0, &ft_exit, &rt);
-		mlx_loop(rt.mlx.ptr);
+		loop_program(&rt);
+		// mlx_put_image_to_window(rt.mlx.ptr, rt.mlx.win_ptr,
+		// 	rt.mlx.img_ptr, 0, 0);
+		// mlx_hook(rt.mlx.win_ptr, 2, 0, &keypress, &rt);
+		// mlx_hook(rt.mlx.win_ptr, 17, 0, &ft_exit, &rt);
+		// mlx_loop(rt.mlx.ptr);
 	}
 	else
 		usage();

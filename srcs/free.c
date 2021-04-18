@@ -10,7 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
+
+// void	ft_free_obj(t_rt *rt)
+// {
+// 	while (rt->lights)
+// 	{
+// 		free(rt->lights);
+// 		rt->lights = rt->lights->next;
+// 	}
+// 	free(rt->camera);
+// 	ft_lstdel(&rt->obj);
+// }
 
 void	ft_free(t_obj **obj, t_lights **lights, t_cam **cam)
 {
@@ -41,11 +52,11 @@ void	ft_free(t_obj **obj, t_lights **lights, t_cam **cam)
 	}
 }
 
-int	ft_exit(t_rtv1 *rt)
+int	ft_exit(t_rt *rt)
 {
-	mlx_clear_window(rt->mlx.ptr, rt->mlx.win_ptr);
-	mlx_destroy_window(rt->mlx.ptr, rt->mlx.win_ptr);
-	mlx_destroy_image(rt->mlx.ptr, rt->mlx.img_ptr);
+	// mlx_clear_window(rt->mlx.ptr, rt->mlx.win_ptr);
+	// mlx_destroy_window(rt->mlx.ptr, rt->mlx.win_ptr);
+	// mlx_destroy_image(rt->mlx.ptr, rt->mlx.img_ptr);
 	ft_free(&rt->obj, &rt->lights, &rt->cam);
 	exit(0);
 	return (0);

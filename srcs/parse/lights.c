@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-int	ft_lights(t_rtv1 *rt, char *str)
+int	ft_lights(t_rt *rt, char *str)
 {
 	rt->tmpl = initlights();
 	if (lights(rt->tmpl, str, rt->fd) == -1)

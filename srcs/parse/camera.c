@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-int	ft_cam(t_rtv1 *rt, char *str)
+int	ft_cam(t_rt *rt, char *str)
 {
 	rt->ck = 1;
 	rt->tmpc = initcam();

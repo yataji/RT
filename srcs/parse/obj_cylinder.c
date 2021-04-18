@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-int	ft_cylinder(t_rtv1 *rt, char *str)
+int	ft_cylinder(t_rt *rt, char *str)
 {
 	rt->tmpo = initobj();
 	if (cylinder(rt->tmpo, str, rt->fd) == -1)
@@ -43,6 +43,8 @@ int	stockcylinder(t_obj *obj, char *str)
 		obj->rot = stk(value);
 	else if (ck == 4 && ft_strcmp(value[0], " trs") == 0)
 		obj->trs = stk(value);
+	else if (ck == 2 && ft_strcmp(value[0], " ref") == 0)
+		obj->ref = ft_atoi(value[1]);
 	else
 	{
 		ft_strdel(value);
@@ -57,7 +59,7 @@ int	cylinder(t_obj *obj, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 6)
+	while (++l < 7)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -69,6 +71,8 @@ int	cylinder(t_obj *obj, char *str, int fd)
 		else if (str && ck(str, " axis: ", 7) > 0)
 			check = stockcylinder(obj, str);
 		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
+			check = stockcylinder(obj, str);
+		else if (str && ck(str, " ref: ", 6) > 0)
 			check = stockcylinder(obj, str);
 		if (check == -1)
 			return (-1);

@@ -10,15 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-# define RTV1_H
+#ifndef RT_H
+# define RT_H
 
-# include "../minilibx_macos/mlx.h"
+// # include "../minilibx_macos/mlx.h"
+# include "mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 900
 # define MAXHEIGHT 900
 # define SPHERE 0
@@ -77,16 +80,16 @@ typedef struct s_math
 	double			delta;
 }					t_math;
 
-typedef struct s_mlx
-{
-	void			*ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	int				*dtadd;
-	int				bpp;
-	int				szln;
-	int				end;
-}					t_mlx;
+// typedef struct s_mlx
+// {
+// 	void			*ptr;
+// 	void			*win_ptr;
+// 	void			*img_ptr;
+// 	int				*dtadd;
+// 	int				bpp;
+// 	int				szln;
+// 	int				end;
+// }					t_mlx;
 
 typedef struct s_cam
 {
@@ -109,9 +112,9 @@ typedef struct s_lights
 	struct s_lights	*next;
 }					t_lights;
 
-typedef struct s_rtv1
+typedef struct s_rt
 {
-	t_mlx			mlx;
+	// t_mlx			mlx;
 	t_obj			*obj;
 	t_obj			*tmpo;
 	t_ray			ray;
@@ -126,14 +129,16 @@ typedef struct s_rtv1
 	int				fd;
 	int				ck;
 	int				color;
-}					t_rtv1;
+	SDL_Window		*win;
+	SDL_Renderer	*rend;
+}					t_rt;
 
 t_color				multi_color(t_color c1, double scal);
 t_color				multi_tcolor(t_color c1, t_color c2);
 t_color				add_color(t_color c1, t_color c2);
 t_vect				rotation_xyz(t_vect v, t_vect a);
 t_ray				initray(t_cam *cam, int x, int y);
-t_mlx				init(void);
+// t_mlx				init(void);
 double				max(double v1, double v2);
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
@@ -144,10 +149,10 @@ double				cyldintr(t_obj *cyld, t_ray ray);
 double				coneintr(t_obj *cone, t_ray ray);
 double				planiter(t_obj *cone, t_ray ray);
 int					keypress(int key, void *param);
-int					ft_exit(t_rtv1 *rt);
+int					ft_exit(t_rt *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);
 void				initcamera(t_cam *cam);
-void				draw(t_rtv1 rt);
+void				draw(t_rt rt);
 void				ft_free(t_obj **obj, t_lights **lights, t_cam **cam);
 t_vect				plus(t_vect v1, t_vect v2);
 t_vect				moins(t_vect v1, t_vect v2);
@@ -163,7 +168,7 @@ t_cam				*initcam(void);
 t_vect				stk(char **value);
 size_t				ft_strlend(char **s);
 t_color				checkcolorvalue(char **value);
-int					parse(t_rtv1*rt);
+int					parse(t_rt*rt);
 int					sphere(t_obj *obj, char *str, int fd);
 int					plane(t_obj *obj, char *str, int fd);
 int					cylinder(t_obj *obj, char *str, int fd);
@@ -172,11 +177,16 @@ int					lights(t_lights *lights, char *str, int fd);
 int					camera(t_cam *cam, char *str, int fd);
 int					ck(char *str, char *check, int len);
 int					chkone(char *str, int len);
-int					ft_plane(t_rtv1 *rt, char *str);
-int					ft_cone(t_rtv1 *rt, char *str);
-int					ft_cylinder(t_rtv1 *rt, char *str);
-int					ft_sphere(t_rtv1 *rt, char *str);
-int					ft_lights(t_rtv1 *rt, char *str);
-int					ft_cam(t_rtv1 *rt, char *str);
+int					ft_plane(t_rt *rt, char *str);
+int					ft_cone(t_rt *rt, char *str);
+int					ft_cylinder(t_rt *rt, char *str);
+int					ft_sphere(t_rt *rt, char *str);
+int					ft_lights(t_rt *rt, char *str);
+int					ft_cam(t_rt *rt, char *str);
+
+
+void				init_sdl(t_rt *rt);
+void				sdl_error(char *message);
+void				loop_program(t_rt *rt);
 
 #endif

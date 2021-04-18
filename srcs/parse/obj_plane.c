@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-int	ft_plane(t_rtv1 *rt, char *str)
+int	ft_plane(t_rt *rt, char *str)
 {
 	rt->tmpo = initobj();
 	if (plane(rt->tmpo, str, rt->fd) == -1)

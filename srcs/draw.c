@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rt.h"
 
-static int	shadow(t_rtv1 *rt, t_lights *lights, t_obj *close)
+static int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 {
 	t_obj		*tmp;
 	t_var		v;
@@ -76,7 +76,7 @@ t_ray	initmpray(t_ray ray, t_obj *closeobj)
 	return (ret);
 }
 
-t_color		reflection(t_rtv1 *rt, t_obj *close, t_lights *l, t_ray rayor)
+t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
 	// t_color ret;
 	t_obj *closenew;
@@ -113,7 +113,7 @@ t_color		reflection(t_rtv1 *rt, t_obj *close, t_lights *l, t_ray rayor)
 	return (diffuspclr(ray, closenew, l));
 }
 
-int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
+t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 {
 	t_color		c;
 	t_color		ret;
@@ -137,14 +137,14 @@ int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
-	rt->ptr[2] = ret.x;
-	rt->ptr[1] = ret.y;
-	rt->ptr[0] = ret.z;
-	rt->ptr[3] = 0;
-	return (rt->color);
+	// rt->ptr[2] = ret.x;
+	// rt->ptr[1] = ret.y;
+	// rt->ptr[0] = ret.z;
+	// rt->ptr[3] = 0;
+	return (ret);
 }
 
-// static int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
+// static int	color(t_rt *rt, t_obj *close, t_lights *lights)
 // {
 // 	t_color		c;
 // 	t_color		ret;
@@ -173,8 +173,10 @@ int	color(t_rtv1 *rt, t_obj *close, t_lights *lights)
 
 // int k = 0;
 
-static void	draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmpo)
+static void	draw2(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 {
+	t_color col;
+
 	while (tmpo)
 	{
 		v.t = intersect(tmpo, rt.ray);
@@ -193,13 +195,16 @@ static void	draw2(t_var v, t_obj *close, t_rtv1 rt, t_obj *tmpo)
 	if (v.near > 0 && close)
 	{
 		setnormal(close, &rt.ray, v.near);
-		rt.mlx.dtadd[v.y + v.x * MAXWIDTH] = color(&rt, close, rt.lights);
+		col = color(&rt, close, rt.lights);
+		if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)
+				sdl_error("Get color failed");
+		// rt.mlx.dtadd[v.y + v.x * MAXWIDTH] = color(&rt, close, rt.lights);
 	}
-	else
-		rt.mlx.dtadd[v.y + v.x * MAXWIDTH] = 0;
+	// else
+		// rt.mlx.dtadd[v.y + v.x * MAXWIDTH] = 0;
 }
 
-void	draw(t_rtv1 rt)
+void	draw(t_rt rt)
 {
 	t_obj		*close;
 	t_var		v;
@@ -216,6 +221,8 @@ void	draw(t_rtv1 rt)
 			close = NULL;
 			v.near = -1;
 			draw2(v, close, rt, rt.tmpo);
+			if (SDL_RenderDrawPoint(rt.rend, v.y, v.x) != 0)
+				sdl_error("draw point failed");
 		}
 	}
 }

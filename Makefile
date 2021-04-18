@@ -10,13 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = rtv1
-OBJSRC  = srcs/main.o srcs/math.o srcs/mathnorm.o srcs/camera.o srcs/key.o srcs/tools.o srcs/free.o srcs/sphere.o srcs/cylinder.o srcs/cone.o srcs/draw.o srcs/plane.o srcs/rotation.o srcs/init_mlx.o
+NAME = RT
+OBJSRC  = srcs/main.o srcs/math.o srcs/mathnorm.o srcs/camera.o srcs/tools.o srcs/free.o srcs/sphere.o srcs/cylinder.o srcs/cone.o srcs/draw.o srcs/plane.o srcs/rotation.o srcs/sdl/sdl.o
 OBJPARSE = srcs/parse/parse.o srcs/parse/camera.o srcs/parse/lights.o srcs/parse/obj_cone.o srcs/parse/obj_cylinder.o srcs/parse/obj_plane.o srcs/parse/obj_sphere.o srcs/parse/parse_check.o srcs/parse/stock.o srcs/parse/init_parce.o
 OBJS = $(OBJSRC) $(OBJPARSE)
 FLG  = -Wall -Wextra -Werror
 INC  = includes/
-INCS = includes/rtv1.h
+INCS = includes/rt.h
+LIBFT = libft/libft.a
+SDL = `sdl2-config --cflags --libs` -lSDL2 -lSDL2_image 
+INCLUDE	= -I /Users/$$USER/.brew/Cellar/sdl2/2.0.14_1/include -I /Users/$$USER/.brew/Cellar/sdl2_image/2.0.5/include 
+LIB = -L /Users/$$USER/.brew/Cellar/sdl2/2.0.14_1/lib -L /Users/$$USER/.brew/Cellar/sdl2_image/2.0.5/lib
 MINI = minilibx_macos/libmlx.a
 
 all: $(NAME)
@@ -26,7 +30,8 @@ all: $(NAME)
 	
 $(NAME): $(OBJS)
 	@make -s -C libft
-	@gcc $(FLG) libft/libft.a $(OBJS) $(MINI) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	# @gcc $(FLG) libft/libft.a $(OBJS) $(MINI) -framework OpenGL -framework AppKit -o $(NAME) -I $(INCS)
+	@gcc $(FLG) $(LIBFT) $(OBJS) $(SDL) $(INCLUDE) $(LIB) -o $(NAME) -I $(INCS)
 	@printf "compilation completed\n"
 
 clean:
