@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
+/*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 02:52:00 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/18 14:20:12 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-// # include "../minilibx_macos/mlx.h"
-# include "mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include "SDL2/SDL.h"
+# include "SDL2/SDL_image.h"
 # define MAXWIDTH 900
 # define MAXHEIGHT 900
 # define SPHERE 0

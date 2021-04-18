@@ -3,43 +3,94 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
+#    By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/17 23:37:02 by yataji           ###   ########.fr        #
+#    Updated: 2021/04/18 14:17:55 by jiqarbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RT
-OBJSRC  = srcs/main.o srcs/math.o srcs/mathnorm.o srcs/camera.o srcs/tools.o srcs/free.o srcs/sphere.o srcs/cylinder.o srcs/cone.o srcs/draw.o srcs/plane.o srcs/rotation.o srcs/sdl/sdl.o
-OBJPARSE = srcs/parse/parse.o srcs/parse/camera.o srcs/parse/lights.o srcs/parse/obj_cone.o srcs/parse/obj_cylinder.o srcs/parse/obj_plane.o srcs/parse/obj_sphere.o srcs/parse/parse_check.o srcs/parse/stock.o srcs/parse/init_parce.o
-OBJS = $(OBJSRC) $(OBJPARSE)
-FLG  = -Wall -Wextra -Werror
-INC  = includes/
-INCS = includes/rt.h
-LIBFT = libft/libft.a
+
+SRC  =	main.c\
+		math.c\
+		mathnorm.c\
+		tools.c\
+		free.c\
+		sphere.c\
+		cylinder.c\
+		cone.c\
+		draw.c\
+		plane.c\
+		rotation.c\
+		sdl.c\
+		parse.c\
+		camera.c\
+		camerap.c\
+		lights.c\
+		obj_cone.c\
+		obj_cylinder.c\
+		obj_plane.c\
+		obj_sphere.c\
+		parse_check.c\
+		stock.c\
+		init_parce.c\
+
+HEADER = 	includes/rt.h
+
+
+OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+
+NAME 	= RT
+
+CFLAGS = -Wall -Wextra -Werror 
+
+INCLUDE	= -I /Users/$$USER/.brew/Cellar/sdl2/2.0.14_1/include/ \
+	-I /Users/$$USER/.brew/Cellar/sdl2_image/2.0.5/include \
+	-I includes
+
+LIB = -L /Users/$$USER/.brew/Cellar/sdl2/2.0.14_1/lib \
+	-L /Users/$$USER/.brew/Cellar/sdl2_image/2.0.5/lib \
+
 SDL = `sdl2-config --cflags --libs` -lSDL2 -lSDL2_image 
-INCLUDE	= -I /Users/$$USER/.brew/Cellar/sdl2/2.0.14_1/include -I /Users/$$USER/.brew/Cellar/sdl2_image/2.0.5/include 
-LIB = -L /Users/$$USER/.brew/Cellar/sdl2/2.0.14_1/lib -L /Users/$$USER/.brew/Cellar/sdl2_image/2.0.5/lib
 
-all: $(NAME)
+OBJ_DIR = ./obj
 
-%.o : %.c $(INCS)
-	@gcc $(FLG) -o $@ -c $< -I $(INC)
-	
-$(NAME): $(OBJS)
-	@make -s -C libft
-	@gcc $(FLG) $(LIBFT) $(OBJS) $(SDL) $(INCLUDE) $(LIB) -o $(NAME) -I $(INCS)
-	@printf "compilation completed\n"
+LIBFT_DIR = ./libft
 
-clean:
-	@make -C libft/ clean
-	@rm -f $(OBJS)
-	@printf "clean terminated\n"
+LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
-fclean: clean
-	@make -C libft/ fclean
-	@rm -f $(OBJS) $(NAME)
-	@printf "clean all\n"
+CC = @gcc 
 
-re: fclean all
+SRC_DIR = ./srcs
+all : $(NAME)
+
+$(LIBFT_LIB): force
+	@make -C $(LIBFT_DIR)
+
+force:
+
+$(NAME) : $(LIBFT_LIB) $(OBJ)
+	@gcc $(OBJ) $(CFLAGS) -o $(NAME) $(INCLUDE) $(LIB)  $(SDL) $(LIBFT_LIB)
+	@echo "\033[92mDone for RT\033[0m"
+
+$(OBJ_DIR):
+	@-mkdir $(OBJ_DIR)
+
+$(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(HEADER) | $(OBJ_DIR)
+	@gcc -c  $(INCLUDE) $< -o $@ 
+
+clean :
+	@make clean -C ./libft/
+	@rm -rf $(OBJ_DIR)
+
+fclean : clean
+	@make fclean -C ./libft/
+	@rm -rf $(NAME)
+
+norme:
+	@norminette **/*.c
+	@norminette **/*.h
+
+re : fclean all
+
