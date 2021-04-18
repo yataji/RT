@@ -1,9 +1,0 @@
-./Makefile
-srcs/*.o
-minilibx_macos
-libft/*.o
-libft/*.a
-srcs/parse/*.o
-srcs/a.out
-rtv1
-.DS_Store
