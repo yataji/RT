@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/09 15:04:12 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:24:44 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int	parse_objs(t_rt *rt, char *str)
 	else if (ft_strcmp(str, "plane:") == 0)
 	{
 		if (ft_plane(rt, str) == -1)
+			return (-1);
+	}
+	else if (ft_strcmp(str, "paraploide:") == 0)
+	{
+		if (ft_paraploid(rt, str) == -1)
 			return (-1);
 	}
 	else

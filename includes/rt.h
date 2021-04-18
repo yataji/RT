@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 16:21:42 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:30:10 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_obj
 	t_point			trs;
 	t_point			center;
 	int				ref;
+	char			*text;
 	struct s_obj	*next;
 }					t_obj;
 

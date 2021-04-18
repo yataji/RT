@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:09:26 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/18 16:13:43 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:32:58 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	stockparaploid(t_obj *obj, char *str)
 		obj->radius = ft_atoi(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " axis") == 0)
 		obj->v = stk(value);
+	else if (ck == 2 && ft_strcmp(value[0], " texture") == 0)
+		obj->text = ft_strdup(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " rot") == 0)
 		obj->rot = stk(value);
 	else if (ck == 4 && ft_strcmp(value[0], " trs") == 0)
@@ -57,7 +59,7 @@ int	paraploid(t_obj *obj, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 7)
+	while (++l < 8)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -67,6 +69,8 @@ int	paraploid(t_obj *obj, char *str, int fd)
 		else if (str && ck(str, " color: ", 8) > 0)
 			check = stockparaploid(obj, str);
 		else if (str && ck(str, " axis: ", 7) > 0)
+			check = stockparaploid(obj, str);
+		else if (str && ck(str, " texture: ", 7) > 0)
 			check = stockparaploid(obj, str);
 		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
 			check = stockparaploid(obj, str);
