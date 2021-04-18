@@ -6,7 +6,7 @@
 #    By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/18 15:19:14 by jiqarbac         ###   ########.fr        #
+#    Updated: 2021/04/18 16:22:32 by jiqarbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC  =	main.c\
 		obj_cylinder.c\
 		obj_plane.c\
 		obj_sphere.c\
+		obj_paraploide.c\
 		parse_check.c\
 		stock.c\
 		init_parce.c\

@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 16:01:49 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:21:42 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,6 @@ typedef struct 			s_sol
 	double				tmax;
 }						t_sol;
 
-
-// typedef struct s_mlx
-// {
-// 	void			*ptr;
-// 	void			*win_ptr;
-// 	void			*img_ptr;
-// 	int				*dtadd;
-// 	int				bpp;
-// 	int				szln;
-// 	int				end;
-// }					t_mlx;
-
 typedef struct s_cam
 {
 	t_point			lokat;
@@ -120,7 +108,6 @@ typedef struct s_lights
 
 typedef struct s_rt
 {
-	// t_mlx			mlx;
 	t_obj			*obj;
 	t_obj			*tmpo;
 	t_ray			ray;
@@ -130,14 +117,13 @@ typedef struct s_rt
 	t_lights		*tmpl;
 	t_sol			t;
 	t_math			calc;
-	// unsigned char	*ptr;
 	double			dot1;
 	char			*str;
 	int				fd;
 	int				ck;
-	// int				color;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
+	SDL_Surface		*surface;
 }					t_rt;
 
 t_color				multi_color(t_color c1, double scal);
@@ -145,7 +131,6 @@ t_color				multi_tcolor(t_color c1, t_color c2);
 t_color				add_color(t_color c1, t_color c2);
 t_vect				rotation_xyz(t_vect v, t_vect a);
 t_ray				initray(t_cam *cam, int x, int y);
-// t_mlx				init(void);
 double				max(double v1, double v2);
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
