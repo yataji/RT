@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_parabloid.c                                    :+:      :+:    :+:   */
+/*   obj_paraploid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:09:26 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/18 16:32:58 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 22:21:53 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ int	paraploid(t_obj *obj, char *str, int fd)
 		obj->type = PARAPLOID;
 		ft_strdel(&str);
 	}
+	obj->surface = IMG_Load(obj->text);
+	if (!obj->surface)
+		sdl_error("can't load surface");
 	obj->center = plus(obj->center, obj->trs);
 	return (1);
 }

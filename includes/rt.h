@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 16:30:10 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/19 04:26:33 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_obj
 	t_point			center;
 	int				ref;
 	char			*text;
+	SDL_Surface		*surface;
 	struct s_obj	*next;
 }					t_obj;
 
@@ -124,7 +125,6 @@ typedef struct s_rt
 	int				ck;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
-	SDL_Surface		*surface;
 }					t_rt;
 
 t_color				multi_color(t_color c1, double scal);
@@ -140,7 +140,7 @@ t_sol				intersect(t_obj *object, t_ray ray);
 t_sol				sphrintr(t_obj *sphere, t_ray ray);
 t_sol				cyldintr(t_obj *cyld, t_ray ray);
 t_sol				coneintr(t_obj *cone, t_ray ray);
-t_sol				paraploid(t_obj *para, t_ray r);
+t_sol				parapinter(t_obj *para, t_ray ray);
 t_sol				planiter(t_obj *cone, t_ray ray);
 int					keypress(int key, void *param);
 int					ft_exit(t_rt *rt);
@@ -163,10 +163,11 @@ t_vect				stk(char **value);
 size_t				ft_strlend(char **s);
 t_color				checkcolorvalue(char **value);
 int					parse(t_rt*rt);
-int				sphere(t_obj *obj, char *str, int fd);
-int				plane(t_obj *obj, char *str, int fd);
-int				cylinder(t_obj *obj, char *str, int fd);
-int				cone(t_obj *obj, char *str, int fd);
+int					sphere(t_obj *obj, char *str, int fd);
+int					plane(t_obj *obj, char *str, int fd);
+int					cylinder(t_obj *obj, char *str, int fd);
+int					cone(t_obj *obj, char *str, int fd);
+int					paraploid(t_obj *obj, char *str, int fd);
 int					lights(t_lights *lights, char *str, int fd);
 int					camera(t_cam *cam, char *str, int fd);
 int					ck(char *str, char *check, int len);
@@ -175,6 +176,7 @@ int					ft_plane(t_rt *rt, char *str);
 int					ft_cone(t_rt *rt, char *str);
 int					ft_cylinder(t_rt *rt, char *str);
 int					ft_sphere(t_rt *rt, char *str);
+int					ft_paraploid(t_rt *rt, char *str);
 int					ft_lights(t_rt *rt, char *str);
 int					ft_cam(t_rt *rt, char *str);
 

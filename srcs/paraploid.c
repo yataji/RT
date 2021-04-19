@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   paraploid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:32:04 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/18 15:28:25 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/18 21:44:56 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "rt.h"
 
-t_sol          paraploid(t_obj *para, t_ray ray)
+t_sol          parapinter(t_obj *para, t_ray ray)
 {
     t_math      math;
     t_sol       sol;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 15:08:40 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/19 04:24:38 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_sol	intersect(t_obj *object, t_ray ray)
 	else if (object->type == PLANE)
 		return (planiter(object, ray));
 	else if (object->type == PARAPLOID)
-		return (paraploid(object, ray));
+		return (parapinter(object, ray));
 	return ((t_sol){0, 0});
 }
 
