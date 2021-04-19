@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/18 16:02:15 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/19 04:33:24 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 		// t.tmin = t.tmin + 0.01;
 		if (tmp != close && t.tmin > 0)
 		{
-			if (dot(multi(shadow_r.dir, v.near),
-					multi(shadow_r.dir, v.near)) < dist)
+			if (dot(multi(shadow_r.dir, t.tmin),
+					multi(shadow_r.dir, t.tmin)) < dist)
 				return (0);
 		}
 		tmp = tmp->next;
