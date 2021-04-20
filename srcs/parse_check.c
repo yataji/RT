@@ -57,8 +57,8 @@ int stockobj(t_obj *obj, int id, char *s, int fd)
 				return (-1);
 			}
 		}
-		else if (obj->type != 4 && c == 2 && ck(s, " slice: ", 8) > 0 && !ft_strcmp(value[0], " slice"))
-			obj->slice = abs(ft_atoi(value[1]));
+		else if (obj->type != 4 && c == 4 && ck(s, " slice: ", 8) > 0 && !ft_strcmp(value[0], " slice"))
+			obj->slice = stk(value);
 		else if (obj->type != 4 && c == 2 && ck(s, " refl: ", 7) > 0 && !ft_strcmp(value[0], " refl"))
 			obj->refl = abs(ft_atoi(value[1]));
 		else if (obj->type != 4 && c == 2 && ck(s, " refr: ", 7) > 0 && !ft_strcmp(value[0], " refr"))

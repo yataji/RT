@@ -30,7 +30,7 @@ double	checkt(t_math calc)
 	return (-1);
 }
 
-t_sol			checktminmax(t_math math)
+t_sol			check_min_max(t_math math)
 {
 	t_sol	sol;
 	double	temp;

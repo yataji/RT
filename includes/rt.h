@@ -27,7 +27,7 @@
 # define CONE 2
 # define PLANE 3
 # define PARAPLOID 4
-# define MAXRF 3
+# define MAXRF 100
 
 typedef struct	s_2d_i
 {
@@ -79,7 +79,7 @@ typedef struct s_obj
 	int				matter;
 	int				neg_obj;
 	double			size;
-	double			slice;
+	t_vect			slice;
 	char			*texture;
 	SDL_Surface		*surface;
 	struct s_obj	*next;
@@ -141,6 +141,7 @@ typedef struct s_rt
 	t_sol			t;
 	t_math			calc;
 	double			dot1;
+	int			maxref;
 	char			*str;
 	int				fd;
 	int				ck;
@@ -210,5 +211,5 @@ int					stockobj(t_obj *obj, int id, char *s, int fd);
 double				ft_atof(char *str);
 t_2d_i		get_uv(t_obj *obj, t_2d_i size, t_vect hit);
 void		texture(t_obj *obj, t_vect hit);
-t_sol			checktminmax(t_math math);
+t_sol			check_min_max(t_math math);
 #endif

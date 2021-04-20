@@ -63,7 +63,7 @@ static t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights)
 	return (c);
 }
 
-t_ray	initmpray(t_ray ray, t_obj *closeobj)
+t_ray	initmpray(t_rt *rt,t_ray ray, t_obj *closeobj)
 {
 	t_ray ret;
 	t_vect reflect;
@@ -73,7 +73,7 @@ t_ray	initmpray(t_ray ray, t_obj *closeobj)
 	dot1 = dot(closeobj->normal, ray.dir);
 	reflect = normalize(moins(ray.dir, multi(closeobj->normal, 2 * dot1)));
 	ret.dir = reflect;
-	ret.maxrf = ray.maxrf + 1;
+	rt->maxref++;
 	return (ret);
 }
 
@@ -86,9 +86,9 @@ t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	double	t;
 
 	rt->tmpo = rt->obj;
-	if (!close || !close->refl || rayor.maxrf >= 2)
+	if (!close || !close->refl || rt->maxref > 100)
 		return ((t_color){0, 0, 0});
-	ray = initmpray(rayor, close);
+	ray = initmpray(rt, rayor, close);
 	v.near = -1.0;
 	closenew = NULL;
 	while (rt->tmpo)
@@ -104,6 +104,9 @@ t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 		}
 		rt->tmpo = rt->tmpo->next;
 	}
+	ray.hit = plus(ray.org, multi(ray.dir, v.near));
+	if (closenew && ft_strcmp(closenew->texture, ".") != 0)
+		texture(closenew , ray.hit);
 	if (!closenew)
 		return ((t_color){0, 0, 0});
 	if (closenew->refl)
@@ -119,9 +122,12 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	int			shad;
 
 	// add textures;
-	if (ft_strcmp(close->texture, ".") != 0)
-		texture(close , rt->ray.hit);
 	ret = multi(close->color, rt->cam->ambiante);
+	if (ft_strcmp(close->texture, ".") != 0)
+	{
+		texture(close , rt->ray.hit);
+		ret = close->color;
+	}
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
@@ -131,6 +137,8 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		else
 			c = (t_color){0, 0, 0};
 		//reflection
+		// printf("max= %d\n", rt->ray.maxrf);
+		rt->maxref = 0;
 		if (close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);

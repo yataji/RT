@@ -36,7 +36,7 @@ t_obj	*initobj(void)
 	new->matter = 0;
 	new->neg_obj = 0;
 	new->size = 0;
-	new->slice = 0;
+	new->slice = (t_point){0, 0, 0};
 	new->texture = ".";
 	new->next = NULL;
 	return (new);
