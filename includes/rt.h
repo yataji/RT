@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/19 04:26:33 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/20 02:08:42 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,16 @@ typedef struct s_obj
 	t_rot			rot;
 	t_point			trs;
 	t_point			center;
-	int				ref;
-	char			*text;
+	t_point			pos_texture;
+	t_point			pos_slice;
+	int				refl;
+	int				refr;
+	int				per_refr;
+	int				matter;
+	int				neg_obj;
+	double			size;
+	double			slice;
+	char			*texture;
 	SDL_Surface		*surface;
 	struct s_obj	*next;
 }					t_obj;
@@ -94,6 +102,7 @@ typedef struct s_cam
 	t_vect			v;
 	t_vect			u;
 	t_vect			w;
+	double			ambiante;
 	double			fov;
 	double			plnw;
 	double			plnh;
@@ -184,5 +193,7 @@ int					ft_cam(t_rt *rt, char *str);
 void				init_sdl(t_rt *rt);
 void				sdl_error(char *message);
 void				loop_program(t_rt *rt);
+int					textures(t_obj *obj, char *str);
+int					stockobj(t_obj *obj, int id, char *s, int fd);
 
 #endif

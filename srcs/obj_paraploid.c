@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:09:26 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/18 22:21:53 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/20 01:47:52 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	stockparaploid(t_obj *obj, char *str)
 		obj->radius = ft_atoi(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " axis") == 0)
 		obj->v = stk(value);
-	else if (ck == 2 && ft_strcmp(value[0], " texture") == 0)
-		obj->text = ft_strdup(value[1]);
+	// else if (ck == 2 && ft_strcmp(value[0], " texture") == 0)
+	// 	obj->text = ft_strdup(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " rot") == 0)
 		obj->rot = stk(value);
 	else if (ck == 4 && ft_strcmp(value[0], " trs") == 0)
@@ -59,7 +59,7 @@ int	paraploid(t_obj *obj, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 8)
+	while (++l < 7)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -70,8 +70,8 @@ int	paraploid(t_obj *obj, char *str, int fd)
 			check = stockparaploid(obj, str);
 		else if (str && ck(str, " axis: ", 7) > 0)
 			check = stockparaploid(obj, str);
-		else if (str && ck(str, " texture: ", 7) > 0)
-			check = stockparaploid(obj, str);
+		// else if (str && ck(str, " texture: ", 7) > 0)
+		// 	check = textures(*obj);
 		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
 			check = stockparaploid(obj, str);
 		if (check == -1)
@@ -79,9 +79,14 @@ int	paraploid(t_obj *obj, char *str, int fd)
 		obj->type = PARAPLOID;
 		ft_strdel(&str);
 	}
-	obj->surface = IMG_Load(obj->text);
-	if (!obj->surface)
-		sdl_error("can't load surface");
+	// if (!checktext(obj->text))
+		// return(-1);
+	if (ft_strcmp(obj->texture, ".") != 0)
+	{
+		obj->surface = IMG_Load(obj->texture);
+		if (!obj->surface)
+			sdl_error("can't load surface");
+	}
 	obj->center = plus(obj->center, obj->trs);
 	return (1);
 }

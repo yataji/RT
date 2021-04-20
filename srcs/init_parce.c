@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parce.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:35:11 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/17 16:09:24 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/20 01:44:32 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_obj	*initobj(void)
 	new = (t_obj *)malloc(sizeof(t_obj));
 	if (!(new))
 		return (NULL);
-	new->type = 0;
 	new->angle = 0;
 	new->radius = 0;
 	new->v = (t_vect){0, 0, 0};
@@ -27,9 +26,18 @@ t_obj	*initobj(void)
 	new->color = (t_color){0, 0, 0};
 	new->center = (t_point){0, 0, 0};
 	new->trs = (t_point){0, 0, 0};
+	new->pos_texture = (t_point){0, 0, 0};
+	new->pos_slice = (t_point){0, 0, 0};
 	new->rot = (t_rot){0, 0, 0};
 	new->angle = 0;
-	new->ref = 0;
+	new->refl = 0;
+	new->refr = 0;
+	new->per_refr = 0;
+	new->matter = 0;
+	new->neg_obj = 0;
+	new->size = 0;
+	new->slice = 0;
+	new->texture = ".";
 	new->next = NULL;
 	return (new);
 }
@@ -60,6 +68,7 @@ t_cam	*initcam(void)
 	new->v = (t_point){0, 1, 0};
 	new->u = (t_point){0, 0, 0};
 	new->w = (t_point){0, 0, 0};
+	new->ambiante = 0;
 	new->fov = 0;
 	new->plnw = 0;
 	new->plnh = 0;

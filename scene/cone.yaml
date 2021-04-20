@@ -3,6 +3,10 @@ camera:
  lokat: 0:0:0
  fov: 60
 cone:
+ texture:
+ postesxture: posx:posy:scale
+ slice:
+ posslice:
  center: -40:0:0
  axis: 0:1:0
  rot: 0:0:0

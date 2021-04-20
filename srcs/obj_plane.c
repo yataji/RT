@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:22:27 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/18 02:13:17 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/20 01:48:14 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int	stockplane(t_obj *obj, char *str)
 	else if (ck == 4 && ft_strcmp(value[0], " rot") == 0)
 		obj->rot = stk(value);
 	else if (ck == 2 && ft_strcmp(value[0], " ref") == 0)
-		obj->ref = ft_atoi(value[1]);
+		obj->refr = ft_atoi(value[1]);
 	else if (ck == 4 && ft_strcmp(value[0], " trs") == 0)
 		obj->trs = stk(value);
+	// else if (ck == 2 && ft_strcmp(value[0], " texture") == 0)
+	// 	obj->text = ft_strdup(value[1]);
 	else
 	{
 		ft_strdel(value);
@@ -72,6 +74,8 @@ int	plane(t_obj *obj, char *str, int fd)
 			check = stockplane(obj, str);
 		else if (str && (ck(str, " rot: ", 6) > 0 || ck(str, " trs: ", 6) > 0))
 			check = stockplane(obj, str);
+		// else if (str && ck(str, " texture: ", 7) > 0)
+		// 	check = textures(obj);
 		if (check == -1)
 			return (-1);
 		obj->type = PLANE;

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/19 04:33:24 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/20 02:06:34 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	t_sol	t;
 
 	rt->tmpo = rt->obj;
-	if (!close || !close->ref || rayor.maxrf >= 2)
+	if (!close || !close->refl || rayor.maxrf >= 2)
 		return ((t_color){0, 0, 0});
 	ray = initmpray(rayor, close);
 	v.near = -1.0;
@@ -107,7 +107,7 @@ t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	}
 	if (!closenew)
 		return ((t_color){0, 0, 0});
-	if (closenew->ref)
+	if (closenew->refl)
 		reflection(rt, closenew, l, ray);
 	setnormal(closenew, &ray, v.near);
 	return (diffuspclr(ray, closenew, l));
@@ -130,7 +130,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		else
 			c = (t_color){0, 0, 0};
 		//reflection
-		if (close->ref)
+		if (close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;

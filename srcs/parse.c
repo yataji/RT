@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/18 16:24:44 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/20 03:30:07 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+int textures(t_obj *obj, char *str)
+{
+	obj->texture = ft_strdup(str);
+	if (ft_strcmp(obj->texture, ".") != 0)
+		if (!(obj->surface = IMG_Load(obj->texture)))
+			sdl_error("can't load surface");
+	return (1);
+}
 
 int	parse_objs(t_rt *rt, char *str)
 {
@@ -34,7 +43,7 @@ int	parse_objs(t_rt *rt, char *str)
 		if (ft_plane(rt, str) == -1)
 			return (-1);
 	}
-	else if (ft_strcmp(str, "paraploide:") == 0)
+	else if (ft_strcmp(str, "paraploid:") == 0)
 	{
 		if (ft_paraploid(rt, str) == -1)
 			return (-1);
