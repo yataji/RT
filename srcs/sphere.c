@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-t_sol	sphrintr(t_obj *sphere, t_ray ray)
+double	sphrintr(t_obj *sphere, t_ray ray)
 {
 	t_vect	oc;
 	t_math	calc;

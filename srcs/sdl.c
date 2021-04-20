@@ -32,8 +32,6 @@ void			init_sdl(t_rt *rt)
 	if (!(rt->rend = SDL_CreateRenderer(rt->win, -1,
 					SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)))
 		sdl_error("Creation render");
-	if (SDL_SetRenderDrawColor(rt->rend, 255, 0, 0, 255) != 0)
-		sdl_error("Get color failed");
 }
 
 void			loop_program(t_rt *rt)

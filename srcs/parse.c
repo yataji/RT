@@ -12,12 +12,15 @@
 
 #include "rt.h"
 
-int textures(t_obj *obj, char *str)
+int parse_texture(t_obj *obj, char *str)
 {
 	obj->texture = ft_strdup(str);
 	if (ft_strcmp(obj->texture, ".") != 0)
-		if (!(obj->surface = IMG_Load(obj->texture)))
+	{
+		obj->surface = IMG_Load(obj->texture);
+		if (!obj->surface)
 			sdl_error("can't load surface");
+	}
 	return (1);
 }
 

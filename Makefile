@@ -37,6 +37,9 @@ SRC  =	main.c\
 		parse_check.c\
 		stock.c\
 		init_parce.c\
+		ft_atof.c\
+		texture1.c\
+		texture2.c\
 
 HEADER = 	includes/rt.h
 

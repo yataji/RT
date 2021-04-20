@@ -15,6 +15,7 @@
 void	usage(void)
 {
 	ft_putendl("usage: ./rtv1 scene/(chose a file .yaml)");
+	exit(1);
 }
 
 int	checknamefl(char *name)
@@ -43,7 +44,7 @@ int	main(int ac, char **av)
 	{
 		rt.fd = open(av[1], O_RDONLY);
 		if (rt.fd < 3)
-			return (0);
+			usage();
 		rt = init_list(rt);
 		if (parse(&rt) == -1)
 		{
@@ -51,47 +52,6 @@ int	main(int ac, char **av)
 			ft_free(&rt.obj, &rt.lights, &rt.cam);
 			return (0);
 		}
-		t_obj *l;
-		l = rt.obj;
-		if (!l)
-			return (0);
-		printf ("texture: %s\n \
-				pos_texture: %f:%f:%f\n \
-				slice: %f\n \
-				pos_slice: %f:%f:%f\n \
-				center: %f:%f:%f\n \
-				trs: %f:%f:%f\n \
-				radius: %f\n \
-				color: %f:%f:%f\n \
-				refl: %d\n \
-				refr: %d\n \
-				matter: %d\n \
-				per_refr: %d\n \
-				neg_obj: %d\n", 
-				l->texture, \
-				l->pos_texture.x, \
-				l->pos_texture.y, \
-				l->pos_texture.z, \
-				l->slice, \
-				l->pos_slice.x, \
-				l->pos_slice.y, \
-				l->pos_slice.z, \
-				l->center.x, \
-				l->center.y, \
-				l->center.z, \
-				l->trs.x, \
-				l->trs.y, \
-				l->trs.z, \
-				l->radius, \
-				l->color.x, \
-				l->color.y, \
-				l->color.z, \
-				l->refl, \
-				l->refr, \
-				l->matter, \
-				l->per_refr, \
-				l->neg_obj);
-		exit(0);
 		init_sdl(&rt);
 		draw(rt);
 		loop_program(&rt);

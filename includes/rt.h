@@ -29,6 +29,18 @@
 # define PARAPLOID 4
 # define MAXRF 3
 
+typedef struct	s_2d_i
+{
+	int			i;
+	int			j;
+}				t_2d_i;
+
+typedef struct	s_2d_d
+{
+	double		x;
+	double		y;
+}				t_2d_d;
+
 typedef struct s_var
 {
 	int				x;
@@ -144,13 +156,13 @@ t_ray				initray(t_cam *cam, int x, int y);
 double				max(double v1, double v2);
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
-t_sol				checkt(t_math calc);
-t_sol				intersect(t_obj *object, t_ray ray);
-t_sol				sphrintr(t_obj *sphere, t_ray ray);
-t_sol				cyldintr(t_obj *cyld, t_ray ray);
-t_sol				coneintr(t_obj *cone, t_ray ray);
-t_sol				parapinter(t_obj *para, t_ray ray);
-t_sol				planiter(t_obj *cone, t_ray ray);
+double				checkt(t_math calc);
+double				intersect(t_obj *object, t_ray ray);
+double				sphrintr(t_obj *sphere, t_ray ray);
+double				cyldintr(t_obj *cyld, t_ray ray);
+double				coneintr(t_obj *cone, t_ray ray);
+double				parapinter(t_obj *para, t_ray ray);
+double				planiter(t_obj *cone, t_ray ray);
 int					keypress(int key, void *param);
 int					ft_exit(t_rt *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);
@@ -193,7 +205,10 @@ int					ft_cam(t_rt *rt, char *str);
 void				init_sdl(t_rt *rt);
 void				sdl_error(char *message);
 void				loop_program(t_rt *rt);
-int					textures(t_obj *obj, char *str);
+int					parse_texture(t_obj *obj, char *str);
 int					stockobj(t_obj *obj, int id, char *s, int fd);
-
+double				ft_atof(char *str);
+t_2d_i		get_uv(t_obj *obj, t_2d_i size, t_vect hit);
+void		texture(t_obj *obj, t_vect hit);
+t_sol			checktminmax(t_math math);
 #endif

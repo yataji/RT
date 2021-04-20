@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-t_sol	cyldintr(t_obj *cyld, t_ray ray)
+double	cyldintr(t_obj *cyld, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;

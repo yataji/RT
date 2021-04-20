@@ -12,11 +12,10 @@
 
 #include "rt.h"
 
-t_sol	planiter(t_obj *plan, t_ray ray)
+double	planiter(t_obj *plan, t_ray ray)
 {
 	t_vect	oc;
 	t_vect	v;
-	t_sol	t;
 	double	xv;
 	double	dv;
 
@@ -25,16 +24,13 @@ t_sol	planiter(t_obj *plan, t_ray ray)
 	v = rotation_xyz(v, plan->rot);
 	dv = dot(ray.dir, v);
 	xv = dot(oc, v);
-	t.tmin = 0;
-	t.tmax = 0;
 	if (dv != 0 && ((dv > 0 && xv < 0) || (dv < 0 && xv > 0)))
 	{
 		if (dv > 0)
 			plan->normal = multi(v, -1.0);
 		else
 			plan->normal = v;
-		t.tmin = -xv / dv;
-		return (t);
+		return (-xv / dv);
 	}
-	return (t);
+	return (-1);
 }

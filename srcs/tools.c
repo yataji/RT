@@ -12,25 +12,25 @@
 
 #include "rt.h"
 
-// double	checkt(t_math calc)
-// {
-// 	double	t1;
-// 	double	t2;
+double	checkt(t_math calc)
+{
+	double	t1;
+	double	t2;
 
-// 	if (calc.delta < 0)
-// 		return (-1);
-// 	else if (calc.delta == 0)
-// 		return (-calc.b / (2 * calc.a));
-// 	t1 = (-calc.b - sqrtf(calc.delta)) / (2 * calc.a);
-// 	t2 = (-calc.b + sqrtf(calc.delta)) / (2 * calc.a);
-// 	if (t1 < t2 && t1 > 0.0001)
-// 		return (t1);
-// 	else if (t2 > 0.0001)
-// 		return (t2);
-// 	return (-1);
-// }
+	if (calc.delta < 0)
+		return (-1);
+	else if (calc.delta == 0)
+		return (-calc.b / (2 * calc.a));
+	t1 = (-calc.b - sqrtf(calc.delta)) / (2 * calc.a);
+	t2 = (-calc.b + sqrtf(calc.delta)) / (2 * calc.a);
+	if (t1 < t2 && t1 > 0.0001)
+		return (t1);
+	else if (t2 > 0.0001)
+		return (t2);
+	return (-1);
+}
 
-t_sol			checkt(t_math math)
+t_sol			checktminmax(t_math math)
 {
 	t_sol	sol;
 	double	temp;
@@ -57,7 +57,7 @@ t_sol			checkt(t_math math)
 	return (sol);
 }
 
-t_sol	intersect(t_obj *object, t_ray ray)
+double	intersect(t_obj *object, t_ray ray)
 {
 	if (object->type == CYLINDER)
 		return (cyldintr(object, ray));
@@ -69,7 +69,7 @@ t_sol	intersect(t_obj *object, t_ray ray)
 		return (planiter(object, ray));
 	else if (object->type == PARAPLOID)
 		return (parapinter(object, ray));
-	return ((t_sol){0, 0});
+	return (-1);
 }
 
 t_vect	normalize(t_vect v2)

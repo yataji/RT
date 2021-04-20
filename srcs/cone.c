@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-t_sol	coneintr(t_obj *cone, t_ray ray)
+double	coneintr(t_obj *cone, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;

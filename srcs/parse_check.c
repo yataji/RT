@@ -29,11 +29,13 @@ int stockobj(t_obj *obj, int id, char *s, int fd)
 
 	i = -1;
 	j = 0;
-	if (id == 0 || id == 3)
-		l = 12;
-	if (id == 1 || id == 2)
+	if (id == SPHERE)
+		l = 13;
+	else if (id == PLANE)
+		l = 15;
+	else if (id == CONE || id == CYLINDER)
 		l = 16;
-	if (id == 4)
+	else if (id == PARAPLOID)
 		l = 6;
 	while (++i < l)
 	{
@@ -47,13 +49,14 @@ int stockobj(t_obj *obj, int id, char *s, int fd)
 			return (-1);
 		if (obj->type != 4 && obj->type != 0 && c == 2 && ck(s, " size: ", 7) && !ft_strcmp(value[0], " size"))
 			obj->size = abs(ft_atoi(value[1]));
-		// else if (obj->type != 4 && c == 2 && ck(s, " texture: ", 10) > 0 && !ft_strcmp(value[0], " texture"))
-		// {
-		// 	if (!textures(obj, value[1]))
-		// 	{
-		// 		return (-1);
-		// 	}
-		// }
+		else if (obj->type != 4 && c == 2 && !ft_strcmp(value[0], " texture"))
+		{
+			value[1] = ft_strtrim(value[1]);
+			if (!parse_texture(obj, value[1]))
+			{
+				return (-1);
+			}
+		}
 		else if (obj->type != 4 && c == 2 && ck(s, " slice: ", 8) > 0 && !ft_strcmp(value[0], " slice"))
 			obj->slice = abs(ft_atoi(value[1]));
 		else if (obj->type != 4 && c == 2 && ck(s, " refl: ", 7) > 0 && !ft_strcmp(value[0], " refl"))
@@ -113,24 +116,20 @@ int	ck(char *s, char *check, int l)
 	}
 	while (s[i])
 	{
+		if (s[i] == '.')
+			i++;
 		if ((s[i] == ':' && s[i + 1] == ':')
 			|| (s[i] == ':' && s[i + 1] == '\0')
 			|| (s[i] == ':' && s[i + 1] == ' ')
 			|| (s[i] == ' ' && s[i + 1] == '\0'))
-			{
-		return (-1);
-	}
+			return (-1);
 		else if (s[i] == ':' || s[i] == '-' || s[i] == '+' || s[i] == ' ')
 		{
 			if (s[i] == ':' && s[i + 1] == ':')
-				{
-		return (-1);
-	}
+				return (-1);
 		}
 		else if (ft_isdigit(s[i]) == 0)
-			{
-		return (-1);
-	}
+			return (-1);
 		i++;
 	}
 	return (1);

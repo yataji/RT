@@ -14,29 +14,28 @@
 
 static int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 {
-	t_obj		*tmp;
+	t_obj		*tmpo;
 	t_var		v;
-	t_sol		t;
 	t_ray		shadow_r;
 	t_vect		dirvect;
 	double		dist;
 
-	tmp = rt->obj;
+	tmpo = rt->obj;
 	shadow_r.org = lights->pos;
 	dirvect = moins(rt->ray.hit, lights->pos);
 	dist = dot(dirvect, dirvect);
 	shadow_r.dir = normalize(dirvect);
-	while (tmp)
+	while (tmpo)
 	{
-		t = intersect(tmp, shadow_r);
-		// t.tmin = t.tmin + 0.01;
-		if (tmp != close && t.tmin > 0)
+		if (tmpo->neg_obj == 0)
+			v.t = intersect(tmpo, shadow_r) + 0.01;
+		if (tmpo != close && v.t > 0)
 		{
-			if (dot(multi(shadow_r.dir, t.tmin),
-					multi(shadow_r.dir, t.tmin)) < dist)
+			if (dot(multi(shadow_r.dir, v.t),
+					multi(shadow_r.dir, v.t)) < dist)
 				return (0);
 		}
-		tmp = tmp->next;
+		tmpo = tmpo->next;
 	}
 	return (1);
 }
@@ -84,7 +83,7 @@ t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	t_obj *closenew;
 	t_ray ray;
 	t_var v;
-	t_sol	t;
+	double	t;
 
 	rt->tmpo = rt->obj;
 	if (!close || !close->refl || rayor.maxrf >= 2)
@@ -97,10 +96,10 @@ t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 		if (rt->tmpo != close)
 		{
 			t = intersect(rt->tmpo, ray);
-			if ((t.tmin < v.near && t.tmin > 0) || (t.tmin > v.near && v.near < 0))
+			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
 			{
 				closenew = rt->tmpo;
-				v.near = t.tmin;
+				v.near = t;
 			}
 		}
 		rt->tmpo = rt->tmpo->next;
@@ -120,7 +119,9 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	int			shad;
 
 	// add textures;
-	ret = multi(close->color, 0.1);
+	if (ft_strcmp(close->texture, ".") != 0)
+		texture(close , rt->ray.hit);
+	ret = multi(close->color, rt->cam->ambiante);
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
@@ -142,13 +143,14 @@ void	draw2(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 {
 	t_color col;
 
+	col = (t_color){0, 0, 0};
 	while (tmpo)
 	{
-		rt.t = intersect(tmpo, rt.ray);
-		if ((rt.t.tmin < v.near && rt.t.tmin > 0) || (rt.t.tmin > v.near && v.near < 0))
+		v.t = intersect(tmpo, rt.ray);
+		if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
 		{
 			close = tmpo;
-			v.near = rt.t.tmin;
+			v.near = v.t;
 		}
 		tmpo = tmpo->next;
 	}
@@ -156,11 +158,11 @@ void	draw2(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 	{
 		setnormal(close, &rt.ray, v.near);
 		col = color(&rt, close, rt.lights);
-//		if (col.x > 255 || col.y > 255 || col.z > 255)
-//			printf("x= %f\ty= %f\tz= %f\n", col.x, col.y, col.z);
-		if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)
-				sdl_error("Get color failed");
 	}
+	if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)
+			sdl_error("Get color failed");
+	if (SDL_RenderDrawPoint(rt.rend, v.y, v.x) != 0)
+			sdl_error("draw point failed");
 }
 
 void	draw(t_rt rt)
@@ -180,8 +182,6 @@ void	draw(t_rt rt)
 			close = NULL;
 			v.near = -1;
 			draw2(v, close, rt, rt.tmpo);
-			if (SDL_RenderDrawPoint(rt.rend, v.y, v.x) != 0)
-				sdl_error("draw point failed");
 		}
 	}
 }

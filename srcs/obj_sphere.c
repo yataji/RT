@@ -17,10 +17,7 @@ int	ft_sphere(t_rt *rt, char *str)
 	rt->tmpo = initobj();
 	rt->tmpo->type = SPHERE;
 	if (stockobj(rt->tmpo, rt->tmpo->type, str, rt->fd) == -1)
-	{
-		printf ("1\n");
 		return (-1);
-	}
 	rt->tmpo->next = rt->obj;
 	rt->obj = rt->tmpo;
 	return (0);

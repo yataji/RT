@@ -1,16 +1,3 @@
-sphere:
- slice: 1
- pos_texture: 2:3:4
- pos_slice: 5:6:7
- center: 8:9:10
- trs: 11:12:13
- radius: 14
- color: 15:16:17
- refl: 18
- refr: 19
- matter: 20
- per_refr: 21
- neg_obj: 22
 lights:
  intensity: 100
  color: 255:255:255
@@ -19,3 +6,18 @@ camera:
  lokfrm: 0:0:100
  lokat: 0:0:0
  fov: 60
+ ambiante: 0.1
+sphere:
+ slice: 0
+ texture: .
+ pos_texture: 0:0:0
+ pos_slice: 0:0:0
+ center: 0:0:50
+ trs: 0:0:0
+ radius: 10
+ color: 255:255:0
+ refl: 0
+ refr: 0
+ matter: 0
+ per_refr: 0
+ neg_obj: 0

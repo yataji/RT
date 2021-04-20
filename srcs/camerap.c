@@ -38,6 +38,8 @@ int	stockcamera(t_cam *cam, char *str)
 		cam->lokfrm = stk(value);
 	else if (ck == 2 && ft_strcmp(value[0], " fov") == 0)
 		cam->fov = abs(ft_atoi(value[1]));
+	else if (ck == 2 && ft_strcmp(value[0], " ambiante") == 0)
+		cam->ambiante = fabs(ft_atof(value[1]));
 	else
 	{
 		ft_strdel(value);
@@ -52,7 +54,7 @@ int	camera(t_cam *cam, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 3)
+	while (++l < 4)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -62,6 +64,8 @@ int	camera(t_cam *cam, char *str, int fd)
 		else if (str && ck(str, " lokfrm: ", 9) > 0)
 			check = stockcamera(cam, str);
 		else if (str && ck(str, " fov: ", 6) > 0)
+			check = stockcamera(cam, str);
+		else if (str && ck(str, " ambiante: ", 11) > 0)
 			check = stockcamera(cam, str);
 		if (check == -1)
 			return (-1);
