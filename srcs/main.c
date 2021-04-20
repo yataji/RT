@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/20 02:18:15 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/20 11:50:05 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,42 @@ int	main(int ac, char **av)
 		l = rt.obj;
 		if (!l)
 			return (0);
-		printf ("texture: %s\npos_texture: %f:%f:%f\nslice: %f\npos_slice: %f:%f:%f\ncenter: %f:%f:%f\ntrs: %f:%f:%f\nradius: %f\ncolor: %f:%f:%f\nrefl: %d\nrefr: %d\nmatter: %d\nper_refr: %d\nneg_obj: %d\n", l->texture, l->pos_texture.x, l->pos_texture.y, l->pos_texture.z, l->slice, l->pos_slice.x, l->pos_slice.y, l->pos_slice.y, l->center.x, l->center.y, l->center.z, l->trs.x, l->trs.y, l->trs.z, l->radius, l->color.x, l->color.y, l->color.z, l->refl, l->refr, l->matter, l->per_refr, l->neg_obj);
+		printf ("texture: %s\n \
+				pos_texture: %f:%f:%f\n \
+				slice: %f\n \
+				pos_slice: %f:%f:%f\n \
+				center: %f:%f:%f\n \
+				trs: %f:%f:%f\n \
+				radius: %f\n \
+				color: %f:%f:%f\n \
+				refl: %d\n \
+				refr: %d\n \
+				matter: %d\n \
+				per_refr: %d\n \
+				neg_obj: %d\n", 
+				l->texture, \
+				l->pos_texture.x, \
+				l->pos_texture.y, \
+				l->pos_texture.z, \
+				l->slice, \
+				l->pos_slice.x, \
+				l->pos_slice.y, \
+				l->pos_slice.z, \
+				l->center.x, \
+				l->center.y, \
+				l->center.z, \
+				l->trs.x, \
+				l->trs.y, \
+				l->trs.z, \
+				l->radius, \
+				l->color.x, \
+				l->color.y, \
+				l->color.z, \
+				l->refl, \
+				l->refr, \
+				l->matter, \
+				l->per_refr, \
+				l->neg_obj);
 		exit(0);
 		init_sdl(&rt);
 		draw(rt);

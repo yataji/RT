@@ -10,6 +10,7 @@ lights:
  color: 255:255:255
  direction: x:y:z
  direct: 1 | 0
+ angle: 60
  intensity: 100
 
 
