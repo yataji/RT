@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/20 02:06:34 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/21 16:23:54 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	return (ret);
 }
 
-void	draw2(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
+void	drawcolor(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 {
 	t_color col;
 
@@ -213,7 +213,8 @@ void			menu(t_rt *rt)
 	rt->event.i = 0;
 	rt->event.j = 0;
 }
-void	draw(t_rt rt)
+
+void	draw(t_rt	rt)
 {
 	t_obj		*close;
 	t_var		v;
@@ -233,7 +234,7 @@ void	draw(t_rt rt)
 				rt.tmpo = rt.obj;
 				close = NULL;
 				v.near = -1;
-				draw2(v, close, rt, rt.tmpo);
+				drawcolor(v, close, rt, rt.tmpo);
 			}
 		}
 	}
@@ -241,3 +242,146 @@ void	draw(t_rt rt)
 	filtres(&rt);
 	loop(&rt);
 }
+
+// void	*draw(void *param)
+// {
+// 	t_rt		*rt;
+// 	t_obj		*close;
+// 	t_var		v;
+
+// 	v.y = -1;
+// 	v.near = -1.0;
+// 	rt = (t_rt *)param;
+// 	if (rt->menu == 0)
+// 		menu(rt);
+// 	if (rt->menu == 1)
+// 	{
+// 		while (++v.y < MAXWIDTH / 2)
+// 		{
+// 			v.x = -1;
+// 			while (++v.x < MAXHEIGHT / 2)
+// 			{
+// 				rt->ray = initray(rt->tmpc, v.y, v.x);
+// 				rt->tmpo = rt->obj;
+// 				close = NULL;
+// 				v.near = -1;
+// 				drawcolor(v, close, *rt, rt->tmpo);
+// 			}
+// 		}
+// 	}
+// 	rt->filter_type = 0;
+// 	filtres(rt);
+// 	loop(rt);
+// 	return (0);
+// }
+
+// void	*draw2(void *param)
+// {
+// 	t_rt		*rt;
+// 	t_obj		*close;
+// 	t_var		v;
+
+// 	v.y = -1;
+// 	v.near = -1.0;
+// 	rt = (t_rt *)param;
+// 	if (rt->menu == 0)
+// 		menu(rt);
+// 	if (rt->menu == 1)
+// 	{
+// 		while (++v.y < MAXWIDTH / 2)
+// 		{
+// 			v.x = MAXHEIGHT / 2 - 1;
+// 			while (++v.x < MAXHEIGHT)
+// 			{
+// 				rt->ray = initray(rt->tmpc, v.y, v.x);
+// 				rt->tmpo = rt->obj;
+// 				close = NULL;
+// 				v.near = -1;
+// 				drawcolor(v, close, *rt, rt->tmpo);
+// 			}
+// 		}
+// 	}
+// 	rt->filter_type = 0;
+// 	filtres(rt);
+// 	loop(rt);
+// 	return (0);
+// }
+
+// void	*draw3(void *param)
+// {
+// 	t_rt		*rt;
+// 	t_obj		*close;
+// 	t_var		v;
+
+// 	v.y = MAXWIDTH / 2 - 1;
+// 	v.near = -1.0;
+// 	rt = (t_rt *)param;
+// 	if (rt->menu == 0)
+// 		menu(rt);
+// 	if (rt->menu == 1)
+// 	{
+// 		while (++v.y < MAXWIDTH)
+// 		{
+// 			v.x = -1;
+// 			while (++v.x < MAXHEIGHT / 2)
+// 			{
+// 				rt->ray = initray(rt->tmpc, v.y, v.x);
+// 				rt->tmpo = rt->obj;
+// 				close = NULL;
+// 				v.near = -1;
+// 				drawcolor(v, close, *rt, rt->tmpo);
+// 			}
+// 		}
+// 	}
+// 	rt->filter_type = 0;
+// 	filtres(rt);
+// 	loop(rt);
+// 	return (0);
+// }
+
+// void	*draw4(void *param)
+// {
+// 	t_rt		*rt;
+// 	t_obj		*close;
+// 	t_var		v;
+
+// 	v.y = MAXWIDTH / 2 - 1;
+// 	v.near = -1.0;
+// 	rt = (t_rt *)param;
+// 	if (rt->menu == 0)
+// 		menu(rt);
+// 	if (rt->menu == 1)
+// 	{
+// 		while (++v.y < MAXWIDTH)
+// 		{
+// 			v.x = MAXHEIGHT / 2 - 1;
+// 			while (++v.x < MAXHEIGHT)
+// 			{
+// 				rt->ray = initray(rt->tmpc, v.y, v.x);
+// 				rt->tmpo = rt->obj;
+// 				close = NULL;
+// 				v.near = -1;
+// 				drawcolor(v, close, *rt, rt->tmpo);
+// 			}
+// 		}
+// 	}
+// 	rt->filter_type = 0;
+// 	filtres(rt);
+// 	loop(rt);
+// 	return (0);
+// }
+
+// void			multi_thread(t_rt *rt)
+// {
+// 	pthread_t	thread[4];
+
+// 	pthread_create(&thread[0], NULL, &draw, rt);
+// 	pthread_create(&thread[1], NULL, &draw2, rt);
+// 	pthread_create(&thread[2], NULL, &draw3, rt);
+// 	pthread_create(&thread[3], NULL, &draw4, rt);
+// 	pthread_join(thread[0], NULL);
+// 	pthread_join(thread[1], NULL);
+// 	pthread_join(thread[2], NULL);
+// 	pthread_join(thread[3], NULL);
+// 	// mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
+// }

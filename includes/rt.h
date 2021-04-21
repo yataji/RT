@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/20 02:08:42 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/21 16:24:00 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include <pthread.h>
+# include "SDL2/SDL.h"
+# include "SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -226,5 +227,7 @@ t_sol			check_min_max(t_math math);
 void			filter_mb(t_rt *rt);
 void			filtre_sepia(t_rt *rt);
 void			filtres(t_rt *rt);
+
+void			multi_thread(t_rt *rt);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/20 11:50:05 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/21 16:24:05 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	main(int ac, char **av)
 		}
 		init_sdl(&rt);
 		draw(rt);
+		// multi_thread(&rt);
 	}
 	else
 		usage();
