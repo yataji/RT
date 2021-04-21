@@ -19,6 +19,7 @@ double			cone_slice(t_obj *cone, t_ray r, t_sol sol, t_vect sly)
 		return (sol.tmax);
 	return (-1);
 }
+
 double			lim_cone_y(t_obj *cone, t_vect hit, double tmax, t_ray r)
 {
 	t_vect		hit2;
@@ -72,7 +73,6 @@ double		limeted_cone(t_obj *cone, t_ray r, t_sol sol)
 	t_vect		up;
 	t_vect		hit;
 	t_vect		hit2;
-	t_vect	sly;
 	int		is;
 
 	if (!cone->slice.x && !cone->slice.y && !cone->slice.z)

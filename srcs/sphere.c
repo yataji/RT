@@ -34,7 +34,7 @@ double			limeted_sph(t_obj *sph, t_ray r, t_sol sol)
 	{
 		r.hit = plus(r.org, multi(r.dir, sol.tmax));
 		if (sol.tmax > 0 && dot(moins(sph->pos_slice, r.hit), sly) > 0.0)
-			return (sol.tmax);
+				return (sol.tmax);
 	}
 	return (-1);
 }

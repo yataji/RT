@@ -20,8 +20,8 @@
 # include <stdio.h>
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_image.h"
-# define MAXWIDTH 900
-# define MAXHEIGHT 900
+# define MAXWIDTH 1000
+# define MAXHEIGHT 1000
 # define SPHERE 0
 # define CYLINDER 1
 # define CONE 2

@@ -93,3 +93,20 @@ plane:
  matter://
  per_refr://
  neg_obj://
+
+ plane:
+ size: 0
+ texture: ./wall.jpg
+ pos_tesxture: 0:0:0
+ slice: 0:0:0
+ pos_slice: 0:0:0
+ center: 10:0:0
+ axis: 1:0:0
+ rot: 0:0:0
+ trs: 0:0:0
+ color: 0:0:0
+ refl: 0
+ refr: 0
+ matter: 0
+ per_refr: 0
+ neg_obj: 0
