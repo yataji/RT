@@ -33,6 +33,7 @@ t_rt	init_list(t_rt rt)
 	rt.obj = NULL;
 	rt.lights = NULL;
 	rt.cam = NULL;
+	rt.menu = 0;
 	rt.screen = (t_vect*)malloc((MAXWIDTH * MAXHEIGHT) * sizeof(t_vect));
 	return (rt);
 }
@@ -55,7 +56,6 @@ int	main(int ac, char **av)
 		}
 		init_sdl(&rt);
 		draw(rt);
-		loop_program(&rt);
 	}
 	else
 		usage();

@@ -173,7 +173,46 @@ void	draw2(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 			sdl_error("draw point failed");
 	rt.screen[v.y * MAXWIDTH + v.x] = col;
 }
+int				inside_rect(t_rt *rt, SDL_Rect r)
+{
+	if (rt->event.i >= r.x && rt->event.i <= r.x + r.w &&
+		rt->event.j >= r.y && rt->event.j <= r.y + r.h)
+		return (1);
+	return (0);
+}
+void			start(t_rt *rt)
+{
+	SDL_Rect	dest;
+	SDL_Texture	*img;
 
+	SDL_Rect	dest1;
+	SDL_Texture	*img1;
+
+	dest1.x = 1;
+	dest1.y = 1;
+	dest1.w = MAXWIDTH-2;
+	dest1.h = MAXHEIGHT-2;
+	img1 = IMG_LoadTexture(rt->rend, "./texture/blow.jpg");
+	SDL_RenderCopy(rt->rend, img1, NULL, &dest1);
+
+	dest.x = MAXWIDTH / 2 - MAXWIDTH / 3 / 2;
+	dest.y = MAXHEIGHT / 5 * 3 + (MAXHEIGHT / 5 / 5 * 4);
+	dest.w = MAXWIDTH / 3;
+	dest.h = MAXHEIGHT / 5;
+	img = IMG_LoadTexture(rt->rend, "./texture/menu1.png");
+	SDL_RenderCopy(rt->rend, img, NULL, &dest);
+
+	if (inside_rect(rt, dest) == 1)
+		rt->menu = 1;
+}
+
+void			menu(t_rt *rt)
+{
+	SDL_SetRenderDrawColor(rt->rend, 0, 0, 0, 255);
+	start(rt);
+	rt->event.i = 0;
+	rt->event.j = 0;
+}
 void	draw(t_rt rt)
 {
 	t_obj		*close;
@@ -181,18 +220,24 @@ void	draw(t_rt rt)
 
 	v.y = -1;
 	v.near = -1.0;
-	while (++v.y < MAXWIDTH)
+	if (rt.menu == 0)
+		menu(&rt);
+	if (rt.menu == 1)
 	{
-		v.x = -1;
-		while (++v.x < MAXHEIGHT)
+		while (++v.y < MAXWIDTH)
 		{
-			rt.ray = initray(rt.tmpc, v.y, v.x);
-			rt.tmpo = rt.obj;
-			close = NULL;
-			v.near = -1;
-			draw2(v, close, rt, rt.tmpo);
+			v.x = -1;
+			while (++v.x < MAXHEIGHT)
+			{
+				rt.ray = initray(rt.tmpc, v.y, v.x);
+				rt.tmpo = rt.obj;
+				close = NULL;
+				v.near = -1;
+				draw2(v, close, rt, rt.tmpo);
+			}
 		}
 	}
-	rt.filter_type = 0;
+	rt.filter_type = 2;
 	filtres(&rt);
+	loop(&rt);
 }

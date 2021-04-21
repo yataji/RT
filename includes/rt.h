@@ -35,6 +35,8 @@ typedef struct	s_2d_i
 	int			j;
 }				t_2d_i;
 
+typedef t_2d_i t_event;
+
 typedef struct	s_2d_d
 {
 	double		x;
@@ -145,10 +147,12 @@ typedef struct s_rt
 	int			maxref;
 	char			*str;
 	int				fd;
+	int 			menu;
 	int				ck;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
 	t_vect			*screen;
+	t_event			event;
 }					t_rt;
 
 t_color				multi_color(t_color c1, double scal);
@@ -207,7 +211,7 @@ int					ft_cam(t_rt *rt, char *str);
 
 void				init_sdl(t_rt *rt);
 void				sdl_error(char *message);
-void				loop_program(t_rt *rt);
+void				loop(t_rt *rt);
 int					parse_texture(t_obj *obj, char *str);
 int					stockobj(t_obj *obj, int id, char *s, int fd);
 double				ft_atof(char *str);

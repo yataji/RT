@@ -34,7 +34,7 @@ void			init_sdl(t_rt *rt)
 		sdl_error("Creation render");
 }
 
-void			loop_program(t_rt *rt)
+void			loop(t_rt *rt)
 {
 	SDL_bool	prog_launched;
 	SDL_Event	event;
@@ -52,25 +52,24 @@ void			loop_program(t_rt *rt)
 				prog_launched = SDL_FALSE;
 				exit(1);
 			}
-			// if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_r)
-			// {
-
-			// 	rt->ren = 1;
-			// 	SDL_RenderClear(rt->rend);
-			// 	raytracing(rt);
-			// }
-			// if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m)
-			// {
-			// 	rt->ren = 0;
-			// 	SDL_RenderClear(rt->rend);
-			// 	raytracing(rt);
-			// }
-			// if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT)
-			// {
-			// 	SDL_GetMouseState(&(rt->event.x), &(rt->event.y));
-			// 	SDL_RenderClear(rt->rend);
-			// 	raytracing(rt);
-			// }
+			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_r)
+			{
+				rt->menu = 1;
+				SDL_RenderClear(rt->rend);
+				draw(*rt);
+			}
+			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m)
+			{
+				rt->menu = 0;
+				SDL_RenderClear(rt->rend);
+				draw(*rt);
+			}
+			if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT)
+			{
+				SDL_GetMouseState(&(rt->event.i), &(rt->event.j));
+				SDL_RenderClear(rt->rend);
+				draw(*rt);
+			}
 		}
 
 	}
