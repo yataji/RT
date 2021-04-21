@@ -33,6 +33,7 @@ t_rt	init_list(t_rt rt)
 	rt.obj = NULL;
 	rt.lights = NULL;
 	rt.cam = NULL;
+	rt.screen = (t_vect*)malloc((MAXWIDTH * MAXHEIGHT) * sizeof(t_vect));
 	return (rt);
 }
 

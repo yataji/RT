@@ -131,6 +131,7 @@ typedef struct s_lights
 
 typedef struct s_rt
 {
+	int 			filter_type;
 	t_obj			*obj;
 	t_obj			*tmpo;
 	t_ray			ray;
@@ -147,6 +148,7 @@ typedef struct s_rt
 	int				ck;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
+	t_vect			*screen;
 }					t_rt;
 
 t_color				multi_color(t_color c1, double scal);
@@ -212,4 +214,10 @@ double				ft_atof(char *str);
 t_2d_i		get_uv(t_obj *obj, t_2d_i size, t_vect hit);
 void		texture(t_obj *obj, t_vect hit);
 t_sol			check_min_max(t_math math);
+
+
+void			filter_mb(t_rt *rt);
+void			filtre_sepia(t_rt *rt);
+void			filtres(t_rt *rt);
+
 #endif

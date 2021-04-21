@@ -171,6 +171,7 @@ void	draw2(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 			sdl_error("Get color failed");
 	if (SDL_RenderDrawPoint(rt.rend, v.y, v.x) != 0)
 			sdl_error("draw point failed");
+	rt.screen[v.y * MAXWIDTH + v.x] = col;
 }
 
 void	draw(t_rt rt)
@@ -192,4 +193,6 @@ void	draw(t_rt rt)
 			draw2(v, close, rt, rt.tmpo);
 		}
 	}
+	rt.filter_type = 0;
+	filtres(&rt);
 }

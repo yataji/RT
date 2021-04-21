@@ -40,6 +40,9 @@ SRC  =	main.c\
 		ft_atof.c\
 		texture1.c\
 		texture2.c\
+		filtres.c \
+		filter_mb.c\
+		filter_sepia.c\
 
 HEADER = 	includes/rt.h
 
