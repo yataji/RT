@@ -18,8 +18,8 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_image.h"
+# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -34,8 +34,6 @@ typedef struct	s_2d_i
 	int			i;
 	int			j;
 }				t_2d_i;
-
-typedef t_2d_i t_event;
 
 typedef struct	s_2d_d
 {
@@ -58,6 +56,7 @@ typedef struct s_vect
 	double			z;
 }					t_vect;
 
+typedef t_2d_i		t_event;
 typedef t_vect		t_point;
 typedef t_vect		t_color;
 typedef t_vect		t_rot;
@@ -125,9 +124,12 @@ typedef struct s_cam
 
 typedef struct s_lights
 {
-	double			intensity;
 	t_color			color;
 	t_point			pos;
+	t_vect			direction;
+	double			intensity;
+	int				direct;
+	int				angle;
 	struct s_lights	*next;
 }					t_lights;
 
@@ -212,6 +214,7 @@ int					ft_cam(t_rt *rt, char *str);
 void				init_sdl(t_rt *rt);
 void				sdl_error(char *message);
 void				loop(t_rt *rt);
+void				loop_program(t_rt *rt);
 int					parse_texture(t_obj *obj, char *str);
 int					stockobj(t_obj *obj, int id, char *s, int fd);
 double				ft_atof(char *str);

@@ -42,6 +42,12 @@ int	stocklights(t_lights *lights, char *str)
 		lights->color = checkcolorvalue(value);
 	else if (ck == 4 && ft_strcmp(value[0], " pos") == 0)
 		lights->pos = stk(value);
+	else if (ck == 4 && ft_strcmp(value[0], " direction") == 0)
+		lights->direction = stk(value);
+	else if (ck == 2 && ft_strcmp(value[0], " direct_light") == 0)
+		lights->direct = abs(ft_atoi(value[1]));
+	else if (ck == 2 && ft_strcmp(value[0], " angle") == 0)
+		lights->angle = abs(ft_atoi(value[1]));
 	else
 	{
 		ft_strdel(value);
@@ -56,7 +62,7 @@ int	lights(t_lights *lights, char *str, int fd)
 	int		check;
 
 	l = -1;
-	while (++l < 3)
+	while (++l < 6)
 	{
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
@@ -66,6 +72,12 @@ int	lights(t_lights *lights, char *str, int fd)
 		else if (str && ck(str, " color: ", 8) > 0)
 			check = stocklights(lights, str);
 		else if (str && ck(str, " pos: ", 6) > 0)
+			check = stocklights(lights, str);
+		else if (str && ck(str, " direct_light: ", 15) > 0)
+			check = stocklights(lights, str);
+		else if (str && ck(str, " direction: ", 12) > 0)
+			check = stocklights(lights, str);
+		else if (str && ck(str, " angle: ", 8) > 0)
 			check = stocklights(lights, str);
 		if (check == -1)
 			return (-1);

@@ -237,7 +237,7 @@ void	draw(t_rt rt)
 			}
 		}
 	}
-	rt.filter_type = 2;
+	rt.filter_type = 0;
 	filtres(&rt);
 	loop(&rt);
 }

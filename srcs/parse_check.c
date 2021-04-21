@@ -47,9 +47,9 @@ int stockobj(t_obj *obj, int id, char *s, int fd)
 		c = ft_lendd(value);
 		if (c != 2 && c != 4)
 			return (-1);
-		if (obj->type != 4 && obj->type != 0 && c == 2 && ck(s, " size: ", 7) && !ft_strcmp(value[0], " size"))
+		if (obj->type != PARAPLOID && obj->type != SPHERE && c == 2 && ck(s, " size: ", 7) && !ft_strcmp(value[0], " size"))
 			obj->size = abs(ft_atoi(value[1]));
-		else if (obj->type != 4 && c == 2 && !ft_strcmp(value[0], " texture"))
+		else if (obj->type != PARAPLOID && c == 2 && !ft_strcmp(value[0], " texture"))
 		{
 			value[1] = ft_strtrim(value[1]);
 			if (!parse_texture(obj, value[1]))
@@ -57,29 +57,29 @@ int stockobj(t_obj *obj, int id, char *s, int fd)
 				return (-1);
 			}
 		}
-		else if (obj->type != 4 && c == 4 && ck(s, " slice: ", 8) > 0 && !ft_strcmp(value[0], " slice"))
+		else if (obj->type != PARAPLOID && c == 4 && ck(s, " slice: ", 8) > 0 && !ft_strcmp(value[0], " slice"))
 			obj->slice = stk(value);
-		else if (obj->type != 4 && c == 2 && ck(s, " refl: ", 7) > 0 && !ft_strcmp(value[0], " refl"))
+		else if (obj->type != PARAPLOID && c == 2 && ck(s, " refl: ", 7) > 0 && !ft_strcmp(value[0], " refl"))
 			obj->refl = abs(ft_atoi(value[1]));
-		else if (obj->type != 4 && c == 2 && ck(s, " refr: ", 7) > 0 && !ft_strcmp(value[0], " refr"))
+		else if (obj->type != PARAPLOID && c == 2 && ck(s, " refr: ", 7) > 0 && !ft_strcmp(value[0], " refr"))
 			obj->refr = abs(ft_atoi(value[1]));
-		else if ((obj->type == 4 || obj->type == 2) && c == 2 && ck(s, " angle: ", 8) > 0 && !ft_strcmp(value[0], " angle"))
+		else if ((obj->type == 4 || obj->type == CONE) && c == 2 && ck(s, " angle: ", 8) > 0 && !ft_strcmp(value[0], " angle"))
 			obj->angle = abs(ft_atoi(value[1]));
-		else if ((obj->type == 0 || obj->type == 1) && c == 2 && ck(s, " radius: ", 9) > 0 && !ft_strcmp(value[0], " radius"))
+		else if ((obj->type == SPHERE || obj->type == CYLINDER) && c == 2 && ck(s, " radius: ", 9) > 0 && !ft_strcmp(value[0], " radius"))
 			obj->radius = abs(ft_atoi(value[1]));
-		else if (obj->type != 4 && c == 2 && ck(s, " matter: ", 9) > 0 && !ft_strcmp(value[0], " matter"))
+		else if (obj->type != PARAPLOID && c == 2 && ck(s, " matter: ", 9) > 0 && !ft_strcmp(value[0], " matter"))
 			obj->matter = abs(ft_atoi(value[1]));
-		else if (obj->type != 4 && c == 2 && ck(s, " per_refr: ", 11) > 0 && !ft_strcmp(value[0], " per_refr"))
+		else if (obj->type != PARAPLOID && c == 2 && ck(s, " per_refr: ", 11) > 0 && !ft_strcmp(value[0], " per_refr"))
 			obj->per_refr = abs(ft_atoi(value[1]));
-		else if (obj->type != 4 && c == 2 && ck(s, " neg_obj: ", 10) > 0 && !ft_strcmp(value[0], " neg_obj"))
+		else if (obj->type != PARAPLOID && c == 2 && ck(s, " neg_obj: ", 10) > 0 && !ft_strcmp(value[0], " neg_obj"))
 			obj->neg_obj = abs(ft_atoi(value[1]));
-		else if (obj->type != 4 && c == 4 && ck(s, " pos_slice: ", 12) > 0 && !ft_strcmp(value[0], " pos_slice"))
+		else if (obj->type != PARAPLOID && c == 4 && ck(s, " pos_slice: ", 12) > 0 && !ft_strcmp(value[0], " pos_slice"))
 			obj->pos_slice = stk(value);
-		else if (obj->type != 4 && c == 4 && ck(s, " pos_texture: ", 14) > 0 && !ft_strcmp(value[0], " pos_texture"))
+		else if (obj->type != PARAPLOID && c == 4 && ck(s, " pos_texture: ", 14) > 0 && !ft_strcmp(value[0], " pos_texture"))
 			obj->pos_texture = stk(value);
 		else if (c == 4 && ck(s, " center: ", 9) > 0 && !ft_strcmp(value[0], " center"))
 			obj->center = stk(value);
-		else if (obj->type != 0 && c == 4 && ck(s, " axis: ", 7) > 0 && !ft_strcmp(value[0], " axis"))
+		else if (obj->type != SPHERE && c == 4 && ck(s, " axis: ", 7) > 0 && !ft_strcmp(value[0], " axis"))
 			obj->v = stk(value);	
 		else if (c == 4 && ck(s, " rot: ", 6) > 0 && !ft_strcmp(value[0], " rot"))
 			obj->rot = stk(value);
