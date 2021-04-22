@@ -29,6 +29,7 @@
 # define PLANE 3
 # define PARAPLOID 4
 # define MAXRF 100
+# define PI 3.14159265359
 
 typedef struct	s_2d_i
 {
@@ -154,6 +155,7 @@ typedef struct s_rt
 	int				ck;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
+	SDL_Renderer	*rend_bar;
 	t_vect			*screen;
 	t_event			event;
 }					t_rt;

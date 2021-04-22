@@ -55,6 +55,7 @@ void			loop(t_rt *rt)
 			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_r)
 			{
 				rt->menu = 1;
+				rt->filter_type = 0;
 				SDL_RenderClear(rt->rend);
 				draw(*rt);
 			}
@@ -71,7 +72,6 @@ void			loop(t_rt *rt)
 				draw(*rt);
 			}
 		}
-
 	}
 	SDL_DestroyRenderer(rt->rend);
 	SDL_DestroyWindow(rt->win);

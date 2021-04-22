@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 		}
 		init_sdl(&rt);
 		draw(rt);
-		// multi_thread(&rt);
+		//multi_thread(&rt);
 	}
 	else
 		usage();
