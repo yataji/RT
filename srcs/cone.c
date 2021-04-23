@@ -16,7 +16,10 @@ double	cone_slice(t_obj *cone, t_ray r, t_sol sol, t_vect sly)
 {
 	r.hit = plus(r.org, multi(r.dir, sol.tmax));
 	if (sol.tmax > 0 && dot(moins(cone->pos_slice, r.hit), sly) > 0.0)
+	{
+		cone->normal = normalize(multi(cone->normal,-1));
 		return (sol.tmax);
+	}
 	return (-1);
 }
 

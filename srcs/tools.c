@@ -59,11 +59,11 @@ t_sol			check_min_max(t_math math)
 
 double	intersect(t_obj **object, t_ray ray)
 {
-	// if (object->type == CYLINDER)
-	// 	return (cyldintr(*object, ray));
+	if ((*object)->type == CYLINDER)
+		return (cyldintr(object, ray));
 	// else if (object->type == SPHERE)
 	// 	return (sphrintr(*object, ray));
-	if ((*object)->type == CONE)
+	else if ((*object)->type == CONE)
 		return (coneintr(object, ray));
 	// else if (object->type == PLANE)
 	// 	return (planiter(*object, ray));

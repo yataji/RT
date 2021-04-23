@@ -1,17 +1,17 @@
 lights:
  intensity: 100
  color: 255:255:255
- pos: 0:-50:100
+ pos: 20:40:120
  direct_light: 0
  direction: 0:0:0
  angle: 20
 camera:
- lokfrm: 0:80:100
+ lokfrm: -50:0:100
  lokat: 0:0:0
  fov: 60
  ambiante: 0.1
-cone:
- size: 40
+cylinder:
+ size: 0
  texture: .
  pos_texture: 0:0:0
  slice: 0:0:0
@@ -20,7 +20,7 @@ cone:
  axis: 0:1:0
  rot: 0:0:0
  trs: 0:0:0
- angle: 40
+ radius: 10
  color: 255:0:255
  refl: 0
  refr: 0

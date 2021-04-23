@@ -32,10 +32,9 @@ double	coneintr(t_obj **cone, t_ray ray)
 	calc.c = dot(oc, oc) - (1 + k * k) * dot(oc, v) * dot(oc, v);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	sol = check_min_max(calc);
-	(*cone)->normal = normcone(&ray, *cone, sol.tmin);
+	(*cone)->normal = normalize(normcone(&ray, *cone, sol.tmin));
 	if ((*cone)->size != 0)
 		sol.tmin = limeted_cone(*cone, ray, sol);
-	(*cone)->normal = normalize((*cone)->normal);
 	return (sol.tmin);
 }
 
