@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:46:21 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/23 15:04:22 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:35:04 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights)
 	return (c);
 }
 
-t_color		refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
+t_color	refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
-	t_obj *closenew;
-	t_ray ray;
-	t_var v;
+	t_obj	*closenew;
+	t_ray	ray;
+	t_var	v;
 	double	t;
 
 	rt->tmpo = rt->obj;
-	if (!close || !close->refl)// || rt->maxref > 100)
+	if (!close || !close->refl)
 		return ((t_color){0, 0, 0});
 	if (close->refl)
 		ray = initrayrfl(rt, rayor, close);
@@ -94,7 +94,7 @@ t_color		refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	}
 	ray.hit = plus(ray.org, multi(ray.dir, v.near));
 	if (closenew && ft_strcmp(closenew->texture, ".") != 0)
-		texture(closenew , ray.hit);
+		texture(closenew, ray.hit);
 	if (!closenew)
 		return ((t_color){0, 0, 0});
 	if (closenew->refl || closenew->refr)

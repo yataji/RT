@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/19 04:24:38 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 17:04:11 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double	checkt(t_math calc)
 	return (-1);
 }
 
-t_sol			check_min_max(t_math math)
+t_sol	check_min_max(t_math math)
 {
 	t_sol	sol;
 	double	temp;

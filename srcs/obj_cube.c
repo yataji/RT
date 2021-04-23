@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   obj_cube.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 20:19:19 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/22 20:33:58 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 17:05:13 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "rt.h"
+#include "rt.h"
 
 int	ft_cube(t_rt *rt, char *str)
 {
