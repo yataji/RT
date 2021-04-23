@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/21 16:24:05 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:08:12 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_rt	init_list(t_rt rt)
 	rt.lights = NULL;
 	rt.cam = NULL;
 	rt.menu = 0;
-	rt.screen = (t_vect*)malloc((MAXWIDTH * MAXHEIGHT) * sizeof(t_vect));
+	rt.screen = (t_vect *)malloc((MAXWIDTH * MAXHEIGHT) * sizeof(t_vect));
 	return (rt);
 }
 
@@ -56,7 +56,6 @@ int	main(int ac, char **av)
 		}
 		init_sdl(&rt);
 		draw(rt);
-		//multi_thread(&rt);
 	}
 	else
 		usage();
