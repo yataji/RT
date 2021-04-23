@@ -6,7 +6,7 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 15:01:21 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:49:52 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,10 @@ t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
 int	shadow(t_rt *rt, t_lights *lights, t_obj *close);
 t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
 t_color		refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
+double	limeted_cone(t_obj *cone, t_ray r, t_sol sol);
+double	limeted_cly(t_obj *cyl, t_ray r, t_sol sol);
+void	menu(t_rt *rt);
+int	inside_rect(t_rt *rt, SDL_Rect r);
 
 void			filter_mb(t_rt *rt);
 void			filtre_sepia(t_rt *rt);

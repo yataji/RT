@@ -6,7 +6,7 @@
 #    By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/23 14:48:45 by jiqarbac         ###   ########.fr        #
+#    Updated: 2021/04/23 15:48:15 by jiqarbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,9 @@ SRC  =	main.c\
 		filter_mb.c\
 		filter_sepia.c\
 		shading.c\
+		coneinno.c\
+		cylinderinno.c\
+		menu.c\
 
 HEADER = 	includes/rt.h
 

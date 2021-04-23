@@ -6,24 +6,32 @@
 /*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 15:13:15 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:49:43 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
+t_color	ambtext(t_rt *rt, t_obj *close)
 {
-	t_color		c;
-	t_color		ret;
-	int			shad;
+	t_color	ret;
 
 	ret = multi(close->color, rt->cam->ambiante);
 	if (ft_strcmp(close->texture, ".") != 0)
 	{
-		texture(close , rt->ray.hit);
+		texture(close, rt->ray.hit);
 		ret = close->color;
 	}
+	return (ret);
+}
+
+t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
+{
+	t_color	c;
+	t_color	ret;
+	int		shad;
+
+	ret = ambtext(rt, close);
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
@@ -32,7 +40,6 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 			c = diffuspclr(rt->ray, close, rt->tmpl);
 		else
 			c = (t_color){0, 0, 0};
-		// rt->maxref = 0;
 		if (close->refl)
 			c = add_color(refl_refr(rt, close, rt->tmpl, rt->ray), c);
 		if (close->refr)
@@ -45,7 +52,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 
 void	drawcolor(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 {
-	t_color col;
+	t_color	col;
 
 	col = (t_color){0, 0, 0};
 	while (tmpo)
@@ -64,81 +71,18 @@ void	drawcolor(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
 		col = color(&rt, close, rt.lights);
 	}
 	if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)
-			sdl_error("Get color failed");
+		sdl_error("Get color failed");
 	if (SDL_RenderDrawPoint(rt.rend, v.y, v.x) != 0)
-			sdl_error("draw point failed");
+		sdl_error("draw point failed");
 	rt.screen[v.y * MAXWIDTH + v.x] = col;
 }
-int				inside_rect(t_rt *rt, SDL_Rect r)
+
+int	inside_rect(t_rt *rt, SDL_Rect r)
 {
-	if (rt->event.i >= r.x && rt->event.i <= r.x + r.w &&
-		rt->event.j >= r.y && rt->event.j <= r.y + r.h)
+	if (rt->event.i >= r.x && rt->event.i <= r.x + r.w
+		&& rt->event.j >= r.y && rt->event.j <= r.y + r.h)
 		return (1);
 	return (0);
-}
-
-void			button_start(t_rt *rt)
-{
-	SDL_Rect	dest;
-	SDL_Texture	*img;
-	dest.x = 400;
-	dest.y = 760;
-	dest.w = 200;
-	dest.h = 180;
-	img = IMG_LoadTexture(rt->rend, "./texture/menu1.png");
-	SDL_RenderCopy(rt->rend, img, NULL, &dest);
-	if (inside_rect(rt, dest) == 1)
-		rt->menu = 1;
-}
-
-void			button_motion(t_rt *rt)
-{
-	SDL_Rect	dest2;
-	SDL_Texture	*img2;
-	dest2.x = 100;
-	dest2.y = 850;
-	dest2.w = 180;
-	dest2.h = 100;
-	img2 = IMG_LoadTexture(rt->rend, "./texture/motion.jpg");
-	SDL_RenderCopy(rt->rend, img2, NULL, &dest2);
-	if (inside_rect(rt, dest2) == 1)
-		rt->filter_type = 1;
-}
-
-void			button_sepia(t_rt *rt)
-{
-	SDL_Rect	dest3;
-	SDL_Texture	*img3;
-	dest3.x = 700;
-	dest3.y = 850;
-	dest3.w = 180;
-	dest3.h = 100;
-	img3 = IMG_LoadTexture(rt->rend, "./texture/sepia.jpg");
-	SDL_RenderCopy(rt->rend, img3, NULL, &dest3);
-	if (inside_rect(rt, dest3) == 1)
-		rt->filter_type = 2;
-}
-
-void			background(t_rt *rt)
-{
-	SDL_Rect	dest1;
-	SDL_Texture	*img1;
-	dest1.x = 0;
-	dest1.y = 0;
-	dest1.w = MAXWIDTH;
-	dest1.h = MAXHEIGHT;
-	img1 = IMG_LoadTexture(rt->rend, "./texture/blow.jpg");
-	SDL_RenderCopy(rt->rend, img1, NULL, &dest1);
-}
-
-void			menu(t_rt *rt)
-{
-	background(rt);
-	button_start(rt);
-	button_motion(rt);
-	button_sepia(rt);
-	rt->event.i = 0;
-	rt->event.j = 0;
 }
 
 void	draw(t_rt	rt)
@@ -168,146 +112,3 @@ void	draw(t_rt	rt)
 	}
 	loop(&rt);
 }
-
-// void	*draw(void *param)
-// {
-// 	t_rt		*rt;
-// 	t_obj		*close;
-// 	t_var		v;
-
-// 	v.y = -1;
-// 	v.near = -1.0;
-// 	rt = (t_rt *)param;
-// 	if (rt->menu == 0)
-// 		menu(rt);
-// 	if (rt->menu == 1)
-// 	{
-// 		while (++v.y < MAXWIDTH / 2)
-// 		{
-// 			v.x = -1;
-// 			while (++v.x < MAXHEIGHT / 2)
-// 			{
-// 				rt->ray = initray(rt->tmpc, v.y, v.x);
-// 				rt->tmpo = rt->obj;
-// 				close = NULL;
-// 				v.near = -1;
-// 				drawcolor(v, close, *rt, rt->tmpo);
-// 			}
-// 		}
-// 	}
-// 	rt->filter_type = 0;
-// 	filtres(rt);
-// 	loop(rt);
-// 	return (0);
-// }
-
-// void	*draw2(void *param)
-// {
-// 	t_rt		*rt;
-// 	t_obj		*close;
-// 	t_var		v;
-
-// 	v.y = -1;
-// 	v.near = -1.0;
-// 	rt = (t_rt *)param;
-// 	if (rt->menu == 0)
-// 		menu(rt);
-// 	if (rt->menu == 1)
-// 	{
-// 		while (++v.y < MAXWIDTH / 2)
-// 		{
-// 			v.x = MAXHEIGHT / 2 - 1;
-// 			while (++v.x < MAXHEIGHT)
-// 			{
-// 				rt->ray = initray(rt->tmpc, v.y, v.x);
-// 				rt->tmpo = rt->obj;
-// 				close = NULL;
-// 				v.near = -1;
-// 				drawcolor(v, close, *rt, rt->tmpo);
-// 			}
-// 		}
-// 	}
-// 	rt->filter_type = 0;
-// 	filtres(rt);
-// 	loop(rt);
-// 	return (0);
-// }
-
-// void	*draw3(void *param)
-// {
-// 	t_rt		*rt;
-// 	t_obj		*close;
-// 	t_var		v;
-
-// 	v.y = MAXWIDTH / 2 - 1;
-// 	v.near = -1.0;
-// 	rt = (t_rt *)param;
-// 	if (rt->menu == 0)
-// 		menu(rt);
-// 	if (rt->menu == 1)
-// 	{
-// 		while (++v.y < MAXWIDTH)
-// 		{
-// 			v.x = -1;
-// 			while (++v.x < MAXHEIGHT / 2)
-// 			{
-// 				rt->ray = initray(rt->tmpc, v.y, v.x);
-// 				rt->tmpo = rt->obj;
-// 				close = NULL;
-// 				v.near = -1;
-// 				drawcolor(v, close, *rt, rt->tmpo);
-// 			}
-// 		}
-// 	}
-// 	rt->filter_type = 0;
-// 	filtres(rt);
-// 	loop(rt);
-// 	return (0);
-// }
-
-// void	*draw4(void *param)
-// {
-// 	t_rt		*rt;
-// 	t_obj		*close;
-// 	t_var		v;
-
-// 	v.y = MAXWIDTH / 2 - 1;
-// 	v.near = -1.0;
-// 	rt = (t_rt *)param;
-// 	if (rt->menu == 0)
-// 		menu(rt);
-// 	if (rt->menu == 1)
-// 	{
-// 		while (++v.y < MAXWIDTH)
-// 		{
-// 			v.x = MAXHEIGHT / 2 - 1;
-// 			while (++v.x < MAXHEIGHT)
-// 			{
-// 				rt->ray = initray(rt->tmpc, v.y, v.x);
-// 				rt->tmpo = rt->obj;
-// 				close = NULL;
-// 				v.near = -1;
-// 				drawcolor(v, close, *rt, rt->tmpo);
-// 			}
-// 		}
-// 	}
-// 	rt->filter_type = 0;
-// 	filtres(rt);
-// 	loop(rt);
-// 	return (0);
-// }
-
-// void			multi_thread(t_rt *rt)
-// {
-// 	pthread_t	thread[4];
-
-// 	pthread_create(&thread[0], NULL, &draw, rt);
-// 	pthread_create(&thread[1], NULL, &draw2, rt);
-// 	pthread_create(&thread[2], NULL, &draw3, rt);
-// 	pthread_create(&thread[3], NULL, &draw4, rt);
-// 	pthread_join(thread[0], NULL);
-// 	pthread_join(thread[1], NULL);
-// 	pthread_join(thread[2], NULL);
-// 	pthread_join(thread[3], NULL);
-// 	// mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
-// }

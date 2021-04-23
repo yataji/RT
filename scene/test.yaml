@@ -19,8 +19,8 @@ sphere:
  trs: 0:0:0
  radius: 10
  color: 255:0:0
- refl: 0
- refr: 1
+ refl: 1
+ refr: 0
  matter: 0
  per_refr: 0
  neg_obj: 0
@@ -33,7 +33,7 @@ sphere:
  trs: 0:0:0
  radius: 5
  color: 0:0:255
- refl: 0
+ refl: 1
  refr: 0
  matter: 0
  per_refr: 0
