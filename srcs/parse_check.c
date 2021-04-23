@@ -12,13 +12,6 @@
 
 #include "rt.h"
 
-// int	ft_absmax(int v)
-// {
-// 	if (v < 0)
-// 		return (fabs(v));
-// 	return (v);
-// }
-
 int stockobj(t_obj *obj, int id, char *s, int fd)
 {
 	int l;
