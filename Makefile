@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+         #
+#    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/23 15:48:15 by jiqarbac         ###   ########.fr        #
+#    Updated: 2021/04/23 17:20:14 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,8 @@ SRC  =	main.c\
 		coneinno.c\
 		cylinderinno.c\
 		menu.c\
+		tools_parse.c\
+		parse_stock.c\
 
 HEADER = 	includes/rt.h
 

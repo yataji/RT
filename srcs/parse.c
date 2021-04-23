@@ -3,24 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/23 15:03:26 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:30:54 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int parse_texture(t_obj *obj, char *str)
+int	parse_objs2(t_rt *rt, char *str)
 {
-	obj->texture = ft_strdup(str);
-	if (ft_strcmp(obj->texture, ".") != 0)
+	if (ft_strcmp(str, "plane:") == 0)
 	{
-		obj->surface = IMG_Load(obj->texture);
-		if (!obj->surface)
-			sdl_error("can't load surface");
+		if (ft_plane(rt, str) == -1)
+			return (-1);
 	}
+	else if (ft_strcmp(str, "paraploid:") == 0)
+	{
+		if (ft_paraploid(rt, str) == -1)
+			return (-1);
+	}
+	else if (ft_strcmp(str, "cube:") == 0)
+	{
+		if (ft_cube(rt, str) == -1)
+			return (-1);
+	}
+	else
+		return (-1);
 	return (1);
 }
 
@@ -41,22 +51,7 @@ int	parse_objs(t_rt *rt, char *str)
 		if (ft_cone(rt, str) == -1)
 			return (-1);
 	}
-	else if (ft_strcmp(str, "plane:") == 0)
-	{
-		if (ft_plane(rt, str) == -1)
-			return (-1);
-	}
-	else if (ft_strcmp(str, "paraploid:") == 0)
-	{
-		if (ft_paraploid(rt, str) == -1)
-			return (-1);
-	}
-	else if (ft_strcmp(str, "cube:") == 0)
-	{
-		if (ft_cube(rt, str) == -1)
-			return (-1);
-	}
-	else
+	else if (parse_objs2(rt, rt->str) == -1)
 		return (-1);
 	return (1);
 }

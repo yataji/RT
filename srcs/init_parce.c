@@ -12,6 +12,21 @@
 
 #include "rt.h"
 
+t_obj	*initobj2(t_obj *new)
+{
+	new->angle = 0;
+	new->refl = 0;
+	new->refr = 0;
+	new->per_refr = 0;
+	new->matter = 0;
+	new->neg_obj = 0;
+	new->size = 0;
+	new->slice = (t_point){0, 0, 0};
+	new->texture = ".";
+	new->next = NULL;
+	return (new);
+}
+
 t_obj	*initobj(void)
 {
 	t_obj		*new;
@@ -29,16 +44,7 @@ t_obj	*initobj(void)
 	new->pos_texture = (t_point){0, 0, 0};
 	new->pos_slice = (t_point){0, 0, 0};
 	new->rot = (t_rot){0, 0, 0};
-	new->angle = 0;
-	new->refl = 0;
-	new->refr = 0;
-	new->per_refr = 0;
-	new->matter = 0;
-	new->neg_obj = 0;
-	new->size = 0;
-	new->slice = (t_point){0, 0, 0};
-	new->texture = ".";
-	new->next = NULL;
+	new = initobj2(new);
 	return (new);
 }
 

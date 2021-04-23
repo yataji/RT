@@ -17,9 +17,9 @@ lights:
 cone:
  size://
  texture://
- pos_tesxture://
+ postext://
  slice://
- pos_slice://
+ poslice://
  center://
  axis://
  rot://
@@ -29,16 +29,16 @@ cone:
  refl://
  refr://
  matter://
- per_refr://
+ perrfr://
  neg_objobj://
 
 
 cylinder:
  size://
  texture://
- pos_tesxture://
+ postext://
  slice://
- pos_slice://
+ poslice://
  center://
  axis://
  rot://
@@ -48,7 +48,7 @@ cylinder:
  refl://
  refr://
  matter://
- per_refr://
+ perrfr://
  neg_obj://
 
 
@@ -63,9 +63,9 @@ parabloid:
 
 sphere:
  texture://
- pos_tesxture://
+ postext://
  slice://
- pos_slice://
+ poslice://
  center://
  trs://
  radius:/
@@ -73,16 +73,16 @@ sphere:
  refl://
  refr://
  matter://
- per_refr://
+ perrfr://
  neg_obj://
 
 
 plane:
  size://
  texture://
- pos_tesxture://
+ postext://
  slice://
- pos_slice://
+ poslice://
  center://
  axis://
  rot://
@@ -91,15 +91,15 @@ plane:
  refl://
  refr://
  matter://
- per_refr://
+ perrfr://
  neg_obj://
 
  plane:
  size: 0
  texture: ./wall.jpg
- pos_tesxture: 0:0:0
+ postext: 0:0:0
  slice: 0:0:0
- pos_slice: 0:0:0
+ poslice: 0:0:0
  center: 10:0:0
  axis: 1:0:0
  rot: 0:0:0
@@ -108,5 +108,5 @@ plane:
  refl: 0
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0

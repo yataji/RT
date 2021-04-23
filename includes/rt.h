@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 15:49:52 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:36:44 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ typedef struct s_var
 	double			near;
 }					t_var;
 
+typedef struct s_varpars
+{
+	int		l;
+	int		i;
+	int		c;
+	int		j;
+	char	**value;
+}			t_varpars;
 typedef struct s_vect
 {
 	double			x;
@@ -248,6 +256,7 @@ double	limeted_cone(t_obj *cone, t_ray r, t_sol sol);
 double	limeted_cly(t_obj *cyl, t_ray r, t_sol sol);
 void	menu(t_rt *rt);
 int	inside_rect(t_rt *rt, SDL_Rect r);
+double	ft_matter(int matter);
 
 void			filter_mb(t_rt *rt);
 void			filtre_sepia(t_rt *rt);
