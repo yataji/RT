@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:25:19 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/22 20:32:13 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 15:10:35 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-// int	ft_absmax(int v)
-// {
-// 	if (v < 0)
-// 		return (fabs(v));
-// 	return (v);
-// }
+double ft_matter(int matter)
+{
+	if (matter == 1)
+		return (WATER);
+	else if (matter == 2)
+		return (DIAMOND);
+	else if (matter == 3)
+		return (GLASS);
+	return (0);
+}
 
 int stockobj(t_obj *obj, int id, char *s, int fd)
 {
@@ -68,7 +72,10 @@ int stockobj(t_obj *obj, int id, char *s, int fd)
 		else if ((obj->type == SPHERE || obj->type == CYLINDER) && c == 2 && ck(s, " radius: ", 9) > 0 && !ft_strcmp(value[0], " radius"))
 			obj->radius = abs(ft_atoi(value[1]));
 		else if (obj->type != PARAPLOID && obj->type != CUBE && c == 2 && ck(s, " matter: ", 9) > 0 && !ft_strcmp(value[0], " matter"))
+		{
 			obj->matter = abs(ft_atoi(value[1]));
+			obj->n2 = ft_matter(obj->matter);
+		}
 		else if (obj->type != PARAPLOID && c == 2 && ck(s, " per_refr: ", 11) > 0 && !ft_strcmp(value[0], " per_refr"))
 			obj->per_refr = abs(ft_atoi(value[1]));
 		else if (obj->type != PARAPLOID && obj->type != CUBE && c == 2 && ck(s, " neg_obj: ", 10) > 0 && !ft_strcmp(value[0], " neg_obj"))
@@ -107,8 +114,6 @@ int	ck(char *s, char *check, int l)
 	{
 		return (-1);
 	}
-	// if (s[l] == '.')
-	// 	return 1;
 	i = l - 1;
 	if ((s[l] < '0' || s[l] > '9') && s[l] != '-' && s[l] != '+')
 		{

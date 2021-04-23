@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/22 20:34:30 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 15:01:21 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@
 # define PLANE 3
 # define PARAPLOID 4
 # define CUBE 5
-# define MAXRF 100
+# define WATER 1.3
+# define DIAMOND 1.8
+# define GLASS 1.5
+# define MAXRF 10
 // # define PI 3.14159265359
 
 typedef struct	s_2d_i
@@ -43,6 +46,14 @@ typedef struct	s_2d_d
 	double		x;
 	double		y;
 }				t_2d_d;
+
+typedef struct	s_angle
+{
+	double theta1;
+	double theta2;
+	double costheta2;
+	double sintheta1;
+}				t_angle;
 
 typedef struct s_var
 {
@@ -82,6 +93,7 @@ typedef struct s_obj
 	int				per_refr;
 	int				matter;
 	int				neg_obj;
+	double			n2;
 	double			size;
 	t_vect			slice;
 	char			*texture;
@@ -94,6 +106,7 @@ typedef struct s_ray
 	t_point			org;
 	t_vect			dir;
 	t_vect			hit;
+	double			n1;
 	int				maxrf;
 }					t_ray;
 
@@ -149,7 +162,7 @@ typedef struct s_rt
 	t_sol			t;
 	t_math			calc;
 	double			dot1;
-	int			maxref;
+	// int			maxref;
 	char			*str;
 	int				fd;
 	int 			menu;
@@ -226,7 +239,11 @@ t_2d_i		get_uv(t_obj *obj, t_2d_i size, t_vect hit);
 void		texture(t_obj *obj, t_vect hit);
 t_sol			check_min_max(t_math math);
 int	ft_cube(t_rt *rt, char *str);
-
+t_ray	initrayrfl(t_rt *rt,t_ray ray, t_obj *closeobj);
+t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
+int	shadow(t_rt *rt, t_lights *lights, t_obj *close);
+t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
+t_color		refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
 
 void			filter_mb(t_rt *rt);
 void			filtre_sepia(t_rt *rt);
