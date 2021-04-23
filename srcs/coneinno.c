@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-double	coneintr(t_obj *cone, t_ray ray)
+double	coneintr(t_obj **cone, t_ray ray)
 {
 	t_vect	v;
 	t_vect	oc;
@@ -20,10 +20,10 @@ double	coneintr(t_obj *cone, t_ray ray)
 	t_sol	sol;
 	double	k;
 
-	oc = moins(ray.org, cone->center);
-	v = normalize(cone->v);
-	v = rotation_xyz(v, cone->rot);
-	k = cone->angle * M_PI / 180.0;
+	oc = moins(ray.org, (*cone)->center);
+	v = normalize((*cone)->v);
+	v = rotation_xyz(v, (*cone)->rot);
+	k = (*cone)->angle * M_PI / 180.0;
 	k = tan(k / 2.0);
 	calc.a = dot(ray.dir, ray.dir) - (1 + k * k)
 		* dot(ray.dir, v) * dot(ray.dir, v);
@@ -32,8 +32,9 @@ double	coneintr(t_obj *cone, t_ray ray)
 	calc.c = dot(oc, oc) - (1 + k * k) * dot(oc, v) * dot(oc, v);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	sol = check_min_max(calc);
-	if (cone->size != 0)
-		sol.tmin = limeted_cone(cone, ray, sol);
+	(*cone)->normal = normalize(normcone(&ray, *cone, sol.tmin));
+	if ((*cone)->size != 0)
+		sol.tmin = limeted_cone(*cone, ray, sol);
 	return (sol.tmin);
 }
 
@@ -55,5 +56,5 @@ t_vect	normcone(t_ray *ray, t_obj *obj, double t)
 	norm = moins(moins(ray->hit, obj->center), multi(v, (1 + k * k) * m));
 	if (dot(norm, ray->dir) > 0)
 		norm = multi(norm, -1.0);
-	return (normalize(norm));
+	return (norm);
 }

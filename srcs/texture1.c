@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   texture1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoelguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:05:36 by yoelguer          #+#    #+#             */
-/*   Updated: 2021/04/21 12:05:46 by yoelguer         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:49:28 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-void		get_col(t_obj *obj, int bpp, unsigned char *pos)
+
+void	get_col(t_obj *obj, int bpp, unsigned char *pos)
 {
 	SDL_Color	rgb;
 	int			pix;
@@ -37,19 +38,19 @@ void		get_col(t_obj *obj, int bpp, unsigned char *pos)
 	obj->color.z = rgb.b;
 }
 
-void		texture(t_obj *obj, t_vect hit)
+void	texture(t_obj *obj, t_vect hit)
 {
 	int					bpp;
 	unsigned char		*pos;
-	t_2d_i 				size;
-	t_2d_i 				uv;
+	t_2d_i				size;
+	t_2d_i				uv;
 
 	bpp = obj->surface->format->BytesPerPixel;
 	size.i = obj->surface->w;
 	size.j = obj->surface->h;
 	uv = get_uv(obj, size, hit);
-	pos = (unsigned char *)obj->surface->pixels + ((int)(uv.j +
-	obj->pos_texture.y) * obj->surface->pitch + (int)(uv.i +
-	obj->pos_texture.x) * bpp);
-	get_col(obj, bpp , pos);
+	pos = (unsigned char *) obj->surface->pixels + ((int)(uv.j
+				+ obj->pos_texture.y) *obj->surface->pitch
+			+ (int)(uv.i + obj->pos_texture.x) *bpp);
+	get_col(obj, bpp, pos);
 }

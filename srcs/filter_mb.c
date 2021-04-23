@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   filter_mb.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoelguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:06:35 by yoelguer          #+#    #+#             */
-/*   Updated: 2021/04/21 12:06:36 by yoelguer         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:56:29 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./rt.h"
 
-static void		mb_loop(t_rt *rt, t_2d_i *loop, t_2d_i *filter, t_vect *c)
+static void	mb_loop(t_rt *rt, t_2d_i *loop, t_2d_i *filter, t_vect *c)
 {
 	t_2d_i	img;
 
@@ -23,16 +23,16 @@ static void		mb_loop(t_rt *rt, t_2d_i *loop, t_2d_i *filter, t_vect *c)
 	c->z += rt->screen[img.i * MAXWIDTH + img.j].z;
 }
 
-int				set_render_draw_color(t_rt *rt, t_vect c)
+int	set_render_draw_color(t_rt *rt, t_vect c)
 {
 	if (SDL_SetRenderDrawColor(rt->rend,
-		fmin(255., (int)(c.x / 9.0)), fmin(255., (int)(c.y / 9.0)),
+			fmin(255., (int)(c.x / 9.0)), fmin(255., (int)(c.y / 9.0)),
 		fmin(255., (int)(c.z / 9.0)), 255) != 0)
 		return (-1);
 	return (0);
 }
 
-void			filter_mb(t_rt *rt)
+void	filter_mb(t_rt *rt)
 {
 	t_2d_i		loop;
 	t_2d_i		filter;

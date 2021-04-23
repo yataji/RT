@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   obj_paraploid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:09:26 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/20 01:47:52 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 17:11:46 by jiqarbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "rt.h"
+#include "rt.h"
 
 int	ft_paraploid(t_rt *rt, char *str)
 {

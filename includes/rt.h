@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 17:36:44 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 17:37:53 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -90,6 +90,7 @@ typedef struct s_obj
 	double			radius;
 	t_vect			v;
 	t_vect			normal;
+	t_vect			hit;
 	t_color			color;
 	t_rot			rot;
 	t_point			trs;
@@ -191,10 +192,10 @@ double				max(double v1, double v2);
 double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
 double				checkt(t_math calc);
-double				intersect(t_obj *object, t_ray ray);
+double				intersect(t_obj **object, t_ray ray);
 double				sphrintr(t_obj *sphere, t_ray ray);
-double				cyldintr(t_obj *cyld, t_ray ray);
-double				coneintr(t_obj *cone, t_ray ray);
+double				cyldintr(t_obj **cyld, t_ray ray);
+double				coneintr(t_obj **cone, t_ray ray);
 double				parapinter(t_obj *para, t_ray ray);
 double				planiter(t_obj *cone, t_ray ray);
 int					keypress(int key, void *param);
