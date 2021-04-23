@@ -54,7 +54,7 @@ int	parse_objs(t_rt *rt, char *str)
 	else if (ft_strcmp(str, "cube:") == 0)
 	{
 		if (ft_cube(rt, str) == -1)
-			return c(-1);
+			return (-1);
 	}
 	else
 		return (-1);

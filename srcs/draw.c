@@ -77,48 +77,45 @@ t_ray	initmpray(t_rt *rt,t_ray ray, t_obj *closeobj)
 	return (ret);
 }
 
-t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj)
-{
-	t_ray ret;
-	t_vect refrect;
-	double dot1;
+// t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj)
+// {
+// 	t_ray ret;
+// 	t_vect refrect;
+// 	double dot1;
 
-	ret.org = ray.hit;
-	dot1 = dot(closeobj->normal, ray.dir);
-	refrect = 
-	
-	
-}
+// 	ret.org = ray.hit;
+// 	dot1 = dot(closeobj->normal, ray.dir);
+// 	refrect = 
 
-t_color		refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
-{
-	t_ray ray;
-	t_obj *closenew;
-	t_var v;
-	double t;
+// }
 
-	rt->tmpo = rt->obj;
-	if (!close || !close->refl || rt->maxref > 100)
-		return ((t_color){0, 0, 0});
-	ray = initrayrfr(rt, rayor, close);
-	v.near = -1.0;
-	closenew = NULL;
-	while (rt->tmpo)
-	{
-		if (rt->tmpo != close)
-		{
-			t = intersect(rt->tmpo, ray);
-			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
-			{
-				closenew = rt->tmpo;
-				v.near = t;
-			}
-		}
-		rt->tmpo = rt->tmpo->next;
-	}
-	
-	
-}
+// t_color		refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
+// {
+// 	t_ray ray;
+// 	t_obj *closenew;
+// 	t_var v;
+// 	double t;
+
+// 	rt->tmpo = rt->obj;
+// 	if (!close || !close->refl || rt->maxref > 100)
+// 		return ((t_color){0, 0, 0});
+// 	ray = initrayrfr(rt, rayor, close);
+// 	v.near = -1.0;
+// 	closenew = NULL;
+// 	while (rt->tmpo)
+// 	{
+// 		if (rt->tmpo != close)
+// 		{
+// 			t = intersect(rt->tmpo, ray);
+// 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
+// 			{
+// 				closenew = rt->tmpo;
+// 				v.near = t;
+// 			}
+// 		}
+// 		rt->tmpo = rt->tmpo->next;
+// 	}
+// }
 
 t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
@@ -184,8 +181,8 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		rt->maxref = 0;
 		if (close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
-		if (close->refr)
-			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
+		// if (close->refr)
+		// 	c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
