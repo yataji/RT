@@ -20,50 +20,53 @@ double	cone_slice(t_obj *cone, t_ray r, t_sol sol, t_vect sly)
 	return (-1);
 }
 
-double	lim_cone_y(t_obj *cone, t_vect hit, double tmax, t_ray r)
+double			lim_cone_y(t_obj *cone, t_vect hit, double tmax, t_ray r)
 {
 	t_vect		hit2;
 
-	if (hit.y >= cone->center.y + cone->size / 2
-		|| hit.y <= cone->center.y - cone->size / 2)
+	if (hit.y >= cone->center.y + cone->size/2 ||
+		hit.y <= cone->center.y - cone->size/2)
 	{
-		r.hit = plus(r.org, multi(r.dir, tmax));
-		hit2 = moins(r.hit, cone->center);
-		if (hit2.y >= cone->center.y + cone->size / 2
-			|| hit2.y <= cone->center.y - cone->size / 2)
-			return (-1);
+		cone->hit = plus(r.org, multi(r.dir, tmax));
+		hit2 = moins(cone->hit, cone->center);
+		cone->normal = normalize(multi(cone->normal,-1));
+		if (hit2.y >= cone->center.y + cone->size/2 ||
+		hit2.y <= cone->center.y - cone->size/2)
+			return -1;
 	}
 	return (tmax);
 }
 
-double	lim_cone_x(t_obj *cone, t_vect hit, double tmax, t_ray r)
+
+double			lim_cone_x(t_obj *cone, t_vect hit, double tmax, t_ray r)
 {
 	t_vect		hit2;
 
-	if (hit.x >= cone->center.x + cone->size / 2
-		|| hit.x <= cone->center.x - cone->size / 2)
+	if (hit.x >= cone->center.x + cone->size/2 ||
+		hit.x <= cone->center.x - cone->size/2)
 	{
-		r.hit = plus(r.org, multi(r.dir, tmax));
-		hit2 = moins(r.hit, cone->center);
-		if (hit2.x >= cone->center.x + cone->size / 2
-			|| hit2.x <= cone->center.x - cone->size / 2)
-			return (-1);
+		cone->hit = plus(r.org, multi(r.dir, tmax));
+		hit2 = moins(cone->hit, cone->center);
+		cone->normal = normalize(multi(cone->normal,-1));
+		if (hit2.x >= cone->center.x + cone->size/2 ||
+		hit2.x <= cone->center.x - cone->size/2)
+			return -1;
 	}
 	return (tmax);
 }
-
-double	lim_cone_z(t_obj *cone, t_vect hit, double tmax, t_ray r)
+double			lim_cone_z(t_obj *cone, t_vect hit, double tmax, t_ray r)
 {
 	t_vect		hit2;
 
-	if (hit.z >= cone->center.z + cone->size / 2
-		|| hit.z <= cone->center.z - cone->size / 2)
+	if (hit.z >= cone->center.z + cone->size/2 ||
+		hit.z <= cone->center.z - cone->size/2)
 	{
-		r.hit = plus(r.org, multi(r.dir, tmax));
-		hit2 = moins(r.hit, cone->center);
-		if (hit2.z >= cone->center.z + cone->size / 2
-			|| hit2.z <= cone->center.z - cone->size / 2)
-			return (-1);
+		cone->hit = plus(r.org, multi(r.dir, tmax));
+		hit2 = moins(cone->hit, cone->center);
+		cone->normal = normalize(multi(cone->normal,-1));
+		if (hit2.z >= cone->center.z + cone->size/2 ||
+		hit2.z <= cone->center.z - cone->size/2)
+			return -1;
 	}
 	return (tmax);
 }
@@ -72,7 +75,6 @@ double	limeted_cone(t_obj *cone, t_ray r, t_sol sol)
 {
 	t_vect		up;
 	t_vect		hit;
-	t_vect		hit2;
 	int			is;
 
 	if (!cone->slice.x && !cone->slice.y && !cone->slice.z)

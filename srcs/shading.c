@@ -28,7 +28,7 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 	while (tmpo)
 	{
 		if (tmpo->neg_obj == 0)
-			v.t = intersect(tmpo, shadow_r) + 0.01;
+			v.t = intersect(&tmpo, shadow_r) + 0.01;
 		if (tmpo != close && v.t > 0)
 		{
 			if (dot(multi(shadow_r.dir, v.t),
@@ -83,7 +83,7 @@ t_color	refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	{
 		if (rt->tmpo != close)
 		{
-			t = intersect(rt->tmpo, ray);
+			t = intersect(&rt->tmpo, ray);
 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
 			{
 				closenew = rt->tmpo;

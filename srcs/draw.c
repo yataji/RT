@@ -50,14 +50,16 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	return (ret);
 }
 
-void	drawcolor(t_var v, t_obj *close, t_rt rt, t_obj *tmpo)
+void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 {
 	t_color	col;
+	t_obj  *close;
 
+	close = NULL;
 	col = (t_color){0, 0, 0};
 	while (tmpo)
 	{
-		v.t = intersect(tmpo, rt.ray);
+		v.t = intersect(&tmpo, rt.ray);
 		if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
 		{
 			close = tmpo;
@@ -87,7 +89,6 @@ int	inside_rect(t_rt *rt, SDL_Rect r)
 
 void	draw(t_rt	rt)
 {
-	t_obj		*close;
 	t_var		v;
 
 	v.y = -1;
@@ -103,9 +104,8 @@ void	draw(t_rt	rt)
 			{
 				rt.ray = initray(rt.tmpc, v.y, v.x);
 				rt.tmpo = rt.obj;
-				close = NULL;
 				v.near = -1;
-				drawcolor(v, close, rt, rt.tmpo);
+				drawcolor(v, rt, rt.tmpo);
 			}
 		}
 		filtres(&rt);
