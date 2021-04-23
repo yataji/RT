@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 14:48:30 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/20 03:30:07 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/22 20:37:10 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ int	parse_objs(t_rt *rt, char *str)
 	{
 		if (ft_paraploid(rt, str) == -1)
 			return (-1);
+	}
+	else if (ft_strcmp(str, "cube:") == 0)
+	{
+		if (ft_cube(rt, str) == -1)
+			return c(-1);
 	}
 	else
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/22 19:56:33 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/22 20:34:30 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define CONE 2
 # define PLANE 3
 # define PARAPLOID 4
+# define CUBE 5
 # define MAXRF 100
 // # define PI 3.14159265359
 
@@ -224,6 +225,7 @@ double				ft_atof(char *str);
 t_2d_i		get_uv(t_obj *obj, t_2d_i size, t_vect hit);
 void		texture(t_obj *obj, t_vect hit);
 t_sol			check_min_max(t_math math);
+int	ft_cube(t_rt *rt, char *str);
 
 
 void			filter_mb(t_rt *rt);

@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/19 04:32:35 by yataji           ###   ########.fr        #
+#    Updated: 2021/04/22 20:35:16 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC  =	main.c\
 		obj_plane.c\
 		obj_sphere.c\
 		obj_paraploid.c\
+		obj_cube.c\
 		parse_check.c\
 		stock.c\
 		init_parce.c\
