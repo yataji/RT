@@ -12,14 +12,6 @@
 
 #include "rt.h"
 
-double	sph_slice(t_obj *sph, t_ray r, t_sol sol, t_vect sly)
-{
-	r.hit = plus(r.org, multi(r.dir, sol.tmax));
-	if (sol.tmax > 0 && dot(moins(sph->pos_slice, r.hit), sly) > 0.0)
-		return (sol.tmax);
-	return (-1);
-}
-
 double	limeted_sph(t_obj *sph, t_ray r, t_sol sol)
 {
 	t_vect	sly;
@@ -33,26 +25,29 @@ double	limeted_sph(t_obj *sph, t_ray r, t_sol sol)
 	if (is == 1 && dot(moins(sph->pos_slice, r.hit), sly) <= 0.0)
 	{
 		r.hit = plus(r.org, multi(r.dir, sol.tmax));
+		sph->normal = multi(sph->normal,-1);
 		if (sol.tmax > 0 && dot(moins(sph->pos_slice, r.hit), sly) > 0.0)
 			return (sol.tmax);
 	}
 	return (-1);
 }
 
-double	sphrintr(t_obj *sphere, t_ray ray)
+double	sphrintr(t_obj **sphere, t_ray ray)
 {
 	t_vect	oc;
 	t_math	calc;
 	t_sol	sol;
 
-	oc = moins(ray.org, sphere->center);
+	oc = moins(ray.org, (*sphere)->center);
 	calc.a = dot(ray.dir, ray.dir);
 	calc.b = 2 * dot(ray.dir, oc);
-	calc.c = dot(oc, oc) - (sphere->radius * sphere->radius);
+	calc.c = dot(oc, oc) - ((*sphere)->radius * (*sphere)->radius);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	sol = check_min_max(calc);
-	if (sphere->slice.x != 0 || sphere->slice.y != 0 || sphere->slice.z != 0)
-		return (limeted_sph(sphere, ray, sol));
+	(*sphere)->hit =  plus(ray.org, multi(ray.dir, sol.tmin));
+	(*sphere)->normal = normalize(moins((*sphere)->hit, (*sphere)->center));
+	if ((*sphere)->slice.x != 0 || (*sphere)->slice.y != 0 || (*sphere)->slice.z != 0)
+		return (limeted_sph(*sphere, ray, sol));
 	return (sol.tmin);
 }
 
@@ -64,3 +59,4 @@ t_vect	normsphr(t_ray *ray, t_obj *obj, double t)
 	norm = moins(ray->hit, obj->center);
 	return (normalize(norm));
 }
+

@@ -13,8 +13,8 @@ camera:
 sphere:
  slice: 0:0:0
  texture: ./texture/sun.jpg
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: 0:0:0
  trs: 0:0:0
  radius: 10
@@ -22,13 +22,13 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 1
 sphere:
  slice: 0:0:0
  texture: ./texture/5.png
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: 30:0:0
  trs: 0:0:0
  radius: 5
@@ -36,13 +36,13 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
 sphere:
  slice: 0:0:0
  texture: ./texture/pic.jpg
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: 40:20:0
  trs: 0:0:0
  radius: 7
@@ -50,13 +50,13 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
 sphere:
  slice: 0:0:0
  texture: ./texture/jup.jpg
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: -30:0:0
  trs: 0:0:0
  radius: 6
@@ -64,13 +64,13 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
 sphere:
  slice: 0:0:0
  texture: ./texture/pluto.jpg
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: 0:-40:0
  trs: 0:0:0
  radius: 4
@@ -78,13 +78,13 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
 sphere:
  slice: 0:0:0
  texture: ./texture/venus.jpg
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: 0:40:0
  trs: 0:0:0
  radius: 3
@@ -92,13 +92,13 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
 sphere:
  slice: 0:0:0
  texture: ./texture/alien.png
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: -40:-20:0
  trs: 0:0:0
  radius: 8
@@ -106,5 +106,5 @@ sphere:
  refl: 1
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
