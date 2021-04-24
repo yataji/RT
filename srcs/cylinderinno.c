@@ -28,11 +28,11 @@ double	cyldintr(t_obj **cyld, t_ray ray)
 		- ((*cyld)->radius * (*cyld)->radius);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	sol = check_min_max(calc);
-	(*cyld)->normal = normcyld(&ray, *cyld, sol.tmin);
+	(*cyld)->normal = normalize(normcyld(&ray, *cyld, sol.tmin));
 	(*cyld)->hit = plus(ray.org, multi(ray.dir, sol.tmin));
 	if ((*cyld)->size != 0)
 		return (limeted_cly(*cyld, ray, sol));
-	(*cyld)->normal = normalize((*cyld)->normal);
+	//(*cyld)->normal = normalize((*cyld)->normal);
 	return (sol.tmin);
 }
 

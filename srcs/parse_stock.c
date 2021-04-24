@@ -109,8 +109,8 @@ int	stockobj2(t_obj *obj, t_varpars p, char *s)
 	else if ((obj->type == PARAPLOID || obj->type == CONE) && p.c == 2
 		&& ck(s, " angle: ", 8) > 0 && !ft_strcmp(p.value[0], " angle"))
 		obj->angle = abs(ft_atoi(p.value[1]));
-	else
-		stockobj3(obj, p, s);
+	else if (stockobj3(obj, p, s) == -1)
+		return (-1);
 	return (1);
 }
 

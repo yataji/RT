@@ -17,7 +17,7 @@ double			cly_slice(t_obj *cyl, t_ray r, t_sol sol, t_vect sly)
 	cyl->hit = plus(r.org, multi(r.dir, sol.tmax));
 	if (sol.tmax > 0 && dot(moins(cyl->pos_slice, cyl->hit), sly) > 0.0)
 	{
-		cyl->normal = normalize(multi(cyl->normal,-1));
+		cyl->normal = multi(cyl->normal,-1);
 		return (sol.tmax);
 	}
 	return (-1);
@@ -31,9 +31,9 @@ double			lim_cyl_y(t_obj *cyl, t_vect hit, double tmax, t_ray r)
 	{
 		cyl->hit = plus(r.org, multi(r.dir, tmax));
 		hit2 = moins(cyl->hit, cyl->center);
-		cyl->normal = normalize(multi(cyl->normal,-1));
-		if (hit2.y >= cyl->center.y + cyl->size/2 ||
-			hit2.y <= cyl->center.y - cyl->size/2)
+		cyl->normal = multi(cyl->normal,-1);
+		if (hit2.y > cyl->center.y + cyl->size/2 ||
+			hit2.y < cyl->center.y - cyl->size/2)
 			return -1;	
 	}
 	return (tmax);
@@ -48,9 +48,9 @@ double			lim_cyl_x(t_obj *cyl, t_vect hit, double tmax, t_ray r)
 	{
 		cyl->hit = plus(r.org, multi(r.dir, tmax));
 		hit2 = moins(cyl->hit, cyl->center);
-		cyl->normal = normalize(multi(cyl->normal,-1));
-		if (hit2.x >= cyl->center.x + cyl->size/2 ||
-			hit2.x <= cyl->center.x - cyl->size/2)
+		cyl->normal = multi(cyl->normal,-1);
+		if (hit2.x > cyl->center.x + cyl->size/2 ||
+			hit2.x < cyl->center.x - cyl->size/2)
 			return -1;	
 	}
 	return (tmax);
@@ -65,9 +65,9 @@ double			lim_cyl_z(t_obj *cyl, t_vect hit, double tmax, t_ray r)
 	{
 		cyl->hit = plus(r.org, multi(r.dir, tmax));
 		hit2 = moins(cyl->hit, cyl->center);
-		cyl->normal = normalize(multi(cyl->normal,-1));
-		if (hit2.z >= cyl->center.z + cyl->size/2 ||
-			hit2.z <= cyl->center.z - cyl->size/2)
+		cyl->normal = multi(cyl->normal,-1);
+		if (hit2.z > cyl->center.z + cyl->size/2 ||
+			hit2.z < cyl->center.z - cyl->size/2)
 			return -1;
 	}
 	return (tmax);

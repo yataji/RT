@@ -29,12 +29,17 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 	{
 		if (tmpo->neg_obj == 0)
 			v.t = intersect(&tmpo, shadow_r) + 0.01;
-		if (tmpo != close && v.t > 0 && !tmpo->refr)
+		if (tmpo != close && v.t > 0)
 		{
 			if (dot(multi(shadow_r.dir, v.t),
 					multi(shadow_r.dir, v.t)) < dist)
-				return (0);
+				{
+					if (tmpo->refr == 1)
+						return (-1);
+					return (0);
+				}
 		}
+
 		tmpo = tmpo->next;
 	}
 	return (1);

@@ -38,7 +38,9 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		shad = shadow(rt, rt->tmpl, close);
 		if (shad)
 			c = diffuspclr(rt->ray, close, rt->tmpl);
-		else
+		if (shad == -1)
+			c = multi(close->color, 0.8);
+		if (shad == 0)
 			c = (t_color){0, 0, 0};
 		if (close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
@@ -70,6 +72,7 @@ void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 	if (v.near > 0 && close)
 	{
 		setnormal(close, &rt.ray, v.near);
+		rt.ray.hit = close->hit;
 		col = color(&rt, close, rt.lights);
 	}
 	if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)
