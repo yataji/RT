@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-double	plan_slice(t_obj *pln, t_ray r, double t)
+double	plan_slice(t_obj *pln, double t)
 {
 	int	is;
 
@@ -20,7 +20,7 @@ double	plan_slice(t_obj *pln, t_ray r, double t)
 		is = 0;
 	else
 		is = 1;
-	if (is == 1 && dot(moins(pln->pos_slice, r.hit), pln->slice) <= 0.0)
+	if (is == 1 && dot(moins(pln->pos_slice, pln->hit), pln->slice) <= 0.0)
 		return (-1);
 	return (t);
 }
@@ -29,8 +29,6 @@ double	limeted_plan(t_obj *pln, t_ray r, double t)
 {
 	t_vect		hit;
 
-	// printf("im\n");
-	// exit(1);
 	hit = moins(pln->hit, pln->center);
 	if (t == -1)
 		return (-1);
@@ -62,7 +60,7 @@ double	planiter(t_obj **plan, t_ray ray)
 		return (-1);
 	(*plan)->hit = plus(ray.org, multi(ray.dir, t));
 	(*plan)->normal = normalize((*plan)->v);
-	t = plan_slice(*plan, ray, t);
+	t = plan_slice(*plan, t);
 	if ((*plan)->size != 0)
 		t = limeted_plan(*plan, ray, t);
 	return (t);

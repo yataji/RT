@@ -14,7 +14,7 @@ plane:
  size: 60
  texture: .
  postext: 0:0:0
- slice: 0:0:0
+ slice: 1:1:0
  poslice: 0:0:0
  rot: 0:0:0
  center: 0:0:-20

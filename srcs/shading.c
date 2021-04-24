@@ -36,10 +36,10 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 				{
 					if (tmpo->refr == 1)
 						return (-1);
+					if (light_direct())
 					return (0);
 				}
 		}
-
 		tmpo = tmpo->next;
 	}
 	return (1);

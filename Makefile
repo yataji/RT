@@ -50,6 +50,7 @@ SRC  =	main.c\
 		menu.c\
 		tools_parse.c\
 		parse_stock.c\
+		cube.c\
 
 HEADER = 	includes/rt.h
 

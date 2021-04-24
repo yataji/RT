@@ -14,9 +14,9 @@
 
 double	comp(double x, double y, double z)
 {
-	if (x <= y)
+	if (x < y)
 		return (y);
-	if (x >= z)
+	if (x > z)
 		return (z);
 	return (x);
 }

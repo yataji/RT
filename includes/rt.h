@@ -40,6 +40,7 @@ typedef struct	s_2d_i
 	int			j;
 }				t_2d_i;
 
+
 typedef struct	s_2d_d
 {
 	double		x;
@@ -70,6 +71,7 @@ typedef struct s_varpars
 	int		j;
 	char	**value;
 }			t_varpars;
+
 typedef struct s_vect
 {
 	double			x;
@@ -77,10 +79,24 @@ typedef struct s_vect
 	double			z;
 }					t_vect;
 
+typedef struct			s_xyz
+{
+	t_vect				x;
+	t_vect				y;
+	t_vect				z;
+}						t_xyz;
+
 typedef t_2d_i		t_event;
 typedef t_vect		t_point;
 typedef t_vect		t_color;
 typedef t_vect		t_rot;
+
+typedef struct 			s_sol
+{
+	double				tmin;
+	double				tmax;
+}						t_sol;
+
 
 typedef struct s_obj
 {
@@ -93,6 +109,7 @@ typedef struct s_obj
 	t_color			color;
 	t_rot			rot;
 	t_point			trs;
+	t_sol			sol;
 	t_point			center;
 	t_point			pos_texture;
 	t_point			pos_slice;
@@ -102,6 +119,7 @@ typedef struct s_obj
 	int				matter;
 	int				neg_obj;
 	double			n2;
+	double			t;
 	double			size;
 	t_vect			slice;
 	char			*texture;
@@ -126,11 +144,6 @@ typedef struct s_math
 	double			delta;
 }					t_math;
 
-typedef struct 			s_sol
-{
-	double				tmin;
-	double				tmax;
-}						t_sol;
 
 typedef struct s_cam
 {
@@ -152,6 +165,7 @@ typedef struct s_lights
 	t_point			pos;
 	t_vect			direction;
 	double			intensity;
+	t_ray			hit_to_light;
 	int				direct;
 	int				angle;
 	struct s_lights	*next;
@@ -196,8 +210,10 @@ double				sphrintr(t_obj **sphere, t_ray ray);
 double				cyldintr(t_obj **cyld, t_ray ray);
 double				coneintr(t_obj **cone, t_ray ray);
 
+double			cubeintr(t_obj **cube, t_ray ray);
+
 double				parapinter(t_obj **para, t_ray ray);
-double				planiter(t_obj **cone, t_ray ray);
+double				planiter(t_obj **pln, t_ray ray);
 int					keypress(int key, void *param);
 int					ft_exit(t_rt *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);
@@ -265,5 +281,5 @@ void			filtre_sepia(t_rt *rt);
 void			filtres(t_rt *rt);
 
 void			multi_thread(t_rt *rt);
-
+int	light_direct(t_rt rt, t_ray ray);
 #endif

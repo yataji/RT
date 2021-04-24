@@ -1,9 +1,7 @@
 next step
 
--- ngado dak l cube   v* 
--- direct light 
-
--- mhm norminet hhh x
+-- ngado dak l cube  	v*
+-- direct light 		v*
 
 # include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
 # include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"

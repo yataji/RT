@@ -63,12 +63,14 @@ double	intersect(t_obj **object, t_ray ray)
 		return (cyldintr(object, ray));
 	else if ((*object)->type == SPHERE)
 		return (sphrintr(object, ray));
+	else if ((*object)->type == CUBE)
+		return (cubeintr(object, ray));
 	else if ((*object)->type == CONE)
 		return (coneintr(object, ray));
 	else if ((*object)->type == PLANE)
 		return (planiter(object, ray));
-	// else if (object->type == PARAPLOID)
-	// 	return (parapinter(*object, ray));
+	else if ((*object)->type == PARAPLOID)
+		return (parapinter(object, ray));
 	return (-1);
 }
 
