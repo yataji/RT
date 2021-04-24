@@ -71,7 +71,7 @@ void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 	}
 	if (v.near > 0 && close)
 	{
-		setnormal(close, &rt.ray, v.near);
+		//setnormal(close, &rt.ray, v.near);
 		rt.ray.hit = close->hit;
 		col = color(&rt, close, rt.lights);
 	}

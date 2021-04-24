@@ -29,7 +29,9 @@ double	limeted_plan(t_obj *pln, t_ray r, double t)
 {
 	t_vect		hit;
 
-	hit = moins(r.hit, pln->center);
+	// printf("im\n");
+	// exit(1);
+	hit = moins(pln->hit, pln->center);
 	if (t == -1)
 		return (-1);
 	if ((hit.y > pln->center.y + pln->size / 2
@@ -44,7 +46,7 @@ double	limeted_plan(t_obj *pln, t_ray r, double t)
 	return (t);
 }
 
-double	planiter(t_obj *plan, t_ray ray)
+double	planiter(t_obj **plan, t_ray ray)
 {
 	t_vect	oc;
 	t_vect	v;
@@ -53,22 +55,23 @@ double	planiter(t_obj *plan, t_ray ray)
 	double	t;
 
 	t = -1;
-	oc = moins(ray.org, plan->center);
-	v = normalize(plan->v);
-	v = rotation_xyz(v, plan->rot);
+	oc = moins(ray.org, (*plan)->center);
+	v = normalize((*plan)->v);
+	v = rotation_xyz(v, (*plan)->rot);
 	dv = dot(ray.dir, v);
 	xv = dot(oc, v);
 	if (dv != 0 && ((dv > 0 && xv < 0) || (dv < 0 && xv > 0)))
 	{
 		if (dv > 0)
-			plan->normal = multi(v, -1.0);
+			(*plan)->normal = multi(v, -1.0);
 		else
-			plan->normal = v;
+			(*plan)->normal = v;
 		t = -xv / dv;
 	}
-	ray.hit = plus(ray.org, multi(ray.dir, t));
-	t = plan_slice(plan, ray, t);
-	if (plan->size != 0)
-		t = limeted_plan(plan, ray, t);
+	(*plan)->hit = plus(ray.org, multi(ray.dir, t));
+	(*plan)->normal = normalize((*plan)->v);
+	t = plan_slice(*plan, ray, t);
+	if ((*plan)->size != 0)
+		t = limeted_plan(*plan, ray, t);
 	return (t);
 }

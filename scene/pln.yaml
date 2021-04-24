@@ -13,9 +13,9 @@ camera:
 plane:
  size: 60
  texture: .
- pos_texture: 0:0:1
+ postext: 0:0:0
  slice: 0:0:0
- pos_slice: 0:0:0
+ poslice: 0:0:0
  rot: 0:0:0
  center: 0:0:-20
  trs: 0:0:0
@@ -24,13 +24,13 @@ plane:
  refl: 0
  refr: 0
  matter: 0
- per_refr: 0
+ perrfr: 0
  neg_obj: 0
 sphere:
- slice: 0:0:0
+ slice: 0:0:10
  texture: .
- pos_texture: 0:0:0
- pos_slice: 0:0:0
+ postext: 0:0:0
+ poslice: 0:0:0
  center: 0:0:0
  trs: 0:0:0
  radius: 5
@@ -38,5 +38,5 @@ sphere:
  refl: 0
  refr: 1
  matter: 1
- per_refr: 0
+ perrfr: 0.8
  neg_obj: 0

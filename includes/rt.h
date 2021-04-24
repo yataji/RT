@@ -98,7 +98,7 @@ typedef struct s_obj
 	t_point			pos_slice;
 	int				refl;
 	int				refr;
-	int				per_refr;
+	double			per_refr;
 	int				matter;
 	int				neg_obj;
 	double			n2;
@@ -192,11 +192,12 @@ double				dot(t_vect a, t_vect b);
 double				multidbl(double v1, double v2, double v3);
 double				checkt(t_math calc);
 double				intersect(t_obj **object, t_ray ray);
-double				sphrintr(t_obj *sphere, t_ray ray);
+double				sphrintr(t_obj **sphere, t_ray ray);
 double				cyldintr(t_obj **cyld, t_ray ray);
 double				coneintr(t_obj **cone, t_ray ray);
+
 double				parapinter(t_obj *para, t_ray ray);
-double				planiter(t_obj *cone, t_ray ray);
+double				planiter(t_obj **cone, t_ray ray);
 int					keypress(int key, void *param);
 int					ft_exit(t_rt *rt);
 void				setnormal(t_obj *close, t_ray *ray, double t);

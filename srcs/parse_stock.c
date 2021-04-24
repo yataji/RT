@@ -70,7 +70,7 @@ int	stockobj3(t_obj *obj, t_varpars p, char *s)
 	}
 	else if (obj->type != PARAPLOID && p.c == 2
 		&& ck(s, " perrfr: ", 9) > 0 && !ft_strcmp(p.value[0], " perrfr"))
-		obj->per_refr = abs(ft_atoi(p.value[1]));
+		obj->per_refr = fabs(ft_atof(p.value[1]));
 	else if (obj->type != PARAPLOID && obj->type != CUBE && p.c == 2
 		&& ck(s, " neg_obj: ", 10) > 0 && !ft_strcmp(p.value[0], " neg_obj"))
 		obj->neg_obj = abs(ft_atoi(p.value[1]));
@@ -132,5 +132,6 @@ int	stockobj(t_obj *obj, int id, char *s, int fd)
 		if (stockobj2(obj, p, s) == -1)
 			return (-1);
 	}
+	printf("%f\n", obj->per_refr);
 	return (1);
 }
