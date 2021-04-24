@@ -48,26 +48,18 @@ double	limeted_plan(t_obj *pln, t_ray r, double t)
 
 double	planiter(t_obj **plan, t_ray ray)
 {
-	t_vect	oc;
-	t_vect	v;
-	double	xv;
-	double	dv;
+	double	nomi;
+	double	dinomi;
 	double	t;
 
-	t = -1;
-	oc = moins(ray.org, (*plan)->center);
-	v = normalize((*plan)->v);
-	v = rotation_xyz(v, (*plan)->rot);
-	dv = dot(ray.dir, v);
-	xv = dot(oc, v);
-	if (dv != 0 && ((dv > 0 && xv < 0) || (dv < 0 && xv > 0)))
-	{
-		if (dv > 0)
-			(*plan)->normal = multi(v, -1.0);
-		else
-			(*plan)->normal = v;
-		t = -xv / dv;
-	}
+	nomi = dot(moins(ray.org, (*plan)->center), (*plan)->v);
+	dinomi = dot(ray.dir, (*plan)->v);
+	if ((dinomi == 0) || (nomi <= 0 && dinomi < 0) || (nomi >= 0
+		&& dinomi > 0))
+		return (-1);
+	t = -nomi / dinomi;
+	if (t < 0)
+		return (-1);
 	(*plan)->hit = plus(ray.org, multi(ray.dir, t));
 	(*plan)->normal = normalize((*plan)->v);
 	t = plan_slice(*plan, ray, t);
