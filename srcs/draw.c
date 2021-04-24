@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 01:30:47 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/24 10:52:29 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 {
 	t_color	col;
-	t_obj  *close;
+	t_obj	*close;
 
 	close = NULL;
 	col = (t_color){0, 0, 0};

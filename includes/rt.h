@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 23:20:50 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/24 10:18:30 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_image.h>
+# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
