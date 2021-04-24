@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 01:02:43 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 15:23:01 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 01:15:38 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,18 @@ t_ray	initrayrfl(t_rt *rt, t_ray ray, t_obj *closeobj)
 t_ray	initrayrfr(t_rt *rt, t_ray ray, t_obj *closeobj)
 {
 	t_ray	ret;
-	t_angle	t;
-	t_vect	a;
-	t_vect	b;
+	// t_angle	t;
+	// t_vect	a;
+	// t_vect	b;
+	double c1;
+	double c2;
+	double n;
 
 	ret.org = ray.hit;
-	t.theta1 = dot(closeobj->normal, ray.dir);
-	t.theta2 = ray.n1 / closeobj->n2 * sqrtf(1 - pow(t.theta1, 2));
-	t.costheta2 = sqrtf(1 - pow(t.theta2, 2));
-	t.sintheta1 = sqrtf(1 - pow(t.theta1, 2));
-	a = multi(plus(multi(closeobj->normal, t.theta1),
-				ray.dir), ray.n1 / closeobj->n2);
-	b = multi(closeobj->normal, t.costheta2);
-	ret.dir = normalize(moins(a, b));
+	n = ray.n1 / closeobj->n2;
+	c1 = dot(closeobj->normal, ray.dir);
+	c2 = sqrtf(1 - pow(n, 2) * (1 - pow(c1, 2)));
+	ret.dir = normalize(plus(multi(ray.dir, n), multi(closeobj->normal, n * c1 - c2)));
 	return (ret);
 }
 
@@ -55,7 +54,7 @@ t_ray	initray(t_cam *cam, int x, int y)
 	ray.org = cam->lokfrm;
 	ray.dir = plus(multi(cam->u, px), multi(cam->v, py));
 	ray.dir = normalize(plus(ray.dir, cam->w));
-	ray.n1 = 1;
+	ray.n1 = 1; 
 	ray.maxrf = 0;
 	return (ray);
 }

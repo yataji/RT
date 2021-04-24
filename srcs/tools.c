@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:44:50 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 17:04:11 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/23 23:58:55 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ double	intersect(t_obj **object, t_ray ray)
 {
 	if ((*object)->type == CYLINDER)
 		return (cyldintr(object, ray));
-	// else if (object->type == SPHERE)
-	// 	return (sphrintr(*object, ray));
+	else if ((*object)->type == SPHERE)
+		return (sphrintr(*object, ray));
 	else if ((*object)->type == CONE)
 		return (coneintr(object, ray));
-	// else if (object->type == PLANE)
-	// 	return (planiter(*object, ray));
+	else if ((*object)->type == PLANE)
+		return (planiter(*object, ray));
 	// else if (object->type == PARAPLOID)
 	// 	return (parapinter(*object, ray));
 	return (-1);

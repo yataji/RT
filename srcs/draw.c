@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 15:49:43 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 01:30:47 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		else
 			c = (t_color){0, 0, 0};
 		if (close->refl)
-			c = add_color(refl_refr(rt, close, rt->tmpl, rt->ray), c);
+			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		if (close->refr)
-			c = add_color(refl_refr(rt, close, rt->tmpl, rt->ray), c);
+			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}

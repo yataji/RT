@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 17:37:53 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/23 23:20:50 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define DIAMOND 1.8
 # define GLASS 1.5
 # define MAXRF 10
-// # define PI 3.14159265359
 
 typedef struct	s_2d_i
 {
@@ -252,7 +251,8 @@ t_ray	initrayrfl(t_rt *rt,t_ray ray, t_obj *closeobj);
 t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
 int	shadow(t_rt *rt, t_lights *lights, t_obj *close);
 t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
-t_color		refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
+t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
+t_color		refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
 double	limeted_cone(t_obj *cone, t_ray r, t_sol sol);
 double	limeted_cly(t_obj *cyl, t_ray r, t_sol sol);
 void	menu(t_rt *rt);

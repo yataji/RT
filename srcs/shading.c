@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:46:21 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/23 16:35:04 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 01:25:27 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 	{
 		if (tmpo->neg_obj == 0)
 			v.t = intersect(&tmpo, shadow_r) + 0.01;
-		if (tmpo != close && v.t > 0)
+		if (tmpo != close && v.t > 0 && !tmpo->refr)
 		{
 			if (dot(multi(shadow_r.dir, v.t),
 					multi(shadow_r.dir, v.t)) < dist)
@@ -63,7 +63,7 @@ t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights)
 	return (c);
 }
 
-t_color	refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
+t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
 	t_obj	*closenew;
 	t_ray	ray;
@@ -75,6 +75,42 @@ t_color	refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 		return ((t_color){0, 0, 0});
 	if (close->refl)
 		ray = initrayrfl(rt, rayor, close);
+	v.near = -1.0;
+	closenew = NULL;
+	while (rt->tmpo)
+	{
+		if (rt->tmpo != close)
+		{
+			t = intersect(&rt->tmpo, ray);
+			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
+			{
+				closenew = rt->tmpo;
+				v.near = t;
+			}
+		}
+		rt->tmpo = rt->tmpo->next;
+	}
+	ray.hit = plus(ray.org, multi(ray.dir, v.near));
+	if (closenew && ft_strcmp(closenew->texture, ".") != 0)
+		texture(closenew, ray.hit);
+	if (!closenew)
+		return ((t_color){0, 0, 0});
+	if (closenew->refl)
+		reflection(rt, closenew, l, ray);
+	setnormal(closenew, &ray, v.near);
+	return (diffuspclr(ray, closenew, l));
+}
+
+t_color	refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
+{
+	t_obj	*closenew;
+	t_ray	ray;
+	t_var	v;
+	double	t;
+
+	rt->tmpo = rt->obj;
+	if (!close || !close->refr)
+		return ((t_color){0, 0, 0});
 	if (close->refr)
 		ray = initrayrfr(rt, rayor, close);
 	v.near = -1.0;
@@ -97,8 +133,8 @@ t_color	refl_refr(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 		texture(closenew, ray.hit);
 	if (!closenew)
 		return ((t_color){0, 0, 0});
-	if (closenew->refl || closenew->refr)
-		refl_refr(rt, closenew, l, ray);
+	if (closenew->refr)
+		refraction(rt, closenew, l, ray);
 	setnormal(closenew, &ray, v.near);
 	return (diffuspclr(ray, closenew, l));
 }
