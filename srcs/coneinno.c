@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coneinno.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 15:28:51 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/23 15:29:16 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:58:26 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ double	coneintr(t_obj **cone, t_ray ray)
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	sol = check_min_max(calc);
 	(*cone)->normal = normalize(normcone(&ray, *cone, sol.tmin));
-	(*cone)->hit =  plus(ray.org, multi(ray.dir, sol.tmin));
+	(*cone)->hit = plus(ray.org, multi(ray.dir, sol.tmin));
 	if ((*cone)->size != 0)
 		sol.tmin = limeted_cone(*cone, ray, sol);
 	return (sol.tmin);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lights.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/07 18:19:26 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:45:26 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,17 @@ int	stocklights(t_lights *lights, char *str)
 	return (1);
 }
 
+int	lights2(t_lights *lights, int fd, char *str, int check)
+{
+	if (str && ck(str, " direct_light: ", 15) > 0)
+		check = stocklights(lights, str);
+	else if (str && ck(str, " direction: ", 12) > 0)
+		check = stocklights(lights, str);
+	else if (str && ck(str, " angle: ", 8) > 0)
+		check = stocklights(lights, str);
+	return (check);
+}
+
 int	lights(t_lights *lights, char *str, int fd)
 {
 	int		l;
@@ -67,20 +78,18 @@ int	lights(t_lights *lights, char *str, int fd)
 		check = -1;
 		if (get_next_line(fd, &str) < 0)
 			return (-1);
+		check = lights2(lights, fd, str, check);
 		if (str && ck(str, " intensity: ", 12) > 0)
 			check = stocklights(lights, str);
 		else if (str && ck(str, " color: ", 8) > 0)
 			check = stocklights(lights, str);
 		else if (str && ck(str, " pos: ", 6) > 0)
 			check = stocklights(lights, str);
-		else if (str && ck(str, " direct_light: ", 15) > 0)
-			check = stocklights(lights, str);
-		else if (str && ck(str, " direction: ", 12) > 0)
-			check = stocklights(lights, str);
-		else if (str && ck(str, " angle: ", 8) > 0)
-			check = stocklights(lights, str);
 		if (check == -1)
+		{
+			ft_strdel(&str);
 			return (-1);
+		}
 		ft_strdel(&str);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:35:11 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/20 01:44:32 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/24 14:49:25 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,12 @@ t_lights	*initlights(void)
 	new = (t_lights *)malloc(sizeof(t_lights));
 	if (!(new))
 		return (NULL);
-	new->intensity = 0;
 	new->color = (t_color){0, 0, 0};
 	new->pos = (t_point){0, 0, 0};
+	new->direction = (t_vect){0, 0, 0};
+	new->intensity = 0;
+	new->direct = 0;
+	new->angle = 0;
 	new->next = NULL;
 	return (new);
 }

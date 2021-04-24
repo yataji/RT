@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/23 17:20:14 by yataji           ###   ########.fr        #
+#    Updated: 2021/04/24 13:28:55 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC  =	main.c\
 		menu.c\
 		tools_parse.c\
 		parse_stock.c\
+		refl_refr.c\
 
 HEADER = 	includes/rt.h
 

@@ -306,3 +306,9 @@ t_color	refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	setnormal(closenew, &ray, v.near);
 	return (diffuspclr(ray, closenew, l));
 }
+
+
+
+
+
+		printf ("%f:%f:%f\n", lights->direction.x, lights->direction.y, lights->direction.z);

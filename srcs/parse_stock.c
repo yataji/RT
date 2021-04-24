@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 17:18:12 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 10:29:53 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/24 12:03:08 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_varpars	initvarpars(int id)
 		p.l = 16;
 	else if (id == PARAPLOID)
 		p.l = 6;
+	else if (id == CUBE)
+		p.l = 8;
 	return (p);
 }
 

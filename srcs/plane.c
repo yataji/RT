@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 18:36:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 17:08:16 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:25:48 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ double	limeted_plan(t_obj *pln, t_ray r, double t)
 {
 	t_vect		hit;
 
-	// printf("im\n");
-	// exit(1);
 	hit = moins(pln->hit, pln->center);
 	if (t == -1)
 		return (-1);
