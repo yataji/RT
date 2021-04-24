@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:27:45 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/23 17:10:09 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/24 13:41:47 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ double	limeted_sph(t_obj *sph, t_ray r, t_sol sol)
 	if (is == 1 && dot(moins(sph->pos_slice, r.hit), sly) <= 0.0)
 	{
 		r.hit = plus(r.org, multi(r.dir, sol.tmax));
-		sph->normal = multi(sph->normal,-1);
+		sph->normal = multi(sph->normal, -1);
 		if (sol.tmax > 0 && dot(moins(sph->pos_slice, r.hit), sly) > 0.0)
 			return (sol.tmax);
 	}
@@ -44,9 +44,10 @@ double	sphrintr(t_obj **sphere, t_ray ray)
 	calc.c = dot(oc, oc) - ((*sphere)->radius * (*sphere)->radius);
 	calc.delta = (calc.b * calc.b) - (4 * calc.a * calc.c);
 	sol = check_min_max(calc);
-	(*sphere)->hit =  plus(ray.org, multi(ray.dir, sol.tmin));
+	(*sphere)->hit = plus(ray.org, multi(ray.dir, sol.tmin));
 	(*sphere)->normal = normalize(moins((*sphere)->hit, (*sphere)->center));
-	if ((*sphere)->slice.x != 0 || (*sphere)->slice.y != 0 || (*sphere)->slice.z != 0)
+	if ((*sphere)->slice.x != 0 || (*sphere)->slice.y != 0
+		|| (*sphere)->slice.z != 0)
 		return (limeted_sph(*sphere, ray, sol));
 	return (sol.tmin);
 }
@@ -59,4 +60,3 @@ t_vect	normsphr(t_ray *ray, t_obj *obj, double t)
 	norm = moins(ray->hit, obj->center);
 	return (normalize(norm));
 }
-
