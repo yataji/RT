@@ -28,9 +28,9 @@ int	light_direct(t_rt rt, t_ray ray)
 	double	theta;
 	double	intensity;
 
-	cutoff = cos(rt.light->angle * PI / 180);
-	outcutoff = cos((rt.light->angle + 3) * PI / 180);
-	theta = dot(rt.light->to_light.direction, normalize(rt.light->position));
+	cutoff = cos(rt.light->angle * M_PI / 180);
+	outcutoff = cos((rt.light->angle + 3) * M_PI / 180);
+	theta = dot(rt.light->to_light.direction, normalize(rt.light->center));
 	intensity = comp((theta - outcutoff) / cutoff - outcutoff, 0.0, 1.0);
 	return (intensity);
 }
