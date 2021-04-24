@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 17:18:12 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 00:53:50 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/24 10:29:53 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,16 @@ int	stockobj3(t_obj *obj, t_varpars p, char *s)
 		obj->n2 = ft_matter(obj->matter);
 	}
 	else if (obj->type != PARAPLOID && p.c == 2
-		&& ck(s, " perrfr: ", 11) > 0 && !ft_strcmp(p.value[0], " perrfr"))
+		&& ck(s, " perrfr: ", 9) > 0 && !ft_strcmp(p.value[0], " perrfr"))
 		obj->per_refr = abs(ft_atoi(p.value[1]));
 	else if (obj->type != PARAPLOID && obj->type != CUBE && p.c == 2
 		&& ck(s, " neg_obj: ", 10) > 0 && !ft_strcmp(p.value[0], " neg_obj"))
 		obj->neg_obj = abs(ft_atoi(p.value[1]));
 	else if (obj->type != PARAPLOID && obj->type != CUBE && p.c == 4
-		&& ck(s, " poslice: ", 12) > 0 && !ft_strcmp(p.value[0], " poslice"))
+		&& ck(s, " poslice: ", 10) > 0 && !ft_strcmp(p.value[0], " poslice"))
 		obj->pos_slice = stk(p.value);
 	else if (obj->type != PARAPLOID && p.c == 4
-		&& ck(s, " postext: ", 14) > 0 && !ft_strcmp(p.value[0], " postext"))
+		&& ck(s, " postext: ", 10) > 0 && !ft_strcmp(p.value[0], " postext"))
 		obj->pos_texture = stk(p.value);
 	else if (stockobj4(obj, p, s) == -1)
 		return (-1);
