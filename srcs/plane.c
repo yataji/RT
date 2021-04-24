@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 18:36:08 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 12:25:48 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/24 16:07:04 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ double	planiter(t_obj **plan, t_ray ray)
 	nomi = dot(moins(ray.org, (*plan)->center), (*plan)->v);
 	dinomi = dot(ray.dir, (*plan)->v);
 	if ((dinomi == 0) || (nomi <= 0 && dinomi < 0) || (nomi >= 0
-		&& dinomi > 0))
+			&& dinomi > 0))
 		return (-1);
 	t = -nomi / dinomi;
 	if (t < 0)
