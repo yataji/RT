@@ -132,6 +132,5 @@ int	stockobj(t_obj *obj, int id, char *s, int fd)
 		if (stockobj2(obj, p, s) == -1)
 			return (-1);
 	}
-	printf("%f\n", obj->per_refr);
 	return (1);
 }

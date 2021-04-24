@@ -196,7 +196,7 @@ double				sphrintr(t_obj **sphere, t_ray ray);
 double				cyldintr(t_obj **cyld, t_ray ray);
 double				coneintr(t_obj **cone, t_ray ray);
 
-double				parapinter(t_obj *para, t_ray ray);
+double				parapinter(t_obj **para, t_ray ray);
 double				planiter(t_obj **cone, t_ray ray);
 int					keypress(int key, void *param);
 int					ft_exit(t_rt *rt);
