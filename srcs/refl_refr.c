@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 13:24:15 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 13:24:48 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:50:52 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	t_var	v;
 
 	rt->tmpo = rt->obj;
-	if (!close || !close->refl)
+	if (!close || !close->refl || rt->maxrfl++ >= MAXRF)
 		return ((t_color){0, 0, 0});
 	if (close->refl)
 		ray = initrayrfl(rt, rayor, close);
@@ -87,7 +87,7 @@ t_color	refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	t_var	v;
 
 	rt->tmpo = rt->obj;
-	if (!close || !close->refr)
+	if (!close || !close->refr || rt->maxrfr++ >= MAXRF)
 		return ((t_color){0, 0, 0});
 	if (close->refr)
 		ray = initrayrfr(rt, rayor, close);
