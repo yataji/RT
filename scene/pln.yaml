@@ -2,11 +2,11 @@ lights:
  intensity: 100
  color: 255:255:255
  pos: 0:0:100
- direct_light: 0
+ direct_light: 1
  direction: 0:0:0
- angle: 20
+ angle: 60
 camera:
- lokfrm: 30:0:100
+ lokfrm: 0:0:100
  lokat: 0:0:0
  fov: 60
  ambiante: 0.1
@@ -14,7 +14,7 @@ plane:
  size: 60
  texture: .
  postext: 0:0:0
- slice: 1:1:0
+ slice: 0:0:0
  poslice: 0:0:0
  rot: 0:0:0
  center: 0:0:-20
@@ -27,7 +27,7 @@ plane:
  perrfr: 0
  neg_obj: 0
 sphere:
- slice: 0:0:10
+ slice: 0:0:0
  texture: .
  postext: 0:0:0
  poslice: 0:0:0
@@ -36,7 +36,7 @@ sphere:
  radius: 5
  color: 0:0:255
  refl: 0
- refr: 1
+ refr: 0
  matter: 1
- perrfr: 0.8
+ perrfr: 0.9
  neg_obj: 0

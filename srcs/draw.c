@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 15:31:09 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 13:46:54 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,17 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	while (rt->tmpl)
 	{
 		shad = shadow(rt, rt->tmpl, close);
+		
 		if (shad)
 			c = diffuspclr(rt->ray, close, rt->tmpl);
-		// if (shad == -1)
-		// 	c = multi(close->color, close->per_refr);
 		if (shad == -1)
-			c = multi(close->color, 0.9);
-		if (shad == 0)
+			c = multi(close->color, 0.8);
+		if (!shad)
 			c = (t_color){0, 0, 0};
 		if (close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		if (close->refr)
-			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
+			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), multi(c, 0.5));
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}

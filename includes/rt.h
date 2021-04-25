@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 11:11:05 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 13:09:12 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,5 +281,6 @@ void			filtre_sepia(t_rt *rt);
 void			filtres(t_rt *rt);
 
 void			multi_thread(t_rt *rt);
-int	light_direct(t_rt rt, t_ray ray);
+int	light_direct(t_rt *rt, t_obj *close, t_lights *li);
+
 #endif

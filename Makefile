@@ -6,7 +6,7 @@
 #    By: yataji <yataji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 11:57:48 by yataji            #+#    #+#              #
-#    Updated: 2021/04/24 13:28:55 by yataji           ###   ########.fr        #
+#    Updated: 2021/04/25 13:06:18 by yataji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC  =	main.c\
 		parse_stock.c\
 		cube.c\
 		refl_refr.c\
+		direct_light.c\
 
 HEADER = 	includes/rt.h
 
