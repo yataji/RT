@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:20:08 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/24 15:45:26 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 11:15:45 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ int	ft_lights(t_rt *rt, char *str)
 	rt->tmpl->next = rt->lights;
 	rt->lights = rt->tmpl;
 	return (0);
+}
+
+int	stocklights2(t_lights *lights, char **value, int ck)
+{
+	if (ck == 4 && ft_strcmp(value[0], " direction") == 0)
+		lights->direction = stk(value);
+	else if (ck == 2 && ft_strcmp(value[0], " direct_light") == 0)
+		lights->direct = abs(ft_atoi(value[1]));
+	else if (ck == 2 && ft_strcmp(value[0], " angle") == 0)
+		lights->angle = abs(ft_atoi(value[1]));
+	else
+	{
+		ft_strdel(value);
+		return (-1);
+	}
+	return (1);
 }
 
 int	stocklights(t_lights *lights, char *str)
@@ -42,17 +58,8 @@ int	stocklights(t_lights *lights, char *str)
 		lights->color = checkcolorvalue(value);
 	else if (ck == 4 && ft_strcmp(value[0], " pos") == 0)
 		lights->pos = stk(value);
-	else if (ck == 4 && ft_strcmp(value[0], " direction") == 0)
-		lights->direction = stk(value);
-	else if (ck == 2 && ft_strcmp(value[0], " direct_light") == 0)
-		lights->direct = abs(ft_atoi(value[1]));
-	else if (ck == 2 && ft_strcmp(value[0], " angle") == 0)
-		lights->angle = abs(ft_atoi(value[1]));
-	else
-	{
-		ft_strdel(value);
+	else if (stocklights2(lights, value, ck) == -1)
 		return (-1);
-	}
 	return (1);
 }
 
