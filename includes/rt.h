@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
