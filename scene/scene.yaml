@@ -1,57 +1,15 @@
 camera:
  lokfrm: 0:0:40
- lokat: 0:0:1
- fov: 60
+ lokat: 0:0:0
+ fov: 70
  ambiante: 0.1
 lights:
  direct_light: 1
  direction: 0:0:0
  angle: 60
- pos: 0:0:50
+ pos: 0:0:40
  color: 255:255:255
- intensity: 10
-lights:
- direct_light: 1
- direction: 0:0:0
- angle: 60
- pos: 0:7:30
- color: 255:255:255
- intensity: 20
-lights:
- direct_light: 1
- direction: 0:0:0
- angle: 60
- pos: 0:-7:10
- color: 255:255:255
- intensity: 30
-lights:
- direct_light: 1
- direction: 0:0:0
- angle: 60
- pos: 0:7:-10
- color: 255:255:255
- intensity: 30
-lights:
- direct_light: 1
- direction: 0:0:0
- angle: 60
- pos: 0:7:-30
- color: 255:255:255
- intensity: 20
-lights:
- direct_light: 1
- direction: 0:0:0
- angle: 60
- pos: 0:7:-50
- color: 255:255:255
- intensity: 10
-lights:
- direct_light: 1
- direction: 0:0:0
- angle: 60
- pos: 0:7:-70
- color: 255:255:255
- intensity: 50
+ intensity: 100
 cylinder:
  size: 0
  postext: 0:0:0
@@ -693,7 +651,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -709,7 +667,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -725,7 +683,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -741,7 +699,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -757,7 +715,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -773,7 +731,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -789,7 +747,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -805,7 +763,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
@@ -821,7 +779,7 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
