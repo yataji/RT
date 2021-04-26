@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiqarbac <jiqarbac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:05:36 by yoelguer          #+#    #+#             */
-/*   Updated: 2021/04/23 16:49:28 by jiqarbac         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:39:55 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	texture(t_obj *obj, t_vect hit)
 	uv = get_uv(obj, size, hit);
 	pos = (unsigned char *) obj->surface->pixels + ((int)(uv.j
 				+ obj->pos_texture.y) *obj->surface->pitch
-			+ (int)(uv.i + obj->pos_texture.x) * bpp);
+			+ (int)(uv.i + obj->pos_texture.x) *bpp);
 	get_col(obj, bpp, pos);
 }

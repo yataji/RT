@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 13:24:15 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 15:51:30 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:35:15 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_var	reflection2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 	return (v);
 }
 
-t_color refl_refrshad(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
+t_color	refl_refrshad(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
 	t_color	c;
 
@@ -43,7 +43,7 @@ t_color refl_refrshad(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 		c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 	if (close->refr)
 		c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
-	return (c);	
+	return (c);
 }
 
 t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)

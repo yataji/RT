@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 15:50:30 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:33:20 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ void	usage(void)
 {
 	ft_putendl("usage: ./rtv1 scene/(chose a file .yaml)");
 	exit(1);
+}
+
+int	inside_rect(t_rt *rt, SDL_Rect r)
+{
+	if (rt->event.i >= r.x && rt->event.i <= r.x + r.w
+		&& rt->event.j >= r.y && rt->event.j <= r.y + r.h)
+		return (1);
+	return (0);
 }
 
 int	checknamefl(char *name)

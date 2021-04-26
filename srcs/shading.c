@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:46:21 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/26 15:33:26 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:39:17 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,19 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 {
 	t_obj	*tmpo;
 	t_var	v;
-	t_ray	shadow_r;
+	t_ray	sh_r;
 	t_vect	dirvect;
-	double	dist;
 
 	tmpo = rt->obj;
-	shadow_r = init_shadow(rt, lights, &dirvect, &dist);
+	sh_r = init_shadow(rt, lights, &dirvect, &v.dist);
 	while (tmpo)
 	{
 		if (!tmpo->neg_obj)
 		{
-			v.t = intersect(&tmpo, shadow_r) + 0.01;
+			v.t = intersect(&tmpo, sh_r) + 0.01;
 			if (tmpo != close && v.t > 0)
 			{
-				if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
+				if (dot(multi(sh_r.dir, v.t), multi(sh_r.dir, v.t)) < v.dist)
 				{
 					if (tmpo->refr == 1)
 						return (-1);
