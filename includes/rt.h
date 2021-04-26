@@ -188,6 +188,8 @@ typedef struct s_rt
 	int				fd;
 	int 			menu;
 	int				ck;
+	int				start;
+	int				end;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
 	SDL_Renderer	*rend_bar;

@@ -92,28 +92,51 @@ int	inside_rect(t_rt *rt, SDL_Rect r)
 	return (0);
 }
 
-void	draw(t_rt	rt)
+void	*raytracing(void *rtt)
 {
 	t_var		v;
+	t_rt		rt;
 
-	v.y = -1;
+	rt = *((t_rt *)(rtt));
+	v.y = rt.start - 1;
 	v.near = -1.0;
+	while (++v.y < rt.end)
+	{
+		v.x = -1;
+		while (++v.x < MAXHEIGHT)
+		{
+			rt.ray = initray(rt.tmpc, v.y, v.x);
+			rt.tmpo = rt.obj;
+			v.near = -1;
+			drawcolor(v, rt, rt.tmpo);
+		}
+	}
+	filtres(&rt);
+	return (NULL);
+}
+
+void	draw(t_rt	rt)
+{
+	int			i;
+	pthread_t	thread_id[4];
+	t_rt		data[4];
+	t_rt		*rtt;
+
+	rtt = &rt;
+	i = 0;
 	if (rt.menu == 0)
 		menu(&rt);
 	if (rt.menu == 1)
 	{
-		while (++v.y < MAXWIDTH)
+		while (i < 4)
 		{
-			v.x = -1;
-			while (++v.x < MAXHEIGHT)
-			{
-				rt.ray = initray(rt.tmpc, v.y, v.x);
-				rt.tmpo = rt.obj;
-				v.near = -1;
-				drawcolor(v, rt, rt.tmpo);
-			}
+			rtt->start = MAXWIDTH / 4 * i;
+			rtt->end = MAXHEIGHT / 4 * i + (MAXHEIGHT / 4);
+			ft_memcpy((void *)&data[i], (void *)rtt, sizeof(t_rt));
+			pthread_create(&thread_id[i], NULL, raytracing, &data[i]);
+			pthread_join(thread_id[i], NULL);
+			i++;
 		}
-		filtres(&rt);
 	}
 	loop(&rt);
 }
