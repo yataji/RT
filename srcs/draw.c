@@ -6,11 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/04/26 12:37:21 by yataji           ###   ########.fr       */
-=======
-/*   Updated: 2021/04/26 15:23:41 by yataji           ###   ########.fr       */
->>>>>>> RT
+/*   Updated: 2021/04/26 15:53:42 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +17,12 @@ t_color	ambtext(t_rt *rt, t_obj *close)
 	t_color	ret;
 
 	ret = multi(close->color, rt->cam->ambiante);
-	// if (ft_strcmp(close->texture, ".") != 0)
-	// {
-	// 	texture(close, rt->ray.hit);
-	// 	ret = close->color;
-	// }
+	if (ft_strcmp(close->texture, ".") != 0)
+	{
+		texture(close, rt->ray.hit);
+		ret = close->color;
+	}
 	return (ret);
-}
-
-t_vect				safe_color(t_vect p)
-{
-	t_vect	col;
-
-	col.x = fmin(255, p.x);
-	col.y = fmin(255, p.y);
-	col.z = fmin(255, p.z);
-	return (col);
 }
 
 t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
@@ -45,27 +31,17 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	t_color	ret;
 	int		shad;
 
-	// ret = ambtext(rt, close);
-	ret = multi(close->color, 0.1);//rt->cam->ambiante);
+	ret = ambtext(rt, close);
 	rt->tmpl = lights;
-	c = (t_color){0, 0, 0};
 	while (rt->tmpl)
 	{
 		c = diffuspclr(rt->ray, close, rt->tmpl);
-<<<<<<< HEAD
-		shad = shadow(rt, rt->tmpl, close);
-		if (!shad)
-			c =  multi(close->color, 0.1);
-		// if (shad == -1)
-		// 	c = multi(close->color, 0.2);
-=======
 		if (lights->intensity > 0)
 			shad = shadow(rt, rt->tmpl, close);
 		if (!shad)
 			c =  multi(close->color, 0.1);
 		if (shad == -1)
 			c = multi(close->color, 0.2);
->>>>>>> RT
 		if (shad && close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		if (shad && close->refr)
@@ -73,7 +49,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
-	return (safe_color(ret));
+	return (ret);
 }
 
 void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
@@ -117,51 +93,28 @@ int	inside_rect(t_rt *rt, SDL_Rect r)
 	return (0);
 }
 
-void	*raytracing(void *rtt)
-{
-	t_var		v;
-	t_rt		rt;
-
-	rt = *((t_rt *)(rtt));
-	v.y = rt.start - 1;
-	v.near = -1.0;
-	while (++v.y < rt.end)
-	{
-		v.x = -1;
-		while (++v.x < MAXHEIGHT)
-		{
-			rt.ray = initray(rt.tmpc, v.y, v.x);
-			rt.tmpo = rt.obj;
-			v.near = -1;
-			drawcolor(v, rt, rt.tmpo);
-		}
-	}
-	filtres(&rt);
-	return (NULL);
-}
-
 void	draw(t_rt	rt)
 {
-	int			i;
-	pthread_t	thread_id[4];
-	t_rt		data[4];
-	t_rt		*rtt;
+	t_var		v;
 
-	rtt = &rt;
-	i = 0;
-	// if (rt.menu == 0)
-	// 	menu(&rt);
+	v.y = -1;
+	v.near = -1.0;
 	if (rt.menu == 0)
+		menu(&rt);
+	if (rt.menu == 1)
 	{
-		while (i < 4)
+		while (++v.y < MAXWIDTH)
 		{
-			rtt->start = MAXWIDTH / 4 * i;
-			rtt->end = MAXHEIGHT / 4 * i + (MAXHEIGHT / 4);
-			ft_memcpy((void *)&data[i], (void *)rtt, sizeof(t_rt));
-			pthread_create(&thread_id[i], NULL, raytracing, &data[i]);
-			pthread_join(thread_id[i], NULL);
-			i++;
+			v.x = -1;
+			while (++v.x < MAXHEIGHT)
+			{
+				rt.ray = initray(rt.tmpc, v.y, v.x);
+				rt.tmpo = rt.obj;
+				v.near = -1;
+				drawcolor(v, rt, rt.tmpo);
+			}
 		}
+		filtres(&rt);
 	}
 	loop(&rt);
 }
