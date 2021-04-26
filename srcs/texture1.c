@@ -51,6 +51,6 @@ void	texture(t_obj *obj, t_vect hit)
 	uv = get_uv(obj, size, hit);
 	pos = (unsigned char *) obj->surface->pixels + ((int)(uv.j
 				+ obj->pos_texture.y) *obj->surface->pitch
-			+ (int)(uv.i + obj->pos_texture.x) *bpp);
+			+ (int)(uv.i + obj->pos_texture.x) * bpp);
 	get_col(obj, bpp, pos);
 }

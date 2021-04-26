@@ -25,6 +25,16 @@ t_color	ambtext(t_rt *rt, t_obj *close)
 	return (ret);
 }
 
+t_vect				safe_color(t_vect p)
+{
+	t_vect	col;
+
+	col.x = fmin(255, p.x);
+	col.y = fmin(255, p.y);
+	col.z = fmin(255, p.z);
+	return (col);
+}
+
 t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 {
 	t_color	c;
@@ -34,22 +44,23 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	// ret = ambtext(rt, close);
 	ret = multi(close->color, 0.1);//rt->cam->ambiante);
 	rt->tmpl = lights;
+	c = (t_color){0, 0, 0};
 	while (rt->tmpl)
 	{
-		c = (t_color){0, 0, 0};
+		c = diffuspclr(rt->ray, close, rt->tmpl);
 		shad = shadow(rt, rt->tmpl, close);
-		if (shad)
-			c = diffuspclr(rt->ray, close, rt->tmpl);
+		if (!shad)
+			c =  multi(close->color, 0.1);
 		// if (shad == -1)
 		// 	c = multi(close->color, 0.2);
-		// if (shad && close->refl)
-		// 	c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
-		// if (shad && close->refr)
-		// 	c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
+		if (shad && close->refl)
+			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
+		if (shad && close->refr)
+			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
-	return (ret);
+	return (safe_color(ret));
 }
 
 void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)

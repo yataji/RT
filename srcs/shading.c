@@ -36,7 +36,7 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 	while (tmpo)
 	{
 		// if (tmpo->neg_obj == 0)
-			v.t = intersect(&tmpo, shadow_r) + 0.01;
+			v.t = intersect(&tmpo, shadow_r);
 		if (tmpo != close && v.t > 0)
 		{
 			if (/*!tmpo->refr && */dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
