@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 15:53:42 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:34:10 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		if (lights->intensity > 0)
 			shad = shadow(rt, rt->tmpl, close);
 		if (!shad)
-			c =  multi(close->color, 0.1);
+			c = multi(close->color, 0.1);
 		if (shad == -1)
 			c = multi(close->color, 0.2);
 		if (shad && close->refl)
@@ -75,22 +75,9 @@ void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 	if (v.near > 0 && close)
 	{
 		rt.ray.hit = close->hit;
-		//setnormal(close, &rt.ray, v.near);
 		col = color(&rt, close, rt.lights);
 	}
-	if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)
-		sdl_error("Get color failed");
-	if (SDL_RenderDrawPoint(rt.rend, v.y, v.x) != 0)
-		sdl_error("draw point failed");
-	rt.screen[v.y * MAXWIDTH + v.x] = col;
-}
-
-int	inside_rect(t_rt *rt, SDL_Rect r)
-{
-	if (rt->event.i >= r.x && rt->event.i <= r.x + r.w
-		&& rt->event.j >= r.y && rt->event.j <= r.y + r.h)
-		return (1);
-	return (0);
+	putimage(&rt, &col, &v);
 }
 
 void	*raytracing(void *rtt)

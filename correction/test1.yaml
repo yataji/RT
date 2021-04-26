@@ -39,7 +39,7 @@ cylinder:
  trs: 0:0:0
  axis: 0:1:0
  radius: 8
- color: 255:255:255
+ color: 255:0:0
  rot: 0:0:0
 cone:
  size: 0
@@ -56,7 +56,7 @@ cone:
  trs: 0:0:0
  axis: 0:1:0
  angle: 20
- color: 255:255:255
+ color: 255:0:0
  rot: 0:0:0
 plane:
  size: 0
@@ -66,7 +66,7 @@ plane:
  poslice: 0:0:0
  refl: 0
  refr: 0
- matter: 0
+ matter: 1
  perrfr: 0
  neg_obj: 0
  center: -50:0:0
@@ -82,7 +82,7 @@ plane:
  poslice: 0:0:0
  refl: 0
  refr: 0
- matter: 0
+ matter: 1
  perrfr: 0
  neg_obj: 0
  center: 0:50:0
@@ -98,7 +98,7 @@ plane:
  poslice: 0:0:0
  refl: 0
  refr: 0
- matter: 0
+ matter: 1
  perrfr: 0
  neg_obj: 0
  center: 0:-50:0
@@ -114,7 +114,7 @@ plane:
  poslice: 0:0:0
  refl: 0
  refr: 0
- matter: 0
+ matter: 1
  perrfr: 0
  neg_obj: 0
  center: 0:0:-50

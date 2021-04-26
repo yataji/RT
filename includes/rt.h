@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 15:52:10 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:39:04 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_image.h"
-// # include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-// # include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+// # include "SDL2/SDL.h"
+// # include "SDL2/SDL_image.h"
+# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -60,6 +60,7 @@ typedef struct s_var
 	int				x;
 	int				y;
 	double			t;
+	double			dist;
 	double			near;
 }					t_var;
 
@@ -277,5 +278,7 @@ void				filtre_sepia(t_rt *rt);
 void				filtres(t_rt *rt);
 void				multi_thread(t_rt *rt);
 int					light_direct(t_rt *rt, t_obj *close, t_lights *li);
+void				putimage(t_rt *rt, t_color *col, t_var *v);
+int					inside_rect(t_rt *rt, SDL_Rect r);
 
 #endif
