@@ -11,6 +11,7 @@ camera:
  fov: 60
  ambiante: 0.1
 cone:
+ texture: ./texture/sun.jpg
  size: 60
  postext: 0:0:0
  slice: 0:0:0
@@ -25,9 +26,10 @@ cone:
  trs: 0:0:0
  axis: 0:1:0
  angle: 20
- color: 255:255:255
+ color: 0:0:255
  rot: 0:0:0
 cone:
+ texture: ./texture/sun.jpg
  size: 60
  postext: 0:0:0
  slice: 0:1:1
@@ -42,5 +44,5 @@ cone:
  trs: 0:0:0
  axis: 0:1:0
  angle: 20
- color: 255:255:255
+ color: 0:0:255
  rot: 0:0:0

@@ -20,7 +20,7 @@ sphere:
  matter: 0
  perrfr: 0
  neg_obj: 0
- center: 5:6:-9
+ center: 5:6:10
  trs: 0:0:0
  radius: 10
  color: 255:0:0
@@ -35,7 +35,7 @@ cylinder:
  texture: .
  refl: 0
  refr: 0
- center: 20:12:0
+ center: 20:12:4
  trs: 0:0:0
  axis: 0:1:0
  radius: 8
@@ -52,7 +52,7 @@ cone:
  texture: .
  refl: 0
  refr: 0
- center: -12:12:0
+ center: -12:12:15
  trs: 0:0:0
  axis: 0:1:0
  angle: 20
@@ -65,8 +65,8 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
- matter: 1
+ refr: 0
+ matter: 0
  perrfr: 0
  neg_obj: 0
  center: -50:0:0
@@ -81,8 +81,8 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
- matter: 1
+ refr: 0
+ matter: 0
  perrfr: 0
  neg_obj: 0
  center: 0:50:0
@@ -97,8 +97,8 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
- matter: 1
+ refr: 0
+ matter: 0
  perrfr: 0
  neg_obj: 0
  center: 0:-50:0
@@ -113,8 +113,8 @@ plane:
  slice: 0:0:0
  poslice: 0:0:0
  refl: 0
- refr: 1
- matter: 1
+ refr: 0
+ matter: 0
  perrfr: 0
  neg_obj: 0
  center: 0:0:-50

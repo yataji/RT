@@ -17,7 +17,7 @@ plane:
  slice: 1:1:0
  poslice: 0:20:0
  refl: 0
- refr: 1
+ refr: 0
  matter: 0
  perrfr: 0
  neg_obj: 0
