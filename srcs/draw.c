@@ -6,7 +6,11 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/04/26 12:37:21 by yataji           ###   ########.fr       */
+=======
+/*   Updated: 2021/04/26 15:23:41 by yataji           ###   ########.fr       */
+>>>>>>> RT
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +52,20 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	while (rt->tmpl)
 	{
 		c = diffuspclr(rt->ray, close, rt->tmpl);
+<<<<<<< HEAD
 		shad = shadow(rt, rt->tmpl, close);
 		if (!shad)
 			c =  multi(close->color, 0.1);
 		// if (shad == -1)
 		// 	c = multi(close->color, 0.2);
+=======
+		if (lights->intensity > 0)
+			shad = shadow(rt, rt->tmpl, close);
+		if (!shad)
+			c =  multi(close->color, 0.1);
+		if (shad == -1)
+			c = multi(close->color, 0.2);
+>>>>>>> RT
 		if (shad && close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		if (shad && close->refr)

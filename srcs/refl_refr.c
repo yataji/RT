@@ -6,7 +6,11 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 13:24:15 by yataji            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/04/26 12:28:55 by yataji           ###   ########.fr       */
+=======
+/*   Updated: 2021/04/26 15:17:53 by yataji           ###   ########.fr       */
+>>>>>>> RT
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +24,7 @@ t_var	loopobj(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 	v.near = -1;
 	while (rt->tmpo)
 	{
-		if (rt->tmpo != close)
+		if (rt->tmpo != close && !rt->tmpo->neg_obj)
 		{
 			t = intersect(&rt->tmpo, ray) + 0.0001;
 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
@@ -75,6 +79,7 @@ t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 // 	double	t;
 // 	t_var	v;
 
+<<<<<<< HEAD
 // 	v.near = -1;
 // 	while (rt->tmpo)
 // 	{
@@ -91,6 +96,24 @@ t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 // 	}
 // 	return (v);
 // }
+=======
+	v.near = -1;
+	while (rt->tmpo)
+	{
+		if (rt->tmpo != close && !rt->tmpo->neg_obj)
+		{
+			t = intersect(&rt->tmpo, ray) + 0.0001;
+			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
+			{
+				*closenew = rt->tmpo;
+				v.near = t;
+			}
+		}
+		rt->tmpo = rt->tmpo->next;
+	}
+	return (v);
+}
+>>>>>>> RT
 
 t_color	refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 {
