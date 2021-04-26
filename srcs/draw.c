@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 06:42:06 by nabouzah         ###   ########.fr       */
+/*   Updated: 2021/04/26 15:23:41 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
-		c = (t_color){0, 0, 0};
-		shad = shadow(rt, rt->tmpl, close);
-		if (shad)
-			c = diffuspclr(rt->ray, close, rt->tmpl);
+		c = diffuspclr(rt->ray, close, rt->tmpl);
+		if (lights->intensity > 0)
+			shad = shadow(rt, rt->tmpl, close);
+		if (!shad)
+			c =  multi(close->color, 0.1);
 		if (shad == -1)
 			c = multi(close->color, 0.2);
 		if (shad && close->refl)

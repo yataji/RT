@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:46:21 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/26 06:16:08 by nabouzah         ###   ########.fr       */
+/*   Updated: 2021/04/26 15:16:32 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 	shadow_r = init_shadow(rt, lights, &dirvect, &dist);
 	while (tmpo)
 	{
-		// if (tmpo->neg_obj == 0)
-			v.t = intersect(&tmpo, shadow_r) + 0.01;
-		if (tmpo != close && v.t > 0)
+		if (!tmpo->neg_obj)
 		{
-			if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
+			v.t = intersect(&tmpo, shadow_r) + 0.01;
+			if (tmpo != close && v.t > 0)
 			{
-				if (tmpo->refr == 1)
-					return (-1);
-				return (0);
+				if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
+				{
+					if (tmpo->refr == 1)
+						return (-1);
+					return (0);
+				}
 			}
 		}
 		tmpo = tmpo->next;
@@ -71,7 +73,7 @@ t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights)
 	reflect = normalize(moins(lightdir, multi(close->normal, 2 * dot1)));
 	dot1 = dot(reflect, normalize(moins(ray.hit, ray.org)));
 	if (dot1 > 0)
-		c = add_color(c, multi_color(lights->color, powf(dot1, 100)
+		c = add_color(c, multi_color(lights->color, powf(dot1, 10)
 					* lights->intensity / 100.0));
 	return (c);
 }

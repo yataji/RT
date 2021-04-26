@@ -300,3 +300,42 @@ t_color	refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 
 
 		printf ("%f:%f:%f\n", lights->direction.x, lights->direction.y, lights->direction.z);
+
+
+
+
+
+
+
+sphere:
+ slice: 0:0:0
+ texture: .
+ postext: 0:0:0
+ poslice: 0:0:0
+ center: -30:0:-100
+ trs: 0:0:0
+ radius: 50
+ color: 255:0:0
+ refl: 0
+ refr: 0
+ matter: 0
+ perrfr: 0.9
+ neg_obj: 0
+
+
+plane:
+ size: 0
+ texture: .
+ postext: 0:0:0
+ slice: 0:0:0
+ poslice: 0:0:0
+ rot: 0:0:0
+ center: 0:0:50
+ trs: 0:0:0
+ color: 255:255:0
+ axis: 0:0:-1
+ refl: 0
+ refr: 0
+ matter: 0
+ perrfr: 0
+ neg_obj: 0

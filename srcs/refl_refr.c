@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refl_refr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 13:24:15 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 06:44:39 by nabouzah         ###   ########.fr       */
+/*   Updated: 2021/04/26 15:17:53 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_var	reflection2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 	v.near = -1;
 	while (rt->tmpo)
 	{
-		if (rt->tmpo != close)
+		if (rt->tmpo != close && !rt->tmpo->neg_obj)
 		{
 			t = intersect(&rt->tmpo, ray) + 0.0001;
 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
@@ -78,7 +78,7 @@ t_var	refraction2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 	v.near = -1;
 	while (rt->tmpo)
 	{
-		if (rt->tmpo != close)
+		if (rt->tmpo != close && !rt->tmpo->neg_obj)
 		{
 			t = intersect(&rt->tmpo, ray) + 0.0001;
 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
