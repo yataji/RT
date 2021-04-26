@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 04:30:05 by nabouzah         ###   ########.fr       */
+/*   Updated: 2021/04/26 11:29:10 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_image.h"
+# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -31,7 +31,7 @@
 # define WATER 1.3
 # define DIAMOND 1.8
 # define GLASS 1.5
-# define MAXRF 3
+# define MAXRF 5
 
 typedef struct	s_2d_i
 {
@@ -266,7 +266,7 @@ void		texture(t_obj *obj, t_vect hit);
 t_sol			check_min_max(t_math math);
 int	ft_cube(t_rt *rt, char *str);
 t_ray	initrayrfl(t_rt *rt,t_ray ray, t_obj *closeobj);
-t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
+t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj, t_vect normal);
 int	shadow(t_rt *rt, t_lights *lights, t_obj *close);
 t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
 t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
