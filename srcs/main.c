@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:00:48 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 13:47:15 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:50:30 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_rt	init_list(t_rt rt)
 	rt.lights = NULL;
 	rt.cam = NULL;
 	rt.menu = 0;
+	rt.maxrfl = 0;
+	rt.maxrfr = 0;
 	rt.screen = (t_vect *)malloc((MAXWIDTH * MAXHEIGHT) * sizeof(t_vect));
 	return (rt);
 }

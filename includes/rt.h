@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 13:09:12 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 16:11:14 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_image.h>
+# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -28,7 +28,6 @@
 # define CONE 2
 # define PLANE 3
 # define PARAPLOID 4
-# define CUBE 5
 # define WATER 1.3
 # define DIAMOND 1.8
 # define GLASS 1.5
@@ -133,7 +132,6 @@ typedef struct s_ray
 	t_vect			dir;
 	t_vect			hit;
 	double			n1;
-	int				maxrf;
 }					t_ray;
 
 typedef struct s_math
@@ -184,7 +182,8 @@ typedef struct s_rt
 	t_sol			t;
 	t_math			calc;
 	double			dot1;
-	// int			maxref;
+	int				maxrfr;
+	int				maxrfl;
 	char			*str;
 	int				fd;
 	int 			menu;

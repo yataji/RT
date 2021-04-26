@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:32:04 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/24 12:17:58 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/25 16:01:54 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ double	parapinter(t_obj **para, t_ray ray)
 	m = dot(moins((*para)->hit, (*para)->center), (*para)->v);
 	(*para)->normal = normalize(moins(moins((*para)->hit, (*para)->center),
 				multi((*para)->v, m + (*para)->angle)));
-    return (sol.tmin);
+	return (sol.tmin);
 }
