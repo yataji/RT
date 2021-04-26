@@ -21,7 +21,7 @@ plane:
  trs: 0:0:0
  color: 255:0:0
  axis: 0:0:1
- refl: 0
+ refl: 1
  refr: 0
  matter: 0
  perrfr: 0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:46:21 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/25 16:56:25 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 06:16:08 by nabouzah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 	shadow_r = init_shadow(rt, lights, &dirvect, &dist);
 	while (tmpo)
 	{
-		if (tmpo->neg_obj == 0)
+		// if (tmpo->neg_obj == 0)
 			v.t = intersect(&tmpo, shadow_r) + 0.01;
 		if (tmpo != close && v.t > 0)
 		{
@@ -66,6 +66,8 @@ t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights)
 		c = multi_tcolor(close->color, multi_color(lights->color, 1.0 / 255));
 		c = multi_color(c, dot1 * lights->intensity / 100.0);
 	}
+	else
+		return (c);
 	reflect = normalize(moins(lightdir, multi(close->normal, 2 * dot1)));
 	dot1 = dot(reflect, normalize(moins(ray.hit, ray.org)));
 	if (dot1 > 0)

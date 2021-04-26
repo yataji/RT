@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 16:58:04 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 06:42:06 by nabouzah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,16 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
+		c = (t_color){0, 0, 0};
 		shad = shadow(rt, rt->tmpl, close);
-		if (shad && close->neg_obj == 0)
+		if (shad)
 			c = diffuspclr(rt->ray, close, rt->tmpl);
 		if (shad == -1)
 			c = multi(close->color, 0.2);
-		if (!shad)
-			c = (t_color){0, 0, 0};
-		if (close->refl)
+		if (shad && close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
-		if (close->refr)
-			c = add_color(refraction(rt, close, rt->tmpl,
-						rt->ray), multi(c, 0.5));
+		if (shad && close->refr)
+			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
@@ -62,17 +60,21 @@ void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 	col = (t_color){0, 0, 0};
 	while (tmpo)
 	{
-		v.t = intersect(&tmpo, rt.ray);
-		if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
+		if (!tmpo->neg_obj)
 		{
-			close = tmpo;
-			v.near = v.t;
+			v.t = intersect(&tmpo, rt.ray) + 0.0001;
+			if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
+			{
+				close = tmpo;
+				v.near = v.t;
+			}
 		}
 		tmpo = tmpo->next;
 	}
 	if (v.near > 0 && close)
 	{
 		rt.ray.hit = close->hit;
+		setnormal(close, &rt.ray, v.near);
 		col = color(&rt, close, rt.lights);
 	}
 	if (SDL_SetRenderDrawColor(rt.rend, col.x, col.y, col.z, 255) != 0)

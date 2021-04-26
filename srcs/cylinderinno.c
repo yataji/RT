@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinderinno.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 15:36:20 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/24 10:51:46 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 06:01:50 by nabouzah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_vect	normcyld(t_ray *ray, t_obj *obj, double t)
 	v = normalize(obj->v);
 	v = normalize(rotation_xyz(v, obj->rot));
 	ray->hit = plus(ray->org, multi(ray->dir, t));
+	obj->hit = ray->hit;
 	oc = moins(ray->org, obj->center);
 	m = dot(ray->dir, v) * t + dot(oc, v);
 	norm = moins(moins(ray->hit, obj->center), multi(v, m));

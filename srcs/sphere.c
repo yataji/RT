@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:27:45 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/24 13:41:47 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 06:04:43 by nabouzah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_vect	normsphr(t_ray *ray, t_obj *obj, double t)
 	t_vect	norm;
 
 	ray->hit = plus(ray->org, multi(ray->dir, t));
+	obj->hit = ray->hit;
 	norm = moins(ray->hit, obj->center);
 	return (normalize(norm));
 }
