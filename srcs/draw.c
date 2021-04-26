@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 06:42:06 by nabouzah         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:37:21 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ t_color	ambtext(t_rt *rt, t_obj *close)
 	t_color	ret;
 
 	ret = multi(close->color, rt->cam->ambiante);
-	if (ft_strcmp(close->texture, ".") != 0)
-	{
-		texture(close, rt->ray.hit);
-		ret = close->color;
-	}
+	// if (ft_strcmp(close->texture, ".") != 0)
+	// {
+	// 	texture(close, rt->ray.hit);
+	// 	ret = close->color;
+	// }
 	return (ret);
 }
 
@@ -31,7 +31,8 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 	t_color	ret;
 	int		shad;
 
-	ret = ambtext(rt, close);
+	// ret = ambtext(rt, close);
+	ret = multi(close->color, 0.1);//rt->cam->ambiante);
 	rt->tmpl = lights;
 	while (rt->tmpl)
 	{
@@ -39,12 +40,12 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		shad = shadow(rt, rt->tmpl, close);
 		if (shad)
 			c = diffuspclr(rt->ray, close, rt->tmpl);
-		if (shad == -1)
-			c = multi(close->color, 0.2);
-		if (shad && close->refl)
-			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
-		if (shad && close->refr)
-			c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
+		// if (shad == -1)
+		// 	c = multi(close->color, 0.2);
+		// if (shad && close->refl)
+		// 	c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
+		// if (shad && close->refr)
+		// 	c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
 		ret = add_color(ret, c);
 		rt->tmpl = rt->tmpl->next;
 	}
@@ -124,9 +125,9 @@ void	draw(t_rt	rt)
 
 	rtt = &rt;
 	i = 0;
+	// if (rt.menu == 0)
+	// 	menu(&rt);
 	if (rt.menu == 0)
-		menu(&rt);
-	if (rt.menu == 1)
 	{
 		while (i < 4)
 		{

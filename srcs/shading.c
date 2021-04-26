@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:46:21 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/26 06:16:08 by nabouzah         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:33:09 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ int	shadow(t_rt *rt, t_lights *lights, t_obj *close)
 			v.t = intersect(&tmpo, shadow_r) + 0.01;
 		if (tmpo != close && v.t > 0)
 		{
-			if (dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
-			{
-				if (tmpo->refr == 1)
-					return (-1);
+			if (/*!tmpo->refr && */dot(multi(shadow_r.dir, v.t), multi(shadow_r.dir, v.t)) < dist)
 				return (0);
-			}
 		}
 		tmpo = tmpo->next;
 	}
