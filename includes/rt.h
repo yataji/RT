@@ -19,10 +19,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-// # include "SDL2/SDL.h"
-// # include "SDL2/SDL_image.h"
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include "SDL2/SDL.h"
+# include "SDL2/SDL_image.h"
+// # include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
+// # include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -40,7 +40,6 @@ typedef struct	s_2d_i
 	int			i;
 	int			j;
 }				t_2d_i;
-
 
 typedef struct	s_2d_d
 {
@@ -190,6 +189,8 @@ typedef struct s_rt
 	int				fd;
 	int 			menu;
 	int				ck;
+	int				start;
+	int				end;
 	SDL_Window		*win;
 	SDL_Renderer	*rend;
 	SDL_Renderer	*rend_bar;
@@ -210,9 +211,6 @@ double				intersect(t_obj **object, t_ray ray);
 double				sphrintr(t_obj **sphere, t_ray ray);
 double				cyldintr(t_obj **cyld, t_ray ray);
 double				coneintr(t_obj **cone, t_ray ray);
-
-double			cubeintr(t_obj **cube, t_ray ray);
-
 double				parapinter(t_obj **para, t_ray ray);
 double				planiter(t_obj **pln, t_ray ray);
 int					keypress(int key, void *param);
@@ -252,8 +250,6 @@ int					ft_sphere(t_rt *rt, char *str);
 int					ft_paraploid(t_rt *rt, char *str);
 int					ft_lights(t_rt *rt, char *str);
 int					ft_cam(t_rt *rt, char *str);
-
-
 void				init_sdl(t_rt *rt);
 void				sdl_error(char *message);
 void				loop(t_rt *rt);
@@ -261,27 +257,25 @@ void				loop_program(t_rt *rt);
 int					parse_texture(t_obj *obj, char *str);
 int					stockobj(t_obj *obj, int id, char *s, int fd);
 double				ft_atof(char *str);
-t_2d_i		get_uv(t_obj *obj, t_2d_i size, t_vect hit);
-void		texture(t_obj *obj, t_vect hit);
-t_sol			check_min_max(t_math math);
-int	ft_cube(t_rt *rt, char *str);
-t_ray	initrayrfl(t_rt *rt,t_ray ray, t_obj *closeobj);
-t_ray	initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
-int	shadow(t_rt *rt, t_lights *lights, t_obj *close);
-t_color	diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
-t_color		reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
-t_color		refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
-double	limeted_cone(t_obj *cone, t_ray r, t_sol sol);
-double	limeted_cly(t_obj *cyl, t_ray r, t_sol sol);
-void	menu(t_rt *rt);
-int	inside_rect(t_rt *rt, SDL_Rect r);
-double	ft_matter(int matter);
-
-void			filter_mb(t_rt *rt);
-void			filtre_sepia(t_rt *rt);
-void			filtres(t_rt *rt);
-
-void			multi_thread(t_rt *rt);
-int	light_direct(t_rt *rt, t_obj *close, t_lights *li);
+t_2d_i				get_uv(t_obj *obj, t_2d_i size, t_vect hit);
+void				texture(t_obj *obj, t_vect hit);
+t_sol				check_min_max(t_math math);
+int					ft_cube(t_rt *rt, char *str);
+t_ray				initrayrfl(t_rt *rt,t_ray ray, t_obj *closeobj);
+t_ray				initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
+int					shadow(t_rt *rt, t_lights *lights, t_obj *close);
+t_color				diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
+t_color				reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
+t_color				refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
+double				limeted_cone(t_obj *cone, t_ray r, t_sol sol);
+double				limeted_cly(t_obj *cyl, t_ray r, t_sol sol);
+void				menu(t_rt *rt);
+int					inside_rect(t_rt *rt, SDL_Rect r);
+double				ft_matter(int matter);
+void				filter_mb(t_rt *rt);
+void				filtre_sepia(t_rt *rt);
+void				filtres(t_rt *rt);
+void				multi_thread(t_rt *rt);
+int					light_direct(t_rt *rt, t_obj *close, t_lights *li);
 
 #endif
