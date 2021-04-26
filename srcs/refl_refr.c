@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refl_refr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 13:24:15 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 15:50:52 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 06:44:39 by nabouzah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_var	reflection2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 	{
 		if (rt->tmpo != close)
 		{
-			t = intersect(&rt->tmpo, ray);
+			t = intersect(&rt->tmpo, ray) + 0.0001;
 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
 			{
 				*closenew = rt->tmpo;
@@ -32,6 +32,18 @@ t_var	reflection2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 		rt->tmpo = rt->tmpo->next;
 	}
 	return (v);
+}
+
+t_color refl_refrshad(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
+{
+	t_color	c;
+
+	c = diffuspclr(rt->ray, close, rt->tmpl);
+	if (close->refl)
+		c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
+	if (close->refr)
+		c = add_color(refraction(rt, close, rt->tmpl, rt->ray), c);
+	return (c);	
 }
 
 t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
@@ -55,7 +67,7 @@ t_color	reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	if (closenew->refl)
 		reflection(rt, closenew, l, ray);
 	setnormal(closenew, &ray, v.near);
-	return (diffuspclr(ray, closenew, l));
+	return (refl_refrshad(rt, closenew, l, ray));
 }
 
 t_var	refraction2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
@@ -68,7 +80,7 @@ t_var	refraction2(t_rt *rt, t_obj **closenew, t_ray ray, t_obj *close)
 	{
 		if (rt->tmpo != close)
 		{
-			t = intersect(&rt->tmpo, ray);
+			t = intersect(&rt->tmpo, ray) + 0.0001;
 			if ((t < v.near && t > 0) || (t > v.near && v.near < 0))
 			{
 				*closenew = rt->tmpo;
@@ -101,5 +113,5 @@ t_color	refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor)
 	if (closenew->refr)
 		refraction(rt, closenew, l, ray);
 	setnormal(closenew, &ray, v.near);
-	return (diffuspclr(ray, closenew, l));
+	return (refl_refrshad(rt, closenew, l, ray));
 }

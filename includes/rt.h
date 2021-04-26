@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:22:16 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/25 16:11:14 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/26 04:30:05 by nabouzah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include "SDL2/SDL.h"
+# include "SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -31,7 +31,7 @@
 # define WATER 1.3
 # define DIAMOND 1.8
 # define GLASS 1.5
-# define MAXRF 10
+# define MAXRF 3
 
 typedef struct	s_2d_i
 {
