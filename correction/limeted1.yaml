@@ -1,7 +1,7 @@
 lights:
  intensity: 100
  color: 255:255:255
- pos: 0:0:100
+ pos: -80:0:100
  direct_light: 0
  direction: 0:0:0
  angle: 20
@@ -11,7 +11,6 @@ camera:
  fov: 60
  ambiante: 0.1
 cone:
- texture: ./texture/sun.jpg
  size: 60
  postext: 0:0:0
  slice: 0:0:0
@@ -29,7 +28,6 @@ cone:
  color: 0:0:255
  rot: 0:0:0
 cone:
- texture: ./texture/sun.jpg
  size: 60
  postext: 0:0:0
  slice: 0:1:1
@@ -46,3 +44,19 @@ cone:
  angle: 20
  color: 0:0:255
  rot: 0:0:0
+plane:
+ size: 0
+ texture: .
+ postext: 0:0:0
+ slice: 0:0:0
+ poslice: 0:0:0
+ refl: 0
+ refr: 0
+ matter: 0
+ perrfr: 0
+ neg_obj: 0
+ center: 0:0:-50
+ trs: 0:0:0
+ axis: 0:0:1
+ rot: 0:0:0
+ color: 100:0:85

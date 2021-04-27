@@ -19,10 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-// # include "SDL2/SDL.h"
-// # include "SDL2/SDL_image.h"
-# include "/Users/yataji/.brew/Cellar/sdl2/2.0.14/include/SDL2/SDL.h"
-# include "/Users/yataji/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include "SDL2/SDL.h"
+# include "SDL2/SDL_image.h"
 # define MAXWIDTH 1000
 # define MAXHEIGHT 1000
 # define SPHERE 0
@@ -35,24 +33,24 @@
 # define GLASS 1.5
 # define MAXRF 3
 
-typedef struct	s_2d_i
+typedef struct s_2d_i
 {
-	int			i;
-	int			j;
+	int	i;
+	int	j;
 }				t_2d_i;
 
-typedef struct	s_2d_d
+typedef struct s_2d_d
 {
-	double		x;
-	double		y;
+	double	x;
+	double	y;
 }				t_2d_d;
 
-typedef struct	s_angle
+typedef struct s_angle
 {
-	double theta1;
-	double theta2;
-	double costheta2;
-	double sintheta1;
+	double	theta1;
+	double	theta2;
+	double	costheta2;
+	double	sintheta1;
 }				t_angle;
 
 typedef struct s_var
@@ -75,29 +73,28 @@ typedef struct s_varpars
 
 typedef struct s_vect
 {
-	double			x;
-	double			y;
-	double			z;
+	double	x;
+	double	y;
+	double	z;
 }					t_vect;
 
-typedef struct			s_xyz
+typedef struct s_xyz
 {
-	t_vect				x;
-	t_vect				y;
-	t_vect				z;
-}						t_xyz;
+	t_vect	x;
+	t_vect	y;
+	t_vect	z;
+}				t_xyz;
 
 typedef t_2d_i		t_event;
 typedef t_vect		t_point;
 typedef t_vect		t_color;
 typedef t_vect		t_rot;
 
-typedef struct 			s_sol
+typedef struct s_sol
 {
-	double				tmin;
-	double				tmax;
-}						t_sol;
-
+	double	tmin;
+	double	tmax;
+}				t_sol;
 
 typedef struct s_obj
 {
@@ -144,7 +141,6 @@ typedef struct s_math
 	double			delta;
 }					t_math;
 
-
 typedef struct s_cam
 {
 	t_point			lokat;
@@ -173,7 +169,7 @@ typedef struct s_lights
 
 typedef struct s_rt
 {
-	int 			filter_type;
+	int				filter_type;
 	t_obj			*obj;
 	t_obj			*tmpo;
 	t_ray			ray;
@@ -188,7 +184,7 @@ typedef struct s_rt
 	int				maxrfl;
 	char			*str;
 	int				fd;
-	int 			menu;
+	int				menu;
 	int				ck;
 	int				start;
 	int				end;
@@ -262,12 +258,14 @@ t_2d_i				get_uv(t_obj *obj, t_2d_i size, t_vect hit);
 void				texture(t_obj *obj, t_vect hit);
 t_sol				check_min_max(t_math math);
 int					ft_cube(t_rt *rt, char *str);
-t_ray				initrayrfl(t_rt *rt,t_ray ray, t_obj *closeobj);
-t_ray				initrayrfr(t_rt *rt,t_ray ray, t_obj *closeobj);
+t_ray				initrayrfl(t_rt *rt, t_ray ray, t_obj *closeobj);
+t_ray				initrayrfr(t_rt *rt, t_ray ray, t_obj *closeobj);
 int					shadow(t_rt *rt, t_lights *lights, t_obj *close);
 t_color				diffuspclr(t_ray ray, t_obj *close, t_lights *lights);
-t_color				reflection(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
-t_color				refraction(t_rt *rt, t_obj *close, t_lights *l, t_ray rayor);
+t_color				reflection(t_rt *rt, t_obj *close,
+						t_lights *l, t_ray rayor);
+t_color				refraction(t_rt *rt, t_obj *close,
+						t_lights *l, t_ray rayor);
 double				limeted_cone(t_obj *cone, t_ray r, t_sol sol);
 double				limeted_cly(t_obj *cyl, t_ray r, t_sol sol);
 void				menu(t_rt *rt);
@@ -280,5 +278,6 @@ void				multi_thread(t_rt *rt);
 int					light_direct(t_rt *rt, t_obj *close, t_lights *li);
 void				putimage(t_rt *rt, t_color *col, t_var *v);
 int					inside_rect(t_rt *rt, SDL_Rect r);
+void				negative_objc(t_obj *obj);
 
 #endif

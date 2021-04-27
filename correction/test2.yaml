@@ -6,7 +6,7 @@ lights:
  direction: 0:0:0
  angle: 20
 camera:
- lokfrm: 100:0:20
+ lokfrm: 100:0:50
  lokat: 0:0:0
  fov: 60
  ambiante: 0.1
@@ -39,7 +39,7 @@ cylinder:
  trs: 0:0:0
  axis: 0:1:0
  radius: 8
- color: 255:255:255
+ color: 255:0:0
  rot: 0:0:0
 cone:
  size: 0
@@ -56,7 +56,7 @@ cone:
  trs: 0:0:0
  axis: 0:1:0
  angle: 20
- color: 255:255:255
+ color: 255:0:0
  rot: 0:0:0
 plane:
  size: 0

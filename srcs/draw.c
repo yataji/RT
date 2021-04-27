@@ -61,14 +61,11 @@ void	drawcolor(t_var v, t_rt rt, t_obj *tmpo)
 	col = (t_color){0, 0, 0};
 	while (tmpo)
 	{
-		if (!tmpo->neg_obj)
+		v.t = intersect(&tmpo, rt.ray) + 0.0001;
+		if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
 		{
-			v.t = intersect(&tmpo, rt.ray) + 0.0001;
-			if ((v.t < v.near && v.t > 0) || (v.t > v.near && v.near < 0))
-			{
-				close = tmpo;
-				v.near = v.t;
-			}
+			close = tmpo;
+			v.near = v.t;
 		}
 		tmpo = tmpo->next;
 	}

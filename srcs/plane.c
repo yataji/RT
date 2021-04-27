@@ -62,6 +62,7 @@ double	planiter(t_obj **plan, t_ray ray)
 	(*plan)->normal = normalize((*plan)->v);
 	if (dot((*plan)->normal, ray.dir) > 0)
 		(*plan)->normal = multi((*plan)->v, -1);
+	negative_objc(*plan);
 	t = plan_slice(*plan, t);
 	if ((*plan)->size != 0)
 		t = limeted_plan(*plan, ray, t);

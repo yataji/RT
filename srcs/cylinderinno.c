@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinderinno.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabouzah <nabouzah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoelguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 15:36:20 by jiqarbac          #+#    #+#             */
-/*   Updated: 2021/04/26 06:01:50 by nabouzah         ###   ########.fr       */
+/*   Created: 2021/04/27 09:50:39 by yoelguer          #+#    #+#             */
+/*   Updated: 2021/04/27 09:50:45 by yoelguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ double	cyldintr(t_obj **cyld, t_ray ray)
 	sol = check_min_max(calc);
 	(*cyld)->normal = normalize(normcyld(&ray, *cyld, sol.tmin));
 	(*cyld)->hit = plus(ray.org, multi(ray.dir, sol.tmin));
+	negative_objc(*cyld);
 	if ((*cyld)->size != 0)
 		return (limeted_cly(*cyld, ray, sol));
 	return (sol.tmin);
