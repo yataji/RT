@@ -6,7 +6,7 @@
 /*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 12:18:10 by yataji            #+#    #+#             */
-/*   Updated: 2021/04/26 16:34:10 by yataji           ###   ########.fr       */
+/*   Updated: 2021/04/27 13:26:13 by yataji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_color	color(t_rt *rt, t_obj *close, t_lights *lights)
 		if (!shad)
 			c = multi(close->color, 0.1);
 		if (shad == -1)
-			c = multi(close->color, 0.2);
+			c = multi(close->color, 0.7);
 		if (shad && close->refl)
 			c = add_color(reflection(rt, close, rt->tmpl, rt->ray), c);
 		if (shad && close->refr)

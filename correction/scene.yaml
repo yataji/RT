@@ -7,227 +7,227 @@ lights:
  direct_light: 0
  direction: 0:0:0
  angle: 0
- pos: 0:0:0
+ pos: 0:0:40
  color: 255:255:255
  intensity: 100
-sphere:
- center: 0:0:0
- slice: 0:0:0
- texture: .
- postext: 0:0:0
- poslice: 0:0:0
- refl: 0
- refr: 1
- matter: 1
- perrfr: 0
- neg_obj: 0
- trs: 0:0:0
- radius: 4
- color: 255:255:255
 cylinder:
- size: 0
- postext: 0:0:0
- slice: 0:0:0
- poslice: 0:0:0
- matter: 1
- perrfr: 0
- neg_obj: 0
- texture: .
- refl: 0
- refr: 1
+ rot: 0:0:0
  center: 0:-8:-30
  trs: 0:0:0
  axis: 1:0:0
+ color: 255:255:255
  radius: 1
- color: 255:0:0
- rot: 0:0:0
+ size: 0
+ postext: 0:0:0
+ slice: 0:0:0
+ poslice: 0:0:0
+ matter: 0
+ perrfr: 0
+ neg_obj: 0
+ texture: .
+ refl: 0
+ refr: 0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 0:-4:-30
  trs: 0:0:0
  axis: 1:0:0
  radius: 1
- color: 255:0:0
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 0:0:-30
  trs: 0:0:0
  axis: 1:0:0
  radius: 1
- color: 255:0:0
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 0:4:-30
  trs: 0:0:0
  axis: 1:0:0
  radius: 1
- color: 255:0:0
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 0:8:-30
  trs: 0:0:0
  axis: 1:0:0
  radius: 1
- color: 255:0:0
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 12:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
- color: 0:0:255
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 8:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
- color: 0:0:255
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 4:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
- color: 0:0:255
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 0:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
- color: 0:0:255
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -4:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
- color: 0:0:255
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -8:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
- color: 0:0:255
+ color: 255:255:255
  rot: 0:0:0
 cylinder:
  size: 0
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -12:0:-30
  trs: 0:0:0
  axis: 0:1:0
  radius: 1
  color: 255:255:255
  rot: 0:0:0
+sphere:
+ center: 0:0:0
+ trs: 0:0:0
+ radius: 4
+ color: 255:0:0
+ slice: 0:0:0
+ texture: .
+ postext: 0:0:0
+ poslice: 0:0:0
+ refl: 0
+ refr: 0
+ matter: 0
+ perrfr: 0
+ neg_obj: 0
 sphere:
  slice: 0:0:0
  texture: .
@@ -303,17 +303,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 12:12:0
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -348,17 +348,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 12:12:20
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -393,17 +393,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -12:12:20
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -438,17 +438,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -12:12:0
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -483,17 +483,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -12:12:-20
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -528,17 +528,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 12:12:-20
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -573,17 +573,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: -12:12:-40
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -618,17 +618,17 @@ cylinder:
  postext: 0:0:0
  slice: 0:0:0
  poslice: 0:0:0
- matter: 1
+ matter: 0
  perrfr: 0
  neg_obj: 0
  texture: .
  refl: 0
- refr: 1
+ refr: 0
  center: 12:12:-40
  trs: 0:0:0
  axis: 0:1:0
  radius: 2
- color: 255:255:255
+ color: 99:100:165
  rot: 0:0:0
 sphere:
  slice: 0:0:0
@@ -661,6 +661,11 @@ plane:
  rot: 0:0:0
  color: 135:252:85
 plane:
+ rot: 0:0:0
+ center: -17:0:0
+ trs: 0:0:0
+ axis: 1:0:0
+ color: 135:252:85
  size: 0
  texture: .
  postext: 0:0:0
@@ -671,11 +676,6 @@ plane:
  matter: 0
  perrfr: 0
  neg_obj: 0
- center: -17:0:0
- trs: 0:0:0
- axis: 1:0:0
- rot: 0:0:0
- color: 135:252:85
 plane:
  size: 0
  texture: .

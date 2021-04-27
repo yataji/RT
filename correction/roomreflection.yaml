@@ -1,5 +1,5 @@
 lights:
- intensity: 25
+ intensity: 100
  color: 255:255:255
  pos: 0:0:30
  direct_light: 1
@@ -154,17 +154,3 @@ sphere:
  matter: 0
  perrfr: 0.9
  neg_obj: 0
-sphere:
- slice: 0:0:0
- texture: .
- postext: 0:0:0
- poslice: 0:0:0
- center: 0:-30:0
- trs: 0:0:0
- radius: 3
- color: 255:255:255
- refl: 0
- refr: 0
- matter: 0
- perrfr: 0.9
- neg_obj: 1
