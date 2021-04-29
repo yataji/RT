@@ -29,7 +29,7 @@ When you have already installed SDL2 library you can use this simple rules:
 ## Usage
 The programm takes a scene written in yaml as an argument. Multiple **scenes** are directly available in the directory "./correction/" .
 ```
-$ "usage: ./rt correction/(chose a file .yaml)"
+$ usage: ./rt correction/(chose a file .yaml)
 
 ### Basics
 - 4 objects : sphere, plane, cylinder, cone
